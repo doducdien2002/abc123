@@ -1,0 +1,129 @@
+/* ═══════════════════════════════════════════
+   variables.css — Design tokens & CSS Reset
+   CineLove Clone
+═══════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Great+Vibes&display=swap');
+
+/* ── Reset ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; }
+button { cursor: pointer; font-family: inherit; }
+ul { list-style: none; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* ══════════════════════════════════════════
+   DARK MODE (default)
+══════════════════════════════════════════ */
+:root {
+  /* Backgrounds */
+  --bg:         #0c0b0a;
+  --surface:    #141210;
+  --surface2:   #1c1916;
+  --surface3:   #231f1b;
+
+  /* Borders */
+  --border:      rgba(255,255,255,0.07);
+  --border-gold: rgba(201,169,110,0.25);
+
+  /* Gold palette */
+  --gold:      #c9a96e;
+  --gold2:     #e2c98f;
+  --gold-dim:  rgba(201,169,110,0.12);
+  --gold-glow: rgba(201,169,110,0.30);
+
+  /* Text */
+  --cream:      #f5f0e8;
+  --white:      #ffffff;
+  --text:       #d4c8b8;
+  --text-dim:   #8a7d6e;
+  --text-muted: #5a5048;
+
+  /* Navbar bg */
+  --navbar-bg:  rgba(12,11,10,.9);
+
+  /* Semantic */
+  --badge-basic:   #3a6b4a;
+  --badge-premium: #7a4a1a;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-script:  'Great Vibes', cursive;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  /* Layout */
+  --section-pad: 100px 24px;
+  --container:   1160px;
+
+  /* Misc */
+  --r:      6px;
+  --r-lg:   12px;
+  --shadow: 0 24px 80px rgba(0,0,0,0.55);
+  --trans:  all .25s ease;
+
+  /* Grain opacity */
+  --grain-opacity: 0.35;
+}
+
+/* ══════════════════════════════════════════
+   LIGHT MODE
+══════════════════════════════════════════ */
+html[data-theme="light"] {
+  --bg:         #faf7f2;
+  --surface:    #ffffff;
+  --surface2:   #f3ede4;
+  --surface3:   #ece5d8;
+
+  --border:      rgba(0,0,0,0.08);
+  --border-gold: rgba(160,110,50,0.30);
+
+  --gold:      #a06822;
+  --gold2:     #c08030;
+  --gold-dim:  rgba(160,110,50,0.10);
+  --gold-glow: rgba(160,110,50,0.25);
+
+  --cream:      #3a2a1e;
+  --white:      #1a1208;
+  --text:       #4a3828;
+  --text-dim:   #7a6050;
+  --text-muted: #b0a090;
+
+  --navbar-bg:  rgba(250,247,242,.92);
+
+  --shadow: 0 24px 80px rgba(0,0,0,0.10);
+  --grain-opacity: 0.15;
+}
+
+/* ── Theme transition – all properties animate ── */
+html.theme-transitioning,
+html.theme-transitioning * {
+  transition:
+    background-color .4s ease,
+    color .4s ease,
+    border-color .4s ease,
+    box-shadow .4s ease !important;
+}
+
+/* ── Body base ── */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ── Film-grain overlay ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: var(--grain-opacity);
+}

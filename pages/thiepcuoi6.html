@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Thiệp Cưới - Lê Thành An & Trần Minh Anh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: #f5f0eb;
+  font-family: 'Cormorant Garamond', serif;
+  color: #2c2c2c;
+  max-width: 480px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+#petalCanvas {
+  position: fixed;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 480px; max-width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-left { opacity:0; transform:translateX(-50px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+.reveal-left.visible { opacity:1; transform:translateX(0); }
+.reveal-right { opacity:0; transform:translateX(50px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+.reveal-right.visible { opacity:1; transform:translateX(0); }
+.reveal-scale { opacity:0; transform:scale(0.88); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+.reveal-scale.visible { opacity:1; transform:scale(1); }
+.d1{transition-delay:0.1s!important} .d2{transition-delay:0.22s!important}
+.d3{transition-delay:0.36s!important} .d4{transition-delay:0.5s!important}
+.d5{transition-delay:0.65s!important}
+
+#loading {
+  position:fixed; inset:0; background:#3a4a35;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  z-index:9999; transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+#loading.hidden { opacity:0; visibility:hidden; }
+.loading-script { font-family:'Great Vibes',cursive; font-size:44px; color:#fff; animation: lPulse 1.6s ease-in-out infinite; }
+.loading-sub { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:12px; font-family:'Cormorant Garamond',serif; }
+.loading-bar { width:100px; height:1px; background:rgba(255,255,255,0.15); margin-top:20px; position:relative; overflow:hidden; }
+.loading-bar::after { content:''; position:absolute; left:-100%; top:0; width:100%; height:100%; background:rgba(255,255,255,0.75); animation: lBar 1.6s ease-in-out infinite; }
+@keyframes lPulse{0%,100%{opacity:0.5}50%{opacity:1}}
+@keyframes lBar{0%{left:-100%}100%{left:100%}}
+
+.hero { position:relative; width:100%; height:100vh; max-height:700px; overflow:hidden; }
+.hero-img { width:100%; height:115%; object-fit:cover; object-position:center top; will-change:transform; }
+.hero-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,0.0) 0%,rgba(30,50,25,0.12) 45%,rgba(30,50,25,0.48) 100%);
+  display:flex; flex-direction:column; justify-content:flex-end; align-items:center;
+  padding-bottom:56px; text-align:center; color:#fff;
+}
+.hero-badge { position:absolute; top:28px; right:18px; background:rgba(255,255,255,0.13); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.28); padding:6px 14px; border-radius:30px; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.88); font-family:'Cormorant Garamond',serif; }
+.hero-script { font-family:'Great Vibes',cursive; font-size:38px; color:rgba(255,255,255,0.93); line-height:1.1; animation:hUp 1.2s 0.5s both; }
+.hero-names { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; letter-spacing:3px; text-transform:uppercase; line-height:1.4; animation:hUp 1.2s 0.7s both; margin-top:4px; }
+.hero-date { font-size:13px; letter-spacing:2px; margin-top:10px; opacity:0.82; animation:hUp 1.2s 0.9s both; }
+.hero-line { width:50px; height:1px; background:rgba(255,255,255,0.45); margin:10px auto; animation:hUp 1.2s 0.8s both; }
+.hero-scroll { position:absolute; bottom:18px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; animation:hUp 1.2s 1.2s both; }
+.hero-scroll span { font-size:8px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.5); }
+.scroll-line { width:1px; height:40px; background:rgba(255,255,255,0.2); position:relative; overflow:hidden; }
+.scroll-line::after { content:''; position:absolute; top:-40px; left:0; width:1px; height:40px; background:rgba(255,255,255,0.75); animation:sLine 1.6s ease-in-out infinite; }
+@keyframes hUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes sLine{0%{top:-40px}100%{top:40px}}
+
+.invite-banner { background:#3a4a35; color:#e8dfc8; text-align:center; padding:18px 20px; font-family:'Playfair Display',serif; font-size:13px; letter-spacing:2.5px; text-transform:uppercase; position:relative; overflow:hidden; }
+.invite-banner::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent); animation:shimmer 2.8s ease-in-out infinite; }
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+.person-card-wrap { background:#3a4a35; position:relative; padding:28px 28px 34px; overflow:hidden; }
+.floral-tl { position:absolute; top:0; left:0; width:130px; opacity:0.18; pointer-events:none; }
+.floral-br { position:absolute; bottom:0; right:0; width:130px; opacity:0.18; pointer-events:none; transform:rotate(180deg); }
+.person-logo { font-family:'Cormorant Garamond',serif; font-size:10px; letter-spacing:4px; color:rgba(255,255,255,0.45); text-transform:uppercase; margin-bottom:12px; }
+.person-frame { position:relative; width:100%; border-radius:18px; overflow:hidden; aspect-ratio:3/4; box-shadow:0 24px 64px rgba(0,0,0,0.4); }
+.person-frame img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
+.person-frame:hover img { transform:scale(1.04); }
+.person-label { margin-top:22px; text-align:center; color:#fff; }
+.person-label .role { font-family:'Great Vibes',cursive; font-size:36px; color:#c8e0b0; line-height:1.1; }
+.person-label .name { font-family:'Playfair Display',serif; font-size:13px; font-weight:700; letter-spacing:4px; text-transform:uppercase; margin-top:6px; color:#fff; }
+
+.info-section { background:#fff; padding:36px 28px; text-align:center; position:relative; }
+.info-section::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,#3a4a35,transparent); }
+.parents-row { display:flex; justify-content:space-around; margin-bottom:24px; gap:16px; }
+.parent-block { flex:1; font-size:12.5px; color:#555; line-height:1.9; }
+.parent-block .lbl { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:#3a4a35; margin-bottom:6px; font-weight:700; }
+.parent-block .pname { color:#333; font-size:13px; }
+.ornament { display:flex; align-items:center; gap:14px; margin:8px auto 22px; justify-content:center; }
+.ornament .oline { width:48px; height:1px; background:linear-gradient(to right,transparent,#3a4a35); }
+.ornament .oline:last-child { background:linear-gradient(to left,transparent,#3a4a35); }
+.ornament .osym { font-size:16px; color:#3a4a35; opacity:0.65; }
+.invite-text { font-size:14px; color:#777; font-style:italic; margin-bottom:16px; line-height:1.9; }
+.couple-names { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:#2c2c2c; letter-spacing:1.5px; line-height:1.5; text-transform:uppercase; }
+.couple-names .and { font-family:'Great Vibes',cursive; font-size:28px; font-weight:400; text-transform:none; display:block; color:#3a4a35; margin:2px 0; }
+.sdivider { height:1px; background:linear-gradient(to right,transparent,#d4c8b8,transparent); margin:22px 0; }
+
+.countdown-wrap { background:linear-gradient(135deg,#283525,#3a4a35,#4d6044); padding:32px 24px; text-align:center; position:relative; overflow:hidden; }
+.countdown-wrap::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,0.05) 0%,transparent 70%); }
+.cd-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:22px; font-family:'Cormorant Garamond',serif; }
+.cd-boxes { display:flex; justify-content:center; gap:10px; }
+.cd-box { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.13); border-radius:12px; padding:14px 8px 10px; min-width:62px; backdrop-filter:blur(4px); transition:transform 0.15s ease; }
+.cd-box:hover { transform:translateY(-2px); }
+.cd-num { font-family:'Playfair Display',serif; font-size:36px; font-weight:700; color:#fff; line-height:1; display:block; }
+.cd-unit { font-size:8px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:6px; display:block; }
+
+.events-section { background:#fff; padding:4px 24px 28px; }
+.event-card { background:#f9f5ef; border:1px solid #e8e0d4; border-radius:14px; padding:24px; margin-top:18px; text-align:center; position:relative; overflow:hidden; transition:box-shadow 0.35s ease, transform 0.35s ease; cursor:default; }
+.event-card:hover { box-shadow:0 16px 48px rgba(58,74,53,0.13); transform:translateY(-3px); }
+.event-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#3a4a35,#7aaa6a,#3a4a35); }
+.event-title { font-family:'Playfair Display',serif; font-size:10.5px; letter-spacing:3px; text-transform:uppercase; color:#3a4a35; font-weight:700; margin-bottom:16px; }
+.event-date-cols { display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
+.edc { text-align:center; padding:0 14px; }
+.edc .val { font-family:'Playfair Display',serif; font-size:42px; font-weight:700; color:#2c2c2c; line-height:1; }
+.edc .lbl { font-size:8px; color:#aaa; text-transform:uppercase; letter-spacing:1px; margin-top:3px; }
+.edsep { font-size:26px; color:#ddd; font-weight:300; }
+.event-detail { font-size:12.5px; color:#888; font-style:italic; margin:8px 0 4px; line-height:1.6; }
+.event-venue { font-family:'Playfair Display',serif; font-size:13px; font-weight:600; color:#333; margin-bottom:3px; }
+.event-addr { font-size:12px; color:#aaa; margin-bottom:18px; }
+.btn-map { display:inline-flex; align-items:center; gap:5px; background:#3a4a35; color:#fff; padding:10px 26px; font-size:9.5px; letter-spacing:2px; text-transform:uppercase; font-family:'Cormorant Garamond',serif; font-weight:700; border-radius:30px; cursor:pointer; border:none; transition:background 0.3s,transform 0.2s,box-shadow 0.3s; }
+.btn-map:hover { background:#2c3a28; transform:translateY(-1px); box-shadow:0 6px 22px rgba(58,74,53,0.28); }
+
+.parallax-photo { width:100%; height:300px; overflow:hidden; position:relative; }
+.parallax-photo img { width:100%; height:130%; object-fit:cover; object-position:center 30%; will-change:transform; }
+.photo-caption { position:absolute; bottom:22px; left:0; right:0; text-align:center; color:rgba(255,255,255,0.88); font-family:'Great Vibes',cursive; font-size:30px; text-shadow:0 2px 14px rgba(0,0,0,0.4); }
+
+.calendar-section { background:#fff; padding:30px 24px 36px; }
+.cal-month { font-family:'Great Vibes',cursive; font-size:38px; color:#3a4a35; text-align:center; margin-bottom:20px; }
+.cal-grid { width:100%; border-collapse:collapse; font-size:13px; text-align:center; }
+.cal-grid th { color:#c0b8a8; font-size:9px; font-weight:700; letter-spacing:1px; padding:6px 0; text-transform:uppercase; }
+.cal-grid td { padding:7px 0; color:#666; }
+.cal-grid td.empty { color:transparent; }
+.cal-grid td.hl span { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:#3a4a35; color:#fff; border-radius:50%; font-weight:700; font-size:14px; animation:pulse 1.8s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(58,74,53,0.4);transform:scale(1)} 50%{box-shadow:0 0 0 9px rgba(58,74,53,0);transform:scale(1.07)} }
+
+.album-section { background:#3a4a35; overflow:hidden; }
+.album-header { padding:32px 28px 20px; }
+.album-title { font-family:'Playfair Display',serif; font-size:40px; font-weight:700; color:#fff; line-height:1; text-transform:uppercase; letter-spacing:2px; }
+.album-of { font-family:'Great Vibes',cursive; font-size:32px; color:#a8cc90; display:block; line-height:1; margin-top:-2px; padding-left:4px; }
+.album-love { font-family:'Playfair Display',serif; font-size:40px; font-weight:700; color:#fff; line-height:1; text-transform:uppercase; letter-spacing:2px; }
+.album-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; padding-bottom:3px; }
+.album-photo { overflow:hidden; background:#2c3a28; cursor:pointer; }
+.album-photo img { width:100%; height:190px; object-fit:cover; object-position:center top; display:block; transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease; }
+.album-photo:hover img { transform:scale(1.07); filter:brightness(1.08); }
+
+.lightbox { position:fixed; inset:0; background:rgba(0,0,0,0.93); z-index:9000; display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transition:opacity 0.4s ease, visibility 0.4s ease; }
+.lightbox.active { opacity:1; visibility:visible; }
+.lightbox img { max-width:92%; max-height:88vh; border-radius:6px; transform:scale(0.84); transition:transform 0.4s cubic-bezier(0.22,1,0.36,1); box-shadow:0 32px 80px rgba(0,0,0,0.6); }
+.lightbox.active img { transform:scale(1); }
+.lb-close { position:absolute; top:18px; right:18px; width:42px; height:42px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:50%; color:#fff; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.3s ease; }
+.lb-close:hover { background:rgba(255,255,255,0.18); }
+
+/* ── RSVP ── */
+.rsvp-section { background:#fff; padding:36px 24px; }
+.rsvp-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:#2c2c2c; letter-spacing:1px; text-transform:uppercase; text-align:center; margin-bottom:8px; }
+.rsvp-intro { font-size:13px; color:#888; font-style:italic; line-height:1.9; margin-bottom:24px; text-align:center; }
+.fgroup { margin-bottom:12px; }
+.rsvp-section input,
+.rsvp-section select {
+  width:100%; border:1px solid #e4dcd0; border-radius:10px;
+  padding:13px 16px; font-family:'Cormorant Garamond',serif;
+  font-size:14px; color:#444; background:#fbf9f6; outline:none;
+  transition:border-color 0.3s, box-shadow 0.3s;
+}
+.rsvp-section input:focus,
+.rsvp-section select:focus { border-color:#3a4a35; box-shadow:0 0 0 3px rgba(58,74,53,0.07); }
+.rsvp-section input::placeholder { color:#c0b8b0; font-style:italic; }
+.rsvp-section textarea {
+  width:100%; border:1px solid #e4dcd0; border-radius:10px;
+  padding:13px 16px; font-family:'Cormorant Garamond',serif;
+  font-size:14px; color:#444; background:#fbf9f6; outline:none;
+  resize:none; height:80px; line-height:1.6;
+  transition:border-color 0.3s, box-shadow 0.3s;
+}
+.rsvp-section textarea:focus { border-color:#3a4a35; box-shadow:0 0 0 3px rgba(58,74,53,0.07); }
+.rsvp-section textarea::placeholder { color:#c0b8b0; font-style:italic; }
+
+.btn-rsvp {
+  display:block; width:100%;
+  background:linear-gradient(135deg,#3a4a35,#5c7852);
+  color:#fff; border:none; padding:15px;
+  font-family:'Cormorant Garamond',serif; font-size:13px; font-weight:700;
+  letter-spacing:2.5px; text-transform:uppercase;
+  cursor:pointer; border-radius:10px; margin-bottom:12px;
+  position:relative; overflow:hidden; transition:transform 0.2s,box-shadow 0.3s;
+}
+.btn-rsvp::before { content:''; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent); transform:translateX(-100%); transition:transform 0.6s ease; }
+.btn-rsvp:hover::before { transform:translateX(100%); }
+.btn-rsvp:hover:not(:disabled) { transform:translateY(-2px); box-shadow:0 8px 28px rgba(58,74,53,0.3); }
+.btn-rsvp:disabled { opacity:0.7; cursor:not-allowed; }
+.btn-gift { display:block; width:100%; background:transparent; color:#3a4a35; border:1.5px solid #3a4a35; padding:14px; font-family:'Cormorant Garamond',serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; border-radius:10px; transition:background 0.3s, color 0.3s, transform 0.2s; }
+.btn-gift:hover { background:#3a4a35; color:#fff; transform:translateY(-1px); }
+
+/* Success box */
+/* SUCCESS POPUP OVERLAY */
+.success-popup {
+  position: fixed; inset: 0;
+  z-index: 10000;
+  display: flex; align-items: flex-end; justify-content: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.success-popup.active { opacity: 1; visibility: visible; }
+.success-popup-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(20, 35, 18, 0.75);
+  backdrop-filter: blur(6px);
+}
+.success-popup-card {
+  position: relative; z-index: 1;
+  width: 100%; max-width: 480px;
+  background: #fff;
+  border-radius: 28px 28px 0 0;
+  overflow: hidden;
+  transform: translateY(100%);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  max-height: 92vh;
+}
+.success-popup.active .success-popup-card {
+  transform: translateY(0);
+}
+.success-photo-strip {
+  position: relative;
+  width: 100%; height: 300px;
+  overflow: hidden;
+}
+.success-photo-strip img {
+  width: 100%; height: 140%;
+  object-fit: cover; object-position: center 20%;
+  display: block;
+}
+.success-photo-strip::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 55%;
+  background: linear-gradient(to top, rgba(20,35,18,0.65) 0%, transparent 100%);
+}
+.success-photo-names {
+  position: absolute; bottom: 20px; left: 0; right: 0;
+  text-align: center; z-index: 2;
+}
+.success-photo-names .pn-script {
+  font-family: 'Great Vibes', cursive;
+  font-size: 36px; color: #fff;
+  line-height: 1; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+}
+.success-photo-names .pn-date {
+  font-size: 11px; letter-spacing: 2.5px;
+  text-transform: uppercase; color: rgba(255,255,255,0.75);
+  margin-top: 5px; font-family: 'Cormorant Garamond', serif;
+}
+.success-body {
+  padding: 28px 28px 40px;
+  text-align: center;
+  background: #fff;
+}
+.success-heart {
+  width: 52px; height: 52px;
+  background: linear-gradient(135deg, #3a4a35, #5c7852);
+  border-radius: 50%; margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 8px 24px rgba(58,74,53,0.3);
+  animation: heartPop 0.6s 0.4s cubic-bezier(0.22,1,0.36,1) both;
+}
+@keyframes heartPop {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.success-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 700;
+  color: #2c2c2c; letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  animation: fadeSlideUp 0.6s 0.5s both;
+}
+.success-guest-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: 28px; color: #3a4a35;
+  margin-bottom: 12px;
+  animation: fadeSlideUp 0.6s 0.55s both;
+}
+.success-msg {
+  font-size: 13.5px; color: #888;
+  font-style: italic; line-height: 1.9;
+  max-width: 280px; margin: 0 auto 24px;
+  animation: fadeSlideUp 0.6s 0.6s both;
+}
+.success-divider {
+  display: flex; align-items: center; gap: 12px;
+  justify-content: center; margin-bottom: 24px;
+  animation: fadeSlideUp 0.6s 0.65s both;
+}
+.success-divider .sd-line {
+  width: 40px; height: 1px;
+  background: linear-gradient(to right, transparent, #3a4a35);
+}
+.success-divider .sd-line:last-child {
+  background: linear-gradient(to left, transparent, #3a4a35);
+}
+.success-divider .sd-sym { font-size: 14px; color: #3a4a35; opacity: 0.6; }
+.success-close {
+  display: block; width: 100%;
+  background: linear-gradient(135deg, #3a4a35, #5c7852);
+  color: #fff; border: none; padding: 15px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.3s;
+  animation: fadeSlideUp 0.6s 0.7s both;
+}
+.success-close:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(58,74,53,0.3);
+}
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Spinner */
+.spinner {
+  display:inline-block; width:14px; height:14px;
+  border:2px solid rgba(255,255,255,0.35);
+  border-top-color:#fff; border-radius:50%;
+  animation:spin 0.7s linear infinite; vertical-align:middle; margin-right:6px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.closing-section { position:relative; width:100%; height:360px; overflow:hidden; }
+.closing-section img { width:100%; height:130%; object-fit:cover; object-position:center top; will-change:transform; }
+.closing-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(30,50,25,0.05) 0%,rgba(30,50,25,0.52) 100%); display:flex; flex-direction:column; justify-content:flex-end; align-items:center; padding:32px 32px 30px; text-align:center; color:#fff; }
+.thanks-script { font-family:'Great Vibes',cursive; font-size:46px; line-height:1.1; margin-bottom:12px; filter:drop-shadow(0 2px 10px rgba(0,0,0,0.35)); }
+.thanks-text { font-size:12.5px; font-style:italic; line-height:1.95; opacity:0.85; max-width:290px; }
+
+.footer { background:#283525; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
+.footer-brand { font-family:'Cormorant Garamond',serif; font-size:9px; color:rgba(255,255,255,0.4); letter-spacing:2px; text-transform:uppercase; }
+.footer-icons { display:flex; gap:10px; }
+.ficon { width:30px; height:30px; background:rgba(255,255,255,0.09); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; text-decoration:none; transition:background 0.3s, transform 0.2s; }
+.ficon:hover { background:rgba(255,255,255,0.2); transform:scale(1.12); }
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="loading-script">Thanh An & Minh Anh</div>
+  <div class="loading-sub">22 · 01 · 2026</div>
+  <div class="loading-bar"></div>
+</div>
+
+<canvas id="petalCanvas"></canvas>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<section class="hero" id="hero">
+  <img class="hero-img" id="heroImg"
+    src="https://content.pancake.vn/1/s523x697/fwebp/21/54/83/cb/163b4872b6600196d0ac068b1f046c5dd5f9d20c3ddad5e7c0abea9b-w:736-h:980-l:48194-t:image/jpeg.jfif"
+    alt="Hero couple">
+  <div class="hero-overlay">
+    <div class="hero-badge">22 · 01 · 2026</div>
+    <div class="hero-script">Save the date</div>
+    <div class="hero-line"></div>
+    <div class="hero-names">Thành An & Minh Anh</div>
+    <div class="hero-date">Kính mời tham dự lễ thành hôn</div>
+  </div>
+  <div class="hero-scroll">
+    <span>Cuộn xuống</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="invite-banner reveal">Thư Mời Tham Dự Lễ Cưới</div>
+
+<!-- GROOM -->
+<div class="person-card-wrap">
+  <svg class="floral-tl" viewBox="0 0 200 300" fill="none">
+    <path d="M10 280 Q40 200 20 120 Q50 180 80 100 Q60 160 100 80" stroke="white" stroke-width="1.5" fill="none"/>
+    <ellipse cx="30" cy="260" rx="18" ry="10" stroke="white" stroke-width="1" fill="none" transform="rotate(-30 30 260)"/>
+    <ellipse cx="55" cy="220" rx="15" ry="8" stroke="white" stroke-width="1" fill="none" transform="rotate(-20 55 220)"/>
+    <ellipse cx="85" cy="170" rx="14" ry="7" stroke="white" stroke-width="1" fill="none" transform="rotate(-10 85 170)"/>
+    <path d="M20 250 Q5 235 15 220 Q25 235 20 250Z" stroke="white" stroke-width="0.8" fill="none"/>
+    <path d="M45 205 Q30 190 40 175 Q50 190 45 205Z" stroke="white" stroke-width="0.8" fill="none"/>
+    <circle cx="22" cy="230" r="3" stroke="white" stroke-width="0.8" fill="none"/>
+    <circle cx="50" cy="188" r="2.5" stroke="white" stroke-width="0.8" fill="none"/>
+    <circle cx="90" cy="150" r="2" stroke="white" stroke-width="0.8" fill="none"/>
+  </svg>
+  <svg class="floral-br" viewBox="0 0 200 300" fill="none">
+    <path d="M10 280 Q40 200 20 120 Q50 180 80 100" stroke="white" stroke-width="1.5" fill="none"/>
+    <ellipse cx="30" cy="260" rx="18" ry="10" stroke="white" stroke-width="1" fill="none" transform="rotate(-30 30 260)"/>
+    <ellipse cx="55" cy="220" rx="15" ry="8" stroke="white" stroke-width="1" fill="none" transform="rotate(-20 55 220)"/>
+    <circle cx="22" cy="230" r="3" stroke="white" stroke-width="0.8" fill="none"/>
+  </svg>
+  <div class="person-logo reveal">JEJU</div>
+  <div class="person-frame reveal-scale d2" onclick="openLightbox(this.querySelector('img').src)">
+    <img src="https://content.pancake.vn/1/s516x774/fwebp/6f/2b/71/1d/03a457a718b5bf78c5639d6de0521b7a19ec698dcd5737408a50bd16-w:1707-h:2560-l:275640-t:image/jpeg.jpg" alt="Groom">
+  </div>
+  <div class="person-label reveal d3">
+    <div class="role">Chú rể</div>
+    <div class="name">Lê Thành An</div>
+  </div>
+</div>
+
+<!-- BRIDE -->
+<div class="person-card-wrap">
+  <svg class="floral-tl" viewBox="0 0 200 300" fill="none">
+    <path d="M10 280 Q40 200 20 120 Q50 180 80 100 Q60 160 100 80" stroke="white" stroke-width="1.5" fill="none"/>
+    <ellipse cx="30" cy="260" rx="18" ry="10" stroke="white" stroke-width="1" fill="none" transform="rotate(-30 30 260)"/>
+    <ellipse cx="55" cy="220" rx="15" ry="8" stroke="white" stroke-width="1" fill="none" transform="rotate(-20 55 220)"/>
+    <ellipse cx="85" cy="170" rx="14" ry="7" stroke="white" stroke-width="1" fill="none" transform="rotate(-10 85 170)"/>
+    <path d="M20 250 Q5 235 15 220 Q25 235 20 250Z" stroke="white" stroke-width="0.8" fill="none"/>
+    <circle cx="22" cy="230" r="3" stroke="white" stroke-width="0.8" fill="none"/>
+    <circle cx="50" cy="188" r="2.5" stroke="white" stroke-width="0.8" fill="none"/>
+  </svg>
+  <svg class="floral-br" viewBox="0 0 200 300" fill="none">
+    <path d="M10 280 Q40 200 20 120 Q50 180 80 100" stroke="white" stroke-width="1.5" fill="none"/>
+    <ellipse cx="30" cy="260" rx="18" ry="10" stroke="white" stroke-width="1" fill="none" transform="rotate(-30 30 260)"/>
+    <circle cx="22" cy="230" r="3" stroke="white" stroke-width="0.8" fill="none"/>
+  </svg>
+  <div class="person-logo reveal">JEJU</div>
+  <div class="person-frame reveal-scale d2" onclick="openLightbox(this.querySelector('img').src)">
+    <img src="https://content.pancake.vn/web-media/e9/80/6a/05/fcf14d0545da0e656237816d3712c50d2792afda074a96abfd9bcec5-w:878-h:1280-l:99344-t:image/jpeg.png" alt="Bride">
+  </div>
+  <div class="person-label reveal d3">
+    <div class="role">Cô dâu</div>
+    <div class="name">Trần Minh Anh</div>
+  </div>
+</div>
+
+<!-- INFO -->
+<section class="info-section">
+  <div class="parents-row">
+    <div class="parent-block reveal-left">
+      <div class="lbl">Nhà trai</div>
+      <div class="pname">Ông Lê Thanh Hà<br>Bà Lê Thị Noa</div>
+    </div>
+    <div class="parent-block reveal-right d1">
+      <div class="lbl">Nhà gái</div>
+      <div class="pname">Ông Trần Thanh Hà<br>Bà Lê Thị Minh</div>
+    </div>
+  </div>
+  <div class="ornament reveal">
+    <div class="oline"></div><div class="osym">✦</div><div class="oline"></div>
+  </div>
+  <div class="invite-text reveal d1">Trân trọng kính mời Quý khách<br>tham dự lễ cưới của</div>
+  <div class="couple-names reveal d2">
+    Lê Thành An
+    <span class="and">and</span>
+    Trần Minh Anh
+  </div>
+  <div class="sdivider"></div>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="countdown-wrap">
+  <div class="cd-label reveal">Đếm ngược đến ngày vui</div>
+  <div class="cd-boxes">
+    <div class="cd-box reveal d1"><span class="cd-num" id="cdD">--</span><span class="cd-unit">Ngày</span></div>
+    <div class="cd-box reveal d2"><span class="cd-num" id="cdH">--</span><span class="cd-unit">Giờ</span></div>
+    <div class="cd-box reveal d3"><span class="cd-num" id="cdM">--</span><span class="cd-unit">Phút</span></div>
+    <div class="cd-box reveal d4"><span class="cd-num" id="cdS">--</span><span class="cd-unit">Giây</span></div>
+  </div>
+</div>
+
+<!-- EVENTS -->
+<section class="events-section">
+  <div class="event-card reveal">
+    <div class="event-title">Lễ Thành Hôn</div>
+    <div class="event-date-cols">
+      <div class="edc"><div class="lbl">Thứ năm</div><div class="val">22</div></div>
+      <div class="edsep">/</div>
+      <div class="edc"><div class="lbl">Tháng</div><div class="val">01</div></div>
+      <div class="edsep">/</div>
+      <div class="edc"><div class="lbl">Năm</div><div class="val" style="font-size:32px">26</div></div>
+    </div>
+    <div class="event-detail">Lễ nghi vào lúc 09:00 sáng (Lễ rợp)</div>
+    <div class="event-venue">Tại Từ Gia Nhà Trai</div>
+    <div class="event-addr">Xóm Thành Xuân - xã Sơn Điền - Hà An</div>
+    <button class="btn-map">📍 Xem dẫn đường</button>
+  </div>
+  <div class="event-card reveal d2">
+    <div class="event-title">Bữa Cơm Thân Mật</div>
+    <div class="event-date-cols">
+      <div class="edc"><div class="lbl">Thứ năm</div><div class="val">22</div></div>
+      <div class="edsep">/</div>
+      <div class="edc"><div class="lbl">Tháng</div><div class="val">01</div></div>
+      <div class="edsep">/</div>
+      <div class="edc"><div class="lbl">Năm</div><div class="val" style="font-size:32px">26</div></div>
+    </div>
+    <div class="event-detail">Tiệc bắt đầu lúc 11:00 sáng (Ăn tối)</div>
+    <div class="event-venue">Tại Từ Gia Nhà Trai</div>
+    <div class="event-addr">Xóm Thành Xuân - xã Sơn Điền - Nghệ An</div>
+    <button class="btn-map">📍 Xem dẫn đường</button>
+  </div>
+</section>
+
+<!-- PARALLAX PHOTO -->
+<div class="parallax-photo" id="parPhoto">
+  <img id="parImg"
+    src="https://content.pancake.vn/1/s587x841/fwebp/43/f6/88/e6/33fad2e85f20c3cab3d076535139371b0378fccc049b1083efffb1c5-w:894-h:1280-l:100553-t:image/jpeg.jpg"
+    alt="Couple">
+  <div class="photo-caption reveal">Forever begins today</div>
+</div>
+
+<!-- CALENDAR -->
+<section class="calendar-section">
+  <div class="cal-month reveal">Tháng 01 - 2026</div>
+  <table class="cal-grid reveal d1">
+    <thead><tr><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th><th>SUN</th></tr></thead>
+    <tbody>
+      <tr><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td>1</td><td>2</td><td>3</td></tr>
+      <tr><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr>
+      <tr><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td></tr>
+      <tr><td>18</td><td>19</td><td>20</td><td>21</td><td class="hl"><span>22</span></td><td>23</td><td>24</td></tr>
+      <tr><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ALBUM -->
+<section class="album-section">
+  <div class="album-header">
+    <div class="album-title reveal-left">ALBUM</div>
+    <span class="album-of reveal-left d1">of</span>
+    <div class="album-love reveal-left d2">LOVE</div>
+  </div>
+  <div class="album-grid">
+    <div class="album-photo reveal-scale d1" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="https://content.pancake.vn/1/s516x774/fwebp/6f/2b/71/1d/03a457a718b5bf78c5639d6de0521b7a19ec698dcd5737408a50bd16-w:1707-h:2560-l:275640-t:image/jpeg.jpg" alt="">
+    </div>
+    <div class="album-photo reveal-scale d2" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="https://content.pancake.vn/1/s587x841/fwebp/43/f6/88/e6/33fad2e85f20c3cab3d076535139371b0378fccc049b1083efffb1c5-w:894-h:1280-l:100553-t:image/jpeg.jpg" alt="">
+    </div>
+    <div class="album-photo reveal-scale d3" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="https://content.pancake.vn/web-media/e9/80/6a/05/fcf14d0545da0e656237816d3712c50d2792afda074a96abfd9bcec5-w:878-h:1280-l:99344-t:image/jpeg.png" alt="">
+    </div>
+    <div class="album-photo reveal-scale d4" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="https://content.pancake.vn/1/s523x697/fwebp/21/54/83/cb/163b4872b6600196d0ac068b1f046c5dd5f9d20c3ddad5e7c0abea9b-w:736-h:980-l:48194-t:image/jpeg.jfif" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ===== RSVP ===== -->
+<section class="rsvp-section">
+  <div class="rsvp-title reveal">Xác Nhận Tham Dự</div>
+  <div class="rsvp-intro reveal d1">Hãy điền thông tin để giúp chúng tôi chuẩn bị chu đáo hơn. Trân trọng!</div>
+
+  <div class="fgroup reveal d1">
+    <input type="text" id="rsvpName" placeholder="Tên bạn là gì?">
+  </div>
+  <div class="fgroup reveal d2">
+    <input type="text" id="rsvpFrom" placeholder="Bạn đến từ đâu nhỉ?">
+  </div>
+  <div class="fgroup reveal d3">
+    <input type="text" id="rsvpPhone" placeholder="Số điện thoại của bạn?">
+  </div>
+  <div class="fgroup reveal d4">
+    <select id="rsvpEvent">
+      <option value="" disabled selected>Bạn tham dự sự kiện nào?</option>
+      <option>Lễ Thành Hôn</option>
+      <option>Bữa Cơm Thân Mật</option>
+      <option>Cả hai sự kiện</option>
+    </select>
+  </div>
+  <div class="fgroup reveal d4">
+    <textarea id="rsvpNote" placeholder="Lời chúc hoặc ghi chú (không bắt buộc)..."></textarea>
+  </div>
+
+  <button class="btn-rsvp reveal d5" id="btnRsvp" onclick="submitRsvp()">
+    Gửi Lời Nhắn & Xác Nhận
+  </button>
+  <button class="btn-gift reveal d5" style="margin-top:0">💝 Tiền Quà Mừng Cưới</button>
+
+</section>
+
+<!-- SUCCESS POPUP -->
+<div class="success-popup" id="successPopup">
+  <div class="success-popup-backdrop" onclick="closeSuccessPopup()"></div>
+  <div class="success-popup-card">
+    <!-- Ảnh đôi uyên ương -->
+    <div class="success-photo-strip">
+      <img src="https://content.pancake.vn/1/s523x697/fwebp/21/54/83/cb/163b4872b6600196d0ac068b1f046c5dd5f9d20c3ddad5e7c0abea9b-w:736-h:980-l:48194-t:image/jpeg.jfif" alt="Couple">
+      <div class="success-photo-names">
+        <div class="pn-script">Thành An & Minh Anh</div>
+        <div class="pn-date">22 · 01 · 2026</div>
+      </div>
+    </div>
+    <!-- Nội dung cảm ơn -->
+    <div class="success-body">
+      <div class="success-heart">💚</div>
+      <div class="success-title">Cảm ơn bạn rất nhiều!</div>
+      <div class="success-guest-name" id="successGuestName"></div>
+      <div class="success-msg">
+        Chúng tôi đã nhận được xác nhận tham dự của bạn.<br>
+        Sự hiện diện của bạn là món quà ý nghĩa nhất!<br>
+        Hẹn gặp bạn trong ngày vui 🌿
+      </div>
+      <div class="success-divider">
+        <div class="sd-line"></div>
+        <div class="sd-sym">✦</div>
+        <div class="sd-line"></div>
+      </div>
+      <button class="success-close" onclick="closeSuccessPopup()">
+        Đóng lại · Chúc mừng hạnh phúc 🎊
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<section class="closing-section" id="closeSec">
+  <img id="closeImg"
+    src="https://content.pancake.vn/1/s523x697/fwebp/21/54/83/cb/163b4872b6600196d0ac068b1f046c5dd5f9d20c3ddad5e7c0abea9b-w:736-h:980-l:48194-t:image/jpeg.jfif"
+    alt="Closing">
+  <div class="closing-overlay">
+    <div class="thanks-script reveal">Lời cảm ơn!</div>
+    <div class="thanks-text reveal d2">Chúng tôi gửi đến tất cả mọi người lời cảm ơn chân thành nhất! Sự hiện diện của các bạn sẽ là điều vô cùng ý nghĩa. Cảm ơn đã chia sẻ ngày trọng đại này cùng chúng tôi!</div>
+  </div>
+</section>
+
+<div class="footer">
+  <div class="footer-brand">Thiệp Cưới Online · Minh Anh</div>
+  <div class="footer-icons">
+    <a href="#" class="ficon">
+      <svg width="13" height="13" fill="white" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="#" class="ficon">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
+    </a>
+    <a href="#" class="ficon">
+      <svg width="13" height="13" fill="white" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+    </a>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   ⚙️  CẤU HÌNH — CHỈ CẦN SỬA 2 DÒNG NÀY
+   ============================================================
+   Bước 1: Tạo Google Apps Script theo hướng dẫn đi kèm
+   Bước 2: Sau khi Deploy, dán URL vào WEBAPP_URL bên dưới
+   Bước 3: Đặt tên thiệp vào TEN_THIEP (để phân biệt 5 thiệp)
+   ============================================================ */
+const WEBAPP_URL = 'https://script.google.com/macros/s/PASTE_URL_CUA_BAN_VAO_DAY/exec';
+const TEN_THIEP  = 'Thanh An & Minh Anh'; // Mỗi thiệp đặt tên khác nhau
+
+/* ===== LOADING ===== */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loading').classList.add('hidden');
+    initPetals();
+  }, 600);
+});
+
+/* ===== SCROLL REVEAL ===== */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => observer.observe(el));
+
+/* ===== PARALLAX ===== */
+function onScroll() {
+  const sy = window.scrollY;
+  const hi = document.getElementById('heroImg');
+  if (hi) hi.style.transform = `translateY(${sy * 0.32}px)`;
+  const pp = document.getElementById('parPhoto');
+  const pi = document.getElementById('parImg');
+  if (pp && pi) {
+    const r = pp.getBoundingClientRect();
+    const off = (window.innerHeight/2 - r.top - r.height/2) * 0.28;
+    pi.style.transform = `translateY(${-off}px)`;
+  }
+  const cs = document.getElementById('closeSec');
+  const ci = document.getElementById('closeImg');
+  if (cs && ci) {
+    const r = cs.getBoundingClientRect();
+    const off = (window.innerHeight/2 - r.top - r.height/2) * 0.22;
+    ci.style.transform = `translateY(${-off}px)`;
+  }
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+
+/* ===== COUNTDOWN ===== */
+function pad(n){ return String(n).padStart(2,'0'); }
+function tick(){
+  const now = new Date(), target = new Date('2026-01-22T09:00:00');
+  const d = target - now;
+  if(d <= 0){
+    ['cdD','cdH','cdM','cdS'].forEach(id => document.getElementById(id).textContent='00');
+    return;
+  }
+  document.getElementById('cdD').textContent = pad(Math.floor(d/86400000));
+  document.getElementById('cdH').textContent = pad(Math.floor((d%86400000)/3600000));
+  document.getElementById('cdM').textContent = pad(Math.floor((d%3600000)/60000));
+  document.getElementById('cdS').textContent = pad(Math.floor((d%60000)/1000));
+}
+setInterval(tick, 1000); tick();
+
+/* ===== LIGHTBOX ===== */
+function openLightbox(src){
+  document.getElementById('lbImg').src = src;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('lightbox').addEventListener('click', function(e){
+  if(e.target === this) closeLightbox();
+});
+
+function closeSuccessPopup() {
+  document.getElementById('successPopup').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* ===== RSVP → GOOGLE SHEETS ===== */
+async function submitRsvp() {
+  const name  = document.getElementById('rsvpName').value.trim();
+  const from  = document.getElementById('rsvpFrom').value.trim();
+  const phone = document.getElementById('rsvpPhone').value.trim();
+  const event = document.getElementById('rsvpEvent').value;
+  const note  = document.getElementById('rsvpNote').value.trim();
+
+  // Validate
+  if (!name)  { highlight('rsvpName',  'Bạn chưa nhập tên!');       return; }
+  if (!phone) { highlight('rsvpPhone', 'Bạn chưa nhập SĐT!');       return; }
+  if (!event) { highlight('rsvpEvent', 'Bạn chưa chọn sự kiện!');   return; }
+
+  const btn = document.getElementById('btnRsvp');
+  btn.innerHTML = '<span class="spinner"></span>Đang gửi...';
+  btn.disabled = true;
+
+  try {
+    // Gửi lên Google Sheets qua Apps Script
+    // mode: 'no-cors' bắt buộc — dữ liệu VẪN vào Sheet dù không đọc được response
+    await fetch(WEBAPP_URL, {
+      method:  'POST',
+      mode:    'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({
+        thiep: TEN_THIEP,
+        name, from, phone, event, note,
+        time: new Date().toLocaleString('vi-VN')
+      })
+    });
+
+    // Hiện popup thành công
+    document.getElementById('successGuestName').textContent = name;
+    document.body.style.overflow = 'hidden';
+    const popup = document.getElementById('successPopup');
+    popup.classList.add('active');
+
+    // Mờ form đi
+    document.querySelectorAll('.rsvp-section .fgroup, #btnRsvp').forEach(el => {
+      el.style.opacity = '0.3';
+      el.style.pointerEvents = 'none';
+    });
+    btn.innerHTML = '✓ Đã gửi thành công';
+
+  } catch(err) {
+    btn.innerHTML = 'Gửi Lời Nhắn & Xác Nhận';
+    btn.disabled = false;
+    alert('Có lỗi kết nối. Kiểm tra lại WEBAPP_URL hoặc thử lại sau!');
+  }
+}
+
+// Highlight field lỗi
+function highlight(id, msg) {
+  const el = document.getElementById(id);
+  el.style.borderColor = '#e74c3c';
+  el.style.boxShadow = '0 0 0 3px rgba(231,76,60,0.1)';
+  el.focus();
+  el.addEventListener('input', () => {
+    el.style.borderColor = '';
+    el.style.boxShadow = '';
+  }, { once: true });
+  // Show tiny message
+  let tip = el.parentNode.querySelector('.field-tip');
+  if (!tip) {
+    tip = document.createElement('div');
+    tip.className = 'field-tip';
+    tip.style.cssText = 'font-size:11px;color:#e74c3c;margin-top:4px;padding-left:4px;font-style:italic;';
+    el.parentNode.appendChild(tip);
+  }
+  tip.textContent = msg;
+  setTimeout(() => { if(tip) tip.remove(); }, 3000);
+}
+
+/* ===== PETALS ===== */
+function initPetals(){
+  const canvas = document.getElementById('petalCanvas');
+  const ctx = canvas.getContext('2d');
+  let W = canvas.width  = Math.min(480, window.innerWidth);
+  let H = canvas.height = window.innerHeight;
+
+  const COLORS = [
+    'rgba(200,224,170,0.65)', 'rgba(240,220,195,0.55)',
+    'rgba(255,242,228,0.6)',  'rgba(170,200,148,0.5)',
+    'rgba(228,242,210,0.48)', 'rgba(255,255,240,0.4)',
+  ];
+
+  class Petal {
+    constructor(init=false){
+      this.x    = Math.random() * W;
+      this.y    = init ? Math.random() * H * 1.5 : -20;
+      this.w    = 5 + Math.random() * 9;
+      this.h    = 3 + Math.random() * 5;
+      this.vy   = 0.5 + Math.random() * 1.1;
+      this.vx   = -0.4 + Math.random() * 0.8;
+      this.rot  = Math.random() * Math.PI * 2;
+      this.rs   = (Math.random() - 0.5) * 0.045;
+      this.wave = Math.random() * Math.PI * 2;
+      this.op   = 0.35 + Math.random() * 0.5;
+      this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+    }
+    update(){
+      this.y += this.vy; this.wave += 0.022;
+      this.x += this.vx + Math.sin(this.wave) * 0.55;
+      this.rot += this.rs;
+      if (this.y > H+30 || this.x < -30 || this.x > W+30) {
+        this.x = Math.random() * W; this.y = -20;
+        this.vy = 0.5 + Math.random() * 1.1;
+        this.vx = -0.4 + Math.random() * 0.8;
+      }
+    }
+    draw(){
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rot);
+      ctx.globalAlpha = this.op;
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, this.w, this.h, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  const petals = Array.from({length: 26}, (_, i) => new Petal(i < 14));
+  (function loop(){
+    ctx.clearRect(0, 0, W, H);
+    petals.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(loop);
+  })();
+
+  window.addEventListener('resize', () => {
+    W = canvas.width  = Math.min(480, window.innerWidth);
+    H = canvas.height = window.innerHeight;
+  });
+}
+</script>
+</body>
+</html>

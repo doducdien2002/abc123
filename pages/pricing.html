@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gói dịch vụ | CineLove</title>
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/pricing.css" />
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="../index.html" class="navbar__logo">
+    <div class="navbar__logo-dot">🎬</div>
+    <span class="navbar__logo-name">CineLove</span>
+  </a>
+  <ul class="navbar__links">
+    <li><a href="../index.html">Trang chủ</a></li>
+   
+    <li><a href="showcase.html">Mẫu thiệp</a></li>
+    <li><a href="pricing.html" class="active">Gói dịch vụ</a></li>
+    <li><a href="contact.html">Liên hệ</a></li>
+  </ul>
+  <div class="navbar__actions">
+      <div class="theme-toggle-wrap" data-tip="Chuyển sang sáng">
+        <button class="theme-toggle" aria-label="Chuyển theme">
+          <div class="theme-toggle__track"><span>🌙</span><span>☀️</span></div>
+          <div class="theme-toggle__knob">🌙</div>
+        </button>
+      </div>
+    <a href="#" class="btn btn-ghost">Đăng nhập</a>
+    <a href="templates.html" class="btn btn-gold">Tạo thiệp</a>
+    <button class="navbar__hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<nav class="mobile-nav">
+  <a href="../index.html">Trang chủ</a>
+  <a href="showcase.html">Mẫu thiệp</a>
+  <a href="pricing.html">Gói dịch vụ</a>
+  <a href="contact.html">Liên hệ</a>
+</nav>
+
+<section class="pricing-section">
+  <p class="section-label animate-on-scroll">Lựa chọn phù hợp</p>
+  <h1 class="section-title animate-on-scroll">Gói <em>dịch vụ</em></h1>
+  <div class="section-divider"></div>
+
+  <!-- Toggle -->
+  <div class="pricing-toggle animate-on-scroll">
+    <span class="pricing-toggle__label active">Thanh toán tháng</span>
+    <div class="toggle-switch" id="billingToggle">
+      <div class="toggle-switch__dot"></div>
+    </div>
+    <span class="pricing-toggle__label">Thanh toán năm</span>
+    <span class="pricing-save-badge">Tiết kiệm 20%</span>
+  </div>
+
+  <div class="pricing-grid">
+
+    <!-- Free -->
+    <div class="pricing-card animate-on-scroll">
+      <div class="pricing-card__name">Miễn phí</div>
+      <div class="pricing-card__tagline">Bắt đầu hoàn toàn không mất phí</div>
+      <div class="pricing-price">
+        <span class="pricing-price__free">0đ</span>
+        <span class="pricing-price__period">/ mãi mãi</span>
+      </div>
+      <div class="pricing-features">
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Tạo 1 thiệp cưới</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>50+ mẫu thiệp Basic</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Tùy chỉnh nội dung cơ bản</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Chia sẻ qua link</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Nhận lời chúc từ khách</div>
+        <div class="pricing-feature disabled"><span class="pricing-feature__check">✗</span>Mẫu thiệp Premium</div>
+        <div class="pricing-feature disabled"><span class="pricing-feature__check">✗</span>Nhạc nền tùy chỉnh</div>
+        <div class="pricing-feature disabled"><span class="pricing-feature__check">✗</span>Thống kê khách mời</div>
+        <div class="pricing-feature disabled"><span class="pricing-feature__check">✗</span>Nhận quà online</div>
+      </div>
+      <a href="templates.html" class="btn btn-outline-gold" style="width:100%;justify-content:center;">Bắt đầu miễn phí</a>
+    </div>
+
+    <!-- Pro - Featured -->
+    <div class="pricing-card pricing-card--featured animate-on-scroll">
+      <span class="pricing-card__badge">Phổ biến nhất</span>
+      <div class="pricing-card__name">Pro</div>
+      <div class="pricing-card__tagline">Tất cả tính năng cần thiết cho ngày cưới</div>
+      <div class="pricing-price">
+        <span class="pricing-price__currency">₫</span>
+        <span class="pricing-price__amount" data-monthly="99K" data-yearly="79K">99K</span>
+        <span class="pricing-price__period">/ thiệp</span>
+      </div>
+      <div class="pricing-features">
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Tất cả mẫu Basic + Premium</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Tùy chỉnh không giới hạn</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Nhạc nền tùy chỉnh</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Thống kê lượt xem</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Nhận quà online (QR)</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Cá nhân hóa tên khách mời</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Xóa thương hiệu CineLove</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Hỗ trợ ưu tiên</div>
+      </div>
+      <a href="templates.html" class="btn btn-gold" style="width:100%;justify-content:center;">Chọn gói Pro</a>
+    </div>
+
+    <!-- Premium -->
+    <div class="pricing-card animate-on-scroll">
+      <div class="pricing-card__name">Premium</div>
+      <div class="pricing-card__tagline">Trải nghiệm đỉnh cao cho ngày đặc biệt</div>
+      <div class="pricing-price">
+        <span class="pricing-price__currency">₫</span>
+        <span class="pricing-price__amount" data-monthly="199K" data-yearly="159K">199K</span>
+        <span class="pricing-price__period">/ thiệp</span>
+      </div>
+      <div class="pricing-features">
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Tất cả tính năng Pro</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Thiết kế kéo thả nâng cao</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Tải ảnh cặp đôi không giới hạn</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Quà ảo với animation</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Rút tiền quà về tài khoản</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Tên miền riêng</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Thống kê chi tiết đầy đủ</div>
+        <div class="pricing-feature"><span class="pricing-feature__check">✓</span>Hỗ trợ 24/7 qua Zalo</div>
+      </div>
+      <a href="templates.html" class="btn btn-ghost" style="width:100%;justify-content:center;">Chọn Premium</a>
+    </div>
+
+  </div>
+
+  <!-- Comparison note -->
+  <div style="max-width:700px;margin:60px auto 0;text-align:center;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);" class="animate-on-scroll">
+    <p style="font-family:var(--font-display);font-size:1.2rem;color:var(--white);margin-bottom:12px;">🎁 Tặng thêm cho mọi gói</p>
+    <p style="font-size:.9rem;color:var(--text-dim);line-height:1.8;">
+      Tất cả gói đều được tặng <strong style="color:var(--gold)">link thiệp vĩnh viễn</strong>,
+      hiển thị đẹp trên mọi thiết bị, tích hợp chia sẻ Zalo · Messenger · Facebook,
+      và thiệp cưới luôn online cho đến khi bạn muốn xóa.
+    </p>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-section__inner">
+    <h2 class="cta-section__title">Bắt đầu với gói <em>Miễn phí</em></h2>
+    <p class="cta-section__desc">Không cần thẻ tín dụng. Nâng cấp bất cứ lúc nào.</p>
+    <div class="cta-section__actions">
+      <a href="templates.html" class="btn btn-gold btn-lg">Tạo thiệp ngay <span class="btn-icon">→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="navbar__logo" style="margin-bottom:12px;">
+        <div class="navbar__logo-dot">🎬</div>
+        <span class="navbar__logo-name">CineLove</span>
+      </div>
+      <p class="footer__tagline">Nền tảng thiệp cưới online miễn phí hàng đầu Việt Nam.</p>
+    </div>
+    <div>
+      <div class="footer__heading">Sản phẩm</div>
+      <div class="footer__links">
+        <a href="templates.html">Mẫu thiệp</a>
+        <a href="showcase.html">Thiệp đã tạo</a>
+        <a href="pricing.html">Gói dịch vụ</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__heading">Hỗ trợ</div>
+      <div class="footer__links">
+        <a href="contact.html">Liên hệ</a>
+        <a href="#">Hướng dẫn</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__heading">Pháp lý</div>
+      <div class="footer__links">
+        <a href="#">Chính sách bảo mật</a>
+        <a href="#">Điều khoản</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2025 CineLove™. All Rights Reserved.</span>
+  </div>
+</footer>
+
+<div class="toast"></div>
+<script src="../js/main.js"></script>
+</body>
+</html>

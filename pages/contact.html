@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liên hệ | CineLove</title>
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <style>
+    .contact-section { padding:130px 24px 100px; max-width:900px; margin:0 auto; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:60px; }
+    .contact-form { display:flex; flex-direction:column; gap:16px; }
+    .contact-form input,.contact-form textarea,.contact-form select {
+      background:var(--surface2); border:1px solid var(--border); border-radius:var(--r);
+      padding:14px 18px; color:var(--text); font-family:var(--font-body);
+      font-size:.9rem; outline:none; transition:border-color .25s;
+    }
+    .contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus { border-color:var(--border-gold); }
+    .contact-form textarea { min-height:140px; resize:vertical; }
+    .contact-form select option { background:var(--surface2); }
+    .contact-info { display:flex; flex-direction:column; gap:28px; padding-top:8px; }
+    .contact-info-item { display:flex; gap:16px; align-items:flex-start; }
+    .contact-info-icon { width:44px; height:44px; flex-shrink:0; background:var(--gold-dim); border:1px solid var(--border-gold); border-radius:var(--r); display:flex; align-items:center; justify-content:center; font-size:1.2rem; }
+    .contact-info-label { font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
+    .contact-info-value { font-size:.95rem; color:var(--white); }
+    .contact-info-sub { font-size:.82rem; color:var(--text-dim); margin-top:2px; }
+    @media(max-width:700px) { .contact-grid { grid-template-columns:1fr; gap:40px; } }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="../index.html" class="navbar__logo">
+    <div class="navbar__logo-dot">🎬</div>
+    <span class="navbar__logo-name">CineLove</span>
+  </a>
+  <ul class="navbar__links">
+    <li><a href="../index.html">Trang chủ</a></li>
+   
+    <li><a href="showcase.html">Mẫu thiệp</a></li>
+    <li><a href="pricing.html">Gói dịch vụ</a></li>
+    <li><a href="contact.html" class="active">Liên hệ</a></li>
+  </ul>
+  <div class="navbar__actions">
+      <div class="theme-toggle-wrap" data-tip="Chuyển sang sáng">
+        <button class="theme-toggle" aria-label="Chuyển theme">
+          <div class="theme-toggle__track"><span>🌙</span><span>☀️</span></div>
+          <div class="theme-toggle__knob">🌙</div>
+        </button>
+      </div>
+    <a href="#" class="btn btn-ghost">Đăng nhập</a>
+   
+    <button class="navbar__hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<nav class="mobile-nav">
+  <a href="../index.html">Trang chủ</a>
+  <a href="showcase.html">Mẫu thiệp</a>
+  <a href="pricing.html">Gói dịch vụ</a>
+  <a href="contact.html">Liên hệ</a>
+</nav>
+
+<section class="contact-section">
+  <p class="section-label animate-on-scroll">Hỗ trợ</p>
+  <h1 class="section-title animate-on-scroll">Chúng tôi luôn <em>sẵn sàng giúp bạn</em></h1>
+  <div class="section-divider"></div>
+
+  <div class="contact-grid">
+    <div class="animate-on-scroll">
+      <h2 style="font-family:var(--font-display);font-size:1.5rem;font-weight:400;color:var(--white);margin-bottom:24px;">Gửi tin nhắn</h2>
+      <form class="contact-form" onsubmit="handleContact(event)">
+        <input type="text" placeholder="Họ và tên *" required />
+        <input type="email" placeholder="Email *" required />
+        <input type="tel" placeholder="Số điện thoại" />
+        <select>
+          <option value="" disabled selected>Chủ đề liên hệ</option>
+          <option>Hỗ trợ kỹ thuật</option>
+          <option>Tư vấn gói dịch vụ</option>
+          <option>Thiệp trọn gói</option>
+          <option>Khác</option>
+        </select>
+        <textarea placeholder="Nội dung tin nhắn *" required></textarea>
+        <button type="submit" class="btn btn-gold" style="justify-content:center;">Gửi tin nhắn <span class="btn-icon">→</span></button>
+      </form>
+    </div>
+
+    <div class="contact-info animate-on-scroll">
+      <h2 style="font-family:var(--font-display);font-size:1.5rem;font-weight:400;color:var(--white);margin-bottom:8px;">Thông tin liên hệ</h2>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">💬</div>
+        <div>
+          <div class="contact-info-label">Zalo</div>
+          <div class="contact-info-value">0901 234 567</div>
+          <div class="contact-info-sub">Phản hồi trong vòng 1 giờ (8:00 – 22:00)</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">📧</div>
+        <div>
+          <div class="contact-info-label">Email</div>
+          <div class="contact-info-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e48c8188888ba4878d8a81888b9281ca8981">[email&#160;protected]</a></div>
+          <div class="contact-info-sub">Phản hồi trong vòng 24 giờ</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">📘</div>
+        <div>
+          <div class="contact-info-label">Facebook</div>
+          <div class="contact-info-value">fb.com/cinelove.me</div>
+          <div class="contact-info-sub">Theo dõi để nhận mẫu thiệp mới nhất</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">🕐</div>
+        <div>
+          <div class="contact-info-label">Giờ làm việc</div>
+          <div class="contact-info-value">Thứ 2 – Chủ nhật</div>
+          <div class="contact-info-sub">8:00 sáng – 10:00 tối</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="navbar__logo" style="margin-bottom:12px;"><div class="navbar__logo-dot">🎬</div><span class="navbar__logo-name">CineLove</span></div>
+      <p class="footer__tagline">Nền tảng thiệp cưới online miễn phí hàng đầu Việt Nam.</p>
+    </div>
+    <div><div class="footer__heading">Sản phẩm</div><div class="footer__links"><a href="templates.html">Mẫu thiệp</a><a href="pricing.html">Gói dịch vụ</a></div></div>
+    <div><div class="footer__heading">Hỗ trợ</div><div class="footer__links"><a href="contact.html">Liên hệ</a></div></div>
+    <div><div class="footer__heading">Pháp lý</div><div class="footer__links"><a href="#">Chính sách</a><a href="#">Điều khoản</a></div></div>
+  </div>
+  <div class="footer__bottom"><span>© 2025 CineLove™. All Rights Reserved.</span></div>
+</footer>
+
+<div class="toast"></div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>

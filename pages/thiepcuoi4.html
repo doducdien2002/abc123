@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thiệp Mời Cưới - Hào Quân & Minh Anh</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson: #8B0000;
+    --gold: #C9A84C;
+    --gold-light: #E8C870;
+    --dark: #1a0a0a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Montserrat', sans-serif; background: #1a0505; overflow-x: hidden; }
+
+  #main-content {
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--crimson);
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* ===== INTRO OVERLAY ===== */
+  #intro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    overflow: hidden;
+  }
+
+  .env-left, .env-right {
+    position: absolute;
+    top: 0; bottom: 0; width: 50%;
+    transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 3; overflow: hidden;
+  }
+  .env-left  { left: 0;  background: linear-gradient(to right, #5a0000, #8B0000); }
+  .env-right { right: 0; background: linear-gradient(to left,  #5a0000, #8B0000); }
+
+  .env-left::after {
+    content: ''; position: absolute;
+    top: 0; bottom: 0; right: 0; width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.9), transparent);
+  }
+  .env-right::after {
+    content: ''; position: absolute;
+    top: 0; bottom: 0; left: 0; width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.9), transparent);
+  }
+
+  .curtain-hi {
+    position: absolute;
+    font-family: serif; font-size: 90px;
+    color: rgba(201,168,76,0.1);
+    user-select: none; pointer-events: none; line-height: 1;
+  }
+  .env-left  .curtain-hi { bottom: 12%; right: 16px; }
+  .env-right .curtain-hi { top: 12%;  left: 16px; }
+
+  /* Viền trang trí */
+  .intro-border {
+    position: absolute; inset: 16px;
+    border: 1px solid rgba(201,168,76,0.3);
+    z-index: 4; pointer-events: none; transition: opacity 0.3s;
+  }
+  .intro-border::before { content: '◆'; position: absolute; color: rgba(201,168,76,0.5); font-size: 8px; left: 50%; top: -5px; transform: translateX(-50%); }
+  .intro-border::after  { content: '◆'; position: absolute; color: rgba(201,168,76,0.5); font-size: 8px; left: 50%; bottom: -5px; transform: translateX(-50%); }
+
+  .intro-center {
+    position: absolute; inset: 0; z-index: 5;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; color: white;
+    transition: opacity 0.35s ease; padding: 40px 24px;
+  }
+
+  .center-hi {
+    font-family: serif; font-size: 76px; color: var(--gold);
+    line-height: 1; letter-spacing: 2px;
+    text-shadow: 0 0 30px rgba(201,168,76,0.7), 0 0 60px rgba(201,168,76,0.3);
+    animation: hiGlow 3s ease-in-out infinite;
+    transition: transform 1.1s cubic-bezier(0.77,0,0.175,1), opacity 0.6s ease;
+    margin-bottom: 10px;
+  }
+  @keyframes hiGlow {
+    0%,100% { text-shadow: 0 0 30px rgba(201,168,76,0.6); }
+    50%      { text-shadow: 0 0 50px rgba(201,168,76,1), 0 0 80px rgba(201,168,76,0.4); }
+  }
+
+  .ornament-line {
+    display: flex; align-items: center;
+    width: 220px; margin: 10px auto 12px; gap: 6px;
+  }
+  .ornament-line::before { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.6)); }
+  .ornament-line::after  { content: ''; flex: 1; height: 1px; background: linear-gradient(to left,  transparent, rgba(201,168,76,0.6)); }
+  .ornament-line span { color: var(--gold); font-size: 7px; letter-spacing: 4px; }
+
+  .intro-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-weight: 300; font-size: 2.8rem;
+    color: white; text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    line-height: 1.15; letter-spacing: 1px;
+  }
+  .intro-subtitle { font-size: 0.5rem; letter-spacing: 7px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 12px; }
+  .intro-date { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--gold-light); margin-top: 4px; letter-spacing: 5px; }
+  .intro-divider { width: 50px; height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.5), transparent); margin: 20px auto 0; }
+
+  .open-btn {
+    margin-top: 14px; padding: 13px 40px;
+    background: transparent; border: 1px solid rgba(201,168,76,0.6);
+    color: var(--gold-light); font-family: 'Montserrat', sans-serif;
+    font-size: 0.56rem; letter-spacing: 5px; text-transform: uppercase;
+    cursor: pointer; transition: all 0.4s; position: relative; overflow: hidden;
+  }
+  .open-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; z-index: -1;
+  }
+  .open-btn:hover::before { transform: scaleX(1); }
+  .open-btn:hover { color: var(--dark); border-color: var(--gold); }
+  .intro-hint { font-size: 0.45rem; letter-spacing: 4px; color: rgba(255,255,255,0.25); margin-top: 14px; text-transform: uppercase; }
+
+  #intro-overlay.opening .env-left  { transform: translateX(-100%); }
+  #intro-overlay.opening .env-right { transform: translateX(100%); }
+  #intro-overlay.opening .intro-center { opacity: 0; pointer-events: none; }
+  #intro-overlay.opening .intro-border { opacity: 0; }
+  #intro-overlay.opening .center-hi { transform: translateX(-120px); opacity: 0; }
+  #intro-overlay.done { display: none; }
+
+  /* ===== HERO ===== */
+  .hero { position: relative; height: 520px; overflow: hidden; background: #f0ebe3; }
+  .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .hero-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 55%;
+    background: linear-gradient(to top, var(--crimson) 40%, rgba(139,0,0,0.55) 70%, transparent 100%);
+    z-index: 1;
+  }
+  .hero-text { position: absolute; bottom: 30px; left: 0; right: 0; text-align: center; z-index: 2; padding: 0 20px; }
+  .the-wedding-of { font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 6px; }
+  .couple-names-hero { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: white; line-height: 1.1; text-shadow: 0 2px 15px rgba(0,0,0,0.4); }
+  .wedding-date-hero { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--gold-light); letter-spacing: 3px; margin-top: 6px; }
+
+  /* ===== COUNTDOWN ===== */
+  .countdown-section { padding: 20px; text-align: center; }
+  .countdown-label { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
+  .countdown-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; max-width: 300px; margin: 0 auto; }
+  .countdown-item { background: rgba(0,0,0,0.2); border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; padding: 12px 6px; }
+  .countdown-num { display: block; font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: white; line-height: 1; }
+  .countdown-unit { display: block; font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-light); margin-top: 4px; }
+
+  /* ===== PHOTO BLOCK ===== */
+  .photo-block { padding: 0 20px 20px; }
+  .photo-full { width: 100%; height: 280px; border-radius: 2px; overflow: hidden; }
+  .photo-full img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+
+  /* ===== CALENDAR ===== */
+  .calendar-section { padding: 20px; text-align: center; }
+  .calendar-title { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: var(--gold-light); margin-bottom: 16px; }
+  .calendar-grid { background: rgba(0,0,0,0.15); border: 1px solid rgba(201,168,76,0.15); border-radius: 4px; padding: 14px; max-width: 300px; margin: 0 auto; }
+  .cal-header { display: grid; grid-template-columns: repeat(7,1fr); margin-bottom: 8px; }
+  .cal-header span { font-size: 0.55rem; letter-spacing: 1px; color: var(--gold-light); text-align: center; }
+  .cal-body { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; }
+  .cal-day { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; color: rgba(255,255,255,0.8); text-align: center; padding: 5px 2px; border-radius: 50%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
+  .cal-day.empty { opacity: 0; }
+  .cal-day.today { background: var(--gold); color: var(--dark); font-weight: 700; box-shadow: 0 0 0 3px rgba(201,168,76,0.3); }
+
+  /* ===== INVITE ===== */
+  .invite-section { padding: 30px 20px; text-align: center; }
+  .invite-text { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 6px; }
+  .couple-names-invite { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: white; text-shadow: 0 2px 15px rgba(0,0,0,0.2); }
+
+  /* ===== PARENTS ===== */
+  .parents-section { padding: 0 20px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+  .parent-card { text-align: center; }
+  .parent-photo { width: 100%; height: 150px; border-radius: 2px; margin-bottom: 10px; overflow: hidden; }
+  .parent-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .parent-label { font-size: 0.6rem; letter-spacing: 2px; color: var(--gold-light); text-transform: uppercase; margin-bottom: 4px; }
+  .parent-name { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; color: rgba(255,255,255,0.9); line-height: 1.5; }
+
+  /* ===== GOLD DIVIDER ===== */
+  .gold-divider { display: flex; align-items: center; gap: 10px; padding: 5px 20px; justify-content: center; }
+  .gold-divider span { color: var(--gold); font-size: 1rem; }
+  .gold-divider::before, .gold-divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.4), transparent); }
+
+  /* ===== EVENTS ===== */
+  .event-section { margin: 0 20px 16px; background: rgba(0,0,0,0.2); border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; padding: 20px; text-align: center; }
+  .event-type { font-family: 'Cormorant Garamond', serif; font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 4px; }
+  .event-time-note { font-size: 0.6rem; color: rgba(255,255,255,0.5); letter-spacing: 1px; margin-bottom: 10px; }
+  .event-date { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: white; margin-bottom: 8px; }
+  .event-icon { font-size: 1.2rem; margin: 6px 0; }
+  .event-venue { font-family: 'Great Vibes', cursive; font-size: 1.5rem; color: var(--gold-light); margin-bottom: 4px; }
+  .event-address { font-size: 0.6rem; color: rgba(255,255,255,0.6); letter-spacing: 1px; margin-bottom: 12px; }
+  .map-btn { display: inline-block; padding: 8px 24px; background: transparent; border: 1px solid var(--gold); color: var(--gold-light); font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; text-decoration: none; border-radius: 2px; }
+  .map-btn:hover { background: var(--gold); color: var(--dark); }
+
+  /* ===== DRESSCODE ===== */
+  .dresscode-section { padding: 25px 20px; text-align: center; }
+  .dresscode-title { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: var(--gold-light); margin-bottom: 8px; }
+  .dresscode-note { font-size: 0.6rem; color: rgba(255,255,255,0.6); letter-spacing: 1px; margin-bottom: 16px; line-height: 1.7; }
+  .color-swatches { display: flex; justify-content: center; gap: 12px; margin-top: 10px; }
+  .swatch { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+
+  /* ===== GALLERY ===== */
+  .gallery-section { padding: 0 20px 20px; }
+  .gallery-title { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: var(--gold-light); text-align: center; margin-bottom: 16px; }
+  .gallery-grid { display: grid; gap: 6px; }
+  .gallery-full { width: 100%; height: 220px; border-radius: 2px; overflow: hidden; }
+  .gallery-full img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .gallery-half-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .gallery-half { height: 160px; border-radius: 2px; overflow: hidden; }
+  .gallery-half img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+
+  /* ===== RSVP ===== */
+  .rsvp-section { padding: 25px 20px; }
+  .rsvp-text { font-size: 0.62rem; color: rgba(255,255,255,0.6); text-align: center; line-height: 1.8; letter-spacing: 0.5px; margin-bottom: 20px; }
+  .form-group { margin-bottom: 10px; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 2px; padding: 12px 14px; color: rgba(255,255,255,0.8); font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 0.5px; outline: none; transition: border-color 0.3s; }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }
+  .form-group input:focus, .form-group select:focus { border-color: var(--gold); }
+  .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(255,255,255,0.4)'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; cursor: pointer; }
+  .form-group select option { background: var(--crimson); }
+  .submit-btn { width: 100%; padding: 14px; background: var(--gold); border: none; color: var(--dark); font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; border-radius: 2px; margin-top: 8px; }
+  .submit-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ===== GIFT ===== */
+  .gift-section { padding: 25px 20px; text-align: center; }
+  .gift-title { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: var(--gold-light); margin-bottom: 16px; }
+  .bank-card { background: rgba(0,0,0,0.25); border: 1px solid rgba(201,168,76,0.25); border-radius: 6px; padding: 16px; display: flex; gap: 14px; text-align: left; }
+  .bank-qr { width: 80px; height: 80px; background: white; border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.5rem; color: #333; text-align: center; padding: 5px; }
+  .bank-info { flex: 1; }
+  .bank-name { font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 6px; }
+  .bank-detail { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; color: white; line-height: 1.6; }
+
+  /* ===== FOOTER ===== */
+  .footer-photo { position: relative; height: 300px; overflow: hidden; }
+  .footer-photo > img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .footer-overlay { position: absolute; inset: 0; background: linear-gradient(to top, var(--crimson) 20%, transparent 70%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px 20px; text-align: center; }
+  .footer-message { font-family: 'Great Vibes', cursive; font-size: 2rem; color: white; margin-bottom: 8px; }
+  .footer-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.8rem; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 280px; margin: 0 auto; }
+
+  /* ===== SOCIAL ===== */
+  .social-bar { background: rgba(0,0,0,0.3); padding: 12px 20px; display: flex; align-items: center; justify-content: center; gap: 12px; border-top: 1px solid rgba(201,168,76,0.15); }
+  .social-text { font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .social-icon { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 14px; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: all 0.3s; text-decoration: none; color: white; }
+  .social-icon:hover { background: var(--gold); border-color: var(--gold); }
+
+  /* ===== MUSIC ===== */
+  .music-btn { position: fixed; bottom: 20px; right: 20px; width: 46px; height: 46px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 100; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: none; font-size: 18px; transition: all 0.3s; animation: rotateBeat 3s linear infinite; }
+  @keyframes rotateBeat { 0%,100%{ box-shadow: 0 4px 15px rgba(201,168,76,0.3); } 50%{ box-shadow: 0 4px 25px rgba(201,168,76,0.6); } }
+
+  /* ===================================================
+     HIỆU ỨNG SCROLL - nhiều kiểu khác nhau
+  =================================================== */
+
+  /* 1. Fade up - mặc định */
+  .anim {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),
+                transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+
+  /* 2. Fade từ trái */
+  .anim-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+
+  /* 3. Fade từ phải */
+  .anim-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+
+  /* 4. Zoom in */
+  .anim-zoom {
+    opacity: 0;
+    transform: scale(0.88);
+    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  /* 5. Flip Y */
+  .anim-flip {
+    opacity: 0;
+    transform: rotateX(20deg) translateY(30px);
+    transition: opacity 0.8s ease, transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
+    transform-origin: top center;
+  }
+
+  /* Trạng thái đã hiện */
+  .anim.show, .anim-left.show, .anim-right.show,
+  .anim-zoom.show, .anim-flip.show {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Delay stagger cho children */
+  .stagger > *:nth-child(1) { transition-delay: 0s; }
+  .stagger > *:nth-child(2) { transition-delay: 0.12s; }
+  .stagger > *:nth-child(3) { transition-delay: 0.24s; }
+  .stagger > *:nth-child(4) { transition-delay: 0.36s; }
+
+  /* Line reveal - đường kẻ vàng mở rộng ra */
+  .line-reveal {
+    width: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    transition: width 1.2s cubic-bezier(0.25,0.46,0.45,0.94);
+    margin: 0 auto;
+  }
+  .line-reveal.show { width: 200px; }
+
+  /* Ảnh zoom nhẹ khi vào */
+  .img-zoom img {
+    transform: scale(1.08);
+    transition: transform 1.2s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .img-zoom.show img { transform: scale(1); }
+
+  /* Gold number flip */
+  .countdown-item {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .countdown-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  }
+
+  /* Swatch bounce */
+  .swatch {
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease;
+  }
+  .swatch:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  }
+
+  /* Event card hover */
+  .event-section {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .event-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+
+  /* Gallery zoom hover */
+  .gallery-full, .gallery-half {
+    overflow: hidden;
+  }
+  .gallery-full img, .gallery-half img {
+    transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .gallery-full:hover img, .gallery-half:hover img {
+    transform: scale(1.07);
+  }
+
+  /* Gold shimmer trên divider */
+  @keyframes shimmer {
+    0%   { background-position: -200px center; }
+    100% { background-position: 200px center; }
+  }
+  .gold-divider::before {
+    background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.6) 40%, rgba(255,220,100,0.9) 50%, rgba(201,168,76,0.6) 60%, transparent 100%);
+    background-size: 400px 1px;
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* Particle dots trên hero */
+  .hero-particles {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden;
+  }
+  .particle {
+    position: absolute;
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.5);
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    0%   { transform: translateY(100%) translateX(0); opacity: 0; }
+    10%  { opacity: 0.6; }
+    90%  { opacity: 0.3; }
+    100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
+  }
+
+  /* ===== TOAST ===== */
+  .toast {
+    position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: rgba(20,5,5,0.95); border: 1px solid rgba(201,168,76,0.4);
+    color: white; font-family: 'Montserrat',sans-serif; font-size: 0.65rem;
+    letter-spacing: 1px; padding: 12px 24px; border-radius: 4px;
+    z-index: 9999; opacity: 0; transition: all 0.4s ease;
+    white-space: nowrap; max-width: 90vw; text-align: center;
+  }
+  .toast.toast-show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast.toast-warn  { border-color: rgba(255,150,50,0.5); }
+  .toast.toast-success { border-color: rgba(201,168,76,0.6); }
+
+  /* ===== RSVP STATS ===== */
+  .rsvp-stat-box {
+    background: rgba(0,0,0,0.25); border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 6px; padding: 16px; text-align: center;
+  }
+  .rsvp-stat-title {
+    font-family: 'Great Vibes', cursive; font-size: 1.4rem;
+    color: var(--gold-light); margin-bottom: 12px;
+  }
+  .rsvp-stat-row {
+    display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px;
+  }
+  .stat-yes   { font-size: 0.65rem; color: #90ee90; letter-spacing: 1px; }
+  .stat-no    { font-size: 0.65rem; color: rgba(255,150,150,0.8); letter-spacing: 1px; }
+  .stat-maybe { font-size: 0.65rem; color: rgba(255,220,100,0.8); letter-spacing: 1px; }
+  .rsvp-wishes { border-top: 1px solid rgba(201,168,76,0.15); padding-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+  .wish-item { text-align: left; }
+  .wish-name { font-size: 0.6rem; color: var(--gold-light); letter-spacing: 1px; display: block; margin-bottom: 2px; }
+  .wish-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+</style>
+</head>
+<body>
+
+<div id="main-content">
+
+  <!-- OPENING OVERLAY -->
+  <div id="intro-overlay">
+    <div class="env-left"><div class="curtain-hi">囍</div></div>
+    <div class="env-right"><div class="curtain-hi">囍</div></div>
+    <div class="intro-border"></div>
+    <div class="intro-center">
+      <div class="center-hi">囍</div>
+      <div class="ornament-line"><span>✦ ✦ ✦</span></div>
+      <div class="intro-title">Hào Quân & Minh Anh</div>
+      <div class="ornament-line"><span>✦ ✦ ✦</span></div>
+      <div class="intro-subtitle">The Wedding Of</div>
+      <div class="intro-date">24 · 01 · 2026</div>
+      <div class="intro-divider"></div>
+      <button class="open-btn" onclick="openInvitation()">Mở Thiệp Mời ✦</button>
+      <div class="intro-hint">Chạm để mở</div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <img class="hero-img" src="https://content.pancake.vn/1/s709x1064/fwebp/ab/56/c3/d2/ae46af903d624877e4e71b00dc5ab4badaa10a8956d3c389ccbc73e9-w:1080-h:1620-l:151635-t:image/jpeg.jpeg" alt="Hào Quân & Minh Anh">
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <div class="the-wedding-of">The Wedding Of</div>
+      <div class="couple-names-hero">Hào Quân & Minh Anh</div>
+      <div class="wedding-date-hero">24 . 01 . 2026</div>
+    </div>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-section anim stagger">
+    <div class="countdown-label anim">Ngày trọng đại đang đến gần...</div>
+    <div class="countdown-grid">
+      <div class="countdown-item anim"><span class="countdown-num" id="days">00</span><span class="countdown-unit">Ngày</span></div>
+      <div class="countdown-item anim"><span class="countdown-num" id="hours">00</span><span class="countdown-unit">Giờ</span></div>
+      <div class="countdown-item anim"><span class="countdown-num" id="minutes">00</span><span class="countdown-unit">Phút</span></div>
+      <div class="countdown-item anim"><span class="countdown-num" id="seconds">00</span><span class="countdown-unit">Giây</span></div>
+    </div>
+  </div>
+
+  <!-- PHOTO 1 -->
+  <div class="photo-block anim-zoom img-zoom">
+    <div class="photo-full">
+      <img src="https://content.pancake.vn/1/s516x775/fwebp/3c/3b/ca/e1/e12ca0e6af675d653327f5a3b5d2c7c2385f71d26b8fee7604b45828-w:1706-h:2560-l:224512-t:image/jpeg.jpg" alt="Wedding Photo">
+    </div>
+  </div>
+
+  <!-- CALENDAR -->
+  <div class="calendar-section anim-flip">
+    <div class="calendar-title">Tháng 1 · 2026</div>
+    <div class="calendar-grid">
+      <div class="cal-header">
+        <span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span>
+      </div>
+      <div class="cal-body">
+        <span class="cal-day empty"></span><span class="cal-day empty"></span><span class="cal-day empty"></span>
+        <span class="cal-day">1</span><span class="cal-day">2</span><span class="cal-day">3</span><span class="cal-day">4</span>
+        <span class="cal-day">5</span><span class="cal-day">6</span><span class="cal-day">7</span><span class="cal-day">8</span>
+        <span class="cal-day">9</span><span class="cal-day">10</span><span class="cal-day">11</span><span class="cal-day">12</span>
+        <span class="cal-day">13</span><span class="cal-day">14</span><span class="cal-day">15</span><span class="cal-day">16</span>
+        <span class="cal-day">17</span><span class="cal-day">18</span><span class="cal-day">19</span><span class="cal-day">20</span>
+        <span class="cal-day">21</span><span class="cal-day">22</span><span class="cal-day">23</span><span class="cal-day today">24</span>
+        <span class="cal-day">25</span><span class="cal-day">26</span><span class="cal-day">27</span><span class="cal-day">28</span>
+        <span class="cal-day">29</span><span class="cal-day">30</span><span class="cal-day">31</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- INVITE TEXT -->
+  <div class="invite-section">
+    <div class="invite-text anim">Trân trọng kính mời Quý khách<br>dành thời gian quý giá tham dự lễ cưới của</div>
+    <div class="line-reveal"></div>
+    <div class="couple-names-invite anim-zoom" style="margin-top:10px;">Hào Quân & Minh Anh</div>
+  </div>
+
+  <!-- PARENTS -->
+  <div class="parents-section">
+    <div class="parent-card anim-left">
+      <div class="parent-photo img-zoom">
+        <img src="https://content.pancake.vn/1/s523x697/fwebp/21/54/83/cb/163b4872b6600196d0ac068b1f046c5dd5f9d20c3ddad5e7c0abea9b-w:736-h:980-l:48194-t:image/jpeg.jfif" alt="Nhà Trai">
+      </div>
+      <div class="parent-label">Nhà Trai</div>
+      <div class="parent-name">Ông Ngô Sỹ Vương<br>Bà Lê Thị Ngọc Hà</div>
+    </div>
+    <div class="parent-card anim-right">
+      <div class="parent-photo img-zoom">
+        <img src="https://content.pancake.vn/1/s516x774/fwebp/6f/2b/71/1d/03a457a718b5bf78c5639d6de0521b7a19ec698dcd5737408a50bd16-w:1707-h:2560-l:275640-t:image/jpeg.jpg" alt="Nhà Gái">
+      </div>
+      <div class="parent-label">Nhà Gái</div>
+      <div class="parent-name">Ông Trần Minh Bảo<br>Bà Lê Thị Ngọc Anh</div>
+    </div>
+  </div>
+
+  <div class="gold-divider anim"><span>✦</span></div>
+
+  <!-- LỄ THÀNH HÔN -->
+  <div class="event-section anim-left">
+    <div class="event-type">Lễ Thành Hôn</div>
+    <div class="event-time-note">Vào lúc 10:00 · Thứ bảy</div>
+    <div class="event-date">24.01.2026</div>
+    <div class="event-time-note">(Vui lòng có mặt trước 15 phút)</div>
+    <div class="event-icon">📍</div>
+    <div class="event-venue">Tại Trà Mon Từa</div>
+    <div class="event-address">Số 88 Trần Nhật Duật — Hà Nội · Hà Nội</div>
+    <a class="map-btn" href="#" target="_blank">Xem Bản Đồ</a>
+  </div>
+
+  <!-- BỮA CƠM THÂN MẬT -->
+  <div class="event-section anim-right">
+    <div class="event-type">Bữa Cơm Thân Mật</div>
+    <div class="event-time-note">Vào lúc 11:30 · Thứ bảy</div>
+    <div class="event-date">24.01.2026</div>
+    <div class="event-time-note">(Vui lòng có mặt trước 15 phút)</div>
+    <div class="event-icon">📍</div>
+    <div class="event-venue">Tại Trà Mon Từa</div>
+    <div class="event-address">Số 88 Trần Nhật Duật — Hà Nội · Hà Nội</div>
+    <a class="map-btn" href="#" target="_blank">Xem Bản Đồ</a>
+  </div>
+
+  <!-- DRESS CODE -->
+  <div class="dresscode-section anim-zoom">
+    <div class="gold-divider anim"><span>✦</span></div><br>
+    <div class="dresscode-title">Màu Sắc Trang Phục</div>
+    <div class="dresscode-note">Quý khách vui lòng chọn trang phục theo gam màu<br>bên dưới để tham dự lễ cưới của chúng tôi</div>
+    <div class="color-swatches">
+      <div class="swatch" style="background:#f5f5f5;"></div>
+      <div class="swatch" style="background:#4a4a4a;"></div>
+      <div class="swatch" style="background:#8B0000;"></div>
+      <div class="swatch" style="background:#2d5a27;"></div>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="gallery-section">
+    <div class="gallery-title anim">Album Hạnh Phúc</div>
+    <div class="gallery-grid">
+      <div class="gallery-full anim-zoom img-zoom">
+        <img src="https://content.pancake.vn/web-media/e9/80/6a/05/fcf14d0545da0e656237816d3712c50d2792afda074a96abfd9bcec5-w:878-h:1280-l:99344-t:image/jpeg.png" alt="Album 1">
+      </div>
+      <div class="gallery-half-row">
+        <div class="gallery-half anim-left img-zoom">
+          <img src="https://content.pancake.vn/1/s709x1064/fwebp/ab/56/c3/d2/ae46af903d624877e4e71b00dc5ab4badaa10a8956d3c389ccbc73e9-w:1080-h:1620-l:151635-t:image/jpeg.jpeg" alt="Album 2">
+        </div>
+        <div class="gallery-half anim-right img-zoom">
+          <img src="https://content.pancake.vn/1/s516x775/fwebp/3c/3b/ca/e1/e12ca0e6af675d653327f5a3b5d2c7c2385f71d26b8fee7604b45828-w:1706-h:2560-l:224512-t:image/jpeg.jpg" alt="Album 3">
+        </div>
+      </div>
+      <div class="gallery-full anim-zoom img-zoom">
+        <img src="https://content.pancake.vn/1/s516x774/fwebp/6f/2b/71/1d/03a457a718b5bf78c5639d6de0521b7a19ec698dcd5737408a50bd16-w:1707-h:2560-l:275640-t:image/jpeg.jpg" alt="Album 4">
+      </div>
+    </div>
+  </div>
+
+  <!-- RSVP -->
+  <div class="rsvp-section anim-flip">
+    <div class="gold-divider anim"><span>✦</span></div><br>
+    <div class="rsvp-text">Quý khách vui lòng xác nhận tham dự để giúp chúng tôi<br>chuẩn bị chu đáo hơn. Mong được đón tiếp Quý khách!</div>
+    <div class="form-group"><input type="text" placeholder="Tên của bạn là gì?"></div>
+    <div class="form-group"><input type="text" placeholder="Bạn đi cùng những ai?"></div>
+    <div class="form-group"><input type="number" placeholder="Số lượng người tham dự"></div>
+    <div class="form-group">
+      <select>
+        <option value="" disabled selected>Bạn có tham dự không?</option>
+        <option value="yes">✓ Xác nhận tham dự</option>
+        <option value="no">✗ Tiếc là không thể tham dự</option>
+        <option value="maybe">? Có thể sẽ tham dự</option>
+      </select>
+    </div>
+    <div class="form-group"><textarea rows="3" placeholder="Lời chúc đến cô dâu chú rể..."></textarea></div>
+    <button class="submit-btn" onclick="handleRSVP()">Gửi Lời Chúc & Xác Nhận</button>
+    <div id="rsvp-stats" style="margin-top:16px;opacity:0;transition:opacity 0.6s;"></div>
+  </div>
+
+  <!-- GIFT -->
+  <div class="gift-section anim-zoom">
+    <div class="gold-divider anim"><span>✦</span></div><br>
+    <div class="gift-title">Gửi Lời Mừng Cưới</div>
+    <div class="bank-card">
+      <div class="bank-qr"><div style="font-size:10px;text-align:center;color:#333;">QR<br>Mừng<br>Cưới</div></div>
+      <div class="bank-info">
+        <div class="bank-name">Chuyển Khoản Online</div>
+        <div class="bank-detail">Ngân hàng: VCB<br>STK: 0123456789<br>Chủ TK: Ngô Sỹ Hào Quân<br>Nội dung: Mừng cưới Quân & Anh</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-photo anim-zoom img-zoom">
+    <img src="https://content.pancake.vn/1/s523x697/fwebp/21/54/83/cb/163b4872b6600196d0ac068b1f046c5dd5f9d20c3ddad5e7c0abea9b-w:736-h:980-l:48194-t:image/jpeg.jfif" alt="Footer">
+    <div class="footer-overlay">
+      <div class="footer-message anim">Tình yêu đích thực!</div>
+      <div class="footer-sub anim">Cảm ơn Quý khách đã dành thời gian quý báu<br>để chung vui cùng chúng tôi trong ngày hạnh phúc nhất cuộc đời</div>
+    </div>
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="social-bar">
+    <span class="social-text">Thiệp · Cưới Online · Minh Anh</span>
+    <a class="social-icon" href="#">📘</a>
+    <a class="social-icon" href="#">🎵</a>
+    <a class="social-icon" href="#">📷</a>
+  </div>
+
+</div>
+
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+<audio id="bgMusic" loop></audio>
+
+<script>
+  /* ===== MỞ RÈM ===== */
+  function openInvitation() {
+    const overlay = document.getElementById('intro-overlay');
+    overlay.classList.add('opening');
+    setTimeout(() => {
+      overlay.classList.add('done');
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+      initScrollAnimations();
+      createParticles();
+      loadRSVPStats();
+    }, 1600);
+  }
+
+  /* ===== SCROLL ANIMATIONS ===== */
+  function initScrollAnimations() {
+    const selectors = '.anim, .anim-left, .anim-right, .anim-zoom, .anim-flip, .line-reveal, .img-zoom';
+    const elements = document.querySelectorAll(selectors);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // Stagger delay dựa trên vị trí
+          const delay = entry.target.closest('.stagger')
+            ? Array.from(entry.target.parentElement.children).indexOf(entry.target) * 120
+            : 0;
+          setTimeout(() => {
+            entry.target.classList.add('show');
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+
+    elements.forEach(el => observer.observe(el));
+  }
+
+  /* ===== PARTICLES TRÊN HERO ===== */
+  function createParticles() {
+    const container = document.getElementById('particles');
+    if (!container) return;
+    for (let i = 0; i < 12; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.bottom = '0';
+      p.style.animationDuration = (4 + Math.random() * 6) + 's';
+      p.style.animationDelay = (Math.random() * 8) + 's';
+      p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+      p.style.opacity = Math.random() * 0.6;
+      container.appendChild(p);
+    }
+  }
+
+  /* ===== COUNTDOWN ===== */
+  function updateCountdown() {
+    const diff = new Date('2026-01-24T10:00:00') - new Date();
+    if (diff <= 0) { ['days','hours','minutes','seconds'].forEach(id => document.getElementById(id).textContent='00'); return; }
+    document.getElementById('days').textContent    = String(Math.floor(diff/86400000)).padStart(2,'0');
+    document.getElementById('hours').textContent   = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+    document.getElementById('minutes').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    document.getElementById('seconds').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+  }
+
+  /* ===== MUSIC ===== */
+  let musicPlaying = false;
+  function toggleMusic() {
+    const audio = document.getElementById('bgMusic');
+    const btn = document.getElementById('musicBtn');
+    if (musicPlaying) { audio.pause(); btn.textContent='🎵'; musicPlaying=false; }
+    else { audio.play().catch(()=>{}); btn.textContent='🎶'; musicPlaying=true; }
+  }
+
+  /* ===== RSVP - LƯU localStorage ===== */
+  async function handleRSVP() {
+    const inputs = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
+    const name     = inputs[0].value.trim();
+    const together = inputs[1].value.trim();
+    const count    = inputs[2].value.trim() || '1';
+    const attend   = inputs[3].value;
+    const wish     = inputs[4].value.trim();
+
+    if (!name) { showToast('⚠ Vui lòng nhập tên của bạn!', 'warn'); return; }
+    if (!attend) { showToast('⚠ Vui lòng chọn xác nhận tham dự!', 'warn'); return; }
+
+    const btn = document.querySelector('.submit-btn');
+    btn.textContent = 'Đang gửi...';
+    btn.disabled = true;
+
+    try {
+      let all = [];
+      try { all = JSON.parse(localStorage.getItem('rsvp_list') || '[]'); } catch(e) { all = []; }
+
+      const entry = { id: Date.now(), name, together, count, attend, wish, time: new Date().toLocaleString('vi-VN') };
+      const idx = all.findIndex(r => r.name.toLowerCase() === name.toLowerCase());
+      if (idx >= 0) all[idx] = entry; else all.push(entry);
+      localStorage.setItem('rsvp_list', JSON.stringify(all));
+
+      inputs.forEach(i => { if(i.tagName==='SELECT') i.selectedIndex=0; else i.value=''; });
+
+      const attendText = attend==='yes' ? 'Xác nhận tham dự 🎉' : attend==='no' ? 'Không thể tham dự 😢' : 'Có thể tham dự 😊';
+      showToast('💖 Cảm ơn ' + name + '! ' + attendText, 'success');
+      loadRSVPStats();
+    } catch(e) {
+      showToast('Gửi thất bại, thử lại nhé!', 'warn');
+    } finally {
+      btn.textContent = 'Gửi Lời Chúc & Xác Nhận';
+      btn.disabled = false;
+    }
+  }
+
+  function loadRSVPStats() {
+    try {
+      const all = JSON.parse(localStorage.getItem('rsvp_list') || '[]');
+      const statsEl = document.getElementById('rsvp-stats');
+      if (!statsEl) return;
+      if (all.length === 0) { statsEl.innerHTML = ''; statsEl.style.opacity='0'; return; }
+
+      const yes   = all.filter(r => r.attend === 'yes');
+      const no    = all.filter(r => r.attend === 'no');
+      const maybe = all.filter(r => r.attend === 'maybe');
+      const totalPeople = yes.reduce((s,r) => s + parseInt(r.count||1), 0);
+
+      const wishesHTML = all.filter(r => r.wish).slice(-5).reverse().map(r =>
+        '<div class="wish-item"><span class="wish-name">' + r.name + '</span><span class="wish-text">"' + r.wish + '"</span></div>'
+      ).join('');
+
+      statsEl.innerHTML =
+        '<div class="rsvp-stat-box">' +
+          '<div class="rsvp-stat-title">✦ Danh Sách Xác Nhận ✦</div>' +
+          '<div class="rsvp-stat-row">' +
+            '<span class="stat-yes">✓ Tham dự: ' + yes.length + ' người (' + totalPeople + ' chỗ)</span>' +
+            '<span class="stat-no">✗ Không đến: ' + no.length + ' người</span>' +
+            '<span class="stat-maybe">? Chưa chắc: ' + maybe.length + ' người</span>' +
+          '</div>' +
+          (wishesHTML ? '<div class="rsvp-wishes">' + wishesHTML + '</div>' : '') +
+        '</div>';
+      statsEl.style.opacity = '1';
+    } catch(e) {}
+  }
+
+    /* ===== TOAST NOTIFICATION ===== */
+  function showToast(msg, type='success') {
+    let toast = document.getElementById('toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'toast';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.className = 'toast toast-' + type + ' toast-show';
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => toast.classList.remove('toast-show'), 3000);
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+  // Load stats ngay khi trang mở (không cần đợi mở thiệp)
+  setTimeout(loadRSVPStats, 500);
+</script>
+</body>
+</html>

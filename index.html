@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tạo thiệp cưới online miễn phí, hiện đại và tinh tế | CineLove</title>
+  <meta name="description" content="CineLove – Nền tảng tạo thiệp cưới online miễn phí hàng đầu Việt Nam. Hàng trăm mẫu đẹp, dễ tùy chỉnh, chia sẻ ngay qua Zalo, Messenger." />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+<!-- ══ NAVBAR ═════════════════════════════════ -->
+<nav class="navbar">
+  <a href="index.html" class="navbar__logo">
+    <div class="navbar__logo-dot">🎬</div>
+    <span class="navbar__logo-name">CineLove</span>
+  </a>
+
+  <ul class="navbar__links">
+    <li><a href="index.html" class="active">Trang chủ</a></li>
+    <li><a href="pages/showcase.html">Mẫu Thiệp</a></li>
+    <li><a href="pages/pricing.html">Gói dịch vụ</a></li>
+    <li><a href="pages/contact.html">Liên hệ</a></li>
+  </ul>
+
+  <div class="navbar__actions">
+      <div class="theme-toggle-wrap" data-tip="Chuyển sang sáng">
+        <button class="theme-toggle" aria-label="Chuyển theme">
+          <div class="theme-toggle__track"><span>🌙</span><span>☀️</span></div>
+          <div class="theme-toggle__knob">🌙</div>
+        </button>
+      </div>
+    <a href="#" class="btn btn-ghost">Đăng nhập</a>
+    <a href="pages/templates.html" class="btn btn-gold">Tạo thiệp</a>
+    <button class="navbar__hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<nav class="mobile-nav">
+  <a href="index.html">Trang chủ</a>
+  <a href="pages/showcase.html">Mẫu thiệp</a>
+  <a href="pages/pricing.html">Gói dịch vụ</a>
+  <a href="pages/contact.html">Liên hệ</a>
+  <a href="#" style="color:var(--gold); margin-top:auto;">Tạo thiệp miễn phí →</a>
+</nav>
+
+<!-- ══ HERO ═══════════════════════════════════ -->
+<section class="hero">
+  <div class="hero__bg"></div>
+  <div class="hero__particles"></div>
+
+  <!-- Floating preview cards -->
+  <div class="hero__preview-cards">
+    <div class="hero__mini-card theme-blush" style="background:linear-gradient(160deg,#2a1a16,#3d2218);">
+      <span style="font-family:var(--font-script);font-size:1rem;color:rgba(255,255,255,.6);">Minh & Linh</span>
+    </div>
+    <div class="hero__mini-card theme-navy" style="background:linear-gradient(160deg,#0f1825,#1a2d40);">
+      <span style="font-family:var(--font-script);font-size:1rem;color:rgba(255,255,255,.6);">Hùng & Mai</span>
+    </div>
+    <div class="hero__mini-card theme-sage" style="background:linear-gradient(160deg,#141f18,#1f3225);">
+      <span style="font-family:var(--font-script);font-size:1rem;color:rgba(255,255,255,.6);">An & Thư</span>
+    </div>
+  </div>
+
+  <div class="hero__content">
+    <p class="hero__eyebrow">✦ Nền tảng thiệp cưới số 1 Việt Nam ✦</p>
+
+    <div class="hero__film-strip">
+      <span></span><span></span><span></span>
+    </div>
+
+    <h1 class="hero__title">
+      CINELOVE
+      <span class="hero__title-line2">Make your love story</span>
+    </h1>
+
+    <p class="hero__tagline-script">kể câu chuyện tình yêu của bạn</p>
+
+    <p class="hero__desc">
+      Hãy để CineLove giúp bạn tạo ra những tấm thiệp cưới online đẹp như một thước phim —
+      lãng mạn, tinh tế và đầy cảm xúc.
+    </p>
+
+    <div class="hero__actions">
+      <a href="pages/templates.html" class="btn btn-gold btn-lg">
+        Bắt đầu miễn phí
+        <span class="btn-icon">→</span>
+      </a>
+      <a href="pages/showcase.html" class="btn btn-ghost btn-lg">Xem mẫu thiệp</a>
+    </div>
+  </div>
+
+  <div class="hero__scroll">
+    <div class="hero__scroll-line"></div>
+    Cuộn xuống
+  </div>
+</section>
+
+<!-- ══ TEMPLATES ══════════════════════════════ -->
+<section class="templates-section">
+  <div class="container">
+    <p class="section-label animate-on-scroll">Mẫu thiết kế phổ biến</p>
+    <h2 class="section-title animate-on-scroll">Hàng trăm mẫu <em>tinh tế</em></h2>
+    <div class="section-divider"></div>
+
+    <div class="templates-grid">
+      <!-- Card 1 -->
+      <div class="template-card animate-on-scroll" data-theme="blush">
+        <div class="template-card__placeholder theme-blush">
+          <div style="font-size:1.5rem">🌸</div>
+          <div class="template-card__placeholder-name">Thiệp cưới 44</div>
+          <div class="template-card__placeholder-date">Rose · Premium</div>
+        </div>
+        <div class="template-card__badges">
+          <span class="badge badge--premium">Premium</span>
+        </div>
+        <div class="template-card__stats">
+          <span class="stat-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            14,041
+          </span>
+        </div>
+        <div class="template-card__overlay">
+          <button class="template-card__overlay-btn">Xem mẫu</button>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="template-card animate-on-scroll" data-theme="ivory">
+        <div class="template-card__placeholder theme-ivory">
+          <div style="font-size:1.5rem">🕊</div>
+          <div class="template-card__placeholder-name">Thiệp cưới 42</div>
+          <div class="template-card__placeholder-date">Ivory · Basic</div>
+        </div>
+        <div class="template-card__badges">
+          <span class="badge badge--basic">Basic</span>
+        </div>
+        <div class="template-card__stats">
+          <span class="stat-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            18,479
+          </span>
+        </div>
+        <div class="template-card__overlay">
+          <button class="template-card__overlay-btn">Xem mẫu</button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="template-card animate-on-scroll" data-theme="navy">
+        <div class="template-card__placeholder theme-navy">
+          <div style="font-size:1.5rem">⚓</div>
+          <div class="template-card__placeholder-name">Thiệp cưới 2</div>
+          <div class="template-card__placeholder-date">Navy · Premium</div>
+        </div>
+        <div class="template-card__badges">
+          <span class="badge badge--premium">Premium</span>
+        </div>
+        <div class="template-card__stats">
+          <span class="stat-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            11,599
+          </span>
+        </div>
+        <div class="template-card__overlay">
+          <button class="template-card__overlay-btn">Xem mẫu</button>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="template-card animate-on-scroll" data-theme="sage">
+        <div class="template-card__placeholder theme-sage">
+          <div style="font-size:1.5rem">🌿</div>
+          <div class="template-card__placeholder-name">Thiệp Xanh Mint</div>
+          <div class="template-card__placeholder-date">Sage · Basic</div>
+        </div>
+        <div class="template-card__badges">
+          <span class="badge badge--basic">Basic</span>
+        </div>
+        <div class="template-card__stats">
+          <span class="stat-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            3,940
+          </span>
+        </div>
+        <div class="template-card__overlay">
+          <button class="template-card__overlay-btn">Xem mẫu</button>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="template-card animate-on-scroll" data-theme="mauve">
+        <div class="template-card__placeholder theme-mauve">
+          <div style="font-size:1.5rem">💜</div>
+          <div class="template-card__placeholder-name">Thiệp cưới 7</div>
+          <div class="template-card__placeholder-date">Mauve · Premium</div>
+        </div>
+        <div class="template-card__badges">
+          <span class="badge badge--premium">Premium</span>
+        </div>
+        <div class="template-card__stats">
+          <span class="stat-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            3,749
+          </span>
+        </div>
+        <div class="template-card__overlay">
+          <button class="template-card__overlay-btn">Xem mẫu</button>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="template-card animate-on-scroll" data-theme="dustyrose">
+        <div class="template-card__placeholder theme-dustyrose">
+          <div style="font-size:1.5rem">🌹</div>
+          <div class="template-card__placeholder-name">Thiệp cưới 36</div>
+          <div class="template-card__placeholder-date">Dusty Rose · Basic</div>
+        </div>
+        <div class="template-card__badges">
+          <span class="badge badge--basic">Basic</span>
+        </div>
+        <div class="template-card__stats">
+          <span class="stat-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            9,103
+          </span>
+        </div>
+        <div class="template-card__overlay">
+          <button class="template-card__overlay-btn">Xem mẫu</button>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="template-card animate-on-scroll" data-theme="ivory">
+        <div class="template-card__placeholder theme-ivory">
+          <div style="font-size:1.5rem">✨</div>
+          <div class="template-card__placeholder-name">Thiệp cưới 38</div>
+          <div class="template-card__placeholder-date">Gold · Basic</div>
+        </div>
+        <div class="template-card__badges">
+          <span class="badge badge--basic">Basic</span>
+        </div>
+        <div class="template-card__stats">
+          <span class="stat-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            9,585
+          </span>
+        </div>
+        <div class="template-card__overlay">
+          <button class="template-card__overlay-btn">Xem mẫu</button>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="template-card animate-on-scroll" data-theme="blush">
+        <div class="template-card__placeholder theme-blush">
+          <div style="font-size:1.5rem">🎀</div>
+          <div class="template-card__placeholder-name">Thiệp cưới 1</div>
+          <div class="template-card__placeholder-date">Blush · Premium</div>
+        </div>
+        <div class="template-card__badges">
+          <span class="badge badge--premium">Premium</span>
+        </div>
+        <div class="template-card__stats">
+          <span class="stat-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            5,998
+          </span>
+        </div>
+        <div class="template-card__overlay">
+          <button class="template-card__overlay-btn">Xem mẫu</button>
+        </div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="template-card animate-on-scroll" data-theme="sage">
+        <div class="template-card__placeholder theme-sage">
+          <div style="font-size:1.5rem">🍃</div>
+          <div class="template-card__placeholder-name">Thiệp cưới 46</div>
+          <div class="template-card__placeholder-date">Forest · Basic</div>
+        </div>
+        <div class="template-card__badges">
+          <span class="badge badge--basic">Basic</span>
+        </div>
+        <div class="template-card__stats">
+          <span class="stat-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            7,041
+          </span>
+        </div>
+        <div class="template-card__overlay">
+          <button class="template-card__overlay-btn">Xem mẫu</button>
+        </div>
+      </div>
+
+      <!-- Card 10 -->
+      <div class="template-card animate-on-scroll" data-theme="navy">
+        <div class="template-card__placeholder theme-navy">
+          <div style="font-size:1.5rem">🌙</div>
+          <div class="template-card__placeholder-name">Thiệp cưới 17</div>
+          <div class="template-card__placeholder-date">Midnight · Basic</div>
+        </div>
+        <div class="template-card__badges">
+          <span class="badge badge--basic">Basic</span>
+        </div>
+        <div class="template-card__stats">
+          <span class="stat-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            4,073
+          </span>
+        </div>
+        <div class="template-card__overlay">
+          <button class="template-card__overlay-btn">Xem mẫu</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top: 16px;">
+      <a href="pages/templates.html" class="btn btn-outline-gold">
+        Xem thêm mẫu thiết kế <span class="btn-icon">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ════════════════════════════ -->
+<section class="how-section">
+  <div class="container">
+    <p class="section-label animate-on-scroll">Đơn giản & Nhanh chóng</p>
+    <h2 class="section-title animate-on-scroll">Tạo thiệp trong <em>3 bước</em></h2>
+    <div class="section-divider"></div>
+
+    <div class="how-grid">
+      <div class="how-card animate-on-scroll">
+        <span class="how-card__number">01</span>
+        <div class="how-card__icon">🎨</div>
+        <h3>Chọn mẫu yêu thích</h3>
+        <p>Duyệt qua hàng trăm mẫu thiệp từ truyền thống trang nhã đến hiện đại cinematic. Tìm ngay phong cách phù hợp với câu chuyện tình yêu của bạn.</p>
+      </div>
+      <div class="how-card animate-on-scroll">
+        <span class="how-card__number">02</span>
+        <div class="how-card__icon">✏️</div>
+        <h3>Cá nhân hóa nội dung</h3>
+        <p>Điền tên, ngày cưới, địa điểm và thông tin cặp đôi. Tùy chỉnh màu sắc, phông chữ và thêm ảnh riêng chỉ với vài cú nhấp chuột.</p>
+      </div>
+      <div class="how-card animate-on-scroll">
+        <span class="how-card__number">03</span>
+        <div class="how-card__icon">🚀</div>
+        <h3>Chia sẻ đến khách mời</h3>
+        <p>Gửi đường link thiệp qua Zalo, Messenger, Facebook hoặc SMS. Cá nhân hóa tên từng khách mời để họ cảm thấy đặc biệt và được trân trọng.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FEATURES ════════════════════════════════ -->
+<section class="features-section">
+  <div class="container">
+    <!-- Block 1 -->
+    <div class="features-layout animate-on-scroll">
+      <div class="features-mockup">
+        <div class="features-mockup__glow"></div>
+        <div class="features-mockup__screen" style="background:linear-gradient(160deg,#2a1a16,#3d2218);">
+          <div style="font-size:2rem">💍</div>
+          <div class="features-mockup__screen-inner">Minh & Linh</div>
+          <div style="font-size:.7rem;letter-spacing:.2em;color:rgba(255,255,255,.4);text-transform:uppercase;">15 · 03 · 2025</div>
+          <div style="width:60%;height:1px;background:rgba(201,169,110,.3);margin:8px 0;"></div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.5);">Kính mời quý khách</div>
+        </div>
+      </div>
+
+      <div class="features-list">
+        <p class="section-label" style="text-align:left; margin-bottom:8px;">Tính năng nổi bật</p>
+        <h2 class="section-title" style="text-align:left; margin-bottom:40px; font-size:clamp(1.6rem,3.5vw,2.4rem);">
+          CineLove – nơi thiệp cưới<br>trở thành <em>kỷ niệm đáng nhớ</em>
+        </h2>
+
+        <div class="feature-item">
+          <div class="feature-item__icon">🎨</div>
+          <div>
+            <div class="feature-item__title">Kho mẫu đa dạng & tinh tế</div>
+            <p class="feature-item__desc">Hàng trăm mẫu thiệp cưới được thiết kế chỉn chu, từ truyền thống trang nhã đến hiện đại cinematic, phù hợp với mọi phong cách.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-item__icon">✨</div>
+          <div>
+            <div class="feature-item__title">Cá nhân hóa theo cách của bạn</div>
+            <p class="feature-item__desc">Dễ dàng tùy chỉnh màu sắc, phông chữ, hình ảnh và nội dung để thiệp mang đậm dấu ấn riêng — không trùng lặp, không rập khuôn.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-item__icon">📨</div>
+          <div>
+            <div class="feature-item__title">Chia sẻ nhanh – Trân trọng từng khách</div>
+            <p class="feature-item__desc">Gửi thiệp chỉ trong vài giây qua Zalo, Messenger, Facebook. Cá nhân hóa tên từng khách mời để mỗi người cảm thấy thật đặc biệt.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="hr-gold" style="margin:80px 0;" />
+
+    <!-- Block 2 -->
+    <div class="features-layout reverse animate-on-scroll">
+      <div class="features-list">
+        <div class="feature-item">
+          <div class="feature-item__icon">💬</div>
+          <div>
+            <div class="feature-item__title">Tương tác với khách mời</div>
+            <p class="feature-item__desc">Khách mời có thể gửi lời chúc, bình luận và tặng quà trực tiếp trên thiệp. Tạo không gian giao lưu ấm áp cho ngày trọng đại.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-item__icon">🎵</div>
+          <div>
+            <div class="feature-item__title">Nhạc nền lãng mạn</div>
+            <p class="feature-item__desc">Thêm nhạc nền cho thiệp cưới để tạo không khí lãng mạn và cảm xúc. Chọn từ thư viện nhạc có sẵn hoặc tải lên bản nhạc yêu thích.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-item__icon">📊</div>
+          <div>
+            <div class="feature-item__title">Thống kê chi tiết</div>
+            <p class="feature-item__desc">Theo dõi lượt xem, lượt yêu thích thiệp và hoạt động của khách mời. Hiểu rõ mức độ quan tâm đến ngày cưới của bạn.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-item__icon">🎁</div>
+          <div>
+            <div class="feature-item__title">Nhận quà trực tuyến</div>
+            <p class="feature-item__desc">Khách mời tặng quà qua mã QR hoặc các món quà ảo đáng yêu ngay trên thiệp. Có thể quy đổi thành tiền thật và rút về tài khoản.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="features-mockup">
+        <div class="features-mockup__glow"></div>
+        <div class="features-mockup__screen" style="background:linear-gradient(160deg,#0f1825,#1a2d40);">
+          <div style="font-size:1.1rem;color:rgba(255,255,255,.5);margin-bottom:16px;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;">Lời chúc</div>
+          <div style="width:90%;background:rgba(255,255,255,.07);border-radius:8px;padding:10px;text-align:left;margin-bottom:8px;">
+            <span style="color:var(--gold2);font-size:.8rem;">Hà Nội</span>
+            <p style="color:rgba(255,255,255,.6);font-size:.75rem;margin-top:4px;">Chúc hai bạn trăm năm hạnh phúc 💕</p>
+          </div>
+          <div style="width:90%;background:rgba(255,255,255,.05);border-radius:8px;padding:10px;text-align:left;">
+            <span style="color:var(--gold2);font-size:.8rem;">Minh Khoa</span>
+            <p style="color:rgba(255,255,255,.6);font-size:.75rem;margin-top:4px;">Mãi bên nhau nha cặp đôi xinh 🥂</p>
+          </div>
+          <div style="margin-top:12px;color:var(--gold);font-size:.72rem;">💌 24 lời chúc</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SHOWCASE ════════════════════════════════ -->
+<section class="showcase-section">
+  <div class="container">
+    <p class="section-label animate-on-scroll">Thực tế từ khách hàng</p>
+    <h2 class="section-title animate-on-scroll">Thiệp từ <em>khách hàng thực tế</em></h2>
+    <div class="section-divider"></div>
+
+    <div class="showcase-grid">
+      <a href="pages/wedding-demo.html" class="showcase-card animate-on-scroll">
+        <div class="showcase-card__thumb">
+          <div class="showcase-card__thumb-placeholder theme-blush" style="height:180px;">Đức Anh & Bích Huyền</div>
+        </div>
+        <div class="showcase-card__info">
+          <div class="showcase-card__names">Đức Anh & Bích Huyền</div>
+          <div class="showcase-card__date">24/12/2025</div>
+        </div>
+        <div class="showcase-card__overlay"><span>Xem thiệp</span></div>
+      </a>
+
+      <a href="pages/wedding-demo.html" class="showcase-card animate-on-scroll">
+        <div class="showcase-card__thumb">
+          <div class="showcase-card__thumb-placeholder theme-navy" style="height:180px;">Long & Hương</div>
+        </div>
+        <div class="showcase-card__info">
+          <div class="showcase-card__names">Long & Hương Wedding Day</div>
+          <div class="showcase-card__date">27/12/2025</div>
+        </div>
+        <div class="showcase-card__overlay"><span>Xem thiệp</span></div>
+      </a>
+
+      <a href="pages/wedding-demo.html" class="showcase-card animate-on-scroll">
+        <div class="showcase-card__thumb">
+          <div class="showcase-card__thumb-placeholder theme-sage" style="height:180px;">Hùng & Phương</div>
+        </div>
+        <div class="showcase-card__info">
+          <div class="showcase-card__names">Thiệp mời Hùng & Phương</div>
+          <div class="showcase-card__date">09/12/2025</div>
+        </div>
+        <div class="showcase-card__overlay"><span>Xem thiệp</span></div>
+      </a>
+
+      <a href="pages/wedding-demo.html" class="showcase-card animate-on-scroll">
+        <div class="showcase-card__thumb">
+          <div class="showcase-card__thumb-placeholder theme-mauve" style="height:180px;">Khánh Linh & Anh Thắng</div>
+        </div>
+        <div class="showcase-card__info">
+          <div class="showcase-card__names">Khánh Linh & Anh Thắng</div>
+          <div class="showcase-card__date">13/12/2025</div>
+        </div>
+        <div class="showcase-card__overlay"><span>Xem thiệp</span></div>
+      </a>
+    </div>
+
+    <div style="text-align:center; margin-top:40px;">
+      <a href="pages/showcase.html" class="btn btn-outline-gold">
+        Xem thêm thiệp đã thực hiện <span class="btn-icon">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ═════════════════════════════════════ -->
+<section class="faq-section">
+  <div class="container">
+    <p class="section-label animate-on-scroll">Giải đáp thắc mắc</p>
+    <h2 class="section-title animate-on-scroll">Câu hỏi <em>thường gặp</em></h2>
+    <div class="section-divider"></div>
+
+    <div class="faq-list animate-on-scroll">
+      <div class="faq-item">
+        <button class="faq-question">
+          CineLove là gì?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>CineLove là nền tảng tạo thiệp cưới online miễn phí hàng đầu Việt Nam. Bạn có thể tạo thiệp cưới điện tử đẹp mắt, hiện đại chỉ trong vài phút với hàng trăm mẫu thiết kế đa dạng và công cụ tùy chỉnh dễ sử dụng.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Tôi phải trả bao nhiêu tiền để tạo thiệp cưới?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>CineLove có gói miễn phí với đầy đủ tính năng để tạo thiệp cưới đẹp và chuyên nghiệp. Bạn có thể tạo, tùy chỉnh và chia sẻ thiệp cưới hoàn toàn miễn phí. Ngoài ra, chúng tôi cũng có các gói trả phí với những tính năng nâng cao để đáp ứng nhu cầu đa dạng của người dùng.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Làm thế nào để tùy chỉnh thiệp?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Rất đơn giản! Chọn mẫu thiệp yêu thích, sau đó thay đổi văn bản, hình ảnh, màu sắc, font chữ theo ý muốn. Bạn có thể thêm thông tin cặp đôi, thời gian địa điểm đám cưới, lời mời cá nhân hóa và nhiều yếu tố khác chỉ bằng vài cú nhấp chuột.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Tôi có thể chia sẻ thiệp như thế nào?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Sau khi hoàn thành thiệp, bạn sẽ nhận được link chia sẻ. Bạn có thể gửi link này qua Messenger, Zalo, hoặc tin nhắn SMS... hoặc chia sẻ trực tiếp lên Facebook, Instagram, TikTok... Khách mời chỉ cần nhấp vào link để xem thiệp ngay trên điện thoại hoặc máy tính của họ.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Thiệp có hoạt động trên mọi thiết bị không?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Có! Thiệp cưới của CineLove được thiết kế responsive, tự động tối ưu hiển thị trên mọi kích thước màn hình từ điện thoại đến máy tính. Khách mời của bạn có thể xem thiệp mượt mà trên bất kỳ thiết bị nào.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Khách mời có thể tặng quà trực tiếp trên thiệp không?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Có! CineLove có 2 cách tặng quà độc đáo: Quét mã QR để chuyển khoản trực tiếp cho chủ thiệp, và tặng các món quà đáng yêu với hiệu ứng animation đẹp mắt hiển thị ngay trên thiệp. Các món quà ảo này có thể được quy đổi thành tiền thật và rút về tài khoản ngân hàng theo chính sách quà tặng của CineLove.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="cta-section__inner">
+    <h2 class="cta-section__title animate-on-scroll">
+      Bắt đầu kể<br><em>câu chuyện tình yêu</em><br>của bạn ngay hôm nay
+    </h2>
+    <p class="cta-section__desc animate-on-scroll">
+      Miễn phí · Không cần kỹ năng thiết kế · Tạo xong trong 5 phút
+    </p>
+    <div class="cta-section__actions animate-on-scroll">
+      <a href="pages/templates.html" class="btn btn-gold btn-lg">
+        Tạo thiệp miễn phí <span class="btn-icon">→</span>
+      </a>
+      <a href="pages/pricing.html" class="btn btn-ghost btn-lg">Xem gói dịch vụ</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="navbar__logo" style="margin-bottom:12px;">
+        <div class="navbar__logo-dot">🎬</div>
+        <span class="navbar__logo-name">CineLove</span>
+      </div>
+      <p class="footer__tagline">Nền tảng tạo thiệp cưới online<br>miễn phí, hiện đại và tinh tế<br>hàng đầu Việt Nam.</p>
+    </div>
+    <div>
+      <div class="footer__heading">Sản phẩm</div>
+      <div class="footer__links">
+        <a href="pages/templates.html">Mẫu thiệp</a>
+        <a href="pages/showcase.html">Thiệp đã tạo</a>
+        <a href="pages/pricing.html">Gói dịch vụ</a>
+        <a href="#">Thiệp trọn gói</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__heading">Hỗ trợ</div>
+      <div class="footer__links">
+        <a href="pages/contact.html">Liên hệ</a>
+        <a href="#">Hướng dẫn</a>
+        <a href="#">Blog</a>
+        <a href="#">Câu hỏi thường gặp</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__heading">Pháp lý</div>
+      <div class="footer__links">
+        <a href="#">Chính sách bảo mật</a>
+        <a href="#">Điều khoản dịch vụ</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2025 CineLove™. All Rights Reserved.</span>
+    <div class="footer__bottom-links">
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
