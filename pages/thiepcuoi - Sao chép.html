@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <title>THƯ MỜI CƯỚI - ĐỨC VANG & DIỆU THÚY</title>
+  <meta name="viewport" content="width=420, user-scalable=no, initial-scale=1.0"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin/>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    @font-face { font-family: "UTM-Sloop-1"; src: url("https://statics.pancake.vn/web-media/bb/41/fd/fd/d607e5e05e3481a7e43e3f8e773d8f6d463215c4cab5107ce736fa5b-w:0-h:0-l:72326-t:application/octet-stream.ttf") format("truetype"); font-display: swap; }
+    @font-face { font-family: "UTM-Azkia"; src: url("https://statics.pancake.vn/web-media/35/7a/ab/a5/2bcc8b3414fa20782f68d8d552b13313f2a24e5b267a97b3cf3a5ec3-w:0-h:0-l:144903-t:application/octet-stream.ttf") format("truetype"); font-display: swap; }
+    @font-face { font-family: "UTM-Cafeta"; src: url("https://statics.pancake.vn/web-media/04/eb/01/7a/e19221a44fabb6fd54c6339fd43b1c25ebbe20e97f6633beed4cbc79-w:0-h:0-l:31525-t:application/octet-stream.ttf") format("truetype"); font-display: swap; }
+    @font-face { font-family: "Ephesis-Regular"; src: url("https://statics.pancake.vn/web-media/65/48/68/4f/ca5a0c732f276b6fef504eddf0e2d6cdf65cf198b0440dde6d90c5a8-w:0-h:0-l:141767-t:application/octet-stream.ttf") format("truetype"); font-display: swap; }
+    @font-face { font-family: "SVN-Mightiest"; src: url("https://statics.pancake.vn/web-media/38/a8/63/6b/be3591beaa1faddc0f76fe23aac05f5d907411cd2b0e4652bc5ed081-w:0-h:0-l:23808-t:application/octet-stream.otf") format("opentype"); font-display: swap; }
+    @font-face { font-family: "AlexBrush-Regular"; src: url("https://statics.pancake.vn/web-media/7f/17/e9/f1/cb9ca1db4d08288384fa9e241cbc74923dcbb9c5701b6caf519deb13-w:0-h:0-l:115720-t:font/ttf.ttf") format("truetype"); font-display: swap; }
+    @font-face { font-family: "BlackMango-Medium"; src: url("https://statics.pancake.vn/web-media/f5/f1/41/aa/b6a0dd0c2a8cc07c0be70e066410a2cb9506e4ae9a3d88a8e238b53c-w:0-h:0-l:52546-t:application/octet-stream.otf") format("opentype"); font-display: swap; }
+    @font-face { font-family: "SVN-Gilroy-Italic"; src: url("https://statics.pancake.vn/web-media/svn-gilroy-italic.otf") format("opentype"); font-display: swap; }
+    @font-face { font-family: "SVN-Gilroy-Bold-Italic"; src: url("https://statics.pancake.vn/web-media/svn-gilroy-bold-italic.otf") format("opentype"); font-display: swap; }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; outline: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font: inherit; border: 0; }
+    html { font-size: 12px; line-height: 1.5; font-family: 'Roboto', sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: #fff; font-size: 12px; color: #000; overflow-x: hidden; }
+    ol, ul { list-style: none; }
+    b { font-weight: bold; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+
+    .pageview { max-width: 420px; margin: 0 auto; overflow: hidden; }
+    .section { position: relative; width: 420px; overflow: hidden; }
+    .section-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-size: cover; background-position: center; background-repeat: no-repeat; }
+    .section-content { position: relative; width: 420px; }
+
+    /* ====== KEYFRAMES ====== */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes zoomIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
+    @keyframes slideInLeft { from { opacity: 0; transform: translateX(-100px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes slideInRight { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes slideInUp { from { opacity: 0; transform: translateY(100px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes curtainLeft  { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+    @keyframes curtainRight { from { transform: translateX(0); } to { transform: translateX(100%); } }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+    @keyframes flash { 0%, 50%, 100% { opacity: 1; } 25%, 75% { opacity: 0.4; } }
+    @keyframes wc-pulse { 0%, 100% { transform: scale(1); box-shadow: 0 6px 20px rgba(0,0,0,0.15); } 50% { transform: scale(1.08); box-shadow: 0 8px 25px rgba(0,0,0,0.25); } }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ====== ENHANCED SCROLL ANIMATIONS ====== */
+    /* Text animations */
+    @keyframes sr-fadeUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes sr-fadeDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes sr-fadeLeft {
+      from { opacity: 0; transform: translateX(-60px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes sr-fadeRight {
+      from { opacity: 0; transform: translateX(60px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes sr-zoom {
+      from { opacity: 0; transform: scale(0.7); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes sr-flip {
+      from { opacity: 0; transform: rotateX(-90deg) translateY(30px); }
+      to   { opacity: 1; transform: rotateX(0deg) translateY(0); }
+    }
+    @keyframes sr-blur {
+      from { opacity: 0; filter: blur(12px); transform: scale(1.05); }
+      to   { opacity: 1; filter: blur(0); transform: scale(1); }
+    }
+    @keyframes sr-slide-reveal {
+      from { opacity: 0; transform: translateY(40px) scaleY(0.8); }
+      to   { opacity: 1; transform: translateY(0) scaleY(1); }
+    }
+    /* Image-specific: pan + reveal */
+    @keyframes sr-img-left {
+      from { opacity: 0; transform: translateX(-80px) scale(1.08); filter: brightness(0.7); }
+      to   { opacity: 1; transform: translateX(0) scale(1); filter: brightness(1); }
+    }
+    @keyframes sr-img-right {
+      from { opacity: 0; transform: translateX(80px) scale(1.08); filter: brightness(0.7); }
+      to   { opacity: 1; transform: translateX(0) scale(1); filter: brightness(1); }
+    }
+    @keyframes sr-img-up {
+      from { opacity: 0; transform: translateY(80px) scale(1.08); filter: brightness(0.7); }
+      to   { opacity: 1; transform: translateY(0) scale(1); filter: brightness(1); }
+    }
+    @keyframes sr-img-zoom {
+      from { opacity: 0; transform: scale(0.75); filter: blur(6px) brightness(0.6); }
+      to   { opacity: 1; transform: scale(1); filter: blur(0) brightness(1); }
+    }
+    /* Typewriter shimmer for headings */
+    @keyframes sr-shimmer {
+      from { opacity: 0; letter-spacing: 8px; }
+      to   { opacity: 1; letter-spacing: inherit; }
+    }
+
+    /* Base hidden state */
+    .sr {
+      opacity: 0;
+    }
+
+    /* When JS adds .is-visible, trigger animation */
+    .sr.is-visible { opacity: 1; }
+:root{
+  --sr-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --sr-dur: 2.6s; /* CHẬM: tăng lên 2.6s nếu muốn chậm nữa */
+}
+
+/* Ép tất cả hiệu ứng sr chạy chậm & mượt */
+.sr.is-visible{
+  animation-duration: var(--sr-dur) !important;
+  animation-timing-function: var(--sr-ease) !important;
+}
+    /* Text element types */
+    .sr[data-sr="fade-up"].is-visible        { animation: sr-fadeUp 1.35s var(--sr-ease) both; }
+    .sr[data-sr="fade-down"].is-visible      { animation: sr-fadeDown 0.8s cubic-bezier(0.22,1,0.36,1) both; }
+    .sr[data-sr="fade-left"].is-visible      { animation: sr-fadeLeft 0.8s cubic-bezier(0.22,1,0.36,1) both; }
+    .sr[data-sr="fade-right"].is-visible     { animation: sr-fadeRight 0.8s cubic-bezier(0.22,1,0.36,1) both; }
+    .sr[data-sr="zoom"].is-visible           { animation: sr-zoom 0.9s cubic-bezier(0.34,1.56,0.64,1) both; }
+    .sr[data-sr="flip"].is-visible           { animation: sr-flip 0.9s cubic-bezier(0.22,1,0.36,1) both; perspective: 600px; }
+    .sr[data-sr="blur"].is-visible           { animation: sr-blur 1s ease both; }
+    .sr[data-sr="shimmer"].is-visible        { animation: sr-shimmer 1s ease both; }
+    .sr[data-sr="slide-reveal"].is-visible   { animation: sr-slide-reveal 0.7s cubic-bezier(0.22,1,0.36,1) both; }
+    /* Image types */
+    .sr[data-sr="img-left"].is-visible       { animation: sr-img-left 1s cubic-bezier(0.22,1,0.36,1) both; }
+    .sr[data-sr="img-right"].is-visible      { animation: sr-img-right 1s cubic-bezier(0.22,1,0.36,1) both; }
+    .sr[data-sr="img-up"].is-visible         { animation: sr-img-up 1s cubic-bezier(0.22,1,0.36,1) both; }
+    .sr[data-sr="img-zoom"].is-visible       { animation: sr-img-zoom 1.9s var(--sr-ease) both; }
+
+    /* Stagger delays via data-delay */
+    .sr[data-delay="1"] { animation-delay: 0.1s !important; }
+    .sr[data-delay="2"] { animation-delay: 0.2s !important; }
+    .sr[data-delay="3"] { animation-delay: 0.3s !important; }
+    .sr[data-delay="4"] { animation-delay: 0.4s !important; }
+    .sr[data-delay="5"] { animation-delay: 0.5s !important; }
+    .sr[data-delay="6"] { animation-delay: 0.6s !important; }
+    .sr[data-delay="7"] { animation-delay: 0.7s !important; }
+    .sr[data-delay="8"] { animation-delay: 0.8s !important; }
+
+    .anim-fadeIn { animation: fadeIn ease-out both; }
+    .anim-fadeInUp { animation: fadeInUp ease-out both; }
+    .anim-zoomIn { animation: zoomIn ease-out both; }
+    .anim-pulse { animation: pulse ease-in-out infinite; }
+    .anim-flash { animation: flash ease-in-out infinite; }
+    .is-anim { opacity: 0; }
+    .is-anim.animated { opacity: 1; }
+
+    /* ====== SECTION 1: COVER ====== */
+    #sec-cover {
+      height: 800px;
+      background-image: url("https://statics.pancake.vn/web-media/fd/42/7d/0c/1ca1e8525f99e3105eb930cd8ed684a64b07a0d9df7e0c725ca9779c-w:1260-h:2400-l:65030-t:image/png.png");
+      background-size: cover; background-position: center; margin-bottom: -1px;
+    }
+    #sec-cover .curtain-left {
+      position: absolute; top: 0; left: 0; width: 420px; height: 800px;
+      background: url("https://statics.pancake.vn/web-media/0e/6c/18/fb/44e9347bb12368a07e646ad45939e6086fc1ce3b2b39c28663352c01-w:1260-h:2400-l:1296984-t:image/png.png") left center/cover no-repeat;
+      z-index: 10; animation: curtainLeft 2.2s cubic-bezier(0.77,0,0.175,1) 1.2s both;
+    }
+    #sec-cover .curtain-right {
+      position: absolute; top: 0; left: 0; width: 420px; height: 800px;
+      background: url("https://statics.pancake.vn/web-media/fb/1a/3d/db/5397c85e01e68520b6e686acfb8f4b71fc813f563e456d159b222a3c-w:1260-h:2400-l:1301050-t:image/png.png") right center/cover no-repeat;
+      z-index: 9; animation: curtainRight 2.2s cubic-bezier(0.77,0,0.175,1) 1.2s both;
+    }
+    /* ====== NICE PHOTO FRAME (APPLY FOR ALL) ====== */
+:root{
+  --frame-red: rgba(142, 1, 1, 0.40);
+  --frame-white: rgba(255,255,255,0.85);
+  --frame-radius: 16px;
+}
+
+#sec-cover .main-photo,
+#sec-family .couple-photo,
+#sec-datetime .photo-left,
+#sec-datetime .photo-center,
+#sec-datetime .photo-right,
+#sec-album .photo-tl,
+#sec-album .photo-tr,
+#sec-album .photo-bl,
+#sec-album .photo-br1,
+#sec-album .photo-br2,
+#sec-album2 .photo-1,
+#sec-album2 .photo-2,
+#sec-album2 .photo-3,
+#sec-album2 .photo-4{
+  border-radius: var(--frame-radius) !important;
+  overflow: hidden !important;
+
+  /* viền mảnh + dịu */
+  border: 1.5px solid var(--frame-red) !important;
+
+  /* viền trong trắng mảnh kiểu thiệp */
+  outline: 1px solid var(--frame-white) !important;
+  outline-offset: -8px !important;
+
+  /* bóng rất nhẹ cho “sang” */
+  box-shadow: 0 10px 22px rgba(0,0,0,0.10) !important;
+
+  background: rgba(255,255,255,0.25);
+}
+/* ====== LOADING BUTTON ====== */
+.btn-submit.is-loading{
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.btn-submit .spinner{
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0,0,0,0.25);
+  border-top-color: rgba(0,0,0,0.85);
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: -3px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+#sec-cover .main-photo img,
+#sec-family .couple-photo img,
+#sec-datetime .photo-left img,
+#sec-datetime .photo-center img,
+#sec-datetime .photo-right img,
+#sec-album .photo-tl img,
+#sec-album .photo-tr img,
+#sec-album .photo-bl img,
+#sec-album .photo-br1 img,
+#sec-album .photo-br2 img,
+#sec-album2 .photo-1 img,
+#sec-album2 .photo-2 img,
+#sec-album2 .photo-3 img,
+#sec-album2 .photo-4 img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(var(--frame-radius) - 2px) !important;
+}
+    #sec-cover .deco-top-left { position: absolute; top: 178.75px; left: 19px; width: 87px; height: 87px; background: url("https://statics.pancake.vn/web-media/b3/56/e9/68/af4129e31d91132cb5316f8ce714f78a520be70fd480db42ff8122ce-w:500-h:500-l:43453-t:image/png.png") center/cover no-repeat; animation: fadeIn 7s ease-out both; }
+    #sec-cover .deco-top-right { position: absolute; top: 178.75px; left: 312px; width: 87px; height: 87px; background: url("https://statics.pancake.vn/web-media/b3/56/e9/68/af4129e31d91132cb5316f8ce714f78a520be70fd480db42ff8122ce-w:500-h:500-l:43453-t:image/png.png") center/cover no-repeat; animation: fadeIn 7s ease-out both; }
+    #sec-cover .deco-ring { position: absolute; top: 135px; left: 166.5px; width: 87px; height: 87px; background: url("https://statics.pancake.vn/web-media/c9/7c/2a/c5/5ba36c13eb69d83d80e92d1a2eee50cfee36e987297533b6480719a7-w:500-h:500-l:12182-t:image/png.png") center/cover no-repeat; animation: fadeIn 7s ease-out both; }
+    #sec-cover .invite-label { position: absolute; top: 41.5px; left: 83px; width: 254px; font-family: 'Roboto', sans-serif; font-size: 20px; letter-spacing: 3px; text-align: center; color: #000; animation: fadeInDown 3s ease-out both; }
+    #sec-cover .couple-name { position: absolute; top: 80px; left: 3.5px; width: 413px; font-family: 'UTM-Sloop-1', cursive; font-size: 40px; text-align: center; color: #000; text-shadow: 0px 4px 4px rgba(255,255,255,1); animation: zoomIn 4s ease-out both; }
+    #sec-cover .wedding-date { position: absolute; top: 244.5px; left: 83px; width: 254px; font-size: 22px; font-weight: bold; letter-spacing: 7px; text-align: center; color: #000; animation: fadeInUp 3s ease-out both; }
+    #sec-cover .day-time { position: absolute; top: 222px; left: 83px; width: 254px; font-size: 15px; text-align: center; color: #000; animation: fadeInUp 3s ease-out both; }
+    #sec-cover .main-photo{
+  border: 2px solid rgba(142,1,1,0.55);
+  outline: 1px solid rgba(255,255,255,0.9);
+  outline-offset: -8px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+    #sec-cover .main-photo { position: absolute; top: 286px; left: 85.5px; width: 249px; height: 373px; border: 7px solid rgb(142,1,1); overflow: hidden; }
+    #sec-cover .main-photo img { width: 100%; height: 100%; object-fit: cover; }
+    #sec-cover .deco-flower-bottom { position: absolute; top: 600.5px; left: 276px; width: 117px; height: 117px; background: url("https://statics.pancake.vn/web-media/f5/0c/65/6f/daee3dc9b5487eb190fd88220ef5e6249cfe15ee9b4b145c97a89ee1-w:500-h:500-l:50319-t:image/png.png") center/cover no-repeat; animation: fadeIn 7s ease-out both; }
+    #sec-cover .invite-text { position: absolute; top: 690px; left: 60px; width: 300px; font-family: 'SVN-Mightiest', sans-serif; font-size: 22px; text-align: center; color: #000; animation: fadeInUp 3s ease-out both; }
+    #sec-cover .guest-name-label { position: absolute; top: 731.9px; left: 60px; width: 300px; font-family: 'AlexBrush-Regular', cursive; font-size: 32px; text-align: center; color: rgb(125,31,42); animation: fadeInUp 3s ease-out both; }
+    #sec-cover .dotted-line { position: absolute; top: 755.9px; left: 92px; width: 236px; border-top: 1px dotted #000; animation: zoomIn 4s ease-out both; }
+
+    /* ====== SECTION 2: FAMILY INFO ====== */
+    #sec-family { height: 714px; background-image: url("https://statics.pancake.vn/web-media/fd/42/7d/0c/1ca1e8525f99e3105eb930cd8ed684a64b07a0d9df7e0c725ca9779c-w:1260-h:2400-l:65030-t:image/png.png"); background-size: cover; background-position: center; margin-bottom: -1px; }
+    #sec-family .announce-text { position: absolute; top: 243.5px; left: 58px; width: 304px; font-family: 'BlackMango-Medium', sans-serif; font-size: 14px; text-align: center; color: #000; }
+    #sec-family .groom-name { position: absolute; top: 273.5px; left: 3.5px; width: 413px; font-family: 'UTM-Sloop-1', cursive; font-size: 40px; text-align: center; color: #000; text-shadow: 0px 4px 4px rgba(255,255,255,1); }
+    #sec-family .amp { position: absolute; top: 316px; left: 141.5px; width: 137px; font-family: 'UTM-Azkia', cursive; font-size: 40px; text-align: center; color: #000; text-shadow: 0px 4px 4px rgba(255,255,255,1); }
+    #sec-family .bride-name { position: absolute; top: 355px; left: 3.5px; width: 413px; font-family: 'UTM-Sloop-1', cursive; font-size: 40px; text-align: center; color: #000; text-shadow: 0px 4px 4px rgba(255,255,255,1); }
+    #sec-family .deco-rings { position: absolute; top: 0; left: 167px; width: 86px; height: 86px; background: url("https://statics.pancake.vn/web-media/5d/4d/ed/50/c176e3fd3e67b078488c02451f6a09af9fe9e929c4f113f5c162595e-w:500-h:500-l:22239-t:image/png.png") center/cover no-repeat; }
+    #sec-family .deco-flower-mid { position: absolute; top: 65px; left: 176px; width: 68px; height: 68px; background: url("https://statics.pancake.vn/web-media/b3/56/e9/68/af4129e31d91132cb5316f8ce714f78a520be70fd480db42ff8122ce-w:500-h:500-l:43453-t:image/png.png") center/cover no-repeat; }
+    #sec-family .couple-photo { position: absolute; top: 424.3px; left: 33px; width: 354px; height: 269px; border: 7px solid rgb(142,1,1); overflow: hidden; }
+    #sec-family .couple-photo img { width: 100%; height: 100%; object-fit: cover; }
+    #sec-family .groom-side { position: absolute; top: 99px; left: 0; width: 200px; font-family: 'UTM-Cafeta', sans-serif; font-size: 16px; text-align: center; }
+    #sec-family .bride-side { position: absolute; top: 99px; left: 220px; width: 200px; font-family: 'UTM-Cafeta', sans-serif; font-size: 16px; text-align: center; }
+    #sec-family .groom-parents { position: absolute; top: 123px; left: 0; width: 200px; font-family: 'UTM-Cafeta', sans-serif; font-size: 16px; text-align: center; }
+    #sec-family .bride-parents { position: absolute; top: 123px; left: 220px; width: 200px; font-family: 'UTM-Cafeta', sans-serif; font-size: 16px; text-align: center; }
+    #sec-family .groom-location { position: absolute; top: 171px; left: 21.5px; width: 165px; font-size: 13px; text-align: center; }
+    #sec-family .bride-location { position: absolute; top: 171px; left: 237.5px; width: 165px; font-size: 13px; text-align: center; }
+/* ====== RSVP FORM BEAUTIFY ====== */
+#sec-rsvp .form-wrap{
+  width: 307px;
+}
+
+/* Input & select đẹp hơn */
+#sec-rsvp .form-wrap input,
+#sec-rsvp .form-wrap select{
+  width: 307px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(142,1,1,0.22);
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.08);
+  color: rgba(142,1,1,0.92);
+  font-size: 13px;
+  padding: 0 14px;
+  transition: box-shadow .2s ease, border-color .2s ease, transform .08s ease;
+}
+
+#sec-rsvp .form-wrap input::placeholder{
+  color: rgba(142,1,1,0.45);
+}
+
+/* Focus state */
+#sec-rsvp .form-wrap input:focus,
+#sec-rsvp .form-wrap select:focus{
+  border-color: rgba(142,1,1,0.55);
+  box-shadow: 0 12px 22px rgba(142,1,1,0.14), 0 10px 18px rgba(0,0,0,0.08);
+}
+
+/* Nút GỬI NGAY đẹp hơn */
+#sec-rsvp .form-wrap .btn-submit{
+  width: 307px;
+  left: 0;
+  height: 44px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.9));
+  border: 1px solid rgba(142,1,1,0.22);
+  box-shadow: 0 12px 22px rgba(0,0,0,0.12);
+  letter-spacing: 1px;
+  gap: 8px;
+}
+
+#sec-rsvp .form-wrap .btn-submit:active{
+  transform: translateY(1px);
+}
+
+/* Loading state bạn đang dùng */
+#sec-rsvp .form-wrap .btn-submit.is-loading{
+  opacity: 0.8;
+}
+    /* ====== SECTION 3: DATE/TIME ====== */
+    #sec-datetime { height: 515px; background-image: url("https://statics.pancake.vn/web-media/fd/42/7d/0c/1ca1e8525f99e3105eb930cd8ed684a64b07a0d9df7e0c725ca9779c-w:1260-h:2400-l:65030-t:image/png.png"); background-size: cover; background-position: center; margin-bottom: -1px; }
+    #sec-datetime .invite-sub { position: absolute; top: 41.5px; left: 58px; width: 304px; font-family: 'Ephesis-Regular', cursive; font-size: 25px; text-align: center; color: #000; }
+    #sec-datetime .deco-divider { position: absolute; top: 0; left: 127.5px; width: 165px; height: 35px; overflow: hidden; }
+    #sec-datetime .deco-divider img { width: 100%; height: 100%; object-fit: cover; margin-top: -63px; }
+    #sec-datetime .day-big { position: absolute; top: 390px; left: 114.6px; width: 185px; font-family: Arial, sans-serif; font-size: 35px; font-weight: bold; letter-spacing: 3px; text-align: center; }
+    #sec-datetime .photo-left { position: absolute; top: 117.5px; left: 24.7px; width: 116px; height: 165px; overflow: hidden; }
+    #sec-datetime .photo-left img { width: 100%; height: 100%; object-fit: cover; }
+    #sec-datetime .photo-center { position: absolute; top: 85.5px; left: 152px; width: 116px; height: 165px; overflow: hidden; }
+    #sec-datetime .photo-center img { width: 100%; height: 100%; object-fit: cover; }
+    #sec-datetime .photo-right { position: absolute; top: 117.5px; left: 279.3px; width: 116px; height: 165px; overflow: hidden; }
+    #sec-datetime .photo-right img { width: 100%; height: 100%; object-fit: cover; }
+    #sec-datetime .event-text { position: absolute; top: 317.7px; left: -3.5px; width: 427px; font-family: Arial, sans-serif; font-size: 14px; letter-spacing: 1px; text-align: center; }
+    #sec-datetime .time-left { position: absolute; top: 408.5px; left: -9.8px; width: 185px; font-family: Arial, sans-serif; font-size: 14px; letter-spacing: 1px; text-align: center; }
+    #sec-datetime .year-right { position: absolute; top: 408.5px; left: 244.9px; width: 185px; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; letter-spacing: 1px; text-align: center; }
+    #sec-datetime .line-left { position: absolute; top: 408.5px; left: 95px; width: 1px; height: 65px; border-left: 1px solid rgb(83,96,119); }
+    #sec-datetime .line-right { position: absolute; top: 408.5px; left: 250.6px; width: 1px; height: 65px; border-left: 1px solid rgb(83,96,119); }
+    #sec-datetime .lunar-date { position: absolute; top: 482.5px; left: -1px; width: 422px; font-family: Arial, sans-serif; font-size: 14px; font-style: italic; letter-spacing: 1px; text-align: center; }
+    #sec-datetime .day-name { position: absolute; top: 376px; left: 114.6px; width: 185px; font-family: Arial, sans-serif; font-size: 14px; letter-spacing: 3px; text-align: center; }
+    #sec-datetime .month-name { position: absolute; top: 441px; left: 114.6px; width: 185px; font-family: Arial, sans-serif; font-size: 14px; letter-spacing: 3px; text-align: center; }
+
+    /* ====== SECTION 4: VENUE ====== */
+    #sec-venue { height: 605px; background-image: url("https://statics.pancake.vn/web-media/fd/42/7d/0c/1ca1e8525f99e3105eb930cd8ed684a64b07a0d9df7e0c725ca9779c-w:1260-h:2400-l:65030-t:image/png.png"); background-size: cover; background-position: center; margin-bottom: -1px; }
+    #sec-venue .venue-border { position: absolute; top: 40px; left: 53px; width: 309px; height: 168px; border: 2px solid rgb(142,1,1); border-radius: 16px; pointer-events: none; }
+    #sec-venue .qr-image { position: absolute; top: 225px; left: 22.5px; width: 375px; height: 375px; background: url("https://statics.pancake.vn/web-media/f9/98/70/54/59b84c281bf331dc5baccfb671f74826f2cc248fe6459e58d0fd17bc-w:1200-h:1200-l:51245-t:image/png.png") center/cover no-repeat; }
+    #sec-venue .map-pin { position: absolute; top: 411.5px; left: 288px; width: 38px; height: 38px; background: url("https://statics.pancake.vn/web-media/59/9d/0d/23/829a2a25903e5b03a029f62911ad0300b2c875df84e143b3258f9633-w:3600-h:3600-l:165926-t:image/png.png") center/cover no-repeat; animation: flash 4s ease-in-out infinite; }
+    #sec-venue .venue-label { position: absolute; top: 11.5px; left: -3.5px; width: 427px; font-family: Arial, sans-serif; font-size: 14px; letter-spacing: 1px; text-align: center; }
+    #sec-venue .venue-name { position: absolute; top: 58.3px; left: -0.5px; width: 421px; font-family: 'SVN-Gilroy-Bold-Italic', sans-serif; font-size: 20px; font-weight: bold; letter-spacing: 1px; text-align: center; text-transform: uppercase; }
+    #sec-venue .venue-address { position: absolute; top: 96.3px; left: 62.5px; width: 295px; font-family: 'SVN-Gilroy-Italic', sans-serif; font-size: 14px; letter-spacing: 1px; text-align: center; }
+    #sec-venue .direction-btn { position: absolute; top: 154px; left: 137.1px; width: 140px; height: 32px; background: rgb(177,0,0); border-radius: 42px; box-shadow: 0px 4px 4px rgba(0,0,0,0.25); color: #fff; font-family: Arial, sans-serif; font-size: 15px; text-align: center; line-height: 32px; cursor: pointer; animation: pulse 4s ease-in-out infinite; text-decoration: none; display: block; }
+    #sec-venue .direction-btn:active { transform: translateY(3px); }
+
+    /* ====== SECTION 5: RSVP ====== */
+    #sec-rsvp { height: 522px; background-image: url("https://statics.pancake.vn/web-media/fd/42/7d/0c/1ca1e8525f99e3105eb930cd8ed684a64b07a0d9df7e0c725ca9779c-w:1260-h:2400-l:65030-t:image/png.png"); background-size: cover; background-position: center; margin-bottom: -1px; }
+    #sec-rsvp .rsvp-bg-deco { position: absolute; top: 0; left: -566px; width: 350px; height: 667px; background: url("https://statics.pancake.vn/web-media/fd/42/7d/0c/1ca1e8525f99e3105eb930cd8ed684a64b07a0d9df7e0c725ca9779c-w:1260-h:2400-l:65030-t:image/png.png") center/cover no-repeat; }
+    #sec-rsvp .rsvp-card { position: absolute; top: 124.5px; left: 35px; width: 350px; height: 312px; background: rgb(177,0,0); border-radius: 16px; }
+    #sec-rsvp .rsvp-title { position: absolute; top: 14.3px; left: 58px; width: 304px; font-family: 'Ephesis-Regular', cursive; font-size: 30px; line-height: 1; text-align: center; color: #000; }
+    #sec-rsvp .form-wrap { position: absolute; top: 144px; left: 56.5px; width: 307px; height: 277px; }
+    #sec-rsvp .form-wrap input, #sec-rsvp .form-wrap select { display: block; width: 307px; height: 43px; border: 1px solid rgb(142,1,1); border-radius: 10px; background: #fff; color: rgb(153,0,0); font-size: 13px; padding: 0 10px; outline: none; box-sizing: border-box; -webkit-appearance: none; appearance: none; }
+    #sec-rsvp .form-wrap input::placeholder { color: rgb(142,1,1); }
+    #sec-rsvp .form-wrap .input-name { position: absolute; top: 0; left: 0; }
+    #sec-rsvp .form-wrap .input-rel { position: absolute; top: 57px; left: 0; }
+    #sec-rsvp .form-wrap .input-wish { position: absolute; top: 114.5px; left: 0; }
+    #sec-rsvp .form-wrap .input-attend { position: absolute; top: 167.5px; left: 0; }
+    #sec-rsvp .form-wrap .select-wrap { position: absolute; top: 167.5px; left: 0; width: 307px; height: 43px; }
+    #sec-rsvp .form-wrap select { width: 307px; }
+    #sec-rsvp .form-wrap .btn-submit { position: absolute; top: 234.5px; left: 69.5px; width: 168px; height: 43px; background: #fff; color: rgb(142,1,1); font-size: 14px; font-weight: bold; text-transform: uppercase; border-radius: 5px; border: 1px solid rgba(229,231,235,1); filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.25)); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    #sec-rsvp .btn-gift { position: absolute; top: 456.4px; left: 113px; width: 194px; height: 40px; background: rgb(177,0,0); color: #fff; font-size: 14px; font-weight: bold; border-radius: 9px; box-shadow: 0px 4px 4px rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+
+    /* ====== SECTION 6: ALBUM ====== */
+    #sec-album { height: 632px; background-image: url("https://statics.pancake.vn/web-media/fd/42/7d/0c/1ca1e8525f99e3105eb930cd8ed684a64b07a0d9df7e0c725ca9779c-w:1260-h:2400-l:65030-t:image/png.png"); background-size: cover; background-position: center; margin-bottom: -1px; }
+    #sec-album .album-title { position: absolute; top: 0; left: 20.5px; width: 185px; font-family: 'Ephesis-Regular', cursive; font-size: 32px; text-align: center; }
+    #sec-album .deco-right { position: absolute; top: 6.5px; left: 214.5px; width: 165px; height: 35px; overflow: hidden; }
+    #sec-album .deco-right img { width: 166px; height: 166px; margin-top: -63px; }
+    #sec-album .photo-tl { position: absolute; top: 52px; left: 25.5px; width: 179px; height: 268px; overflow: hidden; }
+    #sec-album .photo-tl img { width: 100%; height: 100%; object-fit: cover; }
+    #sec-album .photo-tr { position: absolute; top: 81.5px; left: 214.5px; width: 179px; height: 268px; overflow: hidden; }
+    #sec-album .photo-tr img { width: 100%; height: 100%; object-fit: cover; }
+    #sec-album .photo-bl { position: absolute; top: 359.5px; left: 25px; width: 179px; height: 268px; overflow: hidden; }
+    #sec-album .photo-bl img { width: 100%; height: 100%; object-fit: cover; }
+    #sec-album .photo-br1 { position: absolute; top: 374.5px; left: 214px; width: 179px; height: 116px; overflow: hidden; }
+    #sec-album .photo-br1 img { width: 100%; height: 100%; object-fit: cover; }
+    #sec-album .photo-br2 { position: absolute; top: 497px; left: 214px; width: 179px; height: 116px; overflow: hidden; }
+    #sec-album .photo-br2 img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ====== SECTION 7: ALBUM 2 ====== */
+    #sec-album2 { height: 563px; background-image: url("https://statics.pancake.vn/web-media/fd/42/7d/0c/1ca1e8525f99e3105eb930cd8ed684a64b07a0d9df7e0c725ca9779c-w:1260-h:2400-l:65030-t:image/png.png"); background-size: cover; background-position: center; margin-bottom: -1px; }
+    #sec-album2 .photo-1 { position: absolute; top: 6px; left: 25px; width: 178px; height: 267px; overflow: hidden; }
+    #sec-album2 .photo-1 img { width: 100%; height: 100%; object-fit: cover; }
+    #sec-album2 .photo-2 { position: absolute; top: 6px; left: 213.5px; width: 178px; height: 267px; overflow: hidden; }
+    #sec-album2 .photo-2 img { width: 100%; height: 100%; object-fit: cover; }
+    #sec-album2 .photo-3 { position: absolute; top: 283px; left: 25.5px; width: 178px; height: 267px; overflow: hidden; }
+    #sec-album2 .photo-3 img { width: 100%; height: 100%; object-fit: cover; }
+    #sec-album2 .photo-4 { position: absolute; top: 283px; left: 214px; width: 178px; height: 267px; overflow: hidden; }
+    #sec-album2 .photo-4 img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ====== SECTION 8: CLOSING ====== */
+    #sec-closing { height: 630px; position: relative; overflow: hidden; margin-bottom: -1px; }
+    #sec-closing .bg-photo { position: absolute; top: 0; left: 0; width: 421px; height: 631px; background: url("https://statics.pancake.vn/web-media/ad/c0/11/16/06080e040619cef49e87d7e06a574eb61310d3dc4bdc9f0fec3638c9-w:854-h:1280-l:259362-t:image/jpeg.png") center/cover no-repeat; }
+    #sec-closing .white-overlay { position: absolute; top: 0; left: 0; width: 423px; height: 630px; background: rgba(255,255,255,0.62); }
+    #sec-closing .dark-band { position: absolute; top: 354px; left: -17px; width: 453px; height: 147px; background: rgba(0,0,0,0.48); }
+    #sec-closing .logo-banner { position: absolute; top: 338px; left: 11px; width: 397px; height: 155px; background: url("https://statics.pancake.vn/web-media/cf/cf/28/5f/f9ca08165577556ed2df053b0962a0e8e670490844d7ad5e84fa48b2-w:1366-h:530-l:48754-t:image/png.png") center/cover no-repeat; filter: contrast(0%) grayscale(43%) brightness(200%); animation: pulse 3s ease-in-out infinite; }
+    #sec-closing .closing-text { position: absolute; top: 427.5px; left: -30px; width: 480px; font-family: 'UTM-Azkia', cursive; font-size: 38px; text-align: center; color: #fff; filter: contrast(0%) brightness(200%); }
+
+    /* ====== SECTION 9: FOOTER ====== */
+    #sec-footer { height: 48px; position: relative; overflow: hidden; background: #fff; }
+    #sec-footer .footer-scroll { position: absolute; top: 0; left: 0; width: 669px; height: 47px; animation: marquee 12s linear infinite; }
+    #sec-footer .footer-text { position: absolute; top: 15.5px; left: 0; width: 660px; font-size: 15px; text-align: end; color: #000; white-space: nowrap; }
+
+    /* ====== MUSIC TOGGLE ====== */
+    #music-toggle { position: fixed; left: 14px; bottom: 14px; z-index: 99999; width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,0.3); backdrop-filter: blur(4px); display: grid; place-items: center; cursor: pointer; user-select: none; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+    #music-toggle:hover { transform: translateY(-1px) scale(1.03); box-shadow: 0 10px 24px rgba(0,0,0,0.18); }
+    #music-toggle img { display: block; width: 44px; height: 44px; object-fit: contain; pointer-events: none; }
+    #music-toggle.vibrating { animation: wc-pulse 1.6s ease-out infinite; }
+.sr {
+  opacity: 0;
+  will-change: transform, opacity, filter;
+  transform: translateZ(0);
+}
+    /* ====== POPUP: GIFT ====== */
+    #popup-backdrop { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000000; }
+    #popup-gift { display: none; position: fixed; width: 400px; height: 381px; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000001; background: #fff; border-radius: 10px; overflow: hidden; }
+    #popup-gift .gift-close { position: absolute; top: 0; right: 0; width: 29px; height: 29px; background: rgb(212,212,212); cursor: pointer; z-index: 2; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #666; -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIHZpZXdCb3g9JzAgMCAyNCAyNCc+IDxwYXRoIGQ9J00xMy40NiwxMkwxOSwxNy41NFYxOUgxNy41NEwxMiwxMy40Nkw2LjQ2LDE5SDVWMTcuNTRMMTAuNTQsMTJMNSw2LjQ2VjVINi40NkwxMiwxMC41NEwxNy41NCw1SDE5VjYuNDZMMTMuNDYsMTJaJz48L3BhdGg+IDwvc3ZnPg=="); -webkit-mask-size: 60%; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; }
+    #popup-gift .gift-red-bg { position: absolute; top: 87.4px; left: 85px; width: 230px; height: 227px; background: rgb(144,39,50); border-radius: 4px; }
+    #popup-gift .gift-title { position: absolute; top: 14.5px; left: 73px; width: 254px; font-family: 'Ephesis-Regular', cursive; font-size: 40px; font-weight: bold; text-align: center; color: #000; }
+    #popup-gift .gift-qr { position: absolute; top: 102px; left: 101px; width: 200px; height: 198px; overflow: hidden; }
+    #popup-gift .gift-qr img { width: 318px; height: 688px; margin-top: -169px; margin-left: -59px; }
+    #popup-gift .gift-bank { position: absolute; top: 323px; left: 22px; width: 356px; font-family: Arial, sans-serif; font-size: 17px; font-weight: bold; text-align: center; }
+/* ====== GIFT INLINE (ALWAYS SHOW) ====== */
+
+
+#gift-inline .gift-title-inline{
+  font-family: 'Ephesis-Regular', cursive;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 8px;
+  color: #000;
+}
+/* khung hiển thị QR (cửa sổ crop) */
+#gift-inline .gift-qr-inline{
+  height: 220px;           /* chiều cao vùng QR */
+  background: transparent;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* phóng to ảnh lên và kéo sao cho QR nằm giữa */
+#gift-inline .gift-qr-inline img{
+  position: absolute;
+  left: 50%;
+  top: -70px;              /* kéo lên/xuống để đúng QR */
+  transform: translateX(-50%) scale(1.85); /* phóng to */
+  transform-origin: top center;
+  height: auto;
+  width: 360px;            /* tăng/giảm để crop vừa */
+}
+#gift-inline .gift-box{
+  width: 350px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(142,1,1,0.20);
+  box-shadow: 0 12px 22px rgba(0,0,0,0.10);
+  padding: 12px;
+}
+#sec-rsvp { height: 820px !important; }
+#sec-rsvp .section-content { height: 820px !important; }
+#gift-inline{
+  position: absolute;
+  left: 35px;
+  top: 438px; /* bạn có thể tăng/giảm 20px tùy thích */
+  width: 350px;
+}
+#gift-inline .gift-qr-inline{
+  width: 100%;
+  height: 250px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(142,1,1,0.18);
+  background: rgba(144,39,50,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#gift-inline .gift-qr-inline img{
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#gift-inline .gift-bank-inline{
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: rgba(142,1,1,0.95);
+  line-height: 1.35;
+}
+    /* ====== POPUP: THANK YOU ====== */
+    #popup-thankyou { display: none; position: fixed; width: 400px; height: 494px; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000001; border-radius: 13px; overflow: hidden; border: 1px solid rgba(76,175,80,0.8); box-shadow: 4px 4px 9px 0px rgba(139,195,74,0.200); }
+    #popup-thankyou .ty-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url("https://content.pancake.vn/1/s800x1068/fwebp/b8/a9/be/33/645ec95fdf293c645381a4aefd65aada76ac2c12e1a08201bf323dd5-w:1919-h:2560-l:363265-t:image/jpeg.jpg") center/cover no-repeat; }
+    #popup-thankyou .ty-close { position: absolute; top: 0; right: 0; width: 29px; height: 29px; background: rgb(212,212,212); cursor: pointer; z-index: 2; -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIHZpZXdCb3g9JzAgMCAyNCAyNCc+IDxwYXRoIGQ9J00xMy40NiwxMkwxOSwxNy41NFYxOUgxNy41NEwxMiwxMy40Nkw2LjQ2LDE5SDVWMTcuNTRMMTAuNTQsMTJMNSw2LjQ2VjVINi40NkwxMiwxMC41NEwxNy41NCw1SDE5VjYuNDZMMTMuNDYsMTJaJz48L3BhdGg+IDwvc3ZnPg=="); -webkit-mask-size: 60%; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; }
+    #popup-thankyou .ty-dark { position: absolute; top: 271.8px; left: 0; width: 400px; height: 129px; background: rgba(0,0,0,0.48); }
+    #popup-thankyou .ty-banner { position: absolute; top: 257.9px; left: 25px; width: 350px; height: 136px; background: url("https://statics.pancake.vn/web-media/cf/cf/28/5f/f9ca08165577556ed2df053b0962a0e8e670490844d7ad5e84fa48b2-w:1366-h:530-l:48754-t:image/png.png") center/cover no-repeat; filter: contrast(0%) brightness(200%); animation: pulse 3s ease-in-out infinite; }
+    #popup-thankyou .ty-text { position: absolute; top: 336.3px; left: -11.5px; width: 423px; font-family: 'UTM-Azkia', cursive; font-size: 38px; text-align: center; color: #fff; filter: contrast(0%) brightness(200%); }
+
+    /* ====== ALERT ====== */
+    #alert-msg { display: none; position: fixed; top: 15px; left: 50%; transform: translateX(-50%); background: white; border: 1px solid #15942A; border-radius: 8px; padding: 10px 16px; box-shadow: 0px 2px 8px rgba(0,0,0,0.15); z-index: 9999999; font-size: 14px; }
+  </style>
+</head>
+<body ontouchstart="">
+
+<audio id="background-music"
+  src="https://statics.pancake.vn/web-media/5e/ee/bf/4a/afa10d3bdf98ca17ec3191ebbfd3c829d135d06939ee1f1b712d731d-w:0-h:0-l:2938934-t:audio/mpeg.mp3"
+  preload="none" loop></audio>
+
+<div id="music-toggle" title="Bật/Tắt nhạc">
+  <img id="play-icon" src="https://content.pancake.vn/1/02/d4/a7/88/fef5132f979892c1778a688f2039942fc24b396b332750179775f87e-w:200-h:200-l:8183-t:image/png.png" alt="Play" width="44" height="44"/>
+  <img id="pause-icon" src="https://content.pancake.vn/1/31/08/c9/52/c9f574ca2fa8481e1c8c657100583ddfbf47e33427d480a7dc32e788-w:200-h:200-l:242141-t:image/gif.gif" alt="Pause" width="44" height="44" style="display:none"/>
+</div>
+
+<div id="alert-msg"></div>
+<div id="popup-backdrop"></div>
+
+<div id="popup-gift">
+  <div class="gift-close" id="gift-close"></div>
+  <div class="gift-title">Gửi Mừng Cưới</div>
+  <div class="gift-red-bg"></div>
+  <div class="gift-qr">
+    <img src="https://statics.pancake.vn/web-media/e2/bc/35/38/dc2d9ddf74d997785eb0c802bd3237a50de1118e505f1e0a89ae4ec1-w:592-h:1280-l:497233-t:image/png.png" alt="QR"/>
+  </div>
+  <div class="gift-bank">MBBANK - NGUYEN TAN DAT<br>8838683860</div>
+</div>
+
+<div id="popup-thankyou">
+  <div class="ty-bg"></div>
+  <div class="ty-close" id="ty-close"></div>
+  <div class="ty-dark"></div>
+  <div class="ty-banner"></div>
+  <div class="ty-text">Rất hân hạnh được đón tiếp!</div>
+</div>
+
+<div class="pageview">
+
+  <!-- SECTION 1: COVER -->
+  <section id="sec-cover" class="section">
+    <div class="section-content" style="height:800px;">
+      <div class="curtain-left"></div>
+      <div class="curtain-right"></div>
+      <div class="deco-top-left"></div>
+      <div class="deco-top-right"></div>
+      <div class="deco-ring"></div>
+      <div class="deco-flower-bottom"></div>
+      <div class="invite-label">THIỆP MỜI</div>
+      <div class="couple-name">Anh Tú - Diệu Nhi</div>
+      <div class="day-time">THỨ 5 - 10H00</div>
+      <div class="wedding-date">15.02.2025</div>
+      <div class="main-photo">
+        <img src="https://statics.pancake.vn/web-media/ab/56/c3/d2/ae46af903d624877e4e71b00dc5ab4badaa10a8956d3c389ccbc73e9-w:1080-h:1620-l:151635-t:image/jpeg.jpeg" alt="Couple"/>
+      </div>
+      <div class="invite-text">Trân Trọng Kính Mời:</div>
+      <div class="guest-name-label" id="guest-name-display">Tên Khách Mời</div>
+      <div class="dotted-line"></div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: FAMILY INFO -->
+  <section id="sec-family" class="section">
+    <div class="section-content" style="height:714px;">
+      <div class="deco-rings"></div>
+      <div class="deco-flower-mid"></div>
+
+      <div class="announce-text sr" data-sr="fade-up" data-delay="1">Trân Trọng Báo Tin Lễ Thành Hôn Của</div>
+      <div class="groom-name sr" data-sr="shimmer" data-delay="2">Nguyễn Anh Tú</div>
+      <div class="amp sr" data-sr="zoom" data-delay="3">&amp;</div>
+      <div class="bride-name sr" data-sr="shimmer" data-delay="4">Trần Thị Diệu Nhi</div>
+
+      <div class="groom-side sr" data-sr="fade-left" data-delay="2">&nbsp;NHÀ TRAI</div>
+      <div class="bride-side sr" data-sr="fade-right" data-delay="2">&nbsp;NHÀ GÁI</div>
+      <div class="groom-parents sr" data-sr="fade-left" data-delay="3">ÔNG CẤN VĂN AN<br>BÀ NGUYỄN THỊ HẢI</div>
+      <div class="bride-parents sr" data-sr="fade-right" data-delay="3">ÔNG CẤN VĂN AN<br>BÀ NGUYỄN THỊ HẢI</div>
+      <div class="groom-location sr" data-sr="fade-left" data-delay="4">Quận 8, Hồ Chí Minh</div>
+      <div class="bride-location sr" data-sr="fade-right" data-delay="4">Quận 8, Hồ Chí Minh</div>
+
+      <div class="couple-photo sr" data-sr="img-up" data-delay="3">
+        <img src="https://statics.pancake.vn/web-media/e2/8c/c5/37/905dccbcd5bc1c1b602c10c95acb9986765f735e075bff1097e7f457-w:736-h:981-l:47868-t:image/jpeg.jfif" alt="Couple"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: DATE/TIME -->
+  <section id="sec-datetime" class="section">
+    <div class="section-content" style="height:515px;">
+      <div class="invite-sub sr" data-sr="fade-down" data-delay="1">Trân Trọng Kính Mời</div>
+      <div class="deco-divider sr" data-sr="zoom" data-delay="2">
+        <img src="https://statics.pancake.vn/web-media/80/ac/eb/cf/85e75c674913047eea133813069cf9dc6d9a1acadb58c454077c94c5-w:500-h:500-l:9074-t:image/png.png" alt=""/>
+      </div>
+
+      <div class="photo-left sr" data-sr="img-left" data-delay="2">
+        <img src="https://statics.pancake.vn/web-media/21/54/83/cb/163b4872b6600196d0ac068b1f046c5dd5f9d20c3ddad5e7c0abea9b-w:736-h:980-l:48194-t:image/jpeg.jfif" alt=""/>
+      </div>
+      <div class="photo-center sr" data-sr="img-zoom" data-delay="3">
+        <img src="https://statics.pancake.vn/web-media/3c/3b/ca/e1/e12ca0e6af675d653327f5a3b5d2c7c2385f71d26b8fee7604b45828-w:1706-h:2560-l:224512-t:image/jpeg.jpg" alt=""/>
+      </div>
+      <div class="photo-right sr" data-sr="img-right" data-delay="2">
+        <img src="https://statics.pancake.vn/web-media/6f/2b/71/1d/03a457a718b5bf78c5639d6de0521b7a19ec698dcd5737408a50bd16-w:1707-h:2560-l:275640-t:image/jpeg.jpg" alt=""/>
+      </div>
+
+      <div class="event-text sr" data-sr="fade-up" data-delay="1">THAM DỰ TIỆC MỪNG LỄ THÀNH HÔN<br>Vào Lúc</div>
+      <div class="day-name sr" data-sr="fade-down" data-delay="2">Thứ 5</div>
+      <div class="day-big sr" data-sr="zoom" data-delay="3">15</div>
+      <div class="month-name sr" data-sr="fade-up" data-delay="4">Tháng 2</div>
+      <div class="time-left sr" data-sr="fade-left" data-delay="4">10 giờ 00</div>
+      <div class="line-left sr" data-sr="fade-up" data-delay="3"></div>
+      <div class="line-right sr" data-sr="fade-up" data-delay="3"></div>
+      <div class="year-right sr" data-sr="fade-right" data-delay="4">Năm 2025</div>
+      <div class="lunar-date sr" data-sr="fade-up" data-delay="5">(Tức Ngày 18 Tháng 01 Năm Ất Tỵ)</div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: VENUE -->
+  <section id="sec-venue" class="section">
+    <div class="section-content" style="height:605px;">
+      <div class="venue-border"></div>
+      <div class="venue-label sr" data-sr="fade-down" data-delay="1">BUỔI TIỆC ĐƯỢC TỔ CHỨC TẠI</div>
+      <div class="venue-name sr" data-sr="shimmer" data-delay="2"><span style="font-weight:700;">The ADORA Center</span></div>
+      <div class="venue-address sr" data-sr="fade-up" data-delay="3">431 Hoàng Văn Thụ, Phường 4,<br>Tân Bình, Hồ Chí Minh</div>
+      <a href="https://maps.app.goo.gl/PP57rDnyXbgNEVbM8" target="_blank" class="direction-btn sr" data-sr="zoom" data-delay="4">Xem Chỉ Đường</a>
+      <div class="qr-image sr" data-sr="img-zoom" data-delay="2"></div>
+      <div class="map-pin"></div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: RSVP -->
+  <section id="sec-rsvp" class="section">
+    <div class="section-content" style="height:522px;">
+      <div class="rsvp-bg-deco"></div>
+      <div class="rsvp-card sr" data-sr="zoom" data-delay="1"></div>
+      <div class="rsvp-title sr" data-sr="fade-down" data-delay="2">Xác Nhận Tham Dự<br>&amp;<br>Gửi Lời Chúc</div>
+      <div class="form-wrap sr" data-sr="fade-up" data-delay="3">
+        
+        <input type="text" class="input-name" id="input-name" placeholder="Tên của bạn là?" required/>
+        <input type="text" class="input-rel" id="input-rel" placeholder="Bạn là gì của Dâu Rể nhỉ?"/>
+        <input type="text" class="input-wish" id="input-wish" placeholder="Gửi lời chúc đến Dâu Rể nhé!"/>
+        <div class="select-wrap">
+          <select id="input-attend">
+            <option value="" selected disabled>Bạn Có Tham Dự Không?</option>
+            <option value="Có Thể Tham Dự">Có Thể Tham Dự</option>
+            <option value="Không Thể Tham Dự">Không Thể Tham Dự</option>
+          </select>
+        </div>
+<button type="button" class="btn-submit" id="btn-submit"><span style="color:rgb(0,0,0);">GỬI NGAY</span></button>      </div>
+      <!-- <div class="btn-gift sr" data-sr="zoom" data-delay="4" id="btn-gift">GỬI MỪNG CƯỚI</div> -->
+    </div>
+    <div id="gift-inline" class="sr" data-sr="fade-up" data-delay="4">
+  <div class="gift-title-inline">Gửi Mừng Cưới</div>
+  <div class="gift-box">
+    <div class="gift-qr-inline">
+      <img src="https://statics.pancake.vn/web-media/e2/bc/35/38/dc2d9ddf74d997785eb0c802bd3237a50de1118e505f1e0a89ae4ec1-w:592-h:1280-l:497233-t:image/png.png" alt="QR"/>
+    </div>
+    <div class="gift-bank-inline">MBBANK - NGUYEN TAN DAT<br>8838683860</div>
+  </div>
+</div>
+  </section>
+
+  <!-- SECTION 6: ALBUM -->
+  <section id="sec-album" class="section">
+    <div class="section-content" style="height:632px;">
+      <div class="album-title sr" data-sr="fade-left" data-delay="1">Album hình cưới</div>
+      <div class="deco-right sr" data-sr="fade-right" data-delay="1">
+        <img src="https://statics.pancake.vn/web-media/80/ac/eb/cf/85e75c674913047eea133813069cf9dc6d9a1acadb58c454077c94c5-w:500-h:500-l:9074-t:image/png.png" alt=""/>
+      </div>
+      <div class="photo-tl sr" data-sr="img-left" data-delay="2">
+        <img src="https://statics.pancake.vn/web-media/e9/80/6a/05/fcf14d0545da0e656237816d3712c50d2792afda074a96abfd9bcec5-w:878-h:1280-l:99344-t:image/jpeg.png" alt=""/>
+      </div>
+      <div class="photo-tr sr" data-sr="img-right" data-delay="3">
+        <img src="https://content.pancake.vn/web-media/09/00/8a/b4/692735fdc0775ae1530963a767ce4264df77078f659771a3cde9c5ac-w:840-h:1280-l:177736-t:image/jpeg.png" alt=""/>
+      </div>
+      <div class="photo-bl sr" data-sr="img-left" data-delay="2">
+        <img src="https://content.pancake.vn/web-media/84/b3/f5/cd/cc7957b9f0e497f01a17d05f9e73406b7650b249c169b424c7ee1767-w:854-h:1280-l:94691-t:image/jpeg.png" alt=""/>
+      </div>
+      <div class="photo-br1 sr" data-sr="img-right" data-delay="3">
+        <img src="https://content.pancake.vn/1/s779x520/fwebp/60/b1/5e/e9/89fd2d2d6cd9a62db6e70776243eb9ed8603fc1fb415bdc95da92104-w:1286-h:857-l:255701-t:image/jpeg.jpg" alt=""/>
+      </div>
+      <div class="photo-br2 sr" data-sr="img-right" data-delay="5">
+        <img src="https://content.pancake.vn/1/s699x538/fwebp/7a/e8/d6/f6/da197a5a3542dfe09e7faa9e118999103385582808a2e2014fc72986-w:1286-h:988-l:154700-t:image/jpeg.jpg" alt=""/>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: ALBUM 2 -->
+  <section id="sec-album2" class="section">
+    <div class="section-content" style="height:563px;">
+      <div class="photo-1 sr" data-sr="img-left" data-delay="1">
+        <img src="https://content.pancake.vn/1/s578x867/fwebp/ad/c0/11/16/06080e040619cef49e87d7e06a574eb61310d3dc4bdc9f0fec3638c9-w:854-h:1280-l:259362-t:image/jpeg.png" alt=""/>
+      </div>
+      <div class="photo-2 sr" data-sr="img-right" data-delay="2">
+        <img src="https://content.pancake.vn/1/s580x862/fwebp/9d/60/03/fe/ecbd36b01369b3064a01426c59166451161e648939a52fd952564e21-w:862-h:1280-l:233470-t:image/jpeg.jpg" alt=""/>
+      </div>
+      <div class="photo-3 sr" data-sr="img-left" data-delay="3">
+        <img src="https://content.pancake.vn/1/s578x867/fwebp/cb/87/1f/67/25cdb38375c4ffc82ea938461257c5fbb49f3407e402f3e6ff903387-w:854-h:1280-l:160168-t:image/jpeg.jpg" alt=""/>
+      </div>
+      <div class="photo-4 sr" data-sr="img-right" data-delay="4">
+        <img src="https://content.pancake.vn/1/s587x841/fwebp/43/f6/88/e6/33fad2e85f20c3cab3d076535139371b0378fccc049b1083efffb1c5-w:894-h:1280-l:100553-t:image/jpeg.jpg" alt=""/>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: CLOSING -->
+  <section id="sec-closing" class="section">
+    <div class="section-content" style="height:630px;">
+      <div class="bg-photo"></div>
+      <div class="white-overlay"></div>
+      <div class="dark-band"></div>
+      <div class="logo-banner"></div>
+      <div class="closing-text sr" data-sr="fade-up" data-delay="2">Rất hân hạnh được đón tiếp!</div>
+    </div>
+  </section>
+
+  <!-- SECTION 9: FOOTER -->
+  <section id="sec-footer" class="section">
+    <div class="footer-scroll">
+      <div class="footer-text">| THIỆP CƯỚI ONLINE ĐỨC DIỆN &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | THIỆP CƯỚI ONLINE ĐỨC DIỆN &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | THIỆP CƯỚI ONLINE ĐỨC DIỆN</div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+// ====== CONFIG ======
+const CONFIG = {
+  groomName: "Nguyễn Anh Tú",
+  brideName: "Trần Thị Diệu Nhi",
+  coupleShort: "Anh Tú - Diệu Nhi",
+  date: "15.02.2025",
+  dayOfWeek: "Thứ 5",
+  dayNum: "15",
+  month: "Tháng 2",
+  year: "Năm 2025",
+  time: "10 giờ 00",
+  lunarDate: "(Tức Ngày 18 Tháng 01 Năm Ất Tỵ)",
+  venueName: "The ADORA Center",
+  venueAddress: "431 Hoàng Văn Thụ, Phường 4,<br>Tân Bình, Hồ Chí Minh",
+  mapLink: "https://maps.app.goo.gl/PP57rDnyXbgNEVbM8",
+  groomFamily: { label: "NHÀ TRAI", parents: "ÔNG CẤN VĂN AN<br>BÀ NGUYỄN THỊ HẢI", location: "Quận 8, Hồ Chí Minh" },
+  brideFamily: { label: "NHÀ GÁI", parents: "ÔNG CẤN VĂN AN<br>BÀ NGUYỄN THỊ HẢI", location: "Quận 8, Hồ Chí Minh" },
+  bankInfo: "MBBANK - NGUYEN TAN DAT<br>8838683860",
+  guestName: "Tên Khách Mời",
+  musicURL: "https://statics.pancake.vn/web-media/5e/ee/bf/4a/afa10d3bdf98ca17ec3191ebbfd3c829d135d06939ee1f1b712d731d-w:0-h:0-l:2938934-t:audio/mpeg.mp3"
+};
+
+(function applyConfig() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const guestFromUrl = urlParams.get('guest') || urlParams.get('name');
+  if (guestFromUrl) CONFIG.guestName = decodeURIComponent(guestFromUrl);
+  document.querySelector('.couple-name').textContent = CONFIG.coupleShort;
+  document.querySelector('.wedding-date').textContent = CONFIG.date;
+  document.querySelector('.groom-name').textContent = CONFIG.groomName;
+  document.querySelector('.bride-name').textContent = CONFIG.brideName;
+  document.querySelector('.day-name').textContent = CONFIG.dayOfWeek;
+  document.querySelector('.day-big').textContent = CONFIG.dayNum;
+  document.querySelector('.month-name').textContent = CONFIG.month;
+  document.querySelector('.year-right').textContent = CONFIG.year;
+  document.querySelector('.time-left').textContent = CONFIG.time;
+  document.querySelector('.lunar-date').textContent = CONFIG.lunarDate;
+  document.querySelector('.venue-name').innerHTML = '<span style="font-weight:700;">' + CONFIG.venueName + '</span>';
+  document.querySelector('.venue-address').innerHTML = CONFIG.venueAddress;
+  document.querySelector('.direction-btn').href = CONFIG.mapLink;
+  document.querySelector('.groom-side').innerHTML = '&nbsp;' + CONFIG.groomFamily.label;
+  document.querySelector('.bride-side').innerHTML = '&nbsp;' + CONFIG.brideFamily.label;
+  document.querySelector('.groom-parents').innerHTML = CONFIG.groomFamily.parents;
+  document.querySelector('.bride-parents').innerHTML = CONFIG.brideFamily.parents;
+  document.querySelector('.groom-location').textContent = CONFIG.groomFamily.location;
+  document.querySelector('.bride-location').textContent = CONFIG.brideFamily.location;
+  document.querySelector('.gift-bank').innerHTML = CONFIG.bankInfo;
+  document.getElementById('guest-name-display').textContent = CONFIG.guestName;
+  document.getElementById('background-music').src = CONFIG.musicURL;
+})();
+
+// ====== MUSIC ======
+(function initMusic() {
+  const audio = document.getElementById('background-music');
+  const toggle = document.getElementById('music-toggle');
+  const playIcon = document.getElementById('play-icon');
+  const pauseIcon = document.getElementById('pause-icon');
+  audio.volume = 0.6;
+  let playing = false, started = false;
+  function setUI(p) {
+    playing = p;
+    playIcon.style.display = p ? 'none' : 'block';
+    pauseIcon.style.display = p ? 'block' : 'none';
+    toggle.classList.toggle('vibrating', p);
+  }
+  const startOnce = () => {
+    if (!started) { started = true; audio.play().then(() => setUI(true)).catch(() => setUI(false)); }
+  };
+  document.body.addEventListener('click', startOnce, { once: true });
+  document.body.addEventListener('touchstart', startOnce, { once: true, passive: true });
+  toggle.addEventListener('click', e => {
+    e.stopPropagation();
+    if (playing) { audio.pause(); setUI(false); }
+    else { audio.play().then(() => { started = true; setUI(true); }).catch(() => {}); }
+  });
+  audio.addEventListener('play', () => setUI(true));
+  audio.addEventListener('pause', () => setUI(false));
+})();
+
+// ====== POPUPS ======
+(function initPopups() {
+  const backdrop = document.getElementById('popup-backdrop');
+  const giftPopup = document.getElementById('popup-gift');
+  const tyPopup = document.getElementById('popup-thankyou');
+  function openPopup(el) { el.style.display = 'block'; backdrop.style.display = 'block'; }
+  function closeAll() { giftPopup.style.display = 'none'; tyPopup.style.display = 'none'; backdrop.style.display = 'none'; }
+  // document.getElementById('btn-gift').addEventListener('click', () => openPopup(giftPopup));
+  document.getElementById('gift-close').addEventListener('click', closeAll);
+  document.getElementById('ty-close').addEventListener('click', closeAll);
+  backdrop.addEventListener('click', closeAll);
+})();
+
+// ====== FORM ======
+const SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwnzSm-ircYXuGQmgDYw4kyx4lBP9BUf3SN8B7qEhK07hwvCwuHhjt-HR_vhA7B7o0U/exec";
+
+(function initForm() {
+  const btn = document.getElementById('btn-submit');
+
+  btn.addEventListener('click', async function() {
+    const name = document.getElementById('input-name').value.trim();
+    const rel = document.getElementById('input-rel').value.trim();
+    const wish = document.getElementById('input-wish').value.trim();
+    const attend = document.getElementById('input-attend').value;
+
+    if (!name) { showAlert('Vui lòng nhập tên của bạn!'); return; }
+    if (!attend) { showAlert('Vui lòng chọn bạn có tham dự không!'); return; }
+
+    // ====== set loading UI ======
+    const oldHtml = btn.innerHTML;
+    btn.classList.add('is-loading');
+    btn.disabled = true;
+    btn.innerHTML = `<span class="spinner"></span><span>ĐANG GỬI...</span>`;
+
+    try {
+      const res = await fetch(SHEET_WEBAPP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+        body: new URLSearchParams({ name, rel, wish, attend }).toString()
+      });
+
+      const txt = await res.text();
+      let out = {};
+      try { out = JSON.parse(txt); } catch { out = { ok: false, raw: txt }; }
+      if (!out.ok) throw new Error(out.raw || "Server not ok");
+
+      // Popup cảm ơn
+      document.getElementById('popup-thankyou').style.display = 'block';
+      document.getElementById('popup-backdrop').style.display = 'block';
+
+      // Clear
+      document.getElementById('input-name').value = '';
+      document.getElementById('input-rel').value = '';
+      document.getElementById('input-wish').value = '';
+      document.getElementById('input-attend').value = '';
+    } catch (e) {
+      console.error(e);
+      showAlert('Gửi thất bại: ' + ((e && e.message) ? e.message : e));
+    } finally {
+      // ====== restore button ======
+      btn.classList.remove('is-loading');
+      btn.disabled = false;
+      btn.innerHTML = oldHtml;
+    }
+  });
+})();
+function showAlert(msg) {
+  const el = document.getElementById('alert-msg');
+  el.textContent = msg;
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 3000);
+}
+
+// ====== ENHANCED SCROLL REVEAL ======
+(function initScrollReveal() {
+  const items = document.querySelectorAll('.sr');
+
+  // Nhóm các phần tử theo section cha để stagger theo nhóm
+  // Khi một phần tử vào viewport, trigger animation với delay từ data-delay
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        // Lấy delay từ data-delay (đơn vị: * 0.1s), mặc định 0
+        const delayStep = parseInt(el.getAttribute('data-delay') || '0');
+        // Áp dụng animation-delay trực tiếp
+        el.style.animationDelay = (delayStep * 0.25) + 's';
+        el.classList.add('is-visible');
+        observer.unobserve(el);
+      }
+    });
+  }, {
+    threshold: 0.18,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  items.forEach(el => observer.observe(el));
+})();
+</script>
+</body>
+</html>
