@@ -82,7 +82,6 @@ document.querySelectorAll('.filter-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
-    // Could filter cards here
     const filter = tab.dataset.filter;
     filterTemplates(filter);
   });
@@ -110,7 +109,6 @@ if (pricingToggle) {
     document.querySelectorAll('.pricing-toggle__label').forEach((l, i) => {
       l.classList.toggle('active', yearly ? i === 1 : i === 0);
     });
-    // update prices
     document.querySelectorAll('[data-monthly][data-yearly]').forEach(el => {
       el.textContent = yearly ? el.dataset.yearly : el.dataset.monthly;
     });
@@ -162,17 +160,14 @@ if (heroTitle) {
   const STORAGE_KEY = 'cinelove-theme';
   const html = document.documentElement;
 
-  // Restore saved preference immediately (before paint)
   const saved = localStorage.getItem(STORAGE_KEY) || 'dark';
   html.setAttribute('data-theme', saved);
 
   function setTheme(theme) {
-    // Add class to enable smooth transitions
     html.classList.add('theme-transitioning');
     html.setAttribute('data-theme', theme);
     localStorage.setItem(STORAGE_KEY, theme);
 
-    // Update all toggle buttons on the page
     document.querySelectorAll('.theme-toggle__knob').forEach(knob => {
       knob.textContent = theme === 'light' ? '☀️' : '🌙';
     });
@@ -183,10 +178,8 @@ if (heroTitle) {
     setTimeout(() => html.classList.remove('theme-transitioning'), 450);
   }
 
-  // Init all toggle buttons
   function bindToggles() {
     document.querySelectorAll('.theme-toggle').forEach(btn => {
-      // Set initial state
       const current = html.getAttribute('data-theme') || 'dark';
       const knob = btn.querySelector('.theme-toggle__knob');
       if (knob) knob.textContent = current === 'light' ? '☀️' : '🌙';
@@ -197,17 +190,59 @@ if (heroTitle) {
       });
     });
 
-    // Set tooltip
     document.querySelectorAll('.theme-toggle-wrap').forEach(wrap => {
       const current = html.getAttribute('data-theme') || 'dark';
       wrap.dataset.tip = current === 'light' ? 'Chuyển sang tối' : 'Chuyển sang sáng';
     });
   }
 
-  // Run after DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', bindToggles);
   } else {
     bindToggles();
   }
+})();
+
+// ── HOTLINE BUBBLE ───────────────────────────
+(function initHotline() {
+  const PHONE = '0901 234 567';
+  const ZALO  = 'https://zalo.me/0901234567';
+
+  const zaloSVG = `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" height="30">
+    <rect width="48" height="48" rx="12" fill="#0068FF"/>
+    <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle"
+      font-family="Arial,sans-serif" font-weight="800" font-size="15" fill="white" letter-spacing="-0.5">Zalo</text>
+  </svg>`;
+
+  const bubble = document.createElement('div');
+  bubble.className = 'hotline-bubble';
+  bubble.innerHTML = `
+    <div class="hotline-menu" id="hotlineMenu">
+      <a href="${ZALO}" target="_blank" class="hotline-item">
+        <span class="hotline-item__icon">💬</span>
+        <span class="hotline-item__label">Chat Zalo</span>
+      </a>
+      <a href="tel:${PHONE.replace(/\s/g,'')}" class="hotline-item">
+        <span class="hotline-item__icon">📞</span>
+        <span class="hotline-item__label">${PHONE}</span>
+      </a>
+    </div>
+    <a href="${ZALO}" target="_blank" class="hotline-btn" id="hotlineBtn" aria-label="Chat Zalo">${zaloSVG}</a>
+  `;
+  document.body.appendChild(bubble);
+
+  const btn  = document.getElementById('hotlineBtn');
+  const menu = document.getElementById('hotlineMenu');
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    menu.classList.toggle('open');
+  });
+
+  // close when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!bubble.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
 })();
