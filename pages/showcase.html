@@ -301,6 +301,7 @@
 
 <script>
 const DATA = [
+  // ── Mẫu cũ ──
   {src:'thiepcuoi.html',   name:'Mẫu Cơ Bản',      tags:['Hiện đại','Thanh lịch'],      u:'1.627', badge:'pink',   bt:'Hot', f:'hien-dai thanh-lich'},
   {src:'thiepcuoi1.html',  name:'Mẫu Đỏ Vàng',      tags:['Truyền thống','Trang trọng'], u:'6.380', badge:'purple', bt:'Hot', f:'truyen-thong'},
   {src:'thiepcuoi2.html',  name:'Mẫu Đỏ Mộc Nâu',   tags:['Truyền thống','Cổ điển'],     u:'4.210', badge:'orange', bt:'Hot', f:'truyen-thong'},
@@ -320,8 +321,35 @@ const DATA = [
   {src:'thiepcuoi16.html', name:'Mẫu Xuân',           tags:['Truyền thống','Lãng mạn'],    u:'430',   badge:'green',  bt:'Mới', f:'truyen-thong lang-man'},
   {src:'thiepcuoi17.html', name:'Mẫu Hạ Long',        tags:['Hiện đại','Lãng mạn'],        u:'310',   badge:'green',  bt:'Mới', f:'hien-dai lang-man'},
   {src:'thiepcuoi19.html', name:'Mẫu Bình Minh',      tags:['Thanh lịch','Hiện đại'],      u:'260',   badge:'green',  bt:'Mới', f:'thanh-lich hien-dai'},
-];
 
+  // ── Mẫu mới từ thư mục 1 ──
+  {src:'1/template2702ty.html',   name:'Mẫu 20', tags:['Hiện đại','Thanh lịch'],      u:'0', badge:'green', bt:'Mới', f:'hien-dai thanh-lich'},
+  {src:'1/template11102iu.html',  name:'Mẫu 21', tags:['Lãng mạn','Hiện đại'],        u:'0', badge:'green', bt:'Mới', f:'lang-man hien-dai'},
+  {src:'1/template21102e.html',   name:'Mẫu 22', tags:['Truyền thống','Trang trọng'], u:'0', badge:'green', bt:'Mới', f:'truyen-thong'},
+  {src:'1/template32703.html',    name:'Mẫu 23', tags:['Thanh lịch','Nhẹ nhàng'],     u:'0', badge:'green', bt:'Mới', f:'thanh-lich'},
+  {src:'1/template51102yu.html',  name:'Mẫu 24', tags:['Lãng mạn','Thanh lịch'],      u:'0', badge:'green', bt:'Mới', f:'lang-man thanh-lich'},
+  {src:'1/template61102fg.html',  name:'Mẫu 25', tags:['Hiện đại','Tối giản'],         u:'0', badge:'green', bt:'Mới', f:'hien-dai toi-gian'},
+  {src:'1/template71102.html',    name:'Mẫu 26', tags:['Truyền thống','Cổ điển'],      u:'0', badge:'green', bt:'Mới', f:'truyen-thong'},
+  {src:'1/template82702cm.html',  name:'Mẫu 27', tags:['Lãng mạn','Ngọt ngào'],       u:'0', badge:'green', bt:'Mới', f:'lang-man'},
+  {src:'1/template91102dl.html',  name:'Mẫu 28', tags:['Thanh lịch','Hiện đại'],      u:'0', badge:'green', bt:'Mới', f:'thanh-lich hien-dai'},
+  {src:'1/template101102ld.html', name:'Mẫu 29', tags:['Hiện đại','Tươi sáng'],       u:'0', badge:'green', bt:'Mới', f:'hien-dai lang-man'},
+  {src:'1/template111102fk.html', name:'Mẫu 30', tags:['Truyền thống','Trang trọng'], u:'0', badge:'green', bt:'Mới', f:'truyen-thong'},
+  {src:'1/template122702sc.html', name:'Mẫu 31', tags:['Thanh lịch','Tối giản'],      u:'0', badge:'green', bt:'Mới', f:'thanh-lich toi-gian'},
+  {src:'1/template132702mn.html', name:'Mẫu 32', tags:['Lãng mạn','Hiện đại'],        u:'0', badge:'green', bt:'Mới', f:'lang-man hien-dai'},
+  {src:'1/template142702xm.html', name:'Mẫu 33', tags:['Truyền thống','Cổ điển'],     u:'0', badge:'green', bt:'Mới', f:'truyen-thong'},
+  {src:'1/template152702vb.html', name:'Mẫu 34', tags:['Thanh lịch','Nhẹ nhàng'],     u:'0', badge:'green', bt:'Mới', f:'thanh-lich'},
+  {src:'1/template162702fk.html', name:'Mẫu 35', tags:['Hiện đại','Tối giản'],         u:'0', badge:'green', bt:'Mới', f:'hien-dai toi-gian'},
+  {src:'1/template172702vn.html', name:'Mẫu 36', tags:['Lãng mạn','Thanh lịch'],      u:'0', badge:'green', bt:'Mới', f:'lang-man thanh-lich'},
+  {src:'1/template182702dl.html', name:'Mẫu 37', tags:['Truyền thống','Trang trọng'], u:'0', badge:'green', bt:'Mới', f:'truyen-thong'},
+  {src:'1/template192702fl.html', name:'Mẫu 38', tags:['Hiện đại','Lãng mạn'],        u:'0', badge:'green', bt:'Mới', f:'hien-dai lang-man'},
+  {src:'1/template202702al.html', name:'Mẫu 39', tags:['Thanh lịch','Hiện đại'],      u:'0', badge:'green', bt:'Mới', f:'thanh-lich hien-dai'},
+  {src:'1/template212702ad.html', name:'Mẫu 40', tags:['Lãng mạn','Ngọt ngào'],       u:'0', badge:'green', bt:'Mới', f:'lang-man'},
+  {src:'1/template222702sd.html', name:'Mẫu 41', tags:['Tối giản','Hiện đại'],         u:'0', badge:'green', bt:'Mới', f:'toi-gian hien-dai'},
+  {src:'1/template232702al.html', name:'Mẫu 42', tags:['Truyền thống','Cổ điển'],     u:'0', badge:'green', bt:'Mới', f:'truyen-thong'},
+  {src:'1/template242702sl.html', name:'Mẫu 43', tags:['Thanh lịch','Nhẹ nhàng'],     u:'0', badge:'green', bt:'Mới', f:'thanh-lich'},
+  {src:'1/template252702km.html', name:'Mẫu 44', tags:['Lãng mạn','Hiện đại'],        u:'0', badge:'green', bt:'Mới', f:'lang-man hien-dai'},
+  {src:'1/template262702kn.html', name:'Mẫu 45', tags:['Hiện đại','Tươi sáng'],       u:'0', badge:'green', bt:'Mới', f:'hien-dai'},
+];
 function mkSVG(i) {
   return `<svg viewBox="0 0 200 410" xmlns="http://www.w3.org/2000/svg">
   <defs>
