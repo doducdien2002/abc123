@@ -86,7 +86,12 @@
     .modal-shell svg { position:absolute; inset:0; width:100%; height:100%; z-index:10; pointer-events:none; filter:drop-shadow(0 16px 36px rgba(0,0,0,.55)); }
     .modal-screen { position:absolute; top:4px; left:4px; width:172px; height:360px; border-radius:36px; overflow:hidden; background:#e8dfd4; z-index:2; }
     .modal-screen iframe { position:absolute; top:0; left:0; width:390px; height:844px; border:none; display:block; transform-origin:top left; }
-    .close-x { position:absolute; top:12px; right:12px; width:30px; height:30px; border-radius:50%; background:rgba(0,0,0,.1); border:none; font-size:.85rem; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:20; }
+    .close-x { position:absolute; top:12px; right:12px; width:30px; height:30px; border-radius:50%; background:rgba(0,0,0,.1); border:none; font-size:.85rem; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:20; transition:background .2s; }
+    .close-x:hover { background:rgba(0,0,0,.22); }
+    /* ── NÚT TẮT NHẠC ── */
+    .mute-btn { position:absolute; top:12px; left:12px; width:30px; height:30px; border-radius:50%; background:rgba(0,0,0,.18); border:none; font-size:.85rem; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:20; transition:background .2s, transform .15s; }
+    .mute-btn:hover { background:rgba(0,0,0,.32); transform:scale(1.1); }
+    .mute-btn.muted { background:rgba(255,77,139,.75); }
     .modal-body { padding:16px 20px 22px; }
     .modal-name { font-size:1.05rem; font-weight:700; margin-bottom:6px; }
     .modal-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:12px; }
@@ -221,6 +226,8 @@
 <div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
   <div class="modal">
     <div class="modal-top">
+      <!-- Nút tắt/bật nhạc -->
+      <button class="mute-btn" id="muteBtn" onclick="toggleMute()" title="Tắt/bật nhạc">🔊</button>
       <button class="close-x" onclick="closeModal()">✕</button>
       <div class="modal-shell">
         <svg viewBox="0 0 200 410" xmlns="http://www.w3.org/2000/svg">
@@ -301,28 +308,6 @@
 
 <script>
 const DATA = [
-  // ── Mẫu cũ ──
-  {src:'thiepcuoi.html',   name:'Mẫu Cơ Bản',      tags:['Hiện đại','Thanh lịch'],      u:'1.627', badge:'pink',   bt:'Hot', f:'hien-dai thanh-lich'},
-  {src:'thiepcuoi1.html',  name:'Mẫu Đỏ Vàng',      tags:['Truyền thống','Trang trọng'], u:'6.380', badge:'purple', bt:'Hot', f:'truyen-thong'},
-  {src:'thiepcuoi2.html',  name:'Mẫu Đỏ Mộc Nâu',   tags:['Truyền thống','Cổ điển'],     u:'4.210', badge:'orange', bt:'Hot', f:'truyen-thong'},
-  {src:'thiepcuoi3.html',  name:'Mẫu Hoa Đỏ Be',    tags:['Lãng mạn','Hiện đại'],        u:'2.894', badge:'',       bt:'',    f:'lang-man hien-dai'},
-  {src:'thiepcuoi4.html',  name:'Mẫu Ocean',         tags:['Hiện đại','Tối giản'],         u:'3.147', badge:'blue',   bt:'Mới', f:'hien-dai toi-gian'},
-  {src:'thiepcuoi5.html',  name:'Mẫu Forest',        tags:['Thanh lịch','Tự nhiên'],       u:'1.538', badge:'',       bt:'',    f:'thanh-lich'},
-  {src:'thiepcuoi6.html',  name:'Mẫu Lavender',      tags:['Lãng mạn','Thanh lịch'],      u:'5.012', badge:'pink',   bt:'Hot', f:'lang-man thanh-lich'},
-  {src:'thiepcuoi7.html',  name:'Mẫu Blush',         tags:['Lãng mạn','Ngọt ngào'],       u:'2.201', badge:'',       bt:'',    f:'lang-man'},
-  {src:'thiepcuoi8.html',  name:'Mẫu Ever',          tags:['Hiện đại','Tối giản'],         u:'1.893', badge:'blue',   bt:'Mới', f:'hien-dai toi-gian'},
-  {src:'thiepcuoi9.html',  name:'Mẫu Đông Phương',   tags:['Truyền thống','Trang trọng'], u:'7.104', badge:'purple', bt:'Hot', f:'truyen-thong'},
-  {src:'thiepcuoi10.html', name:'Mẫu Hoàng Gia',     tags:['Truyền thống','Sang trọng'],  u:'4.560', badge:'orange', bt:'Hot', f:'truyen-thong thanh-lich'},
-  {src:'thiepcuoi11.html', name:'Mẫu Tuyết Trắng',   tags:['Thanh lịch','Tối giản'],      u:'2.340', badge:'',       bt:'',    f:'thanh-lich toi-gian'},
-  {src:'thiepcuoi12.html', name:'Mẫu Mùa Hè',        tags:['Hiện đại','Tươi sáng'],       u:'1.120', badge:'green',  bt:'Mới', f:'hien-dai lang-man'},
-  {src:'thiepcuoi13.html', name:'Mẫu Hoàng Hôn',     tags:['Lãng mạn','Thanh lịch'],      u:'3.788', badge:'pink',   bt:'Hot', f:'lang-man thanh-lich'},
-  {src:'thiepcuoi14.html', name:'Mẫu Thiên Nga',      tags:['Thanh lịch','Nhẹ nhàng'],     u:'2.670', badge:'',       bt:'',    f:'thanh-lich toi-gian'},
-  {src:'thiepcuoi15.html', name:'Mẫu Minimalist',     tags:['Hiện đại','Tối giản'],         u:'980',   badge:'blue',   bt:'Mới', f:'hien-dai toi-gian'},
-  {src:'thiepcuoi16.html', name:'Mẫu Xuân',           tags:['Truyền thống','Lãng mạn'],    u:'430',   badge:'green',  bt:'Mới', f:'truyen-thong lang-man'},
-  {src:'thiepcuoi17.html', name:'Mẫu Hạ Long',        tags:['Hiện đại','Lãng mạn'],        u:'310',   badge:'green',  bt:'Mới', f:'hien-dai lang-man'},
-  {src:'thiepcuoi19.html', name:'Mẫu Bình Minh',      tags:['Thanh lịch','Hiện đại'],      u:'260',   badge:'green',  bt:'Mới', f:'thanh-lich hien-dai'},
-
-  // ── Mẫu mới từ thư mục 1 ──
   {src:'1/template2702ty.html',   name:'Mẫu 20', tags:['Hiện đại','Thanh lịch'],      u:'0', badge:'green', bt:'Mới', f:'hien-dai thanh-lich'},
   {src:'1/template11102iu.html',  name:'Mẫu 21', tags:['Lãng mạn','Hiện đại'],        u:'0', badge:'green', bt:'Mới', f:'lang-man hien-dai'},
   {src:'1/template21102e.html',   name:'Mẫu 22', tags:['Truyền thống','Trang trọng'], u:'0', badge:'green', bt:'Mới', f:'truyen-thong'},
@@ -349,7 +334,31 @@ const DATA = [
   {src:'1/template242702sl.html', name:'Mẫu 43', tags:['Thanh lịch','Nhẹ nhàng'],     u:'0', badge:'green', bt:'Mới', f:'thanh-lich'},
   {src:'1/template252702km.html', name:'Mẫu 44', tags:['Lãng mạn','Hiện đại'],        u:'0', badge:'green', bt:'Mới', f:'lang-man hien-dai'},
   {src:'1/template262702kn.html', name:'Mẫu 45', tags:['Hiện đại','Tươi sáng'],       u:'0', badge:'green', bt:'Mới', f:'hien-dai'},
+  // ── Mẫu cũ ──
+  {src:'thiepcuoi.html',   name:'Mẫu Cơ Bản',      tags:['Hiện đại','Thanh lịch'],      u:'1.627', badge:'pink',   bt:'Hot', f:'hien-dai thanh-lich'},
+  {src:'thiepcuoi1.html',  name:'Mẫu Đỏ Vàng',      tags:['Truyền thống','Trang trọng'], u:'6.380', badge:'purple', bt:'Hot', f:'truyen-thong'},
+  {src:'thiepcuoi2.html',  name:'Mẫu Đỏ Mộc Nâu',   tags:['Truyền thống','Cổ điển'],     u:'4.210', badge:'orange', bt:'Hot', f:'truyen-thong'},
+  {src:'thiepcuoi3.html',  name:'Mẫu Hoa Đỏ Be',    tags:['Lãng mạn','Hiện đại'],        u:'2.894', badge:'',       bt:'',    f:'lang-man hien-dai'},
+  {src:'thiepcuoi4.html',  name:'Mẫu Ocean',         tags:['Hiện đại','Tối giản'],         u:'3.147', badge:'blue',   bt:'Mới', f:'hien-dai toi-gian'},
+  {src:'thiepcuoi5.html',  name:'Mẫu Forest',        tags:['Thanh lịch','Tự nhiên'],       u:'1.538', badge:'',       bt:'',    f:'thanh-lich'},
+  {src:'thiepcuoi6.html',  name:'Mẫu Lavender',      tags:['Lãng mạn','Thanh lịch'],      u:'5.012', badge:'pink',   bt:'Hot', f:'lang-man thanh-lich'},
+  {src:'thiepcuoi7.html',  name:'Mẫu Blush',         tags:['Lãng mạn','Ngọt ngào'],       u:'2.201', badge:'',       bt:'',    f:'lang-man'},
+  {src:'thiepcuoi8.html',  name:'Mẫu Ever',          tags:['Hiện đại','Tối giản'],         u:'1.893', badge:'blue',   bt:'Mới', f:'hien-dai toi-gian'},
+  {src:'thiepcuoi9.html',  name:'Mẫu Đông Phương',   tags:['Truyền thống','Trang trọng'], u:'7.104', badge:'purple', bt:'Hot', f:'truyen-thong'},
+  {src:'thiepcuoi10.html', name:'Mẫu Hoàng Gia',     tags:['Truyền thống','Sang trọng'],  u:'4.560', badge:'orange', bt:'Hot', f:'truyen-thong thanh-lich'},
+  {src:'thiepcuoi11.html', name:'Mẫu Tuyết Trắng',   tags:['Thanh lịch','Tối giản'],      u:'2.340', badge:'',       bt:'',    f:'thanh-lich toi-gian'},
+  {src:'thiepcuoi12.html', name:'Mẫu Mùa Hè',        tags:['Hiện đại','Tươi sáng'],       u:'1.120', badge:'green',  bt:'Mới', f:'hien-dai lang-man'},
+  {src:'thiepcuoi13.html', name:'Mẫu Hoàng Hôn',     tags:['Lãng mạn','Thanh lịch'],      u:'3.788', badge:'pink',   bt:'Hot', f:'lang-man thanh-lich'},
+  {src:'thiepcuoi14.html', name:'Mẫu Thiên Nga',      tags:['Thanh lịch','Nhẹ nhàng'],     u:'2.670', badge:'',       bt:'',    f:'thanh-lich toi-gian'},
+  {src:'thiepcuoi15.html', name:'Mẫu Minimalist',     tags:['Hiện đại','Tối giản'],         u:'980',   badge:'blue',   bt:'Mới', f:'hien-dai toi-gian'},
+  {src:'thiepcuoi16.html', name:'Mẫu Xuân',           tags:['Truyền thống','Lãng mạn'],    u:'430',   badge:'green',  bt:'Mới', f:'truyen-thong lang-man'},
+  {src:'thiepcuoi17.html', name:'Mẫu Hạ Long',        tags:['Hiện đại','Lãng mạn'],        u:'310',   badge:'green',  bt:'Mới', f:'hien-dai lang-man'},
+  {src:'thiepcuoi19.html', name:'Mẫu Bình Minh',      tags:['Thanh lịch','Hiện đại'],      u:'260',   badge:'green',  bt:'Mới', f:'thanh-lich hien-dai'},
+
+  // ── Mẫu mới từ thư mục 1 ──
+  
 ];
+
 function mkSVG(i) {
   return `<svg viewBox="0 0 200 410" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -377,6 +386,7 @@ function mkSVG(i) {
 }
 
 const grid = document.getElementById('grid');
+
 DATA.forEach(function(d, i) {
   const el = document.createElement('div');
   el.className = 'card'; el.dataset.f = d.f;
@@ -385,7 +395,7 @@ DATA.forEach(function(d, i) {
       (d.badge ? `<span class="badge ${d.badge}">${d.bt}</span>` : '') +
       '<div class="shell">' + mkSVG(i) +
         '<div class="screen"><div class="skeleton"><div class="sk-ring"></div></div>' +
-        `<iframe src="${d.src}" loading="lazy" scrolling="no" onload="onLoad(this)"></iframe></div></div></div>` +
+        `<iframe data-src="${d.src}" sandbox="allow-scripts allow-same-origin" scrolling="no" onload="onLoad(this)"></iframe></div></div></div>` +
     '<div class="card-info">' +
       `<div class="card-name">${d.name}</div>` +
       `<div class="card-tags">${d.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>` +
@@ -393,6 +403,19 @@ DATA.forEach(function(d, i) {
       `<div class="card-btns"><button class="btn-view" onclick="openModal(${i})">👁 Xem mẫu</button><button class="btn-heart" onclick="doHeart(this,event)">🤍</button></div></div>`;
   grid.appendChild(el);
 });
+
+// Lazy load iframe
+const lazyObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      var iframe = entry.target.querySelector('iframe[data-src]');
+      if (iframe) { iframe.src = iframe.dataset.src; delete iframe.dataset.src; }
+      lazyObs.unobserve(entry.target);
+    }
+  });
+}, { rootMargin: '200px 0px' });
+
+document.querySelectorAll('.card').forEach(function(card) { lazyObs.observe(card); });
 
 function scaleAll() {
   document.querySelectorAll('.screen').forEach(function(sc) {
@@ -402,11 +425,13 @@ function scaleAll() {
   var mif = document.getElementById('mif');
   if (mif && mif.src) { var ms = mif.closest('.modal-screen'); if (ms) mif.style.transform = 'scale(' + (ms.offsetWidth/390) + ')'; }
 }
+
 function onLoad(iframe) {
   var sk = iframe.previousElementSibling;
   if (sk && sk.classList.contains('skeleton')) sk.classList.add('gone');
   var w = iframe.parentElement.offsetWidth; if (w) iframe.style.transform = 'scale(' + (w/390) + ')';
 }
+
 setTimeout(scaleAll,0); setTimeout(scaleAll,200); setTimeout(scaleAll,600);
 window.addEventListener('load', scaleAll); window.addEventListener('resize', scaleAll);
 if (window.ResizeObserver) new ResizeObserver(scaleAll).observe(document.getElementById('grid'));
@@ -432,19 +457,62 @@ grid.addEventListener('mouseenter', function(e) {
   }, {once:true});
 }, true);
 
+// ── MUTE / UNMUTE ──
+var _muted = false;
+
+function toggleMute() {
+  _muted = !_muted;
+  var mif = document.getElementById('mif');
+  var btn = document.getElementById('muteBtn');
+
+  // Cách 1: postMessage vào iframe (nếu template lắng nghe)
+  try { mif.contentWindow.postMessage(_muted ? 'mute' : 'unmute', '*'); } catch(e) {}
+
+  // Cách 2: tìm trực tiếp các thẻ audio/video bên trong iframe (cùng origin)
+  try {
+    var iDoc = mif.contentDocument || mif.contentWindow.document;
+    iDoc.querySelectorAll('audio, video').forEach(function(el) {
+      el.muted = _muted;
+      // Nếu đang tắt nhạc thì pause, bật lại thì play
+      if (_muted) { el.pause(); } else { el.play().catch(function(){}); }
+    });
+  } catch(e) {}
+
+  btn.textContent = _muted ? '🔇' : '🔊';
+  btn.classList.toggle('muted', _muted);
+}
+
 function openModal(i) {
   var d = DATA[i];
   document.getElementById('mname').textContent = d.name;
   document.getElementById('mtags').innerHTML = d.tags.map(t=>`<span class="tag">${t}</span>`).join('');
   document.getElementById('mlink').href = d.src;
-  var mif = document.getElementById('mif'); mif.src = d.src;
+
+  // Reset trạng thái mute mỗi lần mở modal mới
+  _muted = false;
+  var muteBtn = document.getElementById('muteBtn');
+  muteBtn.textContent = '🔊';
+  muteBtn.classList.remove('muted');
+
+  var mif = document.getElementById('mif');
+  mif.removeAttribute('sandbox'); // bỏ sandbox để nhạc chạy bình thường
+  mif.src = d.src;
   document.getElementById('overlay').classList.add('show'); document.body.style.overflow = 'hidden';
   setTimeout(function() { var ms = mif.closest('.modal-screen'); if (ms) mif.style.transform = 'scale(' + (ms.offsetWidth/390) + ')'; }, 50);
 }
+
 function closeModal() {
+  // Tắt nhạc trước khi đóng
+  try {
+    var mif = document.getElementById('mif');
+    var iDoc = mif.contentDocument || mif.contentWindow.document;
+    iDoc.querySelectorAll('audio, video').forEach(function(el) { el.pause(); });
+  } catch(e) {}
+
   document.getElementById('overlay').classList.remove('show'); document.body.style.overflow = '';
-  setTimeout(function(){ document.getElementById('mif').src=''; }, 300);
+  setTimeout(function(){ document.getElementById('mif').src = ''; }, 300);
 }
+
 document.querySelectorAll('.fbtn').forEach(function(btn) {
   btn.addEventListener('click', function() {
     document.querySelectorAll('.fbtn').forEach(function(b){ b.classList.remove('active'); });
@@ -453,6 +521,7 @@ document.querySelectorAll('.fbtn').forEach(function(btn) {
     document.querySelectorAll('.card').forEach(function(c) { c.style.display = (f==='all' || c.dataset.f.includes(f)) ? '' : 'none'; });
   });
 });
+
 function doHeart(btn, e) {
   btn.classList.toggle('liked'); btn.textContent = btn.classList.contains('liked') ? '❤️' : '🤍';
   btn.classList.remove('pop'); void btn.offsetWidth; btn.classList.add('pop');
@@ -470,12 +539,15 @@ function doHeart(btn, e) {
     })(k * 120);
   }
 }
+
 var glow = document.createElement('div'); glow.className = 'cursor-glow'; document.body.appendChild(glow);
 document.addEventListener('mousemove', function(e){ glow.style.left = e.clientX+'px'; glow.style.top = e.clientY+'px'; });
+
 var revealObs = new IntersectionObserver(function(entries){
   entries.forEach(function(entry){ if(entry.isIntersecting){ entry.target.classList.add('visible'); revealObs.unobserve(entry.target); } });
 }, { threshold: 0.08 });
 document.querySelectorAll('[data-reveal],[data-stagger]').forEach(function(el){ revealObs.observe(el); });
+
 function toggleMenu() {
   var btn = document.getElementById('hbtn'); var menu = document.getElementById('mmenu');
   btn.classList.toggle('open'); menu.classList.toggle('open');
@@ -487,6 +559,7 @@ document.addEventListener('click', function(e) {
     menu.classList.remove('open'); btn.classList.remove('open'); document.body.style.overflow = '';
   }
 });
+
 // Zalo bubble
 (function(){
   var btn = document.getElementById('zaloBtn');
