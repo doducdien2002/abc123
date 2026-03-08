@@ -1,0 +1,552 @@
+*{margin:0;padding:0;box-sizing:border-box;outline:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font:inherit;border:0}
+html{font-size:12px;line-height:1.5;-webkit-tap-highlight-color:transparent;font-family:'Roboto',sans-serif;font-feature-settings:'tnum'}
+body{background-color:#fff;font-size:12px;color:#000}
+.no-animate *{transition:none!important;animation:none!important}
+.pageview{overflow:hidden}
+.lazy{background:none!important;-webkit-mask-image:none!important}
+ol,ul{list-style:none}
+b{font-weight:bold}
+.visibility-hidden{visibility:hidden!important}
+.cursor-pointer{cursor:pointer}
+.full-height{height:100%}
+.full-width{width:100%}
+.full-mask-size{-webkit-mask-size:100% 100%}
+.mask-position{-webkit-mask-position:0% 0%}
+.u-select-none{user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}
+.p-absolute{position:absolute}
+.p-relative{position:relative}
+.gallery-view-icon-next img,.gallery-view-icon-prev img,.carousel-icon-next img,.carousel-icon-prev img{width:25px;height:25px;filter:drop-shadow(0 0 1px black)}
+.d-none{display:none}
+a:link,a:visited{color:inherit}
+a{text-decoration:none}
+img:not([src]),img[src=""]{visibility:hidden}
+.section-container{margin:auto}
+.frame-html-box iframe{width:100%;height:100%}
+.text-block-css{display:inline-block;word-break:break-word;-webkit-background-clip:text!important}
+.com-button{cursor:pointer;user-select:none;-webkit-user-select:none;transition:transform 200ms ease-out;-webkit-transition:transform 200ms ease-out}
+.com-button:active{transform:translateY(5px);-webkit-transform:translateY(5px)}
+.button-css{display:flex;display:-webkit-flex;align-items:center;-webkit-align-items:center;justify-content:center;-webkit-justify-content:center;text-align:center}
+.button-text{display:table-cell;vertical-align:middle;text-align:unset}
+.image-block-css{overflow:hidden;will-change:filter}
+.image-background,.image-background-compare{margin:0 auto}
+.line-css{padding:8px 0}
+.line-container{border-left-width:0!important;border-right-width:0!important;border-bottom-width:0!important}
+.input-css{overflow:hidden}
+.input-css input{background:transparent;color:inherit;padding-left:10px;border-radius:0;text-align:inherit;letter-spacing:inherit}
+.input-css input::placeholder{text-transform:var(--placeholder-transform);text-decoration:var(--placeholder-decoration)}
+.textarea-css{width:100%;height:100%;overflow:hidden}
+.textarea-css textarea{background:transparent;padding-top:6px;padding-bottom:0;color:inherit;padding-left:10px;border-radius:0;text-align:inherit;letter-spacing:inherit}
+.select-css{overflow:hidden;padding-top:0;padding-bottom:0}
+.select-css select{text-align:inherit;letter-spacing:inherit}
+.chevron{pointer-events:none;color:#979797;position:absolute;right:0;width:26px;height:100%;top:0}
+.chevron .icon{position:absolute;display:block;width:14px;height:14px;border:2px solid transparent;border-radius:100px;top:calc(50% - 7px);left:calc(50% - 7px)}
+.chevron .icon::after{content:"";display:block;position:absolute;width:6px;height:6px;border-bottom:2px solid;border-right:2px solid;transform:rotate(45deg);-webkit-transform:rotate(45deg)}
+.select-css select{background:transparent;padding-right:26px;padding-left:10px;appearance:none;-webkit-appearance:none;-moz-appearance:none;-o-appearance:none;color:#979797}
+.select-css select.select{color:inherit}
+.group-container{width:100%;height:100%}
+.popup-wrapper{top:0;left:0}
+.popup-background{overflow:hidden}
+.popup-backdrop{background:rgba(0,0,0,.5);position:fixed;top:0;left:0;z-index:1000000}
+.popup-center{top:0;left:0;right:0;bottom:0;margin:auto}
+.popup-top-left{top:0;left:0}
+.popup-top-center{top:0;left:50%;transform:translate3d(-50%,0,0);-webkit-transform:translate3d(-50%,0,0)}
+.popup-top-right{top:0;right:0}
+.popup-center-left{left:0;top:50%;transform:translate3d(0,-50%,0);-webkit-transform:translate3d(0,-50%,0)}
+.popup-center-right{right:0;top:50%;transform:translate3d(0,-50%,0);-webkit-transform:translate3d(0,-50%,0)}
+.popup-bottom-left{bottom:0;left:0}
+.popup-bottom-center{bottom:0;left:50%;transform:translate3d(-50%,0,0);-webkit-transform:translate3d(-50%,0,0)}
+.popup-bottom-right{bottom:0;right:0}
+.overlay{pointer-events:none;width:100%;height:100%;position:absolute;top:0;left:0;border-radius:inherit}
+.lightbox-backdrop{width:100%;background:rgba(0,0,0,.5);height:100%;position:fixed;top:0;left:0;z-index:1000000000;touch-action:none}
+.w-alert-message-wrapper{position:fixed;top:15px;z-index:999999;left:50%;padding:10px 16px;border:1px solid var(--color-alert,#15942A);-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);background:white;border-radius:8px;-webkit-box-shadow:0px 2px 8px 0px rgba(0,0,0,0.15);box-shadow:0px 2px 8px 0px rgba(0,0,0,0.15);display:flex;align-items:stretch;justify-content:center}
+body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+
+/* ============ DESKTOP + MOBILE SHARED ============ */
+.section-container{max-width:420px;}
+.section-wrapper{margin:0 auto;max-width:420px;}
+.pageview{max-width:420px;margin:0 auto;}
+
+/* ============ SECTION 1: HERO ============ */
+#w-fakfzuu0{top:0px;left:0px;position:relative;width:420px;height:726px;mix-blend-mode:normal;}
+#w-fakfzuu0 .section-wrapper{opacity:1;}
+#w-fakfzuu0{margin-bottom:-1px;}
+#w-fakfzuu0 .section-background{background:rgba(255,255,255,1);--type:0;}
+#w-tctbmm8o{top:0px;left:420px;width:280px;height:48px;}
+#w-x50p3xjg{top:554px;left:32px;width:248px;height:36px;}
+#w-x50p3xjg .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'Belleza-Regular.ttf',sans-serif;font-size:24px;letter-spacing:2px;text-align:start;--type:0;}
+#w-gfnr9u06{top:79px;left:226px;width:140px;height:189px;}
+#w-gfnr9u06 .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'TAN-PEARL.ttf',sans-serif;font-size:42px;text-align:end;--type:0;}
+#w-a6tphzh4{top:-12px;left:-154px;width:350px;height:560px;}
+#w-a6tphzh4 .image-block-css{border-color:rgba(229,231,235,1);border-style:solid;border-width:0px;position:absolute;}
+#w-a6tphzh4 .image-background{width:350px;height:560px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box border-box url("https://statics.pancake.vn/web-media/7e/02/1a/b4/e04e20774e85a1735cfee621bf9d8dc1a747e84d31189fe580152810-w:500-h:800-l:228430-t:image/png.png");--type:0;}
+#w-k4pf292u{top:596px;left:32px;width:264px;height:36px;}
+#w-k4pf292u .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'Belleza-Regular.ttf',sans-serif;font-size:24px;letter-spacing:2px;text-align:start;--type:0;}
+#w-ibg0u038{top:643px;left:32px;width:337px;height:21px;}
+#w-ibg0u038 .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'Fira Sans Extra Condensed',sans-serif;font-size:14px;letter-spacing:2px;text-align:start;--type:0;}
+
+/* ============ SECTION 2: THÔNG BÁO ============ */
+#w-dcf5c85g{top:0px;left:0px;position:relative;width:420px;height:315px;}
+#w-dcf5c85g .section-wrapper{opacity:1;}
+#w-dcf5c85g{margin-bottom:-1px;}
+#w-dcf5c85g .section-background{background:#fff;--type:0;}
+#w-z45rb5wc{top:35px;left:0px;width:210px;height:24px;}
+#w-z45rb5wc .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'UTM-Cafeta.ttf',sans-serif;font-size:16px;text-align:center;text-decoration:underline;--type:0;}
+#w-ed9he4ku{top:35px;left:210px;width:210px;height:24px;}
+#w-ed9he4ku .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'UTM-Cafeta.ttf',sans-serif;font-size:16px;text-align:center;text-decoration:underline;--type:0;}
+#w-7h0zzpxy{top:59px;left:0px;width:210px;height:24px;}
+#w-7h0zzpxy .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'UTM-Cafeta.ttf',sans-serif;font-size:16px;text-align:center;--type:0;}
+#w-1k56lppp{top:83px;left:0px;width:210px;height:24px;}
+#w-1k56lppp .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'UTM-Cafeta.ttf',sans-serif;font-size:16px;text-align:center;--type:0;}
+#w-tjkbmn6l{top:59px;left:210px;width:210px;height:24px;}
+#w-tjkbmn6l .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'UTM-Cafeta.ttf',sans-serif;font-size:16px;text-align:center;--type:0;}
+#w-5sexaigy{top:83px;left:210px;width:210px;height:24px;}
+#w-5sexaigy .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'UTM-Cafeta.ttf',sans-serif;font-size:16px;text-align:center;--type:0;}
+#w-srlxoeab{top:170px;left:105px;width:210px;height:48px;}
+#w-srlxoeab .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'Ephesis-Regular.ttf',sans-serif;font-size:32px;text-align:center;--type:0;}
+#w-wwxrmhie{top:247px;left:105px;width:210px;height:48px;}
+#w-wwxrmhie .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'Ephesis-Regular.ttf',sans-serif;font-size:32px;text-align:center;--type:0;}
+#w-ksuzkurc{top:131px;left:0px;width:420px;height:30px;}
+#w-ksuzkurc .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'SVN-Mightiest.otf',sans-serif;font-size:20px;text-align:center;--type:0;}
+#w-feewlluc{top:210px;left:105px;width:210px;height:42px;}
+#w-feewlluc .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'Ephesis-Regular.ttf',sans-serif;font-size:28px;text-align:center;--type:0;}
+#w-r5sve25f{top:59px;left:158px;perspective:1000px;width:104px;height:auto;}
+#w-r5sve25f .line-container{border-color:rgba(86,96,74,1.000);border-style:solid;border-width:1px;}
+#w-r5sve25f>div{transform:rotateX(0deg) perspective(1000px) rotate(90deg);}
+
+/* ============ SECTION 3: ẢNH ĐÔI ============ */
+#w-tm1t0c9e{top:0px;left:0px;position:relative;width:420px;height:271px;}
+#w-tm1t0c9e .section-wrapper{opacity:1;}
+#w-tm1t0c9e{margin-bottom:-1px;}
+#w-tm1t0c9e .section-background{background:center center/cover no-repeat content-box url("https://statics.pancake.vn/web-media/a8/92/1c/74/487e79d03434a488bb709f0851caabf33e0299b06bc5dbb0aab11b35-w:1366-h:2048-l:439799-t:image/jpeg.jpg") border-box;--type:0;}
+#w-y59wjeaz{top:6px;left:220px;width:180px;height:255px;}
+#w-y59wjeaz .image-block-css{border-color:rgba(128,0,32,1.000);border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-y59wjeaz .image-background{width:415px;height:277px;top:0px;left:0px;background:left top/contain no-repeat local content-box border-box url("https://statics.pancake.vn/web-media/ef/12/29/1d/fa35b82c2a5045c8572d9db766742a99ac3f546e88ad91df113b4fba-w:1366-h:2048-l:361693-t:image/jpeg.jpg");--type:0;}
+#w-k5sevynd{top:6px;left:20px;width:180px;height:255px;}
+#w-k5sevynd .image-block-css{border-color:rgba(128,0,32,1.000);border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-k5sevynd .image-background{width:425px;height:282px;top:0px;left:0px;background:left top/contain no-repeat local content-box border-box url("https://statics.pancake.vn/web-media/a8/92/1c/74/487e79d03434a488bb709f0851caabf33e0299b06bc5dbb0aab11b35-w:1366-h:2048-l:439799-t:image/jpeg.jpg");--type:0;}
+
+/* ============ SECTION 4: THƯ MỜI + NGÀY ============ */
+#w-vywc1hn8{top:0px;left:0px;position:relative;width:420px;height:298px;}
+#w-vywc1hn8 .section-wrapper{opacity:1;}
+#w-vywc1hn8{margin-bottom:-1px;}
+#w-vywc1hn8 .section-background{background:#fff;--type:0;}
+#w-4tc2u0tv{top:14px;left:0px;width:420px;height:75px;}
+#w-4tc2u0tv .rectangle-css{border-color:rgba(229,231,235,1);border-radius:0px;border-style:solid;background:rgba(86,96,74,0.100);background-clip:padding-box;}
+#w-8yw36csf{top:30.5px;left:28.5px;width:363px;height:42px;}
+#w-8yw36csf .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'Ephesis-Regular.ttf',sans-serif;font-size:28px;text-align:center;--type:0;}
+#w-v5vbf42d{top:110px;left:20px;width:116px;height:164px;}
+#w-v5vbf42d .image-block-css{border-color:rgba(128,0,32,1.000);border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-v5vbf42d .image-background{width:274px;height:181px;top:0px;left:0px;background:left top/contain no-repeat content-box border-box url("https://statics.pancake.vn/web-media/82/20/ba/e9/22d5a729d5e9aad92fa1a53013b6e6bc42f1b865a1903b48ed171631-w:1366-h:2048-l:442655-t:image/jpeg.jpg");--type:0;}
+#w-1m1m0ue5{top:110px;left:152px;width:116px;height:164px;}
+#w-1m1m0ue5 .image-block-css{border-color:rgba(128,0,32,1.000);border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-1m1m0ue5 .image-background{width:274px;height:181px;top:0px;left:0px;background:left top/contain no-repeat local content-box border-box url("https://statics.pancake.vn/web-media/a8/92/1c/74/487e79d03434a488bb709f0851caabf33e0299b06bc5dbb0aab11b35-w:1366-h:2048-l:439799-t:image/jpeg.jpg");--type:0;}
+#w-oc6ndtwx{top:110px;left:284px;width:116px;height:164px;}
+#w-oc6ndtwx .image-block-css{border-color:rgba(128,0,32,1.000);border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-oc6ndtwx .image-background{width:274px;height:181px;top:0px;left:0px;background:left top/contain no-repeat content-box border-box url("https://statics.pancake.vn/web-media/60/bd/72/96/c9d529d910c10997d572bcd3c0f14434c17c7f56bcc887723c2d8b48-w:1366-h:2048-l:325986-t:image/jpeg.jpg");--type:0;}
+#w-v66zedmm{top:227px;left:20px;width:116px;height:48px;}
+#w-v66zedmm .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'cmunrm.ttf',sans-serif;font-size:32px;font-weight:bold;text-align:center;--type:0;}
+#w-e60hj6pv{top:226px;left:152px;width:116px;height:48px;}
+#w-e60hj6pv .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'cmunrm.ttf',sans-serif;font-size:32px;font-weight:bold;text-align:center;--type:0;}
+#w-34l5rb30{top:226px;left:284px;width:116px;height:48px;}
+#w-34l5rb30 .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'cmunrm.ttf',sans-serif;font-size:32px;font-weight:bold;text-align:center;--type:0;}
+#w-zd4nctoe{top:0px;left:314px;perspective:1000px;width:106px;height:103px;}
+#w-zd4nctoe .image-block-css{border-color:rgba(229,231,235,1);border-style:solid;border-width:0px;position:absolute;}
+#w-zd4nctoe .image-background{width:106px;height:103px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box url(https://content.pancake.vn/web-media/d9/b2/5a/9b/b7f60bace86bb09cf77c51aa311a579f4ae62ff50e9a9ed4c0d01f0a-w:200-h:194-l:14986-t:image/webp.webp) border-box;--type:0;}
+#w-zd4nctoe>div{transform:rotate(62deg) perspective(1000px);}
+
+/* ============ SECTION 5: LỄ THÀNH HÔN ============ */
+#w-ex2ksa1q{top:0px;left:0px;position:relative;width:420px;height:182px;}
+#w-ex2ksa1q .section-wrapper{opacity:1;}
+#w-ex2ksa1q{margin-bottom:-1px;}
+#w-ex2ksa1q .section-background{background:rgba(255,255,255,1);--type:0;}
+#w-rdtrly23{top:14px;left:65.5px;width:289px;height:166px;}
+#w-rdtrly23 .rectangle-css{border-color:rgba(86,96,74,1.000);border-radius:32px;border-style:solid;border-width:1px;background:rgba(86,96,74,0.100);background-clip:padding-box;}
+#w-jlbzo9op{top:26px;left:65.5px;width:289px;height:33px;}
+#w-jlbzo9op .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(0,0,0,1);font-family:'UTM-Cafeta.ttf',sans-serif;font-size:22px;text-align:center;--type:0;}
+#w-5our53ma{top:61px;left:65.5px;width:288px;height:24px;}
+#w-5our53ma .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(0,0,0,1);font-family:'Roboto Slab',sans-serif;font-size:16px;text-align:center;--type:0;}
+#w-h2aelx8f{top:89px;left:65.5px;width:289px;height:24px;}
+#w-h2aelx8f .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(0,0,0,1);font-family:'Roboto Slab',sans-serif;font-size:16px;font-weight:bold;letter-spacing:1px;text-align:center;--type:0;}
+#w-ozg18ipo{top:119px;left:65.5px;width:289px;height:21px;}
+#w-ozg18ipo .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(64,64,64,1);font-family:'Roboto Slab',sans-serif;font-size:14px;font-style:italic;text-align:center;--type:0;}
+#w-g0tmznhq{top:146px;left:65.5px;width:288px;height:24px;}
+#w-g0tmznhq .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(0,0,0,1);font-family:'Roboto Slab',sans-serif;font-size:16px;text-align:center;--type:0;}
+
+/* ============ SECTION 6: TIỆC MỪNG ============ */
+#w-5djqzfsq{top:0px;left:0px;position:relative;width:420px;height:223px;}
+#w-5djqzfsq .section-wrapper{opacity:1;}
+#w-5djqzfsq{margin-bottom:-1px;}
+#w-5djqzfsq .section-background{background:#fff;--type:0;}
+#w-kvxk3yu5{top:-12px;left:-104.5px;width:209px;height:291px;}
+#w-kvxk3yu5 .image-block-css{border-color:rgba(229,231,235,1);border-style:solid;border-width:0px;position:absolute;}
+#w-kvxk3yu5 .image-background{width:209px;height:291px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box border-box url("https://content.pancake.vn/1/fwebp90/20/94/67/a5/ae287a808ff44bee0584a9883fc327d5ad969b3f32004f7efe4cfb83-w:575-h:800-l:57748-t:image/webp.webp");--type:0;}
+#w-y8s6taka{top:-256px;left:363px;perspective:1000px;width:276px;height:342px;}
+#w-y8s6taka .image-block-css{border-color:rgba(229,231,235,1);border-style:solid;border-width:0px;position:absolute;}
+#w-y8s6taka .image-background{width:276px;height:342px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box border-box url("https://content.pancake.vn/1/s764x743/fwebp90/33/c8/24/01/46e243ff2983e2e276a9f5cdd0cf0229ac27e7c0b9b0a0627cde9a5d-w:800-h:777-l:237594-t:image/png.png");--type:0;}
+#w-y8s6taka>div{transform:rotate(240deg) perspective(1000px);}
+#w-hivrfy6v{top:28.5px;left:65.5px;width:289px;height:166px;}
+#w-hivrfy6v .rectangle-css{border-color:rgba(86,96,74,1.000);border-radius:32px;border-style:solid;border-width:1px;background:rgba(86,96,74,0.100);background-clip:padding-box;}
+#w-qu8pe7kt{top:40.5px;left:65.5px;width:289px;height:33px;}
+#w-qu8pe7kt .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(0,0,0,1);font-family:'UTM-Cafeta.ttf',sans-serif;font-size:22px;text-align:center;--type:0;}
+#w-7ebrpfk5{top:77.5px;left:65.5px;width:288px;height:24px;}
+#w-7ebrpfk5 .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(0,0,0,1);font-family:'Roboto Slab',sans-serif;font-size:16px;text-align:center;--type:0;}
+#w-mvn2wz7v{top:104.5px;left:65.5px;width:289px;height:24px;}
+#w-mvn2wz7v .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(0,0,0,1);font-family:'Roboto Slab',sans-serif;font-size:16px;font-weight:bold;letter-spacing:1px;text-align:center;--type:0;}
+#w-brfdumso{top:131px;left:65.5px;width:289px;height:21px;}
+#w-brfdumso .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(64,64,64,1);font-family:'Roboto Slab',sans-serif;font-size:14px;font-style:italic;text-align:center;--type:0;}
+#w-0tv5d3uh{top:156px;left:65.5px;width:288px;height:24px;}
+#w-0tv5d3uh .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(0,0,0,1);font-family:'Roboto Slab',sans-serif;font-size:16px;text-align:center;--type:0;}
+
+/* ============ SECTION 7: DRESS CODE ============ */
+#w-br14m7j6{top:0px;left:0px;position:relative;width:420px;height:149px;}
+#w-br14m7j6 .section-wrapper{opacity:1;}
+#w-br14m7j6{margin-bottom:-1px;}
+#w-br14m7j6 .section-background{background:rgba(86,96,74,0.100);--type:0;}
+#w-v9y8jchz{top:16.5px;left:30px;width:363px;height:42px;}
+#w-v9y8jchz .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'Ephesis-Regular.ttf',sans-serif;font-size:28px;text-align:center;--type:0;}
+#w-et905fzp{top:-22px;left:314px;perspective:1000px;width:106px;height:103px;}
+#w-et905fzp .image-block-css{border-color:rgba(229,231,235,1);border-style:solid;border-width:0px;position:absolute;}
+#w-et905fzp .image-background{width:106px;height:103px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box url(https://content.pancake.vn/web-media/d9/b2/5a/9b/b7f60bace86bb09cf77c51aa311a579f4ae62ff50e9a9ed4c0d01f0a-w:200-h:194-l:14986-t:image/webp.webp) border-box;--type:0;}
+#w-et905fzp>div{transform:rotate(62deg) perspective(1000px);}
+#w-fa8jecqo{top:74.5px;left:161px;width:48px;height:48px;}
+#w-fa8jecqo .rectangle-css{border-color:rgba(229,231,235,1);border-radius:50px;border-style:solid;background:rgba(0,0,0,1);background-clip:padding-box;}
+#w-tcrgtmjy{top:74.5px;left:185px;width:48px;height:48px;}
+#w-tcrgtmjy .rectangle-css{border-color:rgba(229,231,235,1);border-radius:50px;border-style:solid;background:rgba(255,255,255,1);background-clip:padding-box;}
+#w-0fgu87d1{top:74.5px;left:211px;width:48px;height:48px;}
+#w-0fgu87d1 .rectangle-css{border-color:rgba(229,231,235,1);border-radius:50px;border-style:solid;background:rgba(86,96,74,1.000);background-clip:padding-box;}
+
+/* ============ SECTION 8: ĐỊA ĐIỂM ============ */
+#w-y0x9o3dc{top:0px;left:0px;position:relative;width:420px;height:478px;}
+#w-y0x9o3dc .section-wrapper{opacity:1;}
+#w-y0x9o3dc{margin-bottom:-1px;}
+#w-y0x9o3dc .section-background{background:#fff;--type:0;}
+#w-o4u74omh{top:14.5px;left:30px;width:363px;height:42px;}
+#w-o4u74omh .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'Ephesis-Regular.ttf',sans-serif;font-size:28px;text-align:center;--type:0;}
+#w-qjrbajjx{top:131px;left:130px;width:160px;height:38px;}
+#w-qjrbajjx .button-css{border-color:rgba(229,231,235,1);border-radius:100px;border-style:solid;color:rgba(255,255,255,1);font-family:'Roboto Slab',sans-serif;font-size:15px;text-transform:uppercase;background:rgba(86,96,74,1.000);--type:0;}
+#w-e70nafy6{top:91.5px;left:0px;width:420px;height:21px;}
+#w-e70nafy6 .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(0,0,0,1);font-family:'Arial',sans-serif;font-size:14px;text-align:center;--type:0;}
+#w-pdobx6zw{top:61.5px;left:66px;width:288px;height:24px;}
+#w-pdobx6zw .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(0,0,0,1);font-family:'Arial',sans-serif;font-size:16px;font-weight:bold;text-align:center;--type:0;}
+#w-7hkun5ej{top:189px;left:24px;width:372px;height:265px;}
+
+/* ============ SECTION 9: FORM XÁC NHẬN ============ */
+#w-epjhp84i{top:0px;left:0px;position:relative;width:420px;height:472px;}
+#w-epjhp84i .section-wrapper{opacity:1;}
+#w-epjhp84i{margin-bottom:-1px;}
+#w-epjhp84i .section-background{background:center center/contain no-repeat content-box border-box url("https://content.pancake.vn/1/fwebp90/20/94/67/a5/ae287a808ff44bee0584a9883fc327d5ad969b3f32004f7efe4cfb83-w:575-h:800-l:57748-t:image/webp.webp");--type:0;}
+#w-9ppmw9gy{top:62px;left:24px;width:372px;height:298px;}
+#w-9ppmw9gy form{border-radius:6px;color:rgba(52,52,52,1.000);font-family:'Merriweather',sans-serif;font-size:13px;}
+#w-9ppmw9gy input::placeholder,#w-9ppmw9gy textarea::placeholder{color:rgba(52,52,52,1.000);}
+#w-gwfybvg1{top:250px;left:0px;width:372px;height:48px;}
+#w-gwfybvg1 .button-css{border-color:rgba(86,96,74,1.000);border-radius:6px;border-style:solid;border-width:1px;color:rgba(52,52,52,1.000);font-family:'Merriweather',sans-serif;font-size:16px;text-transform:uppercase;background:rgba(255,255,255,1.000);--type:0;}
+#w-lgs3c5vv{top:59px;left:0px;width:372px;height:48px;}
+#w-lgs3c5vv .input-css{border-color:rgba(86,96,74,1.000);border-radius:6px;border-style:solid;border-width:1px;color:rgba(52,52,52,1.000);}
+#w-lgs3c5vv input{background:rgba(255,255,255,1);color:rgba(52,52,52,1.000);}
+#w-95o7z0z6{top:118.5px;left:0px;width:372px;height:48px;}
+#w-95o7z0z6 .input-css{border-color:rgba(86,96,74,1.000);border-radius:6px;border-style:solid;border-width:1px;color:rgba(52,52,52,1.000);}
+#w-95o7z0z6 input{background:rgba(255,255,255,1);color:rgba(52,52,52,1.000);}
+#w-m0tg5sjf{top:178px;left:0px;width:372px;height:48px;}
+#w-m0tg5sjf .select-css{border-color:rgba(86,96,74,1.000);border-radius:6px;border-style:solid;border-width:1px;color:rgba(52,52,52,1.000);}
+#w-m0tg5sjf select{background:rgba(255,255,255,1);color:rgba(52,52,52,1.000);}
+#w-m0tg5sjf .chevron .icon{color:rgba(52,52,52,1.000);}
+#w-qjbp8h2i{top:0px;left:0px;width:372px;height:48px;}
+#w-qjbp8h2i .input-css{border-color:rgba(86,96,74,1.000);border-radius:6px;border-style:solid;border-width:1px;color:rgba(52,52,52,1.000);}
+#w-qjbp8h2i input{background:rgba(255,255,255,1);color:rgba(52,52,52,1.000);}
+#w-jgaxat9v{top:10px;left:28.5px;width:363px;height:42px;}
+#w-jgaxat9v .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'Ephesis-Regular.ttf',sans-serif;font-size:28px;text-align:center;--type:0;}
+#w-k4z811q6{top:384px;left:24px;width:372px;height:48px;}
+#w-k4z811q6 .button-css{border-color:rgba(229,231,235,1);border-radius:4px;border-style:solid;color:rgba(255,255,255,1);font-family:'Merriweather',sans-serif;font-size:16px;text-transform:uppercase;background:rgba(86,96,74,1.000);--type:0;}
+
+/* ============ SECTION 10: ALBUM ============ */
+#w-bt7npfto{top:0px;left:0px;position:relative;width:420px;height:961px;}
+#w-bt7npfto .section-wrapper{opacity:1;}
+#w-bt7npfto{margin-bottom:-1px;}
+#w-bt7npfto .section-background{background:#fff;--type:0;}
+#w-b5h7wvh3{top:12px;left:0px;width:420px;height:42px;}
+#w-b5h7wvh3 .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'Ephesis-Regular.ttf',sans-serif;font-size:28px;text-align:center;--type:0;}
+#w-pj0wiuu6{top:-7.5px;left:102px;perspective:1000px;width:216px;height:auto;}
+#w-pj0wiuu6 .line-container{border-color:rgba(86,96,74,1.000);border-style:solid;border-width:1px;}
+#w-pj0wiuu6>div{transform:rotateX(0deg) perspective(1000px) rotate(900deg);}
+#w-b7dcf8hb{top:362.25px;left:215px;width:193px;height:286px;}
+#w-b7dcf8hb .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-b7dcf8hb .image-background{width:193px;height:286px;top:0px;left:0px;background:center center/cover no-repeat local content-box border-box url("https://statics.pancake.vn/web-media/fa/d2/12/43/1f3a6699b1d012dcf6450a450b1647f680140f1090272363db90e26e-w:1366-h:2048-l:462486-t:image/jpeg.jpg");--type:0;}
+#w-kdlizt5m{top:362.25px;left:12px;width:192px;height:286px;}
+#w-kdlizt5m .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-kdlizt5m .image-background{width:192px;height:286px;top:0px;left:0px;background:center center/cover no-repeat local content-box border-box url("https://statics.pancake.vn/web-media/d5/0d/75/9a/6c9bb5c137e3cd41e90d404816b6fbf86fd71ac7957bdcd4403ac8de-w:1366-h:2048-l:401557-t:image/jpeg.jpg");--type:0;}
+#w-ipxpk4p1{top:660.25px;left:12px;width:192px;height:287px;}
+#w-ipxpk4p1 .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-ipxpk4p1 .image-background{width:192px;height:287px;top:0px;left:0px;background:center center/cover no-repeat content-box border-box url("https://statics.pancake.vn/web-media/42/0e/28/e1/b06bb173f2ad3b9f059ccaa1a0400a2eb88e0cc87e3b4898b8c1a22a-w:1366-h:2048-l:434791-t:image/jpeg.jpg");--type:0;}
+#w-jmb7y9ov{top:660.25px;left:215px;width:192px;height:287px;}
+#w-jmb7y9ov .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-jmb7y9ov .image-background{width:192px;height:287px;top:0px;left:0px;background:center center/cover no-repeat content-box border-box url("https://statics.pancake.vn/web-media/a8/92/1c/74/487e79d03434a488bb709f0851caabf33e0299b06bc5dbb0aab11b35-w:1366-h:2048-l:439799-t:image/jpeg.jpg");--type:0;}
+#w-763svdo7{top:65px;left:12px;perspective:1000px;width:192px;height:287px;}
+#w-763svdo7 .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-763svdo7 .image-background{width:192px;height:287px;top:0px;left:0px;background:center center/cover no-repeat local content-box border-box url("https://statics.pancake.vn/web-media/7b/30/36/85/cb96e74a283468590dd54de74b228707e8e3e69a866fb57a154d0b7f-w:1366-h:2048-l:387342-t:image/jpeg.jpg");--type:0;}
+#w-763svdo7>div{transform:rotateX(0deg) perspective(1000px);}
+#w-tuvzyur3{top:65px;left:215px;width:193px;height:288px;}
+#w-tuvzyur3 .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-tuvzyur3 .image-background{width:200px;height:298px;top:0px;left:0px;background:center center/cover no-repeat local content-box border-box url("https://statics.pancake.vn/web-media/82/20/ba/e9/22d5a729d5e9aad92fa1a53013b6e6bc42f1b865a1903b48ed171631-w:1366-h:2048-l:442655-t:image/jpeg.jpg");--type:0;}
+
+/* ============ SECTION 11: LỜI CẢM ƠN ============ */
+#w-3n95ekwc{top:0px;left:0px;position:relative;width:420px;height:590px;}
+#w-3n95ekwc .section-wrapper{opacity:1;}
+#w-3n95ekwc{margin-bottom:-1px;}
+#w-3n95ekwc .section-background{background:rgba(255,255,255,1);--type:0;}
+#w-al800pad{top:0px;left:0px;perspective:1000px;width:236px;height:282px;}
+#w-al800pad .image-block-css{border-color:rgba(229,231,235,1);border-style:solid;border-width:0px;position:absolute;}
+#w-al800pad .image-background{width:287px;height:402px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box border-box url("https://content.pancake.vn/1/fwebp90/20/94/67/a5/ae287a808ff44bee0584a9883fc327d5ad969b3f32004f7efe4cfb83-w:575-h:800-l:57748-t:image/webp.webp");--type:0;}
+#w-al800pad>div{transform:rotate(180deg) perspective(1000px);}
+#w-jojwemqb{top:282px;left:198px;width:224px;height:312px;}
+#w-jojwemqb .image-block-css{border-color:rgba(229,231,235,1);border-style:solid;border-width:0px;position:absolute;}
+#w-jojwemqb .image-background{width:224px;height:312px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box border-box url("https://content.pancake.vn/1/fwebp90/20/94/67/a5/ae287a808ff44bee0584a9883fc327d5ad969b3f32004f7efe4cfb83-w:575-h:800-l:57748-t:image/webp.webp");--type:0;}
+#w-1lprjddi{top:0px;left:75px;perspective:1000px;width:200px;height:131px;}
+#w-1lprjddi .image-block-css{border-color:rgba(229,231,235,1);border-style:solid;border-width:0px;position:absolute;}
+#w-1lprjddi .image-background{width:200px;height:131px;top:0px;left:0px;background:right bottom/cover no-repeat scroll content-box url(https://content.pancake.vn/web-media/d9/b2/5a/9b/b7f60bace86bb09cf77c51aa311a579f4ae62ff50e9a9ed4c0d01f0a-w:200-h:194-l:14986-t:image/webp.webp) border-box;--type:0;}
+#w-1lprjddi>div{transform:rotate(0deg) perspective(1000px) rotateY(180deg);}
+#w-cv9fbum3{top:473px;left:147px;perspective:1000px;width:171px;height:170px;}
+#w-cv9fbum3 .image-block-css{border-color:rgba(229,231,235,1);border-style:solid;border-width:0px;position:absolute;}
+#w-cv9fbum3 .image-background{width:171px;height:170px;top:0px;left:0px;background:right bottom/cover no-repeat scroll content-box url(https://content.pancake.vn/web-media/d9/b2/5a/9b/b7f60bace86bb09cf77c51aa311a579f4ae62ff50e9a9ed4c0d01f0a-w:200-h:194-l:14986-t:image/webp.webp) border-box;--type:0;}
+#w-cv9fbum3>div{transform:rotate(134deg) perspective(1000px) rotateY(0deg);}
+#w-uznnvyfx{top:270px;left:0px;width:420px;height:81px;}
+#w-uznnvyfx .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'Ephesis-Regular.ttf',sans-serif;font-size:18px;text-align:center;--type:0;}
+#w-j9jj5u4z{top:186px;left:2px;width:420px;height:96px;}
+#w-j9jj5u4z .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(86,96,74,1.000);font-family:'Ephesis-Regular.ttf',sans-serif;font-size:64px;text-align:center;--type:0;}
+#w-2ofejt1o{top:318.5px;left:-173px;width:350px;height:340px;}
+#w-2ofejt1o .image-block-css{border-color:rgba(229,231,235,1);border-style:solid;border-width:0px;opacity:50%;position:absolute;}
+#w-2ofejt1o .image-background{width:350px;height:340px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box border-box url("https://content.pancake.vn/1/s764x743/fwebp90/33/c8/24/01/46e243ff2983e2e276a9f5cdd0cf0229ac27e7c0b9b0a0627cde9a5d-w:800-h:777-l:237594-t:image/png.png");--type:0;}
+#w-n4h1b6d6{top:-70px;left:280px;perspective:1000px;width:350px;height:340px;}
+#w-n4h1b6d6 .image-block-css{border-color:rgba(229,231,235,1);border-style:solid;border-width:0px;opacity:50%;position:absolute;}
+#w-n4h1b6d6 .image-background{width:350px;height:340px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box border-box url("https://content.pancake.vn/1/s764x743/fwebp90/33/c8/24/01/46e243ff2983e2e276a9f5cdd0cf0229ac27e7c0b9b0a0627cde9a5d-w:800-h:777-l:237594-t:image/png.png");--type:0;}
+#w-n4h1b6d6>div{transform:rotate(255deg) perspective(1000px);}
+
+/* ============ MUSIC BUTTONS ============ */
+#sticky-rngnc2dl{width:56px;height:56px;}
+#w-rngnc2dl{top:515px;left:351px;width:56px;height:56px;}
+#w-dwtrny9f{top:0px;left:0px;width:56px;height:56px;}
+#w-dwtrny9f .rectangle-css{border-color:rgba(86,96,74,1.000);border-radius:50px;border-style:solid;border-width:2px;background:rgba(255,255,255,1);background-clip:padding-box;}
+#w-ung2h07s{top:5px;left:5px;width:46px;height:46px;}
+#w-ung2h07s .rectangle-css{-webkit-mask-image:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgY2xhc3M9Im11c2ljLW5vdGUiPjxwYXRoIGQ9Ik0xMiwyQzEyLjQzLDIgMTIuODQsMi4xNCAxMy4xNywyLjM3QzE1Ljc4LDQuMjUgMTguMzksNi4xMiAxOS4xMSw4LjMxQzE5LjgzLDEwLjUgMTksMTMgMTcuNSwxNS41QzIwLDkgMTMsNy41IDEzLDcuNVYxOEMxMywyMC4yMSAxMSwyMiA4LjUsMjJDNiwyMiA0LDIwLjIxIDQsMThDNCwxNS43OSA2LDE0IDguNSwxNEM5LjAzLDE0IDkuNTMsMTQuMDggMTAsMTQuMjNWNEEyLDIgMCAwLDEgMTIsMloiPjwvcGF0aD48L3N2Zz4=");border-color:rgba(229,231,235,1);border-style:solid;background:rgba(86,96,74,1.000);background-clip:padding-box;}
+#sticky-tc5qmasv{width:56px;height:56px;}
+#w-tc5qmasv{top:515px;left:351px;width:56px;height:56px;}
+#w-s026efge{top:0px;left:0px;width:56px;height:56px;}
+#w-s026efge .rectangle-css{border-color:rgba(86,96,74,1.000);border-radius:50px;border-style:solid;border-width:2px;background:rgba(255,255,255,1);background-clip:padding-box;}
+#w-v3w94ij8{top:5px;left:5px;width:46px;height:46px;}
+#w-v3w94ij8 .rectangle-css{-webkit-mask-image:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgY2xhc3M9Im11c2ljLW5vdGUtb2ZmIj48cGF0aCBkPSJNMiw1LjI3TDMuMjgsNEwyMCwyMC43MkwxOC43MywyMkwxMywxNi4yN1YxOEMxMywyMC4yMSAxMSwyMiA4LjUsMjJDNiwyMiA0LDIwLjIxIDQsMThDNCwxNS43OSA2LDE0IDguNSwxNEM5LjAzLDE0IDkuNTMsMTQuMDggMTAsMTQuMjNWMTMuMjdMMiw1LjI3TTEyLDJDMTIuNDMsMiAxMi44NCwyLjE0IDEzLjE3LDIuMzdDMTUuNzgsNC4yNSAxOC4zOSw2LjEyIDE5LjExLDguMzFDMTkuODMsMTAuNSAxOSwxMyAxNy41LDE1LjVDMjAsOSAxMyw3LjUgMTMsNy41VjExLjE4TDEwLDguMThWNEEyLDIgMCAwLDEgMTIsMloiPjwvcGF0aD48L3N2Zz4=");border-color:rgba(229,231,235,1);border-style:solid;background:rgba(86,96,74,1.000);background-clip:padding-box;}
+
+/* ============ SECTION 12: FOOTER ============ */
+#w-cewxc3md{top:0px;left:0px;position:relative;width:420px;height:52px;}
+#w-cewxc3md .section-wrapper{opacity:1;}
+#w-cewxc3md{margin-bottom:-1px;}
+#w-cewxc3md .section-background{background:rgba(86,96,74,1.000);--type:0;}
+#w-sxrqdhrp{top:14px;left:14px;width:244px;height:24px;}
+#w-sxrqdhrp .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(255,255,255,1);font-family:'Tinos',sans-serif;font-size:16px;text-align:left;--type:0;}
+#w-mac6eg1i{top:17.5px;left:243px;perspective:1000px;width:28px;height:auto;}
+#w-mac6eg1i .line-container{border-color:rgba(255,255,255,1);border-style:solid;border-width:1px;}
+#w-mac6eg1i>div{transform:rotateX(0deg) perspective(1000px) rotate(90deg);}
+#w-v41k4diw{top:6px;left:266px;width:40px;height:40px;}
+#w-v41k4diw .rectangle-css{border-color:rgba(229,231,235,1);border-style:solid;background:center center/contain no-repeat scroll content-box url(https://content.pancake.vn/1/08/3f/7a/e9/be9a053a77ec7cdb461246a62779525962247b7146d4dcccce9c1cfb.png);background-clip:padding-box;}
+#w-38e3hoyj{top:6px;left:316.5px;width:40px;height:40px;}
+#w-38e3hoyj .image-block-css{border-color:rgba(229,231,235,1);border-radius:9px;border-style:solid;border-width:0px;position:absolute;}
+#w-38e3hoyj .image-background{width:40px;height:40px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box url(https://content.pancake.vn/web-media/5e/92/4c/94/576169baeb9bcd6ccfefb1f103e204731ee0f9e6cba01915ee76b754-w:225-h:225-l:2964-t:image/png.png) border-box;--type:0;}
+#w-iwb1tv1z{top:6px;left:367px;width:40px;height:40px;}
+#w-iwb1tv1z .image-block-css{border-color:rgba(229,231,235,1);border-style:solid;border-width:0px;position:absolute;border-radius:10px;}
+#w-iwb1tv1z .image-background{width:40px;height:40px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box border-box url("https://content.pancake.vn/1/s440x440/fwebp90/64/3b/28/2d/8f38e946729db1f9d0bc62700c52766fccd18d80693362fe475ff563-w:2500-h:2500-l:190279-t:image/jpeg.jpg");--type:0;}
+
+/* ============ POPUP CẢM ƠN ============ */
+#w-__popup_default__{position:fixed;width:400px;height:523px;}
+#w-__popup_default__ .popup-background{background:center center/cover no-repeat content-box border-box url("https://content.pancake.vn/1/s800x1200/fwebp90/7b/30/36/85/cb96e74a283468590dd54de74b228707e8e3e69a866fb57a154d0b7f-w:1366-h:2048-l:387342-t:image/jpeg.jpg");border-color:rgba(76,175,80,0.8);border-radius:8px;border-style:solid;box-shadow:4px 4px 9px 0px rgba(139,195,74,0.200);color:rgba(69,64,64,1.000);}
+#w-au0o7yap{top:13px;left:360px;z-index:1;width:29px;height:29px;}
+#w-au0o7yap .rectangle-css{-webkit-mask-image:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIHZpZXdCb3g9JzAgMCAyNCAyNCc+IDxwYXRoIGQ9J00xMy40NiwxMkwxOSwxNy41NFYxOUgxNy41NEwxMiwxMy40Nkw2LjQ2LDE5SDVWMTcuNTRMMTAuNTQsMTJMNSw2LjQ2VjVINi40NkwxMiwxMC41NEwxNy41NCw1SDE5VjYuNDZMMTMuNDYsMTJaJz48L3BhdGg+IDwvc3ZnPg==");border-color:#E5E7EB;border-style:solid;z-index:1;background:rgba(86,96,74,1.000);background-clip:padding-box;}
+#w-x1zgedtn{top:360.5px;left:0px;perspective:1000px;width:400px;height:120px;}
+#w-x1zgedtn .rectangle-css{border-color:rgba(229,231,235,1);border-style:solid;background:rgba(86,96,74,0.500);background-clip:padding-box;}
+#w-x1zgedtn>div{transform:rotate(0deg) perspective(1000px);}
+#w-oc2dcqis{top:360.5px;left:0px;perspective:1000px;width:400px;height:78px;}
+#w-oc2dcqis .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(255,255,255,1.000);font-family:'Ephesis-Regular.ttf',sans-serif;font-size:52px;font-weight:bold;text-align:center;--type:0;}
+#w-oc2dcqis>div{transform:rotate(0deg) perspective(1000px);}
+#w-0ni90ea5{top:429.5px;left:0px;width:400px;height:36px;}
+#w-0ni90ea5 .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(255,255,255,1);font-family:'VNF-SheliaRegular.ttf',sans-serif;font-size:24px;font-weight:bold;text-align:center;--type:0;}
+
+/* ============ POPUP QR CODE ============ */
+#w-zo7jt7tc{position:fixed;width:360px;height:400px;}
+#w-zo7jt7tc .popup-background{background:rgba(86,96,74,1.000);border-color:rgba(128,0,32,1.000);border-radius:8px;border-style:solid;}
+#w-slhy7pgw{top:10px;left:321px;z-index:1;width:29px;height:29px;}
+#w-slhy7pgw .rectangle-css{-webkit-mask-image:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIHZpZXdCb3g9JzAgMCAyNCAyNCc+IDxwYXRoIGQ9J00xMy40NiwxMkwxOSwxNy41NFYxOUgxNy41NEwxMiwxMy40Nkw2LjQ2LDE5SDVWMTcuNTRMMTAuNTQsMTJMNSw2LjQ2VjVINi40NkwxMiwxMC41NEwxNy41NCw1SDE5VjYuNDZMMTMuNDYsMTJaJz48L3BhdGg+IDwvc3ZnPg==");border-color:#E5E7EB;border-style:solid;z-index:1;background:rgba(255,255,255,1);background-clip:padding-box;}
+#w-yvchzu74{top:60px;left:60px;width:240px;height:240px;}
+#w-yvchzu74 .image-block-css{border-color:rgba(229,231,235,1);border-style:solid;border-width:0px;position:absolute;}
+#w-yvchzu74 .image-background{width:240px;height:240px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box url(https://content.pancake.vn/web-media/1b/4c/b1/cd/dd4c9bb7cf9364d5fee583194207d08a96cb20751009b58b63063d45-w_250-h_250-l_24228-t_image/png.png) border-box;--type:0;}
+#w-nv4t49sh{top:18.5px;left:75px;width:210px;height:30px;}
+#w-nv4t49sh .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(255,255,255,1);font-size:20px;font-weight:bold;text-align:center;--type:0;}
+#w-v1bmvyky{top:322.5px;left:22px;width:316px;height:30px;}
+#w-v1bmvyky .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(255,255,255,1);font-size:20px;font-weight:bold;text-align:center;--type:0;}
+#w-w9lhmri7{top:352.5px;left:22px;width:316px;height:30px;}
+#w-w9lhmri7 .text-block-css{border-color:rgba(229,231,235,1);border-style:solid;color:rgba(255,255,255,1);font-size:20px;font-weight:bold;text-align:center;--type:0;}
+
+/* ============ ANIMATIONS ============ */
+#w-x50p3xjg.animation .text-block-css{animation-name:fadeInLeft;-webkit-animation-name:fadeInLeft;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-gfnr9u06.animation .text-block-css{animation-name:zoomIn;-webkit-animation-name:zoomIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-a6tphzh4.animation .image-block-css{animation-name:fadeInBottomLeft;-webkit-animation-name:fadeInBottomLeft;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-k4pf292u.animation .text-block-css{animation-name:fadeInLeft;-webkit-animation-name:fadeInLeft;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-ibg0u038.animation .text-block-css{animation-name:fadeInLeft;-webkit-animation-name:fadeInLeft;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-z45rb5wc.animation .text-block-css{animation-name:fadeInLeft;-webkit-animation-name:fadeInLeft;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-ed9he4ku.animation .text-block-css{animation-name:fadeInRight;-webkit-animation-name:fadeInRight;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-7h0zzpxy.animation .text-block-css{animation-name:fadeInLeft;-webkit-animation-name:fadeInLeft;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-1k56lppp.animation .text-block-css{animation-name:fadeInLeft;-webkit-animation-name:fadeInLeft;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-tjkbmn6l.animation .text-block-css{animation-name:fadeInRight;-webkit-animation-name:fadeInRight;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-5sexaigy.animation .text-block-css{animation-name:fadeInRight;-webkit-animation-name:fadeInRight;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-srlxoeab.animation .text-block-css{animation-name:fadeInLeft;-webkit-animation-name:fadeInLeft;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-wwxrmhie.animation .text-block-css{animation-name:fadeInRight;-webkit-animation-name:fadeInRight;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-ksuzkurc.animation .text-block-css{animation-name:fadeInDown;-webkit-animation-name:fadeInDown;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-feewlluc.animation .text-block-css{animation-name:fadeIn;-webkit-animation-name:fadeIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-y59wjeaz.animation .image-block-css{animation-name:fadeInRight;-webkit-animation-name:fadeInRight;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-k5sevynd.animation .image-block-css{animation-name:fadeInLeft;-webkit-animation-name:fadeInLeft;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-8yw36csf.animation .text-block-css{animation-name:fadeInDown;-webkit-animation-name:fadeInDown;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-v5vbf42d.animation .image-block-css{animation-name:zoomIn;-webkit-animation-name:zoomIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-1m1m0ue5.animation .image-block-css{animation-name:zoomIn;-webkit-animation-name:zoomIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-oc6ndtwx.animation .image-block-css{animation-name:zoomIn;-webkit-animation-name:zoomIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-v66zedmm.animation .text-block-css{animation-name:fadeInUp;-webkit-animation-name:fadeInUp;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-e60hj6pv.animation .text-block-css{animation-name:fadeInUp;-webkit-animation-name:fadeInUp;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-34l5rb30.animation .text-block-css{animation-name:fadeInUp;-webkit-animation-name:fadeInUp;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-zd4nctoe.animation .image-block-css{animation-name:fadeInDown;-webkit-animation-name:fadeInDown;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-jlbzo9op.animation .text-block-css{animation-name:fadeIn;-webkit-animation-name:fadeIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-5our53ma.animation .text-block-css{animation-name:fadeIn;-webkit-animation-name:fadeIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-h2aelx8f.animation .text-block-css{animation-name:fadeIn;-webkit-animation-name:fadeIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-ozg18ipo.animation .text-block-css{animation-name:fadeIn;-webkit-animation-name:fadeIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-g0tmznhq.animation .text-block-css{animation-name:fadeIn;-webkit-animation-name:fadeIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-kvxk3yu5.animation .image-block-css{animation-name:fadeInBottomLeft;-webkit-animation-name:fadeInBottomLeft;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-y8s6taka.animation .image-block-css{animation-name:fadeIn;-webkit-animation-name:fadeIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-qu8pe7kt.animation .text-block-css{animation-name:fadeIn;-webkit-animation-name:fadeIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-7ebrpfk5.animation .text-block-css{animation-name:fadeIn;-webkit-animation-name:fadeIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-mvn2wz7v.animation .text-block-css{animation-name:fadeIn;-webkit-animation-name:fadeIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-brfdumso.animation .text-block-css{animation-name:fadeIn;-webkit-animation-name:fadeIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-0tv5d3uh.animation .text-block-css{animation-name:fadeIn;-webkit-animation-name:fadeIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-v9y8jchz.animation .text-block-css{animation-name:fadeInDown;-webkit-animation-name:fadeInDown;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-et905fzp.animation .image-block-css{animation-name:fadeInDown;-webkit-animation-name:fadeInDown;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-o4u74omh.animation .text-block-css{animation-name:fadeInDown;-webkit-animation-name:fadeInDown;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-qjrbajjx.animation .button-css{animation-name:pulse;-webkit-animation-name:pulse;animation-delay:0s;animation-iteration-count:infinite;animation-duration:1s;}
+#w-e70nafy6.animation .text-block-css{animation-name:fadeIn;-webkit-animation-name:fadeIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-pdobx6zw.animation .text-block-css{animation-name:fadeIn;-webkit-animation-name:fadeIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-jgaxat9v.animation .text-block-css{animation-name:fadeInDown;-webkit-animation-name:fadeInDown;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-b5h7wvh3.animation .text-block-css{animation-name:zoomIn;-webkit-animation-name:zoomIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-pj0wiuu6.animation .line-css{animation-name:zoomIn;-webkit-animation-name:zoomIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-b7dcf8hb.animation .image-block-css{animation-name:zoomIn;-webkit-animation-name:zoomIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-kdlizt5m.animation .image-block-css{animation-name:zoomIn;-webkit-animation-name:zoomIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-ipxpk4p1.animation .image-block-css{animation-name:zoomIn;-webkit-animation-name:zoomIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-jmb7y9ov.animation .image-block-css{animation-name:zoomIn;-webkit-animation-name:zoomIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-763svdo7.animation .image-block-css{animation-name:zoomIn;-webkit-animation-name:zoomIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-tuvzyur3.animation .image-block-css{animation-name:zoomIn;-webkit-animation-name:zoomIn;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-uznnvyfx.animation .text-block-css{animation-name:fadeInUp;-webkit-animation-name:fadeInUp;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-j9jj5u4z.animation .text-block-css{animation-name:pulse;-webkit-animation-name:pulse;animation-delay:0s;animation-iteration-count:1;animation-duration:3s;}
+#w-rngnc2dl.animation>.group-container{animation-name:pulse;-webkit-animation-name:pulse;animation-delay:0s;animation-iteration-count:infinite;animation-duration:2s;}
+#w-tc5qmasv.animation>.group-container{animation-name:pulse;-webkit-animation-name:pulse;animation-delay:0s;animation-iteration-count:infinite;animation-duration:2s;}
+
+/* ============ CUSTOM FONTS ============ */
+@font-face{font-family:"SVN-Mightiest.otf";src:url("https://statics.pancake.vn/web-media/38/a8/63/6b/be3591beaa1faddc0f76fe23aac05f5d907411cd2b0e4652bc5ed081-w:0-h:0-l:23809-t:application/octet-stream.otf") format("opentype");font-display:swap;}
+@font-face{font-family:"TAN-PEARL.ttf";src:url("https://statics.pancake.vn/web-media/45/0a/17/60/1880b2845ebf04a35bf4fedd6276384e4f50d258043dd7b44ac9559e-w:0-h:0-l:105700-t:application/octet-stream.ttf") format("truetype");font-display:swap;}
+@font-face{font-family:"UTM-Cafeta.ttf";src:url("https://statics.pancake.vn/web-media/04/eb/01/7a/e19221a44fabb6fd54c6339fd43b1c25ebbe20e97f6633beed4cbc79-w:0-h:0-l:31526-t:application/octet-stream.ttf") format("truetype");font-display:swap;}
+@font-face{font-family:"Ephesis-Regular.ttf";src:url("https://statics.pancake.vn/web-media/8f/b4/72/9a/918f992a37ab45f1466783c78ea8caa77a7b0e69545322e1dbe9c5f9-w:0-h:0-l:142501-t:application/octet-stream.ttf") format("truetype");font-display:swap;}
+@font-face{font-family:"VNF-SheliaRegular.ttf";src:url("https://statics.pancake.vn/web-media/c6/48/77/5a/9d7038ffd94b4c8bacca15397c48b30b39a99cc58f9dc9df4bb49115-w:0-h:0-l:297531-t:application/octet-stream.ttf") format("truetype");font-display:swap;}
+@font-face{font-family:"Belleza-Regular.ttf";src:url("https://statics.pancake.vn/web-media/5a/b2/6d/2a/80f2a01aeee45272a9b2937ab842f5f2b72d04fdce54b159b1992476-w:0-h:0-l:55534-t:application/octet-stream.ttf") format("truetype");font-display:swap;}
+@font-face{font-family:"cmunrm.ttf";src:url("https://statics.pancake.vn/web-media/3d/eb/3c/52/9a46d391eaad2e2b896824013d4e1922419c91ab6cb75c40db97c3f2-w:0-h:0-l:235961-t:application/octet-stream.ttf") format("truetype");font-display:swap;}
+
+/* ==============================================
+   PHẦN BỔ SUNG - thiếu trong styles.css gốc
+   ============================================== */
+
+/* --- ẢNH BACKGROUND CÁC SECTION --- */
+#w-tm1t0c9e .section-background{background:center center/cover no-repeat content-box border-box url("https://statics.pancake.vn/web-media/a8/92/1c/74/487e79d03434a488bb709f0851caabf33e0299b06bc5dbb0aab11b35-w:1366-h:2048-l:439799-t:image/jpeg.jpg");}
+
+/* --- ẢNH ĐÔI (Section 3) --- */
+#w-y59wjeaz .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-y59wjeaz .image-background{width:415px;height:277px;top:0px;left:0px;background:left top/contain no-repeat local content-box border-box url("https://statics.pancake.vn/web-media/ef/12/29/1d/fa35b82c2a5045c8572d9db766742a99ac3f546e88ad91df113b4fba-w:1366-h:2048-l:361693-t:image/jpeg.jpg");}
+#w-k5sevynd .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-k5sevynd .image-background{width:425px;height:282px;top:0px;left:0px;background:left top/contain no-repeat local content-box border-box url("https://statics.pancake.vn/web-media/a8/92/1c/74/487e79d03434a488bb709f0851caabf33e0299b06bc5dbb0aab11b35-w:1366-h:2048-l:439799-t:image/jpeg.jpg");}
+
+/* --- ẢNH THƯ MỜI (Section 4) --- */
+#w-v5vbf42d .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-v5vbf42d .image-background{width:274px;height:181px;top:0px;left:0px;background:left top/contain no-repeat content-box border-box url("https://statics.pancake.vn/web-media/82/20/ba/e9/22d5a729d5e9aad92fa1a53013b6e6bc42f1b865a1903b48ed171631-w:1366-h:2048-l:442655-t:image/jpeg.jpg");}
+#w-1m1m0ue5 .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-1m1m0ue5 .image-background{width:274px;height:181px;top:0px;left:0px;background:left top/contain no-repeat local content-box border-box url("https://statics.pancake.vn/web-media/a8/92/1c/74/487e79d03434a488bb709f0851caabf33e0299b06bc5dbb0aab11b35-w:1366-h:2048-l:439799-t:image/jpeg.jpg");}
+#w-oc6ndtwx .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-oc6ndtwx .image-background{width:274px;height:181px;top:0px;left:0px;background:left top/contain no-repeat content-box border-box url("https://statics.pancake.vn/web-media/60/bd/72/96/c9d529d910c10997d572bcd3c0f14434c17c7f56bcc887723c2d8b48-w:1366-h:2048-l:325986-t:image/jpeg.jpg");}
+
+/* --- HOA TRANG TRÍ (góc) --- */
+#w-zd4nctoe{top:0px;left:314px;width:106px;height:103px;}
+#w-zd4nctoe .image-block-css{border-style:solid;border-width:0px;position:absolute;}
+#w-zd4nctoe .image-background{width:106px;height:103px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box url(https://content.pancake.vn/web-media/d9/b2/5a/9b/b7f60bace86bb09cf77c51aa311a579f4ae62ff50e9a9ed4c0d01f0a-w:200-h:194-l:14986-t:image/webp.webp) border-box;}
+#w-zd4nctoe>div{transform:rotate(62deg);}
+#w-et905fzp{top:-22px;left:314px;width:106px;height:103px;}
+#w-et905fzp .image-block-css{border-style:solid;border-width:0px;position:absolute;}
+#w-et905fzp .image-background{width:106px;height:103px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box url(https://content.pancake.vn/web-media/d9/b2/5a/9b/b7f60bace86bb09cf77c51aa311a579f4ae62ff50e9a9ed4c0d01f0a-w:200-h:194-l:14986-t:image/webp.webp) border-box;}
+#w-et905fzp>div{transform:rotate(62deg);}
+
+/* --- ẢNH TIỆC MỪNG (Section 6) --- */
+#w-kvxk3yu5{top:-12px;left:-104.5px;width:209px;height:291px;}
+#w-kvxk3yu5 .image-block-css{border-style:solid;border-width:0px;position:absolute;}
+#w-kvxk3yu5 .image-background{width:209px;height:291px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box border-box url("https://content.pancake.vn/1/fwebp90/20/94/67/a5/ae287a808ff44bee0584a9883fc327d5ad969b3f32004f7efe4cfb83-w:575-h:800-l:57748-t:image/webp.webp");}
+#w-y8s6taka{top:-256px;left:363px;width:276px;height:342px;}
+#w-y8s6taka .image-block-css{border-style:solid;border-width:0px;position:absolute;}
+#w-y8s6taka .image-background{width:276px;height:342px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box border-box url("https://content.pancake.vn/1/s764x743/fwebp90/33/c8/24/01/46e243ff2983e2e276a9f5cdd0cf0229ac27e7c0b9b0a0627cde9a5d-w:800-h:777-l:237594-t:image/png.png");}
+#w-y8s6taka>div{transform:rotate(240deg);}
+
+/* --- ALBUM ẢNH (Section 10) --- */
+#w-763svdo7 .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-763svdo7 .image-background{width:192px;height:287px;top:0px;left:0px;background:center center/cover no-repeat local content-box border-box url("https://statics.pancake.vn/web-media/7b/30/36/85/cb96e74a283468590dd54de74b228707e8e3e69a866fb57a154d0b7f-w:1366-h:2048-l:387342-t:image/jpeg.jpg");}
+#w-tuvzyur3 .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-tuvzyur3 .image-background{width:200px;height:298px;top:0px;left:0px;background:center center/cover no-repeat local content-box border-box url("https://statics.pancake.vn/web-media/82/20/ba/e9/22d5a729d5e9aad92fa1a53013b6e6bc42f1b865a1903b48ed171631-w:1366-h:2048-l:442655-t:image/jpeg.jpg");}
+#w-kdlizt5m .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-kdlizt5m .image-background{width:192px;height:286px;top:0px;left:0px;background:center center/cover no-repeat local content-box border-box url("https://statics.pancake.vn/web-media/d5/0d/75/9a/6c9bb5c137e3cd41e90d404816b6fbf86fd71ac7957bdcd4403ac8de-w:1366-h:2048-l:401557-t:image/jpeg.jpg");}
+#w-b7dcf8hb .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-b7dcf8hb .image-background{width:193px;height:286px;top:0px;left:0px;background:center center/cover no-repeat local content-box border-box url("https://statics.pancake.vn/web-media/fa/d2/12/43/1f3a6699b1d012dcf6450a450b1647f680140f1090272363db90e26e-w:1366-h:2048-l:462486-t:image/jpeg.jpg");}
+#w-ipxpk4p1 .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-ipxpk4p1 .image-background{width:192px;height:287px;top:0px;left:0px;background:center center/cover no-repeat content-box border-box url("https://statics.pancake.vn/web-media/42/0e/28/e1/b06bb173f2ad3b9f059ccaa1a0400a2eb88e0cc87e3b4898b8c1a22a-w:1366-h:2048-l:434791-t:image/jpeg.jpg");}
+#w-jmb7y9ov .image-block-css{border-radius:6px;border-style:solid;border-width:0px;position:absolute;}
+#w-jmb7y9ov .image-background{width:192px;height:287px;top:0px;left:0px;background:center center/cover no-repeat content-box border-box url("https://statics.pancake.vn/web-media/a8/92/1c/74/487e79d03434a488bb709f0851caabf33e0299b06bc5dbb0aab11b35-w:1366-h:2048-l:439799-t:image/jpeg.jpg");}
+
+/* --- ẢNH LỜI CẢM ƠN (Section 11) --- */
+#w-al800pad{top:0px;left:0px;width:236px;height:282px;}
+#w-al800pad .image-block-css{border-style:solid;border-width:0px;position:absolute;}
+#w-al800pad .image-background{width:287px;height:402px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box border-box url("https://content.pancake.vn/1/fwebp90/20/94/67/a5/ae287a808ff44bee0584a9883fc327d5ad969b3f32004f7efe4cfb83-w:575-h:800-l:57748-t:image/webp.webp");}
+#w-al800pad>div{transform:rotate(180deg);}
+#w-jojwemqb{top:282px;left:198px;width:224px;height:312px;}
+#w-jojwemqb .image-block-css{border-style:solid;border-width:0px;position:absolute;}
+#w-jojwemqb .image-background{width:224px;height:312px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box border-box url("https://content.pancake.vn/1/fwebp90/20/94/67/a5/ae287a808ff44bee0584a9883fc327d5ad969b3f32004f7efe4cfb83-w:575-h:800-l:57748-t:image/webp.webp");}
+#w-1lprjddi{top:0px;left:75px;width:200px;height:131px;}
+#w-1lprjddi .image-block-css{border-style:solid;border-width:0px;position:absolute;}
+#w-1lprjddi .image-background{width:200px;height:131px;top:0px;left:0px;background:right bottom/cover no-repeat scroll content-box url(https://content.pancake.vn/web-media/d9/b2/5a/9b/b7f60bace86bb09cf77c51aa311a579f4ae62ff50e9a9ed4c0d01f0a-w:200-h:194-l:14986-t:image/webp.webp) border-box;}
+#w-1lprjddi>div{transform:rotateY(180deg);}
+#w-cv9fbum3{top:473px;left:147px;width:171px;height:170px;}
+#w-cv9fbum3 .image-block-css{border-style:solid;border-width:0px;position:absolute;}
+#w-cv9fbum3 .image-background{width:171px;height:170px;top:0px;left:0px;background:right bottom/cover no-repeat scroll content-box url(https://content.pancake.vn/web-media/d9/b2/5a/9b/b7f60bace86bb09cf77c51aa311a579f4ae62ff50e9a9ed4c0d01f0a-w:200-h:194-l:14986-t:image/webp.webp) border-box;}
+#w-cv9fbum3>div{transform:rotate(134deg);}
+#w-2ofejt1o{top:318.5px;left:-173px;width:350px;height:340px;}
+#w-2ofejt1o .image-block-css{border-style:solid;border-width:0px;opacity:50%;position:absolute;}
+#w-2ofejt1o .image-background{width:350px;height:340px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box border-box url("https://content.pancake.vn/1/s764x743/fwebp90/33/c8/24/01/46e243ff2983e2e276a9f5cdd0cf0229ac27e7c0b9b0a0627cde9a5d-w:800-h:777-l:237594-t:image/png.png");}
+#w-n4h1b6d6{top:-70px;left:280px;width:350px;height:340px;}
+#w-n4h1b6d6 .image-block-css{border-style:solid;border-width:0px;opacity:50%;position:absolute;}
+#w-n4h1b6d6 .image-background{width:350px;height:340px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box border-box url("https://content.pancake.vn/1/s764x743/fwebp90/33/c8/24/01/46e243ff2983e2e276a9f5cdd0cf0229ac27e7c0b9b0a0627cde9a5d-w:800-h:777-l:237594-t:image/png.png");}
+#w-n4h1b6d6>div{transform:rotate(255deg);}
+
+/* --- FOOTER ICONS --- */
+#w-v41k4diw .rectangle-css{background:center center/contain no-repeat scroll content-box url(https://content.pancake.vn/1/08/3f/7a/e9/be9a053a77ec7cdb461246a62779525962247b7146d4dcccce9c1cfb.png);}
+#w-38e3hoyj .image-background{width:40px;height:40px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box url(https://content.pancake.vn/web-media/5e/92/4c/94/576169baeb9bcd6ccfefb1f103e204731ee0f9e6cba01915ee76b754-w:225-h:225-l:2964-t:image/png.png) border-box;}
+#w-iwb1tv1z .image-background{width:40px;height:40px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box border-box url("https://content.pancake.vn/1/s440x440/fwebp90/64/3b/28/2d/8f38e946729db1f9d0bc62700c52766fccd18d80693362fe475ff563-w:2500-h:2500-l:190279-t:image/jpeg.jpg");}
+
+/* --- MUSIC BUTTON ICONS (SVG mask) --- */
+#w-ung2h07s .rectangle-css{-webkit-mask-image:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyLDJDMTIuNDMsMiAxMi44NCwyLjE0IDEzLjE3LDIuMzdDMTUuNzgsNC4yNSAxOC4zOSw2LjEyIDE5LjExLDguMzFDMTkuODMsMTAuNSAxOSwxMyAxNy41LDE1LjVDMjAsOSAxMyw3LjUgMTMsNy41VjE4QzEzLDIwLjIxIDExLDIyIDguNSwyMkM2LDIyIDQsMjAuMjEgNCwxOEM0LDE1Ljc5IDYsMTQgOC41LDE0QzkuMDMsMTQgOS41MywxNC4wOCAxMCwxNC4yM1Y0QTIsMiAwIDAsMSAxMiwyWiI+PC9wYXRoPjwvc3ZnPg==");mask-image:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyLDJDMTIuNDMsMiAxMi44NCwyLjE0IDEzLjE3LDIuMzdDMTUuNzgsNC4yNSAxOC4zOSw2LjEyIDE5LjExLDguMzFDMTkuODMsMTAuNSAxOSwxMyAxNy41LDE1LjVDMjAsOSAxMyw3LjUgMTMsNy41VjE4QzEzLDIwLjIxIDExLDIyIDguNSwyMkM2LDIyIDQsMjAuMjEgNCwxOEM0LDE1Ljc5IDYsMTQgOC41LDE0QzkuMDMsMTQgOS41MywxNC4wOCAxMCwxNC4yM1Y0QTIsMiAwIDAsMSAxMiwyWiI+PC9wYXRoPjwvc3ZnPg==");}
+#w-v3w94ij8 .rectangle-css{-webkit-mask-image:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIsMiA1LjI3TDMuMjgsNEwyMCwyMC43MkwxOC43MywyMkwxMywxNi4yN1YxOEMxMywyMC4yMSAxMSwyMiA4LjUsMjJDNiwyMiA0LDIwLjIxIDQsMThDNCwxNS43OSA2LDE0IDguNSwxNEM5LjAzLDE0IDkuNTMsMTQuMDggMTAsMTQuMjNWMTMuMjdMMiw1LjI3TTEyLDJDMTIuNDMsMiAxMi44NCwyLjE0IDEzLjE3LDIuMzdDMTUuNzgsNC4yNSAxOC4zOSw2LjEyIDE5LjExLDguMzFDMTkuODMsMTAuNSAxOSwxMyAxNy41LDE1LjVDMjAsOSAxMyw3LjUgMTMsNy41VjExLjE4TDEwLDguMThWNEEyLDIgMCAwLDEgMTIsMloiPjwvcGF0aD48L3N2Zz4=");mask-image:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIsMiA1LjI3TDMuMjgsNEwyMCwyMC43MkwxOC43MywyMkwxMywxNi4yN1YxOEMxMywyMC4yMSAxMSwyMiA4LjUsMjJDNiwyMiA0LDIwLjIxIDQsMThDNCwxNS43OSA2LDE0IDguNSwxNEM5LjAzLDE0IDkuNTMsMTQuMDggMTAsMTQuMjNWMTMuMjdMMiw1LjI3TTEyLDJDMTIuNDMsMiAxMi44NCwyLjE0IDEzLjE3LDIuMzdDMTUuNzgsNC4yNSAxOC4zOSw2LjEyIDE5LjExLDguMzFDMTkuODMsMTAuNSAxOSwxMyAxNy41LDE1LjVDMjAsOSAxMyw3LjUgMTMsNy41VjExLjE4TDEwLDguMThWNEEyLDIgMCAwLDEgMTIsMloiPjwvcGF0aD48L3N2Zz4=");}
+
+/* --- POPUP CLOSE BUTTON ICON (SVG mask) --- */
+#w-au0o7yap .rectangle-css{-webkit-mask-image:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIHZpZXdCb3g9JzAgMCAyNCAyNCc+IDxwYXRoIGQ9J00xMy40NiwxMkwxOSwxNy41NFYxOUgxNy41NEwxMiwxMy40Nkw2LjQ2LDE5SDVWMTcuNTRMMTAuNTQsMTJMNSw2LjQ2VjVINi40NkwxMiwxMC41NEwxNy41NCw1SDE5VjYuNDZMMTMuNDYsMTJaJz48L3BhdGg+IDwvc3ZnPg==");mask-image:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIHZpZXdCb3g9JzAgMCAyNCAyNCc+IDxwYXRoIGQ9J00xMy40NiwxMkwxOSwxNy41NFYxOUgxNy41NEwxMiwxMy40Nkw2LjQ2LDE5SDVWMTcuNTRMMTAuNTQsMTJMNSw2LjQ2VjVINi40NkwxMiwxMC41NEwxNy41NCw1SDE5VjYuNDZMMTMuNDYsMTJaJz48L3BhdGg+IDwvc3ZnPg==");}
+#w-slhy7pgw .rectangle-css{-webkit-mask-image:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIHZpZXdCb3g9JzAgMCAyNCAyNCc+IDxwYXRoIGQ9J00xMy40NiwxMkwxOSwxNy41NFYxOUgxNy41NEwxMiwxMy40Nkw2LjQ2LDE5SDVWMTcuNTRMMTAuNTQsMTJMNSw2LjQ2VjVINi40NkwxMiwxMC41NEwxNy41NCw1SDE5VjYuNDZMMTMuNDYsMTJaJz48L3BhdGg+IDwvc3ZnPg==");mask-image:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIHZpZXdCb3g9JzAgMCAyNCAyNCc+IDxwYXRoIGQ9J00xMy40NiwxMkwxOSwxNy41NFYxOUgxNy41NEwxMiwxMy40Nkw2LjQ2LDE5SDVWMTcuNTRMMTAuNTQsMTJMNSw2LjQ2VjVINi40NkwxMiwxMC41NEwxNy41NCw1SDE5VjYuNDZMMTMuNDYsMTJaJz48L3BhdGg+IDwvc3ZnPg==");}
+
+/* --- QR CODE IMAGE --- */
+#w-yvchzu74 .image-block-css{border-style:solid;border-width:0px;position:absolute;}
+#w-yvchzu74 .image-background{width:240px;height:240px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box url(https://content.pancake.vn/web-media/1b/4c/b1/cd/dd4c9bb7cf9364d5fee583194207d08a96cb20751009b58b63063d45-w_250-h_250-l_24228-t_image/png.png) border-box;}
+
+/* --- SECTION 1 HERO ẢNH NỀN --- */
+#w-a6tphzh4 .image-block-css{border-style:solid;border-width:0px;position:absolute;}
+#w-a6tphzh4 .image-background{width:350px;height:560px;top:0px;left:0px;background:center center/cover no-repeat scroll content-box border-box url("https://statics.pancake.vn/web-media/7e/02/1a/b4/e04e20774e85a1735cfee621bf9d8dc1a747e84d31189fe580152810-w:500-h:800-l:228430-t:image/png.png");}
+
+/* --- STICKY MUSIC BUTTON (vị trí cố định) --- */
+#w-rngnc2dl, #w-tc5qmasv {position:sticky;z-index:9999;}
