@@ -343,7 +343,8 @@ img:not([src]), img[src=""] {
 .button-text {
 	display: table-cell;
 	vertical-align: middle;
-	text-align: unset
+	text-align: unset;
+	z-index: 9999;
 }
 .input-number-quantity-css {
 	width: 100%;
@@ -9788,6 +9789,26 @@ img:not([src]), img[src=""] {
 	width: 354px;
 	height: 236px;
 }
+/* Fix 2 nút đè nhau */
+#w-epjhp84i {
+    height: 480px !important;
+}
+
+#w-9ppmw9gy {
+    height: 260px !important;
+}
+
+#w-gwfybvg1 {
+    top: 500px !important;
+}
+
+#w-olz1tao8 {
+    top: 390px !important;
+}
+#w-gwfybvg1 {
+    top: 225px !important;
+    left: 0px !important;
+}
 #w-9ppmw9gy form {
 	-webkit-text-stroke: 0px rgba(0, 0, 0, 1);
 	border-radius: 50px;
@@ -12381,4 +12402,9 @@ img:not([src]), img[src=""] {
 	-webkit-animation-iteration-count: infinite;
 	animation-duration: 3s;
 	-webkit-animation-duration: 3s;
+}
+/* ===== FIX VIEWPORT ===== */
+.pageview {
+    max-width: 420px !important;
+    margin: 0 auto !important;
 }
