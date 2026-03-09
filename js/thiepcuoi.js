@@ -1,10 +1,10 @@
 
 // ====== CONFIG ======
 const CONFIG = {
-  groomName: "Nguyễn Anh Tú",
-  brideName: "Trần Thị Diệu Nhi",
-  coupleShort: "Anh Tú - Diệu Nhi",
-  date: "15.02.2025",
+  groomName: "Nguyễn Đức Vang",
+  brideName: "Nguyễn Diệu Thúy",
+  coupleShort: "Đức Vang - Diệu Thúy",
+  date: "15.02.2026026",
   dayOfWeek: "Thứ 5",
   dayNum: "15",
   month: "Tháng 2",
