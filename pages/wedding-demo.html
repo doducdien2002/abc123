@@ -8,257 +8,127 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --gold:#c9a84c;
-  --gold2:#e8c97a;
-  --dark:#1a1208;
-  --dark2:#251c0e;
-  --cream:#f5f0e8;
-  --cream2:#ede5d4;
-  --red:#8b1a1a;
+  --gold:#c9a84c;--gold2:#e8c97a;--dark:#1a1208;--dark2:#251c0e;
+  --cream:#f5f0e8;--cream2:#ede5d4;--red:#8b1a1a;--green:#27ae60;
 }
-body{
-  font-family:'Be Vietnam Pro',sans-serif;
-  background:var(--dark);
-  color:var(--cream);
-  min-height:100vh;
-  overflow-x:hidden;
-}
-
-/* Background pattern */
-body::before{
-  content:'囍';
-  position:fixed;top:-80px;right:-60px;
-  font-size:400px;color:rgba(201,168,76,.04);
-  pointer-events:none;z-index:0;line-height:1;
-}
-body::after{
-  content:'囍';
-  position:fixed;bottom:-80px;left:-60px;
-  font-size:300px;color:rgba(201,168,76,.03);
-  pointer-events:none;z-index:0;line-height:1;
-  transform:rotate(15deg);
-}
-
-.wrap{
-  position:relative;z-index:1;
-  max-width:680px;margin:0 auto;
-  padding:48px 24px 60px;
-}
-
-/* Header */
+body{font-family:'Be Vietnam Pro',sans-serif;background:var(--dark);color:var(--cream);min-height:100vh;overflow-x:hidden;}
+body::before{content:'囍';position:fixed;top:-80px;right:-60px;font-size:400px;color:rgba(201,168,76,.04);pointer-events:none;z-index:0;line-height:1;}
+body::after{content:'囍';position:fixed;bottom:-80px;left:-60px;font-size:300px;color:rgba(201,168,76,.03);pointer-events:none;z-index:0;line-height:1;transform:rotate(15deg);}
+.wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:48px 24px 60px;}
 .header{text-align:center;margin-bottom:40px;}
-.logo{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.6rem;font-weight:600;
-  color:var(--gold2);letter-spacing:.05em;
-  margin-bottom:16px;
-}
-.logo-icon{
-  width:36px;height:36px;border-radius:8px;
-  background:linear-gradient(135deg,var(--gold),var(--red));
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;
-}
-.header h1{
-  font-family:'Cormorant Garamond',serif;
-  font-size:2rem;font-weight:300;
-  color:var(--cream);letter-spacing:.04em;
-  line-height:1.3;margin-bottom:8px;
-}
+.logo{display:inline-flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--gold2);letter-spacing:.05em;margin-bottom:16px;}
+.logo-icon{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--red));display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--cream);letter-spacing:.04em;line-height:1.3;margin-bottom:8px;}
 .header p{font-size:.8rem;color:rgba(245,240,232,.5);line-height:1.7;}
-
-/* Divider */
-.divider{
-  display:flex;align-items:center;gap:12px;
-  margin:28px 0;
-}
-.divider::before,.divider::after{
-  content:'';flex:1;height:1px;
-  background:linear-gradient(to right,transparent,var(--gold),transparent);
-}
-.divider span{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.1rem;color:var(--gold);
-}
-
-/* Card */
-.card{
-  background:linear-gradient(135deg,rgba(37,28,14,.9),rgba(26,18,8,.95));
-  border:1px solid rgba(201,168,76,.2);
-  border-radius:16px;padding:28px 24px;
-  box-shadow:0 8px 40px rgba(0,0,0,.4);
-  margin-bottom:20px;
-}
-
-/* Form */
-label{
-  display:block;font-size:.72rem;font-weight:500;
-  color:var(--gold);letter-spacing:.1em;text-transform:uppercase;
-  margin-bottom:6px;
-}
-input[type=text],select{
-  width:100%;padding:11px 14px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(201,168,76,.25);
-  border-radius:10px;color:var(--cream);
-  font-family:'Be Vietnam Pro',sans-serif;font-size:.85rem;
-  outline:none;transition:border-color .2s,background .2s;
-  appearance:none;
-}
-input[type=text]:focus,select:focus{
-  border-color:var(--gold);
-  background:rgba(201,168,76,.08);
-}
-input[type=text]::placeholder{color:rgba(245,240,232,.3);}
+.divider{display:flex;align-items:center;gap:12px;margin:28px 0;}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);}
+.divider span{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold);}
+.card{background:linear-gradient(135deg,rgba(37,28,14,.9),rgba(26,18,8,.95));border:1px solid rgba(201,168,76,.2);border-radius:16px;padding:28px 24px;box-shadow:0 8px 40px rgba(0,0,0,.4);margin-bottom:20px;}
+label{display:block;font-size:.72rem;font-weight:500;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;}
+input[type=text],input[type=url],select,textarea{width:100%;padding:11px 14px;background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.25);border-radius:10px;color:var(--cream);font-family:'Be Vietnam Pro',sans-serif;font-size:.85rem;outline:none;transition:border-color .2s,background .2s;appearance:none;}
+input[type=text]:focus,input[type=url]:focus,select:focus,textarea:focus{border-color:var(--gold);background:rgba(201,168,76,.08);}
+input::placeholder,textarea::placeholder{color:rgba(245,240,232,.3);}
 .select-wrap{position:relative;}
-.select-wrap::after{
-  content:'▾';position:absolute;right:12px;top:50%;
-  transform:translateY(-50%);color:var(--gold);
-  pointer-events:none;font-size:.8rem;
-}
+.select-wrap::after{content:'▾';position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--gold);pointer-events:none;font-size:.8rem;}
 select option{background:#251c0e;color:#f5f0e8;}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
 @media(max-width:500px){.row{grid-template-columns:1fr;}}
 .field{margin-bottom:16px;}
-
-/* Btn generate */
-.btn-gen{
-  width:100%;padding:13px;
-  background:linear-gradient(135deg,var(--gold),var(--gold2),var(--gold));
-  background-size:200% 100%;background-position:0% 50%;
-  border:none;border-radius:10px;
-  font-family:'Be Vietnam Pro',sans-serif;font-size:.85rem;font-weight:600;
-  color:var(--dark);cursor:pointer;letter-spacing:.03em;
-  transition:background-position .4s,transform .2s,box-shadow .2s;
-  box-shadow:0 4px 20px rgba(201,168,76,.3);
-}
-.btn-gen:hover{
-  background-position:100% 50%;
-  transform:translateY(-2px);
-  box-shadow:0 8px 28px rgba(201,168,76,.45);
-}
+.btn-gen{width:100%;padding:13px;background:linear-gradient(135deg,var(--gold),var(--gold2),var(--gold));background-size:200% 100%;background-position:0% 50%;border:none;border-radius:10px;font-family:'Be Vietnam Pro',sans-serif;font-size:.85rem;font-weight:600;color:var(--dark);cursor:pointer;letter-spacing:.03em;transition:background-position .4s,transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(201,168,76,.3);}
+.btn-gen:hover{background-position:100% 50%;transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,168,76,.45);}
 .btn-gen:active{transform:translateY(0);}
-
-/* Result */
-.result{
-  display:none;
-  background:rgba(201,168,76,.06);
-  border:1px solid rgba(201,168,76,.3);
-  border-radius:12px;padding:20px;
-  margin-top:16px;
-}
+.btn-secondary{width:100%;padding:11px;background:rgba(201,168,76,.1);color:var(--gold);border:1px solid rgba(201,168,76,.3);border-radius:10px;font-family:'Be Vietnam Pro',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.03em;}
+.btn-secondary:hover{background:rgba(201,168,76,.2);}
+.result{display:none;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.3);border-radius:12px;padding:20px;margin-top:16px;}
 .result.show{display:block;animation:fadeUp .4s ease;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-
-.result-label{
-  font-size:.68rem;font-weight:600;
-  color:var(--gold);letter-spacing:.1em;text-transform:uppercase;
-  margin-bottom:8px;
-}
-.link-box{
-  display:flex;gap:8px;align-items:center;
-}
-.link-text{
-  flex:1;padding:9px 12px;
-  background:rgba(0,0,0,.3);border-radius:8px;
-  font-size:.75rem;color:var(--cream2);
-  word-break:break-all;line-height:1.4;
-  border:1px solid rgba(255,255,255,.08);
-  font-family:monospace;
-}
-.btn-copy{
-  flex-shrink:0;padding:9px 14px;
-  background:var(--gold);color:var(--dark);
-  border:none;border-radius:8px;
-  font-family:'Be Vietnam Pro',sans-serif;
-  font-size:.75rem;font-weight:600;cursor:pointer;
-  transition:all .2s;white-space:nowrap;
-}
+.result-label{font-size:.68rem;font-weight:600;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.link-box{display:flex;gap:8px;align-items:center;}
+.link-text{flex:1;padding:9px 12px;background:rgba(0,0,0,.3);border-radius:8px;font-size:.75rem;color:var(--cream2);word-break:break-all;line-height:1.4;border:1px solid rgba(255,255,255,.08);font-family:monospace;}
+.btn-copy{flex-shrink:0;padding:9px 14px;background:var(--gold);color:var(--dark);border:none;border-radius:8px;font-family:'Be Vietnam Pro',sans-serif;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;}
 .btn-copy:hover{background:var(--gold2);}
 .btn-copy.copied{background:#27ae60;color:#fff;}
-
-/* Batch section */
-.batch-area{
-  width:100%;min-height:120px;padding:12px 14px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(201,168,76,.2);
-  border-radius:10px;color:var(--cream);
-  font-family:'Be Vietnam Pro',sans-serif;font-size:.8rem;
-  outline:none;resize:vertical;line-height:1.6;
-  transition:border-color .2s;
-}
+.batch-area{width:100%;min-height:120px;padding:12px 14px;background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.2);border-radius:10px;color:var(--cream);font-family:'Be Vietnam Pro',sans-serif;font-size:.8rem;outline:none;resize:vertical;line-height:1.6;transition:border-color .2s;}
 .batch-area:focus{border-color:var(--gold);}
-.batch-area::placeholder{color:rgba(245,240,232,.3);}
 .batch-results{margin-top:14px;display:flex;flex-direction:column;gap:8px;}
-.batch-item{
-  background:rgba(0,0,0,.25);border-radius:8px;
-  padding:10px 12px;display:flex;align-items:center;gap:8px;
-  border:1px solid rgba(201,168,76,.12);
-  animation:fadeUp .3s ease;
-}
-.batch-name{
-  font-size:.75rem;color:var(--gold2);font-weight:500;
-  min-width:120px;flex-shrink:0;white-space:nowrap;
-  overflow:hidden;text-overflow:ellipsis;
-}
-.batch-link{
-  flex:1;font-size:.7rem;color:rgba(245,240,232,.5);
-  font-family:monospace;overflow:hidden;
-  text-overflow:ellipsis;white-space:nowrap;
-}
-.btn-copy-sm{
-  flex-shrink:0;padding:5px 10px;
-  background:rgba(201,168,76,.15);color:var(--gold);
-  border:1px solid rgba(201,168,76,.3);border-radius:6px;
-  font-size:.68rem;font-weight:600;cursor:pointer;
-  font-family:'Be Vietnam Pro',sans-serif;
-  transition:all .2s;
-}
+.batch-item{background:rgba(0,0,0,.25);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:8px;border:1px solid rgba(201,168,76,.12);animation:fadeUp .3s ease;}
+.batch-name{font-size:.75rem;color:var(--gold2);font-weight:500;min-width:120px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.batch-link{flex:1;font-size:.7rem;color:rgba(245,240,232,.5);font-family:monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.btn-copy-sm{flex-shrink:0;padding:5px 10px;background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.3);border-radius:6px;font-size:.68rem;font-weight:600;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;transition:all .2s;}
 .btn-copy-sm:hover{background:rgba(201,168,76,.3);}
 .btn-copy-sm.copied{background:rgba(39,174,96,.2);color:#6fcf97;border-color:#6fcf97;}
-
-/* Copy all */
-.btn-copy-all{
-  margin-top:12px;width:100%;padding:10px;
-  background:rgba(201,168,76,.1);color:var(--gold);
-  border:1px solid rgba(201,168,76,.25);border-radius:8px;
-  font-family:'Be Vietnam Pro',sans-serif;font-size:.78rem;font-weight:600;
-  cursor:pointer;transition:all .2s;letter-spacing:.03em;
-}
+.btn-copy-all{margin-top:12px;width:100%;padding:10px;background:rgba(201,168,76,.1);color:var(--gold);border:1px solid rgba(201,168,76,.25);border-radius:8px;font-family:'Be Vietnam Pro',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.03em;}
 .btn-copy-all:hover{background:rgba(201,168,76,.2);}
-
-/* Info note */
-.note{
-  background:rgba(139,26,26,.15);border:1px solid rgba(139,26,26,.3);
-  border-radius:10px;padding:14px 16px;
-  font-size:.75rem;color:rgba(245,240,232,.65);line-height:1.7;
-  margin-top:16px;
-}
+.note{background:rgba(139,26,26,.15);border:1px solid rgba(139,26,26,.3);border-radius:10px;padding:14px 16px;font-size:.75rem;color:rgba(245,240,232,.65);line-height:1.7;margin-top:16px;}
 .note strong{color:var(--gold2);}
-
-/* Count badge */
-.count-badge{
-  display:inline-block;background:var(--gold);color:var(--dark);
-  font-size:.65rem;font-weight:700;padding:2px 8px;
-  border-radius:20px;margin-left:8px;vertical-align:middle;
-}
-
-/* Tabs */
-.tabs{display:flex;gap:2px;margin-bottom:20px;
-  background:rgba(255,255,255,.04);border-radius:12px;padding:4px;}
-.tab{
-  flex:1;padding:9px;text-align:center;
-  font-size:.75rem;font-weight:500;cursor:pointer;
-  border-radius:9px;transition:all .2s;color:rgba(245,240,232,.5);
-  border:none;background:transparent;font-family:'Be Vietnam Pro',sans-serif;
-}
-.tab.active{
-  background:linear-gradient(135deg,rgba(201,168,76,.2),rgba(201,168,76,.1));
-  color:var(--gold2);border:1px solid rgba(201,168,76,.25);
-}
+.count-badge{display:inline-block;background:var(--gold);color:var(--dark);font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:8px;vertical-align:middle;}
+.tabs{display:flex;gap:2px;margin-bottom:20px;background:rgba(255,255,255,.04);border-radius:12px;padding:4px;}
+.tab{flex:1;padding:9px;text-align:center;font-size:.75rem;font-weight:500;cursor:pointer;border-radius:9px;transition:all .2s;color:rgba(245,240,232,.5);border:none;background:transparent;font-family:'Be Vietnam Pro',sans-serif;}
+.tab.active{background:linear-gradient(135deg,rgba(201,168,76,.2),rgba(201,168,76,.1));color:var(--gold2);border:1px solid rgba(201,168,76,.25);}
 .tab-content{display:none;}
 .tab-content.active{display:block;}
+
+/* ===== SHEET CONFIG PANEL ===== */
+.sheet-panel{background:rgba(39,174,96,.06);border:1px solid rgba(39,174,96,.25);border-radius:14px;padding:20px 22px;margin-bottom:20px;}
+.sheet-panel-title{font-size:.78rem;font-weight:600;color:#6fcf97;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.sheet-status{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;padding:3px 10px;border-radius:20px;font-weight:500;}
+.sheet-status.connected{background:rgba(39,174,96,.2);color:#6fcf97;border:1px solid rgba(39,174,96,.3);}
+.sheet-status.disconnected{background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.25);}
+.sheet-tabs-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.sheet-tab-chip{padding:5px 12px;border-radius:6px;font-size:.72rem;cursor:pointer;border:1px solid rgba(201,168,76,.2);background:rgba(255,255,255,.04);color:rgba(245,240,232,.6);transition:all .15s;}
+.sheet-tab-chip:hover{border-color:var(--gold);color:var(--gold);}
+.sheet-tab-chip.active{background:rgba(39,174,96,.2);border-color:#6fcf97;color:#6fcf97;font-weight:600;}
+.columns-map{margin-top:14px;display:flex;flex-direction:column;gap:8px;}
+.col-row{display:flex;align-items:center;gap:10px;font-size:.78rem;}
+.col-label{color:var(--muted);min-width:110px;color:rgba(245,240,232,.5);}
+.col-select{flex:1;padding:7px 10px;font-size:.75rem;background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.2);border-radius:7px;color:var(--cream);font-family:'Be Vietnam Pro',sans-serif;outline:none;appearance:none;}
+.col-select:focus{border-color:var(--gold);}
+.inject-code-box{background:rgba(0,0,0,.4);border-radius:10px;padding:14px;font-family:monospace;font-size:.72rem;color:#a8d8a8;border:1px solid rgba(255,255,255,.08);position:relative;line-height:1.7;word-break:break-all;margin-top:12px;white-space:pre-wrap;}
+.btn-copy-code{position:absolute;top:8px;right:8px;padding:4px 10px;background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.3);border-radius:5px;font-size:.65rem;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;transition:all .2s;}
+.btn-copy-code:hover{background:rgba(201,168,76,.3);}
+.step-badge{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--gold);color:var(--dark);font-size:.65rem;font-weight:700;flex-shrink:0;}
+
+/* ===== RSVP STATS ===== */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+.stat-card{background:rgba(0,0,0,.3);border:1px solid rgba(201,168,76,.15);border-radius:12px;padding:16px;text-align:center;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--gold2);}
+.stat-label{font-size:.65rem;color:rgba(245,240,232,.4);text-transform:uppercase;letter-spacing:.08em;margin-top:4px;}
+.rsvp-table{width:100%;border-collapse:collapse;font-size:.75rem;}
+.rsvp-table th{padding:8px 12px;text-align:left;font-size:.65rem;font-weight:600;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid rgba(201,168,76,.2);}
+.rsvp-table td{padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.05);color:rgba(245,240,232,.8);}
+.rsvp-table tr:hover td{background:rgba(201,168,76,.04);}
+.badge-yes{background:rgba(39,174,96,.2);color:#6fcf97;padding:2px 8px;border-radius:20px;font-size:.65rem;font-weight:600;}
+.badge-no{background:rgba(139,26,26,.2);color:#e57373;padding:2px 8px;border-radius:20px;font-size:.65rem;font-weight:600;}
+.badge-seen{background:rgba(201,168,76,.15);color:var(--gold);padding:2px 8px;border-radius:20px;font-size:.65rem;font-weight:600;}
+.empty-state{text-align:center;padding:32px;color:rgba(245,240,232,.3);font-size:.8rem;}
+
+/* ===== EXPORT ===== */
+.export-row{display:flex;gap:8px;margin-top:12px;}
+.btn-export{flex:1;padding:10px;border-radius:8px;font-family:'Be Vietnam Pro',sans-serif;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;border:1px solid;}
+.btn-export.csv{background:rgba(39,174,96,.12);color:#6fcf97;border-color:rgba(39,174,96,.3);}
+.btn-export.csv:hover{background:rgba(39,174,96,.25);}
+.btn-export.txt{background:rgba(79,156,250,.12);color:#74b9ff;border-color:rgba(79,156,250,.3);}
+.btn-export.txt:hover{background:rgba(79,156,250,.25);}
+.btn-export.json{background:rgba(253,203,110,.12);color:#fdcb6e;border-color:rgba(253,203,110,.3);}
+.btn-export.json:hover{background:rgba(253,203,110,.25);}
+
+/* ===== TOAST ===== */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:rgba(37,28,14,.97);border:1px solid rgba(201,168,76,.4);border-radius:12px;padding:12px 22px;font-size:.8rem;color:var(--gold2);z-index:9999;transition:transform .3s ease;pointer-events:none;white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+/* ===== SCRIPT BUILDER SECTION ===== */
+.script-steps{display:flex;flex-direction:column;gap:12px;margin-top:4px;}
+.script-step{background:rgba(255,255,255,.03);border:1px solid rgba(201,168,76,.12);border-radius:10px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;}
+.script-step-body{flex:1;font-size:.78rem;color:rgba(245,240,232,.7);line-height:1.7;}
+.script-step-body strong{color:var(--cream);}
+code{background:rgba(0,0,0,.3);padding:1px 6px;border-radius:4px;font-family:monospace;color:#a8d8a8;font-size:.85em;}
+
+/* toggle arrow */
+.section-toggle{cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;}
+.section-toggle .arrow{transition:transform .3s;color:var(--gold);font-size:.8rem;}
+.section-toggle.open .arrow{transform:rotate(180deg);}
+.collapsible{display:none;}
+.collapsible.open{display:block;}
 </style>
 </head>
 <body>
@@ -272,10 +142,123 @@ select option{background:#251c0e;color:#f5f0e8;}
 
   <div class="divider"><span>✦</span></div>
 
-  <!-- Tabs -->
+  <!-- ============================================================ -->
+  <!-- GOOGLE SHEET CONFIG                                           -->
+  <!-- ============================================================ -->
+  <div class="card">
+    <div class="section-toggle" onclick="toggleSection('sheet-config','arrow-sheet')" id="arrow-sheet-wrap">
+      <div style="font-size:.82rem;font-weight:600;color:#6fcf97;display:flex;align-items:center;gap:8px;">
+        <span>🔗</span> Kết nối Google Sheet
+        <span id="sheet-connected-badge" class="sheet-status disconnected">● Chưa kết nối</span>
+      </div>
+      <span class="arrow" id="arrow-sheet">▼</span>
+    </div>
+
+    <div class="collapsible open" id="sheet-config">
+      <div style="margin-top:18px;display:flex;flex-direction:column;gap:14px;">
+
+        <!-- ── BƯỚC 1: NHẬP URL TRANG THIỆP ── -->
+        <div class="script-step">
+          <span class="step-badge">1</span>
+          <div class="script-step-body" style="width:100%">
+            <strong>Nhập URL trang thiệp cần inject</strong>
+            <div style="display:flex;gap:8px;margin-top:10px;">
+              <input type="url" id="page-url" placeholder="https://cinelove.vn/thiepcuoi.html" style="flex:1;margin-bottom:0"/>
+              <button onclick="scanPage()" id="btn-scan" style="flex-shrink:0;padding:10px 20px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--dark);border:none;border-radius:8px;font-family:'Be Vietnam Pro',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 4px 16px rgba(201,168,76,.3);transition:all .2s;">🔍 Quét Form</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── BƯỚC 2: KẾT QUẢ SCAN FORM (ẩn ban đầu) ── -->
+        <div id="step-scan-result" style="display:none;flex-direction:column;gap:14px;">
+
+          <div class="script-step" style="border-color:rgba(79,156,250,.3);background:rgba(79,156,250,.04);animation:fadeUp .35s ease;">
+            <span class="step-badge" style="background:linear-gradient(135deg,#4f9cfa,#74b9ff);">2</span>
+            <div class="script-step-body" style="width:100%">
+              <strong>Thông tin form phát hiện được</strong>
+              <div style="font-size:.7rem;color:rgba(245,240,232,.4);margin-bottom:10px;" id="scan-page-label"></div>
+              <div id="field-list" style="display:flex;flex-direction:column;gap:6px;"></div>
+              <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+                <label style="display:flex;align-items:center;gap:6px;font-size:.72rem;color:rgba(245,240,232,.6);cursor:pointer;text-transform:none;">
+                  <input type="checkbox" id="chk-name" checked style="width:auto;accent-color:var(--gold);" onchange="updateInjectScript()"> + Tên khách <code style="font-size:.62rem;">?ten=</code>
+                </label>
+                <label style="display:flex;align-items:center;gap:6px;font-size:.72rem;color:rgba(245,240,232,.6);cursor:pointer;text-transform:none;">
+                  <input type="checkbox" id="chk-time" checked style="width:auto;accent-color:var(--gold);" onchange="updateInjectScript()"> + Thời gian mở
+                </label>
+                <label style="display:flex;align-items:center;gap:6px;font-size:.72rem;color:rgba(245,240,232,.6);cursor:pointer;text-transform:none;">
+                  <input type="checkbox" id="chk-rsvp" checked style="width:auto;accent-color:var(--gold);" onchange="updateInjectScript()"> + RSVP
+                </label>
+                <label style="display:flex;align-items:center;gap:6px;font-size:.72rem;color:rgba(245,240,232,.6);cursor:pointer;text-transform:none;">
+                  <input type="checkbox" id="chk-device" style="width:auto;accent-color:var(--gold);" onchange="updateInjectScript()"> + Thiết bị
+                </label>
+                <label style="display:flex;align-items:center;gap:6px;font-size:.72rem;color:rgba(245,240,232,.6);cursor:pointer;text-transform:none;">
+                  <input type="checkbox" id="chk-count" style="width:auto;accent-color:var(--gold);" onchange="updateInjectScript()"> + Số lần xem
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── BƯỚC 3: NHẬP SHEET URL & TẠO SCRIPT ── -->
+          <div class="script-step" style="border-color:rgba(39,174,96,.3);background:rgba(39,174,96,.04);animation:fadeUp .45s ease;">
+            <span class="step-badge" style="background:linear-gradient(135deg,#27ae60,#6fcf97);">3</span>
+            <div class="script-step-body" style="width:100%">
+              <strong>Nhập Web App URL (Google Apps Script)</strong>
+              <div style="font-size:.7rem;color:rgba(245,240,232,.4);margin:4px 0 10px;">
+                Chưa có? <button onclick="toggleGasCode(this)" style="background:none;border:none;color:var(--gold);font-size:.7rem;cursor:pointer;text-decoration:underline;font-family:inherit;padding:0;">▶ Xem hướng dẫn tạo</button>
+              </div>
+              <div id="gas-code-wrap" style="display:none;margin-bottom:12px;background:rgba(0,0,0,.2);border:1px solid rgba(201,168,76,.15);border-radius:10px;padding:14px;">
+                <div style="font-size:.72rem;color:rgba(245,240,232,.5);line-height:1.8;margin-bottom:12px;">
+                  Cần 2 thứ từ Google Sheet:<br>
+                  <span style="color:var(--gold2);">① Spreadsheet ID</span> — lấy từ URL Sheet: <code style="font-size:.65rem;">...spreadsheets/d/<strong style="color:var(--gold);">ID_Ở_ĐÂY</strong>/edit</code><br>
+                  <span style="color:var(--gold2);">② Tên tab</span> — tên trang ở thanh dưới cùng (vd: <code>Sheet1</code>, <code>RSVP</code>)
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+                  <div>
+                    <div style="font-size:.68rem;color:var(--gold);margin-bottom:4px;font-weight:600;">① Spreadsheet ID</div>
+                    <input type="text" id="gas-sheet-id" placeholder="1JsLgi188lCY865BVC..." oninput="updateGasCode()" style="margin-bottom:0;font-size:.72rem;font-family:monospace;"/>
+                  </div>
+                  <div>
+                    <div style="font-size:.68rem;color:var(--gold);margin-bottom:4px;font-weight:600;">② Tên tab Sheet</div>
+                    <input type="text" id="gas-sheet-name" placeholder="Sheet1" value="Sheet1" oninput="updateGasCode()" style="margin-bottom:0;font-size:.72rem;"/>
+                  </div>
+                </div>
+                <div class="inject-code-box" id="gas-code-box" style="font-size:.67rem;line-height:1.6;white-space:pre;"></div>
+              </div>
+              <div style="display:flex;gap:8px;">
+                <input type="url" id="webapp-url" placeholder="https://script.google.com/macros/s/.../exec" style="flex:1;margin-bottom:0" oninput="updateInjectScript()"/>
+                <button onclick="doInject()" style="flex-shrink:0;padding:10px 18px;background:linear-gradient(135deg,#27ae60,#6fcf97);color:#fff;border:none;border-radius:8px;font-family:'Be Vietnam Pro',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 4px 16px rgba(39,174,96,.3);">⚡ Tạo Script</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── BƯỚC 4: SCRIPT OUTPUT (ẩn đến khi có URL Sheet) ── -->
+          <div id="step-script-out" style="display:none;animation:fadeUp .4s ease;">
+            <div class="script-step" style="border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.04);">
+              <span class="step-badge" style="background:linear-gradient(135deg,var(--gold),var(--gold2));">4</span>
+              <div class="script-step-body" style="width:100%">
+                <strong>Script — dán vào mỗi file thiệp trước <code>&lt;/body&gt;</code></strong>
+                <div class="inject-code-box" id="inject-output" style="margin-top:10px;font-size:.7rem;max-height:220px;overflow-y:auto;"></div>
+                <div style="display:flex;gap:8px;margin-top:10px;">
+                  <button onclick="copyInjectScript()" style="padding:8px 18px;background:var(--gold);color:var(--dark);border:none;border-radius:7px;font-family:'Be Vietnam Pro',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;">📋 Copy Script</button>
+                  <button onclick="testConnection()" style="padding:8px 18px;background:rgba(39,174,96,.15);color:#6fcf97;border:1px solid rgba(39,174,96,.3);border-radius:7px;font-family:'Be Vietnam Pro',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;">🔌 Test kết nối</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- TABS: TẠO LINK                                               -->
+  <!-- ============================================================ -->
   <div class="tabs">
     <button class="tab active" onclick="switchTab('single')">🔗 1 Khách</button>
     <button class="tab" onclick="switchTab('batch')">📋 Nhiều Khách</button>
+    <button class="tab" onclick="switchTab('stats')">📊 RSVP Stats</button>
   </div>
 
   <!-- TAB 1: Single -->
@@ -336,12 +319,10 @@ select option{background:#251c0e;color:#f5f0e8;}
           </select>
         </div>
       </div>
-
       <div class="field">
         <label>Domain website của bạn</label>
         <input type="text" id="domain" placeholder="Ví dụ: https://cinelove.vn" value="https://cinelove.vn" oninput="autoGen()"/>
       </div>
-
       <div class="result" id="result-single">
         <div class="result-label">🔗 Link thiệp cá nhân hoá</div>
         <div class="link-box">
@@ -350,14 +331,12 @@ select option{background:#251c0e;color:#f5f0e8;}
         </div>
       </div>
     </div>
-
     <div class="note">
       <strong>💡 Cách hoạt động:</strong><br>
       1. Nhập tên khách → link tự tạo ngay<br>
       2. Gửi link qua Zalo / Facebook / Messenger<br>
       3. Khách mở thiệp → tên họ hiện lên banner đẹp ở đầu trang<br>
-      <br>
-      <strong>⚠️ Lưu ý:</strong> Bạn cần thêm file <code>guest-name-script.js</code> vào mỗi file thiệp (xem hướng dẫn bên dưới)
+      4. Script tự động ghi nhận vào Google Sheet (nếu đã kết nối ở trên)
     </div>
   </div>
 
@@ -388,7 +367,7 @@ select option{background:#251c0e;color:#f5f0e8;}
         </div>
         <div class="field" style="margin-bottom:0">
           <label>Domain</label>
-          <input type="text" id="batchDomain" placeholder="https://cinelove.vn" value="https://cinelove.vn" oninput="genBatch()"/>
+          <input type="text" id="batchDomain" placeholder="https://cinelove.vn" value="https://cinelove.vn"/>
         </div>
       </div>
       <br>
@@ -400,8 +379,58 @@ select option{background:#251c0e;color:#f5f0e8;}
           Danh sách link <span class="count-badge" id="batch-count">0</span>
         </div>
         <div class="batch-results" id="batch-list"></div>
+
+        <!-- EXPORT -->
+        <div class="export-row">
+          <button class="btn-export csv" onclick="exportCSV()">⬇ CSV</button>
+          <button class="btn-export txt" onclick="exportTXT()">⬇ TXT</button>
+          <button class="btn-export json" onclick="exportJSON()">⬇ JSON</button>
+        </div>
         <button class="btn-copy-all" onclick="copyAll()">📋 Sao chép tất cả link</button>
       </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: RSVP Stats -->
+  <div class="tab-content" id="tab-stats">
+    <div class="card">
+      <div style="font-size:.82rem;font-weight:600;color:var(--gold2);margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;">
+        <span>📊 Thống kê RSVP (lưu cục bộ)</span>
+        <button onclick="clearStats()" style="font-size:.68rem;padding:4px 10px;background:rgba(139,26,26,.2);color:#e57373;border:1px solid rgba(139,26,26,.3);border-radius:6px;cursor:pointer;font-family:inherit;">Xóa tất cả</button>
+      </div>
+
+      <div class="stats-grid" id="stats-grid">
+        <div class="stat-card"><div class="stat-num" id="stat-total">0</div><div class="stat-label">Tổng khách</div></div>
+        <div class="stat-card"><div class="stat-num" id="stat-yes" style="color:#6fcf97;">0</div><div class="stat-label">Tham dự</div></div>
+        <div class="stat-card"><div class="stat-num" id="stat-no" style="color:#e57373;">0</div><div class="stat-label">Không đến</div></div>
+      </div>
+
+      <div id="rsvp-table-wrap">
+        <div class="empty-state" id="rsvp-empty">Chưa có dữ liệu. Khách cần mở link thiệp có script được inject.</div>
+        <table class="rsvp-table" id="rsvp-table" style="display:none">
+          <thead>
+            <tr>
+              <th>Tên khách</th>
+              <th>Trạng thái</th>
+              <th>Thời gian mở</th>
+              <th>Mẫu thiệp</th>
+            </tr>
+          </thead>
+          <tbody id="rsvp-tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="export-row" style="margin-top:16px;">
+        <button class="btn-export csv" onclick="exportStatsCSV()">⬇ Xuất CSV</button>
+        <button class="btn-export txt" onclick="exportStatsTXT()">⬇ Xuất TXT</button>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>💡 Dữ liệu RSVP:</strong><br>
+      Khi khách mở thiệp có script inject → dữ liệu gửi lên Google Sheet của bạn.<br>
+      Tab này hiển thị dữ liệu <strong>lưu tạm trong trình duyệt</strong> (demo).<br>
+      Dữ liệu thật xem trong Google Sheet đã kết nối.
     </div>
   </div>
 
@@ -409,37 +438,61 @@ select option{background:#251c0e;color:#f5f0e8;}
 
   <!-- Hướng dẫn -->
   <div class="card">
-    <div style="font-size:.78rem;font-weight:600;color:var(--gold2);margin-bottom:14px;letter-spacing:.05em;">
-      📖 HƯỚNG DẪN CÀI ĐẶT
+    <div class="section-toggle open" onclick="toggleSection('guide-body','arrow-guide')" id="arrow-guide-wrap">
+      <div style="font-size:.78rem;font-weight:600;color:var(--gold2);">📖 HƯỚNG DẪN CÀI ĐẶT</div>
+      <span class="arrow open" id="arrow-guide">▼</span>
     </div>
-    <div style="font-size:.78rem;color:rgba(245,240,232,.7);line-height:1.9;">
-      Thêm 1 dòng này vào <strong style="color:var(--gold)">trước &lt;/body&gt;</strong> của <strong style="color:var(--gold)">mỗi file thiệp</strong>:<br><br>
-      <div style="background:rgba(0,0,0,.4);border-radius:8px;padding:12px 14px;font-family:monospace;font-size:.75rem;color:#a8d8a8;border:1px solid rgba(255,255,255,.08);position:relative;">
-        &lt;script src="guest-name-script.js"&gt;&lt;/script&gt;
-        <button onclick="copyInstall(this)" style="position:absolute;top:8px;right:8px;padding:3px 8px;background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.3);border-radius:4px;font-size:.65rem;cursor:pointer;font-family:inherit;">copy</button>
+    <div class="collapsible open" id="guide-body">
+      <div style="margin-top:16px;font-size:.78rem;color:rgba(245,240,232,.7);line-height:1.9;">
+        Sau khi có script từ <strong style="color:var(--gold)">Bước 4</strong> ở trên, thêm vào <strong style="color:var(--gold)">trước &lt;/body&gt;</strong> của mỗi file thiệp:<br><br>
+        <div style="background:rgba(0,0,0,.4);border-radius:8px;padding:12px 14px;font-family:monospace;font-size:.75rem;color:#a8d8a8;border:1px solid rgba(255,255,255,.08);position:relative;">
+          &lt;script src="guest-name-script.js"&gt;&lt;/script&gt;
+          <button onclick="copyInstall(this)" style="position:absolute;top:8px;right:8px;padding:3px 8px;background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.3);border-radius:4px;font-size:.65rem;cursor:pointer;font-family:inherit;">copy</button>
+        </div>
+        <br>
+        Hoặc dán <strong style="color:var(--gold)">trực tiếp script từ Bước 4</strong> vào file thiệp (không cần file .js riêng).
       </div>
-      <br>
-      Đặt file <code style="color:var(--gold2)">guest-name-script.js</code> cùng thư mục với các file thiệp.
     </div>
   </div>
 
 </div>
 
-<script>
-var allLinks = [];
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
 
+<script>
+// ============================================================
+// STATE
+// ============================================================
+var allLinks = [];
+var rsvpData = JSON.parse(localStorage.getItem('cl_rsvp') || '[]');
+
+// ============================================================
+// TABS
+// ============================================================
 function switchTab(tab) {
-  document.querySelectorAll('.tab').forEach(function(t,i){
-    t.classList.toggle('active', (i===0&&tab==='single')||(i===1&&tab==='batch'));
-  });
-  document.getElementById('tab-single').classList.toggle('active', tab==='single');
-  document.getElementById('tab-batch').classList.toggle('active', tab==='batch');
+  var tabs = ['single','batch','stats'];
+  document.querySelectorAll('.tab').forEach(function(t,i){ t.classList.toggle('active', tabs[i]===tab); });
+  tabs.forEach(function(t){ document.getElementById('tab-'+t).classList.toggle('active', t===tab); });
+  if(tab==='stats') renderStats();
 }
 
+// ============================================================
+// SECTION TOGGLE
+// ============================================================
+function toggleSection(id, arrowId) {
+  var el = document.getElementById(id);
+  var arrow = document.getElementById(arrowId);
+  el.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+// ============================================================
+// BUILD LINK
+// ============================================================
 function buildLink(ten, mau, domain) {
   var d = domain.trim().replace(/\/$/, '');
-  var encoded = encodeURIComponent(ten.trim());
-  return d + '/' + mau + '?ten=' + encoded;
+  return d + '/' + mau + '?ten=' + encodeURIComponent(ten.trim());
 }
 
 function autoGen() {
@@ -447,9 +500,8 @@ function autoGen() {
   var mau = document.getElementById('mauThiep').value;
   var domain = document.getElementById('domain').value;
   var r = document.getElementById('result-single');
-  var out = document.getElementById('link-output');
   if (!ten) { r.classList.remove('show'); return; }
-  out.textContent = buildLink(ten, mau, domain);
+  document.getElementById('link-output').textContent = buildLink(ten, mau, domain);
   r.classList.add('show');
 }
 
@@ -458,12 +510,14 @@ function copyLink(elId, btnId) {
   navigator.clipboard.writeText(text).then(function(){
     var btn = document.getElementById(btnId);
     var orig = btn.textContent;
-    btn.textContent = '✓ Đã copy!';
-    btn.classList.add('copied');
+    btn.textContent = '✓ Đã copy!'; btn.classList.add('copied');
     setTimeout(function(){ btn.textContent=orig; btn.classList.remove('copied'); }, 2000);
   });
 }
 
+// ============================================================
+// BATCH
+// ============================================================
 function genBatch() {
   var lines = document.getElementById('batchNames').value.split('\n').filter(function(l){ return l.trim(); });
   var mau = document.getElementById('batchMau').value;
@@ -471,50 +525,700 @@ function genBatch() {
   var list = document.getElementById('batch-list');
   var wrap = document.getElementById('batch-results-wrap');
   if (!lines.length) return;
-
-  allLinks = [];
-  list.innerHTML = '';
+  allLinks = []; list.innerHTML = '';
   lines.forEach(function(ten, i) {
-    ten = ten.trim();
-    if (!ten) return;
+    ten = ten.trim(); if (!ten) return;
     var link = buildLink(ten, mau, domain);
-    allLinks.push({ ten: ten, link: link });
+    allLinks.push({ ten: ten, link: link, mau: mau });
     var item = document.createElement('div');
     item.className = 'batch-item';
-    var btnId = 'bcopy_' + i;
-    item.innerHTML =
-      '<div class="batch-name">💌 ' + ten + '</div>' +
-      '<div class="batch-link">' + link + '</div>' +
-      '<button class="btn-copy-sm" id="' + btnId + '" onclick="copySm(this,\'' + link.replace(/'/g,"\\'") + '\')">Copy</button>';
+    var btnId = 'bcopy_'+i;
+    item.innerHTML = '<div class="batch-name">💌 '+ten+'</div><div class="batch-link">'+link+'</div><button class="btn-copy-sm" id="'+btnId+'" onclick="copySm(this,\''+link.replace(/'/g,"\\'")+'\')" >Copy</button>';
     list.appendChild(item);
   });
-
   document.getElementById('batch-count').textContent = allLinks.length;
   wrap.style.display = 'block';
+  showToast('✓ Đã tạo '+allLinks.length+' link');
 }
 
 function copySm(btn, link) {
   navigator.clipboard.writeText(link).then(function(){
-    var orig = btn.textContent;
-    btn.textContent = '✓';
-    btn.classList.add('copied');
+    var orig = btn.textContent; btn.textContent='✓'; btn.classList.add('copied');
     setTimeout(function(){ btn.textContent=orig; btn.classList.remove('copied'); }, 1500);
   });
 }
 
 function copyAll() {
-  var text = allLinks.map(function(x){ return x.ten + ': ' + x.link; }).join('\n');
-  navigator.clipboard.writeText(text).then(function(){
-    alert('✓ Đã sao chép ' + allLinks.length + ' link!');
+  var text = allLinks.map(function(x){ return x.ten+': '+x.link; }).join('\n');
+  navigator.clipboard.writeText(text).then(function(){ showToast('✓ Đã sao chép '+allLinks.length+' link!'); });
+}
+
+// ============================================================
+// EXPORT
+// ============================================================
+function exportCSV() {
+  var rows = [['Tên khách','Link thiệp','Mẫu']];
+  allLinks.forEach(function(x){ rows.push([x.ten, x.link, x.mau]); });
+  downloadFile('danh-sach-khach.csv', rows.map(function(r){ return r.map(function(c){ return '"'+c+'"'; }).join(','); }).join('\n'), 'text/csv');
+  showToast('⬇ Đã xuất CSV');
+}
+
+function exportTXT() {
+  var text = allLinks.map(function(x){ return x.ten+'\n'+x.link; }).join('\n\n');
+  downloadFile('danh-sach-khach.txt', text, 'text/plain');
+  showToast('⬇ Đã xuất TXT');
+}
+
+function exportJSON() {
+  downloadFile('danh-sach-khach.json', JSON.stringify(allLinks, null, 2), 'application/json');
+  showToast('⬇ Đã xuất JSON');
+}
+
+function exportStatsCSV() {
+  var rows = [['Tên khách','Trạng thái','Thời gian','Mẫu thiệp']];
+  rsvpData.forEach(function(x){ rows.push([x.ten||'', x.rsvp||'seen', x.time||'', x.mau||'']); });
+  downloadFile('rsvp-stats.csv', rows.map(function(r){ return r.map(function(c){ return '"'+c+'"'; }).join(','); }).join('\n'), 'text/csv');
+  showToast('⬇ Đã xuất RSVP CSV');
+}
+
+function exportStatsTXT() {
+  var text = rsvpData.map(function(x){ return (x.ten||'?')+' — '+(x.rsvp||'seen')+' — '+(x.time||''); }).join('\n');
+  downloadFile('rsvp-stats.txt', text, 'text/plain');
+  showToast('⬇ Đã xuất RSVP TXT');
+}
+
+function downloadFile(name, content, type) {
+  var blob = new Blob([content], {type: type});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = name; a.click();
+}
+
+// ============================================================
+// RSVP STATS
+// ============================================================
+function renderStats() {
+  var yes = rsvpData.filter(function(x){ return x.rsvp==='yes'; }).length;
+  var no  = rsvpData.filter(function(x){ return x.rsvp==='no'; }).length;
+  document.getElementById('stat-total').textContent = rsvpData.length;
+  document.getElementById('stat-yes').textContent   = yes;
+  document.getElementById('stat-no').textContent    = no;
+  var tbody = document.getElementById('rsvp-tbody');
+  tbody.innerHTML = '';
+  if (!rsvpData.length) {
+    document.getElementById('rsvp-empty').style.display='block';
+    document.getElementById('rsvp-table').style.display='none';
+    return;
+  }
+  document.getElementById('rsvp-empty').style.display='none';
+  document.getElementById('rsvp-table').style.display='table';
+  rsvpData.slice().reverse().forEach(function(x){
+    var tr = document.createElement('tr');
+    var badge = x.rsvp==='yes' ? '<span class="badge-yes">✓ Tham dự</span>'
+              : x.rsvp==='no'  ? '<span class="badge-no">✗ Không đến</span>'
+              : '<span class="badge-seen">👁 Đã xem</span>';
+    tr.innerHTML = '<td>'+(x.ten||'—')+'</td><td>'+badge+'</td><td style="font-size:.7rem;color:rgba(245,240,232,.5)">'+(x.time||'—')+'</td><td style="font-size:.7rem;color:rgba(245,240,232,.5)">'+(x.mau||'—')+'</td>';
+    tbody.appendChild(tr);
   });
 }
 
-function copyInstall(btn) {
-  navigator.clipboard.writeText('<script src="guest-name-script.js"><\/script>').then(function(){
-    btn.textContent = '✓ ok!';
+function clearStats() {
+  if (!confirm('Xóa toàn bộ dữ liệu RSVP cục bộ?')) return;
+  rsvpData = []; localStorage.removeItem('cl_rsvp'); renderStats();
+  showToast('🗑 Đã xóa dữ liệu');
+}
+
+// Demo: thêm 1 entry giả để xem giao diện
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.type === 'cl_rsvp') {
+    rsvpData.push(e.data); localStorage.setItem('cl_rsvp', JSON.stringify(rsvpData));
+    renderStats();
+  }
+});
+
+// ============================================================
+// GOOGLE SHEET INJECT SCRIPT BUILDER — UNIVERSAL FORM DETECTOR
+// ============================================================
+function updateInjectScript() {
+  var url = document.getElementById('webapp-url').value.trim();
+  var chkName   = document.getElementById('chk-name').checked;
+  var chkTime   = document.getElementById('chk-time').checked;
+  var chkRsvp   = document.getElementById('chk-rsvp').checked;
+  var chkCount  = document.getElementById('chk-count').checked;
+  var chkDevice = document.getElementById('chk-device').checked;
+
+  var badge = document.getElementById('sheet-connected-badge');
+  if (url && url.includes('script.google.com')) {
+    badge.textContent = '● Đã nhập URL';
+    badge.className = 'sheet-status connected';
+  } else {
+    badge.textContent = '● Chưa kết nối';
+    badge.className = 'sheet-status disconnected';
+  }
+
+  if (!url) {
+    document.getElementById('inject-output').textContent = '(Nhập Web App URL ở bước 2 để tạo script)';
+    return;
+  }
+
+  var extraMeta = [];
+  if (chkName)   extraMeta.push("    _ten: getParam('ten') || 'Khách ẩn danh'");
+  if (chkTime)   extraMeta.push("    _thoiGian: new Date().toLocaleString('vi-VN')");
+  if (chkDevice) extraMeta.push("    _thietBi: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop'");
+  if (chkCount)  extraMeta.push("    _soLanXem: countView()");
+  extraMeta.push("    _trangThiep: location.pathname.split('/').pop()");
+
+  var countBlock = chkCount ? `
+  function countView() {
+    var k = 'cl_v_' + getParam('ten') + '_' + location.pathname;
+    var n = parseInt(localStorage.getItem(k)||'0') + 1;
+    localStorage.setItem(k, n); return n;
+  }` : `  function countView(){ return ''; }`;
+
+  var rsvpBlock = chkRsvp ? `
+  // ── RSVP: nút có attribute data-rsvp="yes/no" ──────────────
+  function bindRsvp() {
+    document.querySelectorAll('[data-rsvp]').forEach(function(btn) {
+      if (btn._cl_bound) return; btn._cl_bound = true;
+      btn.addEventListener('click', function() {
+        var val = this.getAttribute('data-rsvp');
+        sendToSheet({ _ten: getParam('ten'), _rsvp: val,
+                      _thoiGian: new Date().toLocaleString('vi-VN'),
+                      _trangThiep: location.pathname.split('/').pop() });
+        showFeedback(val === 'yes' ? '✓ Đã xác nhận tham dự!' : '✓ Cảm ơn bạn đã phản hồi!');
+      });
+    });
+  }
+  function showFeedback(msg) {
+    var el = document.createElement('div');
+    el.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);' +
+      'background:#1a1208;border:1px solid #c9a84c;color:#e8c97a;' +
+      'padding:12px 24px;border-radius:12px;font-size:.85rem;z-index:9999;' +
+      'animation:clFadeIn .3s ease;';
+    el.textContent = msg; document.body.appendChild(el);
+    setTimeout(function(){ el.remove(); }, 3000);
+  }` : '';
+
+  var script = `<script>
+/* =====================================================
+   CineLove Universal Sheet Injector
+   Tự động bắt TẤT CẢ form & input trong trang
+   ===================================================== */
+(function() {
+  var WEBAPP_URL = '${url}';
+
+  /* ── helpers ── */
+  function getParam(name) {
+    return decodeURIComponent(new URLSearchParams(location.search).get(name) || '');
+  }
+  function sendToSheet(data) {
+    var body = JSON.stringify(data);
+    // Dùng sendBeacon nếu có (không bị block khi trang đóng)
+    if (navigator.sendBeacon) {
+      var blob = new Blob([body], {type:'text/plain'});
+      navigator.sendBeacon(WEBAPP_URL, blob);
+    } else {
+      fetch(WEBAPP_URL, { method:'POST', body:body,
+        headers:{'Content-Type':'text/plain'} }).catch(function(){});
+    }
+  }
+  function fieldKey(el, idx) {
+    // Lấy tên cột: ưu tiên name > id > placeholder > label > "field_N"
+    return el.name || el.id ||
+           el.placeholder.replace(/\\s+/g,'_').slice(0,30) ||
+           (function(){
+             var lbl = el.closest('label') ||
+                       document.querySelector('label[for="'+el.id+'"]');
+             return lbl ? lbl.textContent.trim().replace(/\\s+/g,'_').slice(0,30) : '';
+           })() || ('field_'+idx);
+  }
+  function readField(el) {
+    if (el.type === 'checkbox') return el.checked ? 'yes' : 'no';
+    if (el.type === 'radio')    return el.checked  ? el.value : null; // null = bỏ qua
+    return el.value;
+  }
+  function collectForm(form, extraData) {
+    var data = Object.assign({}, extraData);
+    var els = form.querySelectorAll('input:not([type=submit]):not([type=button]):not([type=reset]):not([type=hidden]), select, textarea');
+    els.forEach(function(el, i) {
+      var val = readField(el);
+      if (val === null) return; // radio chưa chọn
+      var key = fieldKey(el, i);
+      // Nếu trùng key (vd nhiều radio cùng name), gộp
+      if (data[key] !== undefined) {
+        data[key] = data[key] ? data[key] + ', ' + val : val;
+      } else {
+        data[key] = val;
+      }
+    });
+    return data;
+  }
+${countBlock}
+
+  /* ── meta chung gửi kèm mọi lần ── */
+  function baseMeta() {
+    return {
+${extraMeta.join(',\n')}
+    };
+  }
+
+  /* ── 1. Ghi nhận khách MỞ THIỆP ── */
+  window.addEventListener('load', function() {
+    // Hiển thị tên khách lên mọi phần tử có data-guest-name
+    var ten = getParam('ten');
+    if (ten) {
+      document.querySelectorAll('[data-guest-name],[class*="guest-name"],[id*="guestName"],[id*="guest_name"]')
+        .forEach(function(el){ el.textContent = ten; });
+    }
+    // Ghi nhận lượt xem
+    sendToSheet(Object.assign({ _event: 'open' }, baseMeta()));
+${chkRsvp ? '    bindRsvp();' : ''}
+  });
+
+  /* ── 2. Bắt TẤT CẢ FORM submit trong trang ── */
+  document.addEventListener('submit', function(e) {
+    var form = e.target;
+    if (form.tagName !== 'FORM') return;
+    var data = collectForm(form, Object.assign({ _event: 'form_submit',
+      _formId: form.id || form.name || form.action.split('/').pop().slice(0,30) || 'form'
+    }, baseMeta()));
+    sendToSheet(data);
+    // KHÔNG e.preventDefault() — vẫn để form submit bình thường
+  }, true);
+
+  /* ── 3. Bắt nút submit / button KHÔNG trong form ── */
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('button, [type=submit], [role=button]');
+    if (!btn) return;
+    // Nếu nút nằm trong form → đã được bắt ở trên
+    if (btn.closest('form')) return;
+    // Nút độc lập — thu thập tất cả input trên trang
+    var allInputs = {tagName: 'BODY'};
+    allInputs.querySelectorAll = function(sel){ return document.querySelectorAll(sel); };
+    var data = collectForm(allInputs, Object.assign({
+      _event: 'button_click',
+      _btnText: btn.textContent.trim().slice(0,40)
+    }, baseMeta()));
+    sendToSheet(data);
+  }, true);
+
+  /* ── 4. Bắt thay đổi select / radio / checkbox ngay lập tức ── */
+  document.addEventListener('change', function(e) {
+    var el = e.target;
+    if (!['SELECT','INPUT'].includes(el.tagName)) return;
+    if (el.type === 'text' || el.type === 'email' || el.type === 'tel' || el.type === 'textarea') return;
+    var val = readField(el);
+    if (val === null) return;
+    var data = Object.assign({ _event: 'field_change',
+      _field: fieldKey(el, 0), _value: val }, baseMeta());
+    sendToSheet(data);
+  }, true);
+${rsvpBlock ? rsvpBlock : ''}
+  /* ── CSS animation cho feedback ── */
+  var style = document.createElement('style');
+  style.textContent = '@keyframes clFadeIn{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}';
+  document.head.appendChild(style);
+
+})();
+<\/script>`;
+
+  document.getElementById('inject-output').textContent = script;
+}
+
+function updateGasCode() {
+  var id   = (document.getElementById('gas-sheet-id')   || {value:''}).value.trim();
+  var name = (document.getElementById('gas-sheet-name') || {value:'Sheet1'}).value.trim() || 'Sheet1';
+  var box  = document.getElementById('gas-code-box');
+  if (!box) return;
+  var openLine = id
+    ? 'const ss = SpreadsheetApp.openById("' + id + '");'
+    : 'const ss = SpreadsheetApp.getActiveSpreadsheet();';
+  var code =
+    '// Dán vào Google Apps Script  (Extensions → Apps Script)\n' +
+    (id ? '// Spreadsheet ID: ' + id + '\n' : '') +
+    'const SHEET_NAME = "' + name + '"; // ← tên tab ở thanh dưới Sheet\n\n' +
+    'function doPost(e) {\n' +
+    '  try {\n' +
+    '    ' + openLine + '\n' +
+    '    const sheet = ss.getSheetByName(SHEET_NAME) || ss.getActiveSheet();\n' +
+    '    const data  = JSON.parse(e.postData.contents);\n' +
+    '    if (sheet.getLastRow() === 0) sheet.appendRow(Object.keys(data));\n' +
+    '    const headers = sheet.getRange(1,1,1,sheet.getLastColumn()).getValues()[0];\n' +
+    '    sheet.appendRow(headers.map(h => data[h] !== undefined ? data[h] : ""));\n' +
+    '    return ContentService\n' +
+    '      .createTextOutput(JSON.stringify({status:"ok"}))\n' +
+    '      .setMimeType(ContentService.MimeType.JSON);\n' +
+    '  } catch(err) {\n' +
+    '    return ContentService\n' +
+    '      .createTextOutput(JSON.stringify({status:"error",msg:err.toString()}))\n' +
+    '      .setMimeType(ContentService.MimeType.JSON);\n' +
+    '  }\n' +
+    '}\n\n' +
+    'function doGet(e) {\n' +
+    '  return ContentService\n' +
+    '    .createTextOutput(JSON.stringify({status:"alive"}))\n' +
+    '    .setMimeType(ContentService.MimeType.JSON);\n' +
+    '}';
+  box.textContent = code;
+  if (!box._copyBtn) {
+    var btn = document.createElement('button');
+    btn.className = 'btn-copy-code'; btn.textContent = 'copy';
+    btn.onclick = function(){ copyGasCode(btn); };
+    box.appendChild(btn); box._copyBtn = true;
+  }
+}
+
+function toggleGasCode(btn) {
+  var wrap = document.getElementById('gas-code-wrap');
+  var hidden = wrap.style.display === 'none';
+  wrap.style.display = hidden ? 'block' : 'none';
+  btn.textContent = hidden ? '▼ Ẩn hướng dẫn' : '▶ Xem hướng dẫn tạo';
+  if (hidden) updateGasCode();
+}
+
+// ── BƯỚC 1: Quét trang lấy form fields ──────────────────────────
+var scannedFields = []; // [{key, label, type, source}]
+
+function scanPage() {
+  var url = document.getElementById('page-url').value.trim();
+  if (!url) { showToast('⚠ Nhập URL trang thiệp trước!'); return; }
+  if (!url.startsWith('http')) { url = 'https://' + url; document.getElementById('page-url').value = url; }
+
+  var btn = document.getElementById('btn-scan');
+  btn.textContent = '⏳ Đang quét...';
+  btn.disabled = true;
+
+  var proxies = [
+    'https://corsproxy.io/?' + encodeURIComponent(url),
+    'https://api.allorigins.win/raw?url=' + encodeURIComponent(url),
+    'https://thingproxy.freeboard.io/fetch/' + url
+  ];
+
+  function tryProxy(index) {
+    if (index >= proxies.length) {
+      parseScanResult(null, url);
+      btn.textContent = '🔍 Quét lại';
+      btn.disabled = false;
+      return;
+    }
+    fetch(proxies[index])
+      .then(function(r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.text();
+      })
+      .then(function(html) {
+        if (!html || html.length < 100) throw new Error('Empty');
+        parseScanResult(html, url);
+        btn.textContent = '🔍 Quét lại';
+        btn.disabled = false;
+      })
+      .catch(function() {
+        tryProxy(index + 1);
+      });
+  }
+
+  tryProxy(0);
+}
+
+function parseScanResult(html, url) {
+  scannedFields = [];
+  var detected = [];
+
+  if (html) {
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(html, 'text/html');
+    var inputs = doc.querySelectorAll(
+      'input:not([type=hidden]):not([type=submit]):not([type=button]):not([type=reset]):not([type=image]),' +
+      'select, textarea'
+    );
+
+    inputs.forEach(function(el, i) {
+      var label = '';
+
+      // 1. label[for=id]
+      if (el.id) {
+        var lbl = doc.querySelector('label[for="' + el.id + '"]');
+        if (lbl) label = lbl.textContent.trim();
+      }
+      // 2. Bọc trong <label>
+      if (!label) {
+        var p = el.closest('label');
+        if (p) label = p.textContent.replace(el.value || '', '').trim();
+      }
+      // 3. placeholder (rất phổ biến trong thiệp)
+      if (!label && el.placeholder) label = el.placeholder.trim();
+      // 4. Text node liền trước trong cùng parent
+      if (!label) {
+        var prev = el.previousSibling;
+        while (prev) {
+          if (prev.nodeType === 3 && prev.textContent.trim()) { label = prev.textContent.trim(); break; }
+          if (prev.nodeType === 1 && prev.tagName !== 'INPUT') { label = prev.textContent.trim(); break; }
+          prev = prev.previousSibling;
+        }
+      }
+      // 5. Text trong div/p/span cha gần nhất
+      if (!label) {
+        var par = el.parentElement;
+        for (var d = 0; d < 3 && par; d++, par = par.parentElement) {
+          var txt = '';
+          par.childNodes.forEach(function(n) {
+            if (n.nodeType === 3) txt += n.textContent;
+          });
+          txt = txt.trim();
+          if (txt && txt.length < 60) { label = txt; break; }
+        }
+      }
+      // 6. name / id
+      if (!label) label = el.name || el.id || '';
+      // 7. fallback
+      if (!label) label = (el.tagName === 'SELECT' ? 'select' : el.type || el.tagName.toLowerCase()) + '_' + (i + 1);
+
+      // Key dùng làm tên cột Sheet
+      var key = el.name || el.id ||
+        label.replace(/\s+/g, '_')
+             .replace(/[^a-zA-Z0-9_\u00C0-\u024F\u1E00-\u1EFF]/g, '')
+             .slice(0, 30) ||
+        ('field_' + (i + 1));
+
+      // Bỏ trùng key
+      var existing = detected.find(function(f) { return f.key === key; });
+      if (existing) key = key + '_' + (i + 1);
+
+      detected.push({
+        key:     key,
+        label:   label.replace(/\s+/g,' ').slice(0, 50),
+        type:    el.tagName === 'SELECT' ? 'select' : (el.type || el.tagName.toLowerCase()),
+        source:  'form',
+        checked: true
+      });
+    });
+  }
+
+  // Fallback nếu không detect được
+  if (!detected.length) {
+    showToast('⚠ Không quét được fields — có thể do CORS. Thử proxy khác hoặc nhập thủ công.');
+    // Không dùng fields cứng nữa — để user biết thật sự không lấy được
+    document.getElementById('scan-page-label').textContent =
+      '⚠ Không đọc được HTML trang này. Kiểm tra URL hoặc thử proxy khác.';
+    document.getElementById('step-scan-result').style.display = 'flex';
+    document.getElementById('field-list').innerHTML =
+      '<div style="font-size:.75rem;color:rgba(245,240,232,.4);padding:10px;">Không tìm thấy fields. Script vẫn hoạt động — tự động bắt mọi input khi khách submit.</div>';
+    document.getElementById('btn-scan').textContent = '🔍 Quét lại';
+    document.getElementById('btn-scan').disabled = false;
+    return;
+  }
+
+  scannedFields = detected;
+  renderFieldList(url);
+}
+
+function renderFieldList(url) {
+  var list = document.getElementById('field-list');
+  var label = document.getElementById('scan-page-label');
+  var result = document.getElementById('step-scan-result');
+
+  label.textContent = '📄 ' + url.replace(/^https?:\/\//,'').slice(0,60) + ' — Phát hiện ' + scannedFields.length + ' field';
+  list.innerHTML = '';
+
+  scannedFields.forEach(function(f, i) {
+    var row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.12);border-radius:8px;animation:fadeUp '+(0.1+i*0.04)+'s ease;';
+
+    var typeBadge = {
+      'text':'TXT','email':'EMAIL','tel':'TEL','number':'NUM',
+      'select':'SEL','textarea':'AREA','checkbox':'CHK','radio':'RAD'
+    }[f.type] || f.type.toUpperCase().slice(0,4);
+
+    var srcColor = f.source === 'form' ? '#74b9ff' : 'rgba(201,168,76,.7)';
+
+    row.innerHTML =
+      '<input type="checkbox" ' + (f.checked?'checked':'') + ' onchange="toggleField('+i+',this.checked)" style="width:auto;flex-shrink:0;accent-color:var(--gold);">' +
+      '<span style="font-size:.65rem;padding:2px 7px;border-radius:4px;background:rgba(79,156,250,.15);color:'+srcColor+';font-weight:600;flex-shrink:0;">' + typeBadge + '</span>' +
+      '<span style="font-size:.78rem;color:rgba(245,240,232,.85);flex:1;">' + f.label + '</span>' +
+      '<span style="font-size:.68rem;color:rgba(245,240,232,.3);font-family:monospace;">' + f.key + '</span>';
+
+    list.appendChild(row);
+  });
+
+  // Hiện bước 2 & 3
+  result.style.display = 'flex';
+  setTimeout(function(){ result.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 100);
+  updateInjectScript();
+}
+
+function toggleField(i, checked) {
+  scannedFields[i].checked = checked;
+  updateInjectScript();
+}
+
+// ── BƯỚC 3: Nhập Sheet URL → Tạo Script ─────────────────────────
+function doInject() {
+  var url = document.getElementById('webapp-url').value.trim();
+  if (!url) { showToast('⚠ Nhập Web App URL (Google Apps Script) trước!'); return; }
+
+  updateInjectScript();
+
+  var out = document.getElementById('step-script-out');
+  out.style.display = 'block';
+  setTimeout(function(){ out.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 100);
+
+  var badge = document.getElementById('sheet-connected-badge');
+  badge.textContent = '● Đã kết nối'; badge.className = 'sheet-status connected';
+  showToast('✅ Script đã tạo xong! Copy và dán vào thiệp');
+}
+
+// ── BUILD SCRIPT ─────────────────────────────────────────────────
+function updateInjectScript() {
+  var url = document.getElementById('webapp-url') ? document.getElementById('webapp-url').value.trim() : '';
+  var chkName   = document.getElementById('chk-name')   ? document.getElementById('chk-name').checked   : true;
+  var chkTime   = document.getElementById('chk-time')   ? document.getElementById('chk-time').checked   : true;
+  var chkRsvp   = document.getElementById('chk-rsvp')   ? document.getElementById('chk-rsvp').checked   : true;
+  var chkDevice = document.getElementById('chk-device') ? document.getElementById('chk-device').checked : false;
+  var chkCount  = document.getElementById('chk-count')  ? document.getElementById('chk-count').checked  : false;
+
+  if (!url || !document.getElementById('inject-output')) return;
+
+  // Build danh sách field keys từ scannedFields đã chọn
+  var fieldKeys = scannedFields.filter(function(f){ return f.checked; }).map(function(f){ return f.key; });
+
+  var extraMeta = [];
+  if (chkName)   extraMeta.push("      _ten: getParam('ten') || 'Khách ẩn danh'");
+  if (chkTime)   extraMeta.push("      _thoiGian: new Date().toLocaleString('vi-VN')");
+  if (chkDevice) extraMeta.push("      _thietBi: /Mobi|Android/i.test(navigator.userAgent)?'Mobile':'Desktop'");
+  if (chkCount)  extraMeta.push("      _soLanXem: countView()");
+  extraMeta.push("      _trang: location.pathname.split('/').pop()");
+
+  var countFn = chkCount
+    ? "  function countView(){var k='cl_v_'+getParam('ten');var n=parseInt(localStorage.getItem(k)||'0')+1;localStorage.setItem(k,n);return n;}"
+    : "  function countView(){return '';}";
+
+  var rsvpBlock = chkRsvp ? `
+  document.querySelectorAll('[data-rsvp]').forEach(function(btn){
+    if(btn._bound)return; btn._bound=true;
+    btn.addEventListener('click',function(){
+      var val=this.getAttribute('data-rsvp');
+      send({_ten:getParam('ten'),_rsvp:val,_thoiGian:new Date().toLocaleString('vi-VN'),_trang:location.pathname.split('/').pop()});
+      notify(val==='yes'?'✓ Đã xác nhận tham dự!':'✓ Cảm ơn bạn đã phản hồi!');
+    });
+  });
+  function notify(msg){
+    var el=document.createElement('div');
+    el.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1208;border:1px solid #c9a84c;color:#e8c97a;padding:12px 24px;border-radius:12px;font-size:.85rem;z-index:9999;';
+    el.textContent=msg;document.body.appendChild(el);setTimeout(function(){el.remove();},3000);
+  }` : '';
+
+  // Field keys cụ thể từ scan
+  var fieldComment = fieldKeys.length
+    ? '// Fields phát hiện từ trang: ' + fieldKeys.join(', ')
+    : '// Tự động detect tất cả fields';
+
+  var script = `<script>
+/* CineLove Injector — ${document.getElementById('page-url') ? document.getElementById('page-url').value.replace(/^https?:\/\//,'').split('/')[0] : 'thiệp'} */
+(function(){
+  var W='${url}';
+  function getParam(n){return decodeURIComponent(new URLSearchParams(location.search).get(n)||'');}
+  function send(data){
+    var b=JSON.stringify(data);
+    if(navigator.sendBeacon){navigator.sendBeacon(W,new Blob([b],{type:'text/plain'}));}
+    else{fetch(W,{method:'POST',body:b,headers:{'Content-Type':'text/plain'}}).catch(function(){});}
+  }
+  ${countFn}
+  function fieldKey(el,i){
+    return el.name||el.id||(el.placeholder||'').replace(/\\s+/g,'_').slice(0,25)||('f'+i);
+  }
+  function readVal(el){
+    if(el.type==='checkbox')return el.checked?'yes':'no';
+    if(el.type==='radio')return el.checked?el.value:null;
+    return el.value;
+  }
+  ${fieldComment}
+  window.addEventListener('load',function(){
+    // Hiển thị tên khách
+    var ten=getParam('ten');
+    if(ten){document.querySelectorAll('[data-guest-name],[class*="guest-name"],[id*="guestName"]').forEach(function(el){el.textContent=ten;});}
+    // Ghi nhận mở thiệp
+    send(Object.assign({_event:'open'},{
+${extraMeta.join(',\n')}
+    }));
+    ${chkRsvp ? 'bindRsvp();' : ''}
+  });
+  // Bắt TẤT CẢ form submit
+  document.addEventListener('submit',function(e){
+    var form=e.target; if(form.tagName!=='FORM')return;
+    var data={_event:'submit',_formId:form.id||form.name||'form',
+${extraMeta.join(',\n')}
+    };
+    form.querySelectorAll('input:not([type=submit]):not([type=button]),select,textarea').forEach(function(el,i){
+      var v=readVal(el); if(v===null)return;
+      data[fieldKey(el,i)]=v;
+    });
+    send(data);
+  },true);
+  // Bắt nút bên ngoài form
+  document.addEventListener('click',function(e){
+    var btn=e.target.closest('button,[type=submit],[role=button]');
+    if(!btn||btn.closest('form'))return;
+    var data={_event:'btn_click',_btn:btn.textContent.trim().slice(0,30),
+${extraMeta.join(',\n')}
+    };
+    document.querySelectorAll('input:not([type=submit]):not([type=button]),select,textarea').forEach(function(el,i){
+      var v=readVal(el); if(v===null)return;
+      data[fieldKey(el,i)]=v;
+    });
+    send(data);
+  },true);
+  ${rsvpBlock ? 'function bindRsvp(){' + rsvpBlock + '}' : ''}
+})();
+<\/script>`;
+
+  document.getElementById('inject-output').textContent = script;
+}
+
+function copyInjectScript() {
+  var text = document.getElementById('inject-output').textContent;
+  if (!text || text.includes('Nhập Web App')) { showToast('⚠ Nhập Web App URL trước!'); return; }
+  navigator.clipboard.writeText(text).then(function(){ showToast('✓ Đã copy script inject!'); });
+}
+
+function copyGasCode(btn) {
+  var box = document.getElementById('gas-code-box');
+  var code = box.innerText.replace(/copy$/,'').trim();
+  navigator.clipboard.writeText(code).then(function(){
+    btn.textContent='✓ Đã copy!';
     setTimeout(function(){ btn.textContent='copy'; }, 1500);
   });
 }
+
+function testConnection() {
+  var url = document.getElementById('webapp-url').value.trim();
+  if (!url) { showToast('⚠ Nhập Web App URL trước!'); return; }
+  showToast('🔌 Đang kiểm tra...');
+  fetch(url).then(function(r){ return r.json(); }).then(function(d){
+    if (d.status==='alive') {
+      showToast('✅ Kết nối thành công!');
+      document.getElementById('sheet-connected-badge').textContent = '● Đã kết nối';
+      document.getElementById('sheet-connected-badge').className = 'sheet-status connected';
+    } else { showToast('⚠ Phản hồi lạ: '+JSON.stringify(d)); }
+  }).catch(function(){ showToast('❌ Không kết nối được. Kiểm tra lại URL & CORS'); });
+}
+
+// ============================================================
+// MISC
+// ============================================================
+function copyInstall(btn) {
+  navigator.clipboard.writeText('<script src="guest-name-script.js"><\/script>').then(function(){
+    btn.textContent='✓ ok!';
+    setTimeout(function(){ btn.textContent='copy'; }, 1500);
+  });
+}
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2500);
+}
+
+// Init
+renderStats();
 </script>
 </body>
 </html>

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Quản Lý Khách Mời | CineLove</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --gold:#c9a84c;
+  --gold2:#e8c97a;
+  --gold3:rgba(201,168,76,.15);
+  --dark:#0f0c07;
+  --dark2:#1a1208;
+  --dark3:#241c0d;
+  --cream:#f5f0e8;
+  --cream2:#ede5d4;
+  --green:#4caf82;
+  --green2:rgba(76,175,130,.15);
+  --red:#e05252;
+  --red2:rgba(224,82,82,.12);
+  --border:rgba(201,168,76,.18);
+}
+body{
+  font-family:'Be Vietnam Pro',sans-serif;
+  background:var(--dark);color:var(--cream);
+  min-height:100vh;
+}
+
+/* ── BG DECO ── */
+.bg-deco{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.bg-deco::before{
+  content:'囍';position:absolute;
+  top:-100px;right:-80px;font-size:500px;
+  color:rgba(201,168,76,.025);line-height:1;
+}
+.bg-deco::after{
+  content:'∞';position:absolute;
+  bottom:-60px;left:-40px;font-size:380px;
+  color:rgba(201,168,76,.02);line-height:1;font-style:italic;
+}
+
+/* ── LAYOUT ── */
+.page{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:36px 24px 60px;}
+
+/* ── HEADER ── */
+.header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:32px;flex-wrap:wrap;gap:16px;
+}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-icon{
+  width:38px;height:38px;border-radius:10px;
+  background:linear-gradient(135deg,#c9a84c,#8b1a1a);
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+  box-shadow:0 4px 16px rgba(201,168,76,.3);
+}
+.logo-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;font-weight:600;color:var(--gold2);
+  letter-spacing:.06em;
+}
+.header-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;font-weight:300;font-style:italic;
+  color:rgba(245,240,232,.4);
+}
+
+/* ── SETUP CARD ── */
+.setup-card{
+  background:linear-gradient(135deg,var(--dark3),var(--dark2));
+  border:1px solid var(--border);border-radius:16px;
+  padding:24px;margin-bottom:24px;
+  box-shadow:0 8px 40px rgba(0,0,0,.4);
+}
+.setup-title{
+  font-size:.68rem;font-weight:600;color:var(--gold);
+  letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px;
+}
+.setup-row{display:flex;gap:10px;align-items:stretch;}
+.setup-input{
+  flex:1;padding:11px 16px;
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--border);border-radius:10px;
+  color:var(--cream);font-family:'Be Vietnam Pro',sans-serif;
+  font-size:.82rem;outline:none;
+  transition:border-color .2s,background .2s;
+}
+.setup-input:focus{border-color:var(--gold);background:rgba(201,168,76,.06);}
+.setup-input::placeholder{color:rgba(245,240,232,.25);}
+.btn-load{
+  padding:11px 22px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  border:none;border-radius:10px;color:var(--dark);
+  font-family:'Be Vietnam Pro',sans-serif;font-size:.8rem;font-weight:700;
+  cursor:pointer;white-space:nowrap;letter-spacing:.03em;
+  transition:opacity .2s,transform .2s;
+  box-shadow:0 4px 16px rgba(201,168,76,.3);
+}
+.btn-load:hover{opacity:.9;transform:translateY(-1px);}
+.btn-load:active{transform:translateY(0);}
+.setup-hint{
+  margin-top:10px;font-size:.7rem;
+  color:rgba(245,240,232,.35);line-height:1.6;
+}
+.setup-hint a{color:var(--gold);text-decoration:none;}
+
+/* ── STATS ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
+@media(max-width:600px){.stats{grid-template-columns:1fr 1fr;}}
+.stat{
+  background:var(--dark3);border:1px solid var(--border);
+  border-radius:14px;padding:16px;text-align:center;
+  transition:transform .2s;
+}
+.stat:hover{transform:translateY(-2px);}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.2rem;font-weight:600;line-height:1;
+  margin-bottom:4px;
+}
+.stat-num.gold{color:var(--gold2);}
+.stat-num.green{color:var(--green);}
+.stat-num.red{color:var(--red);}
+.stat-num.gray{color:rgba(245,240,232,.4);}
+.stat-label{font-size:.65rem;color:rgba(245,240,232,.45);letter-spacing:.05em;text-transform:uppercase;}
+
+/* ── CONTROLS ── */
+.controls{
+  display:flex;gap:10px;align-items:center;
+  margin-bottom:16px;flex-wrap:wrap;
+}
+.search-wrap{flex:1;min-width:180px;position:relative;}
+.search-wrap::before{
+  content:'🔍';position:absolute;left:12px;top:50%;
+  transform:translateY(-50%);font-size:.8rem;pointer-events:none;
+}
+.search-input{
+  width:100%;padding:9px 12px 9px 34px;
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--border);border-radius:10px;
+  color:var(--cream);font-family:'Be Vietnam Pro',sans-serif;
+  font-size:.8rem;outline:none;transition:border-color .2s;
+}
+.search-input:focus{border-color:var(--gold);}
+.search-input::placeholder{color:rgba(245,240,232,.3);}
+.filter-btns{display:flex;gap:6px;flex-wrap:wrap;}
+.fbtn{
+  padding:7px 14px;border-radius:20px;border:1px solid var(--border);
+  background:transparent;color:rgba(245,240,232,.5);
+  font-family:'Be Vietnam Pro',sans-serif;font-size:.72rem;font-weight:500;
+  cursor:pointer;transition:all .2s;white-space:nowrap;
+}
+.fbtn.active,.fbtn:hover{border-color:var(--gold);color:var(--gold);}
+.fbtn.active{background:var(--gold3);}
+.btn-refresh{
+  padding:8px 14px;border-radius:10px;
+  border:1px solid var(--border);background:transparent;
+  color:var(--gold);font-size:.8rem;cursor:pointer;
+  transition:all .2s;white-space:nowrap;
+  font-family:'Be Vietnam Pro',sans-serif;
+}
+.btn-refresh:hover{background:var(--gold3);}
+.btn-refresh.spinning{animation:spin .6s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* ── TABLE ── */
+.table-wrap{
+  background:var(--dark3);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 8px 40px rgba(0,0,0,.3);
+}
+.table-header{
+  display:grid;
+  grid-template-columns:40px 1fr 1fr 1.4fr 110px 80px;
+  gap:0;padding:12px 20px;
+  background:rgba(201,168,76,.08);
+  border-bottom:1px solid var(--border);
+}
+@media(max-width:700px){
+  .table-header{grid-template-columns:30px 1fr 120px;}
+  .col-quan,.col-loi,.col-stt-h{display:none;}
+}
+.th{
+  font-size:.62rem;font-weight:600;color:var(--gold);
+  letter-spacing:.12em;text-transform:uppercase;
+}
+.table-body{max-height:520px;overflow-y:auto;}
+.table-body::-webkit-scrollbar{width:4px;}
+.table-body::-webkit-scrollbar-track{background:transparent;}
+.table-body::-webkit-scrollbar-thumb{background:rgba(201,168,76,.3);border-radius:4px;}
+
+.row-item{
+  display:grid;
+  grid-template-columns:40px 1fr 1fr 1.4fr 110px 80px;
+  gap:0;padding:14px 20px;
+  border-bottom:1px solid rgba(201,168,76,.07);
+  align-items:center;
+  transition:background .2s;
+  animation:rowIn .3s ease;
+}
+@keyframes rowIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none}}
+.row-item:last-child{border-bottom:none;}
+.row-item:hover{background:rgba(201,168,76,.04);}
+@media(max-width:700px){
+  .row-item{grid-template-columns:30px 1fr 120px;}
+  .row-item .col-quan,.row-item .col-loi,.row-item .col-stt{display:none;}
+}
+
+.col-stt-h,.col-stt{text-align:center;}
+.row-num{
+  width:26px;height:26px;border-radius:50%;
+  background:rgba(201,168,76,.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.65rem;color:var(--gold);font-weight:600;
+  margin:0 auto;
+}
+.col-ten{overflow:hidden;}
+.guest-name{
+  font-size:.85rem;font-weight:600;color:var(--cream);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.guest-time{font-size:.62rem;color:rgba(245,240,232,.3);margin-top:2px;}
+.col-quan{overflow:hidden;}
+.guest-quan{
+  font-size:.75rem;color:rgba(245,240,232,.6);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.col-loi{overflow:hidden;}
+.guest-loi{
+  font-size:.75rem;color:rgba(245,240,232,.5);font-style:italic;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.badge{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:4px 10px;border-radius:20px;
+  font-size:.65rem;font-weight:600;letter-spacing:.03em;
+  white-space:nowrap;
+}
+.badge.yes{background:var(--green2);color:var(--green);border:1px solid rgba(76,175,130,.25);}
+.badge.no{background:var(--red2);color:var(--red);border:1px solid rgba(224,82,82,.2);}
+
+/* ── EMPTY / LOADING ── */
+.empty{
+  text-align:center;padding:60px 20px;
+  color:rgba(245,240,232,.3);
+}
+.empty-icon{font-size:2.5rem;margin-bottom:12px;}
+.empty-text{font-size:.82rem;line-height:1.7;}
+.loading{
+  text-align:center;padding:50px;
+  color:rgba(201,168,76,.6);font-size:.82rem;
+}
+.loading-ring{
+  width:32px;height:32px;border-radius:50%;
+  border:2px solid rgba(201,168,76,.2);
+  border-top-color:var(--gold);
+  animation:spin .8s linear infinite;
+  margin:0 auto 12px;
+}
+
+/* ── DIVIDER ── */
+.divider{
+  display:flex;align-items:center;gap:12px;margin:20px 0;
+}
+.divider::before,.divider::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(to right,transparent,var(--border),transparent);
+}
+.divider span{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:1rem;}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:var(--dark3);border:1px solid var(--border);
+  border-radius:12px;padding:12px 20px;
+  font-size:.78rem;color:var(--cream2);
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+  transition:transform .3s cubic-bezier(.25,.8,.25,1);
+  z-index:9999;white-space:nowrap;
+}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+/* ── TABLE FOOTER ── */
+.table-footer{
+  padding:12px 20px;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(201,168,76,.04);
+}
+.footer-info{font-size:.7rem;color:rgba(245,240,232,.35);}
+.btn-export{
+  padding:7px 14px;border-radius:8px;
+  border:1px solid var(--border);background:transparent;
+  color:var(--gold);font-size:.72rem;font-weight:600;
+  cursor:pointer;transition:all .2s;
+  font-family:'Be Vietnam Pro',sans-serif;letter-spacing:.03em;
+}
+.btn-export:hover{background:var(--gold3);}
+</style>
+</head>
+<body>
+<div class="bg-deco"></div>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">
+      <div class="logo-icon">🎬</div>
+      <div class="logo-name">CineLove</div>
+    </div>
+    <div class="header-title">Bảng quản lý khách mời</div>
+  </div>
+
+  <!-- Setup -->
+  <div class="setup-card">
+    <div class="setup-title">🔗 Kết nối Google Sheet</div>
+    <div class="setup-row">
+      <input class="setup-input" id="sheetInput"
+        placeholder="Dán link Google Sheet vào đây... (https://docs.google.com/spreadsheets/d/...)"
+        value=""/>
+      <button class="btn-load" onclick="loadSheet()">Tải dữ liệu</button>
+    </div>
+    <div class="setup-hint">
+      ⚠️ Sheet phải được chia sẻ <strong style="color:var(--gold2)">Anyone with the link → Viewer</strong> mới đọc được.
+      &nbsp;·&nbsp; Link tự động lưu lại cho lần sau.
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats" id="stats" style="display:none">
+    <div class="stat">
+      <div class="stat-num gold" id="s-total">0</div>
+      <div class="stat-label">Tổng phản hồi</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num green" id="s-yes">0</div>
+      <div class="stat-label">✅ Có tham dự</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num red" id="s-no">0</div>
+      <div class="stat-label">❌ Không tham dự</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num gray" id="s-pct">0%</div>
+      <div class="stat-label">Tỉ lệ tham dự</div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls" id="controls" style="display:none">
+    <div class="search-wrap">
+      <input class="search-input" id="searchInput" placeholder="Tìm tên khách..." oninput="filterRows()"/>
+    </div>
+    <div class="filter-btns">
+      <button class="fbtn active" data-f="all" onclick="setFilter(this,'all')">Tất cả</button>
+      <button class="fbtn" data-f="yes" onclick="setFilter(this,'yes')">✅ Tham dự</button>
+      <button class="fbtn" data-f="no" onclick="setFilter(this,'no')">❌ Vắng mặt</button>
+    </div>
+    <button class="btn-refresh" id="btnRefresh" onclick="refreshData()">↻ Làm mới</button>
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrap" id="tableWrap">
+    <div class="empty">
+      <div class="empty-icon">💌</div>
+      <div class="empty-text">Nhập link Google Sheet ở trên<br>để xem danh sách khách mời</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+var allData = [];
+var curFilter = 'all';
+
+// Load saved sheet URL
+window.addEventListener('load', function() {
+  var saved = localStorage.getItem('cl_sheet_url');
+  if (saved) {
+    document.getElementById('sheetInput').value = saved;
+    loadSheet();
+  }
+});
+
+function extractSheetId(url) {
+  var m = url.match(/\/spreadsheets\/d\/([a-zA-Z0-9_-]+)/);
+  return m ? m[1] : null;
+}
+
+function getSheetApiUrl(sheetId, gid) {
+  var base = 'https://docs.google.com/spreadsheets/d/' + sheetId + '/gviz/tq?tqx=out:json';
+  if (gid) base += '&gid=' + gid;
+  return base;
+}
+
+function loadSheet() {
+  var url = document.getElementById('sheetInput').value.trim();
+  if (!url) { showToast('⚠️ Vui lòng nhập link Google Sheet!'); return; }
+
+  var sheetId = extractSheetId(url);
+  if (!sheetId) { showToast('❌ Link không hợp lệ!'); return; }
+
+  localStorage.setItem('cl_sheet_url', url);
+  showLoading();
+
+  // Extract gid if present
+  var gidM = url.match(/[#&]gid=(\d+)/);
+  var gid = gidM ? gidM[1] : null;
+  var apiUrl = getSheetApiUrl(sheetId, gid);
+
+  fetch(apiUrl)
+    .then(function(r) { return r.text(); })
+    .then(function(text) {
+      // Google wraps response in /*O_o*/ google.visualization.Query.setResponse(...)
+      var json = text.replace(/^[^{]*/, '').replace(/[^}]*$/, '');
+      var data = JSON.parse(json);
+      parseSheetData(data);
+    })
+    .catch(function(err) {
+      showError('Không thể tải dữ liệu. Kiểm tra lại link và quyền chia sẻ Sheet.');
+    });
+}
+
+function parseSheetData(data) {
+  var rows = data.table.rows;
+  var cols = data.table.cols;
+
+  // Detect column indices by label
+  var idxTen = -1, idxQuan = -1, idxLoi = -1, idxThamDu = -1, idxTime = -1;
+  cols.forEach(function(c, i) {
+    var l = (c.label || '').toLowerCase();
+    if (l.includes('tên') || l.includes('ten') || l.includes('name')) idxTen = i;
+    else if (l.includes('quan') || l.includes('gì của')) idxQuan = i;
+    else if (l.includes('lời chúc') || l.includes('chuc') || l.includes('wish')) idxLoi = i;
+    else if (l.includes('tham dự') || l.includes('tham du') || l.includes('attend')) idxThamDu = i;
+    else if (l.includes('timestamp') || l.includes('thời gian') || l.includes('time')) idxTime = i;
+  });
+
+  // Fallback: use position if labels not matched
+  if (idxTen === -1 && cols.length > 0) idxTen = 0;
+  if (idxQuan === -1 && cols.length > 1) idxQuan = 1;
+  if (idxLoi === -1 && cols.length > 2) idxLoi = 2;
+  if (idxThamDu === -1 && cols.length > 3) idxThamDu = 3;
+
+  allData = rows
+    .filter(function(r) { return r.c && r.c[idxTen] && r.c[idxTen].v; })
+    .map(function(r, i) {
+      var get = function(idx) {
+        if (idx < 0 || !r.c || !r.c[idx]) return '';
+        return (r.c[idx].f || r.c[idx].v || '').toString().trim();
+      };
+      var thamdu = get(idxThamDu).toLowerCase();
+      var isYes = thamdu.includes('có') || thamdu.includes('yes') || thamdu.includes('chắc');
+      return {
+        idx: i + 1,
+        ten: get(idxTen),
+        quan: get(idxQuan),
+        loi: get(idxLoi),
+        thamdu: get(idxThamDu),
+        isYes: isYes,
+        time: get(idxTime)
+      };
+    });
+
+  renderAll();
+  showToast('✅ Đã tải ' + allData.length + ' phản hồi!');
+}
+
+function renderAll() {
+  updateStats();
+  document.getElementById('stats').style.display = 'grid';
+  document.getElementById('controls').style.display = 'flex';
+  filterRows();
+}
+
+function updateStats() {
+  var yes = allData.filter(function(d){ return d.isYes; }).length;
+  var no = allData.length - yes;
+  var pct = allData.length ? Math.round(yes / allData.length * 100) : 0;
+  document.getElementById('s-total').textContent = allData.length;
+  document.getElementById('s-yes').textContent = yes;
+  document.getElementById('s-no').textContent = no;
+  document.getElementById('s-pct').textContent = pct + '%';
+}
+
+function setFilter(btn, f) {
+  curFilter = f;
+  document.querySelectorAll('.fbtn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  filterRows();
+}
+
+function filterRows() {
+  var q = document.getElementById('searchInput').value.toLowerCase().trim();
+  var filtered = allData.filter(function(d) {
+    var matchF = curFilter === 'all' || (curFilter === 'yes' && d.isYes) || (curFilter === 'no' && !d.isYes);
+    var matchQ = !q || d.ten.toLowerCase().includes(q) || d.quan.toLowerCase().includes(q) || d.loi.toLowerCase().includes(q);
+    return matchF && matchQ;
+  });
+  renderTable(filtered);
+}
+
+function renderTable(rows) {
+  var wrap = document.getElementById('tableWrap');
+  if (!rows.length) {
+    wrap.innerHTML =
+      '<div class="empty"><div class="empty-icon">🔍</div>' +
+      '<div class="empty-text">Không tìm thấy kết quả phù hợp</div></div>';
+    return;
+  }
+
+  var html =
+    '<div class="table-header">' +
+      '<div class="th col-stt-h">#</div>' +
+      '<div class="th">Tên khách</div>' +
+      '<div class="th col-quan">Quan hệ</div>' +
+      '<div class="th col-loi">Lời chúc</div>' +
+      '<div class="th">Tham dự</div>' +
+      '<div class="th col-stt-h">Thời gian</div>' +
+    '</div>' +
+    '<div class="table-body">';
+
+  rows.forEach(function(d) {
+    var badge = d.isYes
+      ? '<span class="badge yes">✅ Tham dự</span>'
+      : '<span class="badge no">❌ Vắng mặt</span>';
+    html +=
+      '<div class="row-item">' +
+        '<div class="col-stt"><div class="row-num">' + d.idx + '</div></div>' +
+        '<div class="col-ten"><div class="guest-name">' + esc(d.ten) + '</div>' +
+          (d.time ? '<div class="guest-time">' + esc(d.time) + '</div>' : '') +
+        '</div>' +
+        '<div class="col-quan"><div class="guest-quan">' + esc(d.quan || '—') + '</div></div>' +
+        '<div class="col-loi"><div class="guest-loi">' + esc(d.loi || '—') + '</div></div>' +
+        '<div>' + badge + '</div>' +
+        '<div class="col-stt"></div>' +
+      '</div>';
+  });
+
+  html += '</div>' +
+    '<div class="table-footer">' +
+      '<div class="footer-info">Hiển thị ' + rows.length + ' / ' + allData.length + ' phản hồi</div>' +
+      '<button class="btn-export" onclick="exportCSV()">⬇ Xuất CSV</button>' +
+    '</div>';
+
+  wrap.innerHTML = html;
+}
+
+function showLoading() {
+  document.getElementById('tableWrap').innerHTML =
+    '<div class="loading"><div class="loading-ring"></div>Đang tải dữ liệu...</div>';
+}
+
+function showError(msg) {
+  document.getElementById('tableWrap').innerHTML =
+    '<div class="empty"><div class="empty-icon">⚠️</div>' +
+    '<div class="empty-text">' + msg + '</div></div>';
+  showToast('❌ ' + msg);
+}
+
+function refreshData() {
+  var btn = document.getElementById('btnRefresh');
+  btn.classList.add('spinning');
+  setTimeout(function(){
+    loadSheet();
+    btn.classList.remove('spinning');
+  }, 800);
+}
+
+function exportCSV() {
+  var rows = [['STT','Tên khách','Quan hệ','Lời chúc','Tham dự']];
+  allData.forEach(function(d) {
+    rows.push([d.idx, d.ten, d.quan, d.loi, d.thamdu]);
+  });
+  var csv = rows.map(function(r){
+    return r.map(function(c){ return '"' + (c+'').replace(/"/g,'""') + '"'; }).join(',');
+  }).join('\n');
+  var blob = new Blob(['\ufeff'+csv], {type:'text/csv;charset=utf-8;'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'khach-moi-' + new Date().toLocaleDateString('vi').replace(/\//g,'-') + '.csv';
+  a.click();
+  showToast('⬇ Đã xuất file CSV!');
+}
+
+function esc(s) {
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+var toastTimer;
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 2800);
+}
+
+// Enter key on input
+document.addEventListener('DOMContentLoaded', function(){
+  document.getElementById('sheetInput').addEventListener('keydown', function(e){
+    if (e.key === 'Enter') loadSheet();
+  });
+});
+</script>
+</body>
+</html>
