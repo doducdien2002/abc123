@@ -1620,79 +1620,74 @@
 <script src="guest-name-script.js"></script>
 <script>
 /* CineLove Injector — abc123-flax.vercel.app */
+/* Fields từ trang: BanlagicuaDauRe, GuiloichucenDauRe, Bancothamdukhong, Tencuabanlagi */
 (function(){
-  var W='https://script.google.com/macros/s/AKfycbzdyEf_zxS39ptn_b-KJ-AUXgq3IS8VLduikWq442v2EWxtgVjSzoXeKGqw80EPI0Ah/exec';
-  function getParam(n){return decodeURIComponent(new URLSearchParams(location.search).get(n)||'');}
-  function send(data){
-    var b=JSON.stringify(data);
-    if(navigator.sendBeacon){navigator.sendBeacon(W,new Blob([b],{type:'text/plain'}));}
-    else{fetch(W,{method:'POST',body:b,headers:{'Content-Type':'text/plain'}}).catch(function(){});}
-  }
-    function countView(){return '';}
+  var W="https://script.google.com/macros/s/AKfycbz6wvj-JNAU21HciOO4SbuXjutj2tZ5YOem2BtGotWJ_b-L2XDuZ2z1-6Mjcjf_AYPd/exec";
+  // Fields đã detect từ trang (theo thứ tự xuất hiện)
+  var FIELDS=[{"key":"BanlagicuaDauRe","label":"Bạn là gì của Dâu Rể?","type":"text"},{"key":"GuiloichucenDauRe","label":"Gửi lời chúc đến Dâu Rể","type":"text"},{"key":"Bancothamdukhong","label":"Bancothamdukhong","type":"select"},{"key":"Tencuabanlagi","label":"Tên của bạn là gì?","type":"text"}];
+  function getParam(n){return decodeURIComponent(new URLSearchParams(location.search).get(n)||"");}
+  function send(d){var b=JSON.stringify(d);if(navigator.sendBeacon){navigator.sendBeacon(W,new Blob([b],{type:"text/plain"}));}else{fetch(W,{method:"POST",body:b,headers:{"Content-Type":"text/plain"}}).catch(function(){});}}
+  function readVal(el){if(el.type==="checkbox")return el.checked?"yes":"no";if(el.type==="radio")return el.checked?el.value:null;return el.value;}
+  // Lấy key tên cột: ưu tiên dùng FIELDS đã detect theo index, fallback về name/id/placeholder
   function fieldKey(el,i){
-    return el.name||el.id||(el.placeholder||'').replace(/\s+/g,'_').slice(0,25)||('f'+i);
+    if(FIELDS[i])return FIELDS[i].key;
+    return el.name||el.id||(el.placeholder||"").replace(/\s+/g,"_").slice(0,25)||("f"+i);
   }
-  function readVal(el){
-    if(el.type==='checkbox')return el.checked?'yes':'no';
-    if(el.type==='radio')return el.checked?el.value:null;
-    return el.value;
-  }
-  // Fields phát hiện từ trang: BanlagicuaDauRe, GuiloichucenDauRe, Bancothamdukhong, Tencuabanlagi
-  window.addEventListener('load',function(){
-    // Hiển thị tên khách
-    var ten=getParam('ten');
-    if(ten){document.querySelectorAll('[data-guest-name],[class*="guest-name"],[id*="guestName"]').forEach(function(el){el.textContent=ten;});}
-    // Ghi nhận mở thiệp
-    send(Object.assign({_event:'open'},{
-      _ten: getParam('ten') || 'Khách ẩn danh',
-      _thoiGian: new Date().toLocaleString('vi-VN'),
-      _trang: location.pathname.split('/').pop()
-    }));
+
+  window.addEventListener("load",function(){
+    var ten=getParam("ten");
+    if(ten)document.querySelectorAll('[data-guest-name],[class*="guest-name"],[id*="guestName"]').forEach(function(el){el.textContent=ten;});
+    send({_event:"open",
+      _ten:getParam('ten')||'Khách',
+      _thoiGian:new Date().toLocaleString('vi-VN'),
+      _trang:location.pathname.split('/').pop()
+    });
     bindRsvp();
   });
-  // Bắt TẤT CẢ form submit
-  document.addEventListener('submit',function(e){
-    var form=e.target; if(form.tagName!=='FORM')return;
-    var data={_event:'submit',_formId:form.id||form.name||'form',
-      _ten: getParam('ten') || 'Khách ẩn danh',
-      _thoiGian: new Date().toLocaleString('vi-VN'),
-      _trang: location.pathname.split('/').pop()
+
+  document.addEventListener("submit",function(e){
+    var form=e.target;if(form.tagName!=="FORM")return;
+    var data={_event:"submit",
+      _ten:getParam('ten')||'Khách',
+      _thoiGian:new Date().toLocaleString('vi-VN'),
+      _trang:location.pathname.split('/').pop()
     };
-    form.querySelectorAll('input:not([type=submit]):not([type=button]),select,textarea').forEach(function(el,i){
-      var v=readVal(el); if(v===null)return;
+    form.querySelectorAll("input:not([type=submit]):not([type=button]),select,textarea").forEach(function(el,i){
+      var v=readVal(el);if(v===null)return;
       data[fieldKey(el,i)]=v;
     });
     send(data);
   },true);
-  // Bắt nút bên ngoài form
-  document.addEventListener('click',function(e){
-    var btn=e.target.closest('button,[type=submit],[role=button]');
-    if(!btn||btn.closest('form'))return;
-    var data={_event:'btn_click',_btn:btn.textContent.trim().slice(0,30),
-      _ten: getParam('ten') || 'Khách ẩn danh',
-      _thoiGian: new Date().toLocaleString('vi-VN'),
-      _trang: location.pathname.split('/').pop()
+
+  document.addEventListener("click",function(e){
+    var btn=e.target.closest("button,[type=submit],[role=button]");
+    if(!btn||btn.closest("form"))return;
+    var data={_event:"btn_click",_btn:btn.textContent.trim().slice(0,30),
+      _ten:getParam('ten')||'Khách',
+      _thoiGian:new Date().toLocaleString('vi-VN'),
+      _trang:location.pathname.split('/').pop()
     };
-    document.querySelectorAll('input:not([type=submit]):not([type=button]),select,textarea').forEach(function(el,i){
-      var v=readVal(el); if(v===null)return;
+    document.querySelectorAll("input:not([type=submit]):not([type=button]),select,textarea").forEach(function(el,i){
+      var v=readVal(el);if(v===null)return;
       data[fieldKey(el,i)]=v;
     });
     send(data);
   },true);
+
   function bindRsvp(){
-  document.querySelectorAll('[data-rsvp]').forEach(function(btn){
-    if(btn._bound)return; btn._bound=true;
-    btn.addEventListener('click',function(){
-      var val=this.getAttribute('data-rsvp');
-      send({_ten:getParam('ten'),_rsvp:val,_thoiGian:new Date().toLocaleString('vi-VN'),_trang:location.pathname.split('/').pop()});
-      notify(val==='yes'?'✓ Đã xác nhận tham dự!':'✓ Cảm ơn bạn đã phản hồi!');
+    document.querySelectorAll("[data-rsvp]").forEach(function(btn){
+      if(btn._b)return;btn._b=true;
+      btn.addEventListener("click",function(){
+        var val=this.getAttribute("data-rsvp");
+        send({_event:"rsvp",_ten:getParam("ten"),_rsvp:val,_thoiGian:new Date().toLocaleString("vi-VN"),_trang:location.pathname.split("/").pop()});
+        var el=document.createElement("div");
+        el.style.cssText="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1208;border:1px solid #c9a84c;color:#e8c97a;padding:12px 24px;border-radius:12px;font-size:.85rem;z-index:9999;";
+        el.textContent=val==="yes"?"✓ Đã xác nhận tham dự!":"✓ Cảm ơn bạn đã phản hồi!";
+        document.body.appendChild(el);setTimeout(function(){el.remove();},3000);
+      });
     });
-  });
-  function notify(msg){
-    var el=document.createElement('div');
-    el.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1208;border:1px solid #c9a84c;color:#e8c97a;padding:12px 24px;border-radius:12px;font-size:.85rem;z-index:9999;';
-    el.textContent=msg;document.body.appendChild(el);setTimeout(function(){el.remove();},3000);
-  }}
+  }
+
 })();
 </script>
 </body>
