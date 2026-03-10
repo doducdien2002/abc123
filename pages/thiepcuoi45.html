@@ -1700,37 +1700,55 @@
 
 	})();
 	</script>
-	<script >
-
-		/* cinelove-blocker.js — chặn tracker cũ gửi về abc123-flax.vercel.app */
+	<script>
 (function(){
-  // Block fetch
-  var _origFetch = window.fetch;
-  window.fetch = function(url, opts){
-    if(typeof url === 'string' && url.indexOf('abc123-flax.vercel.app') !== -1){
-      return Promise.resolve(new Response('blocked', {status:200}));
-    }
-    return _origFetch.apply(this, arguments);
-  };
+  var W = "https://script.google.com/macros/s/AKfycbwMzgASBJucF2BtLAeDUpCKYfGF0keh934z2H7GJfxVVkvehPaEDGv2rVdmp_um82qp/exec"; // URL của bạn
 
-  // Block XHR
-  var _origOpen = XMLHttpRequest.prototype.open;
-  XMLHttpRequest.prototype.open = function(method, url){
-    if(typeof url === 'string' && url.indexOf('abc123-flax.vercel.app') !== -1){
-      url = 'about:blank';
-    }
-    return _origOpen.apply(this, arguments);
-  };
+  function getParam(n){ return decodeURIComponent(new URLSearchParams(location.search).get(n)||""); }
+  function send(d){ var b=JSON.stringify(d); navigator.sendBeacon?navigator.sendBeacon(W,new Blob([b],{type:"text/plain"})):fetch(W,{method:"POST",body:b,headers:{"Content-Type":"text/plain"}}).catch(function(){}); }
 
-  // Block sendBeacon
-  var _origBeacon = navigator.sendBeacon.bind(navigator);
-  navigator.sendBeacon = function(url, data){
-    if(typeof url === 'string' && url.indexOf('abc123-flax.vercel.app') !== -1){
-      return true; // pretend success, do nothing
-    }
-    return _origBeacon(url, data);
-  };
+  // Lưu giá trị realtime khi user nhập
+  var saved = {};
+  function watchInputs(){
+    document.querySelectorAll("input,select,textarea").forEach(function(el){
+      var key = el.name || el.id; if(!key) return;
+      if(el.value) saved[key] = el.value;
+      el.addEventListener("input",  function(){ saved[key]=el.value; });
+      el.addEventListener("change", function(){ saved[key]=el.value; });
+    });
+  }
+
+  window.addEventListener("load", function(){
+    // Ghi nhận mở trang
+    send({ _event:"open", _ten:getParam("ten")||"Khách",
+           _thoiGian:new Date().toLocaleString("vi-VN"),
+           _trang:location.pathname.split("/").pop() });
+
+    setTimeout(watchInputs, 1000);
+
+    // Bắt đúng nút submit của Pancake: #w-gwfybvg1
+    document.addEventListener("click", function(e){
+      if(!e.target.closest("#w-gwfybvg1")) return;
+
+      // Snapshot lần cuối
+      document.querySelectorAll("input,select,textarea").forEach(function(el){
+        var key = el.name||el.id; if(key && el.value) saved[key]=el.value;
+      });
+
+      if(!Object.keys(saved).length) return;
+      if(window._cl_sending) return;
+      window._cl_sending = true;
+      setTimeout(function(){ window._cl_sending=false; }, 3000);
+
+      send(Object.assign({
+        _event:"form_submit",
+        _ten:getParam("ten")||"Khách",
+        _thoiGian:new Date().toLocaleString("vi-VN"),
+        _trang:location.pathname.split("/").pop()
+      }, saved));
+    }, true);
+  });
 })();
-	</script>
+</script>
 </body>
 </html>
