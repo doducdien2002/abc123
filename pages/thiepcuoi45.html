@@ -1635,21 +1635,27 @@
     }
   }
 
-  function collectInputs(scope){
-    var data={};
-    (scope||document).querySelectorAll("input:not([type=submit]):not([type=button]):not([type=hidden]),select,textarea").forEach(function(el){
-      // Map theo name attribute — chính xác, không phụ thuộc thứ tự
-      var key = el.name || el.id || (el.placeholder||"").replace(/\s+/g,"_").slice(0,30);
+  // Lưu giá trị realtime khi user nhập — không phụ thuộc vào DOM sau submit
+  var savedValues = {};
+
+  function watchInputs(){
+    var form = document.querySelector("form");
+    if(!form) return;
+
+    form.querySelectorAll("input,select,textarea").forEach(function(el){
+      var key = el.name || el.id;
       if(!key) return;
-      var v = el.type==="checkbox" ? (el.checked?"yes":"no") : el.value;
-      if(v===null || v==="") return;
-      data[key] = v;
+
+      // Lưu ngay lần đầu nếu có sẵn giá trị
+      if(el.value) savedValues[key] = el.value;
+
+      // Lắng nghe mỗi khi thay đổi
+      el.addEventListener("input", function(){ savedValues[key] = el.value; });
+      el.addEventListener("change", function(){ savedValues[key] = el.value; });
     });
-    return data;
   }
 
   window.addEventListener("load", function(){
-    // Ghi lại sự kiện mở trang
     send({
       _event: "open",
       _ten: getParam('ten') || 'Khách',
@@ -1657,52 +1663,36 @@
       _trang: location.pathname.split('/').pop()
     });
 
-    hookForms();
-  });
+    // Đợi Pancake render xong form rồi mới watch
+    setTimeout(watchInputs, 1000);
 
-  function hookForms(){
-    // Bắt submit form thật
-    document.addEventListener("submit", function(e){
-      var form = e.target;
-      if(form.tagName !== "FORM") return;
-      var data = Object.assign(
-        { _event:"submit",
-          _ten: getParam('ten')||'Khách',
-          _thoiGian: new Date().toLocaleString('vi-VN'),
-          _trang: location.pathname.split('/').pop()
-        },
-        collectInputs(form)
-      );
-      send(data);
-    }, true);
-
-    // Bắt click vào nút bên trong form (Pancake dùng div giả)
+    // Bắt click nút submit — dùng savedValues thay vì đọc DOM
     document.addEventListener("click", function(e){
       var form = e.target.closest("form");
       if(!form) return;
 
-      // Đợi 400ms để user kịp tương tác, Pancake kịp set value
-      setTimeout(function(){
-        var inputs = collectInputs(form);
-        if(!Object.keys(inputs).length) return;
+      // Snapshot lại tại thời điểm click (phòng trường hợp chưa trigger change)
+      form.querySelectorAll("input,select,textarea").forEach(function(el){
+        var key = el.name || el.id;
+        if(key && el.value) savedValues[key] = el.value;
+      });
 
-        // Debounce tránh gửi 2 lần
-        if(form._cl_sending) return;
-        form._cl_sending = true;
-        setTimeout(function(){ form._cl_sending = false; }, 2000);
+      if(!Object.keys(savedValues).length) return;
+      if(form._cl_sending) return;
+      form._cl_sending = true;
+      setTimeout(function(){ form._cl_sending = false; }, 2000);
 
-        var data = Object.assign(
-          { _event: "form_submit",
-            _ten: getParam('ten')||'Khách',
-            _thoiGian: new Date().toLocaleString('vi-VN'),
-            _trang: location.pathname.split('/').pop()
-          },
-          inputs
-        );
-        send(data);
-      }, 400);
+      var data = Object.assign(
+        { _event: "form_submit",
+          _ten: getParam('ten') || 'Khách',
+          _thoiGian: new Date().toLocaleString('vi-VN'),
+          _trang: location.pathname.split('/').pop()
+        },
+        savedValues
+      );
+      send(data);
     }, true);
-  }
+  });
 
 })();
 </script>
