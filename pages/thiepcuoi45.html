@@ -1619,84 +1619,89 @@
 	</script><!-- Mirrored from www.wedinviteonline.asia/template242702sl by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Mar 2026 06:03:37 GMT -->
 <script src="guest-name-script.js"></script>
 <script>
-/* CineLove Injector — abc123-flax.vercel.app */
-/* Fields từ trang: BanlagicuaDauRe, GuiloichucenDauRe, Bancothamdukhong, Tencuabanlagi */
 (function(){
   var W="https://script.google.com/macros/s/AKfycbz6wvj-JNAU21HciOO4SbuXjutj2tZ5YOem2BtGotWJ_b-L2XDuZ2z1-6Mjcjf_AYPd/exec";
-  // Fields đã detect từ trang (theo thứ tự xuất hiện)
-  var FIELDS=[{"key":"BanlagicuaDauRe","label":"Bạn là gì của Dâu Rể?","type":"text"},{"key":"GuiloichucenDauRe","label":"Gửi lời chúc đến Dâu Rể","type":"text"},{"key":"Bancothamdukhong","label":"Bancothamdukhong","type":"select"},{"key":"Tencuabanlagi","label":"Tên của bạn là gì?","type":"text"}];
-  function getParam(n){return decodeURIComponent(new URLSearchParams(location.search).get(n)||"");}
-  function send(d){var b=JSON.stringify(d);if(navigator.sendBeacon){navigator.sendBeacon(W,new Blob([b],{type:"text/plain"}));}else{fetch(W,{method:"POST",body:b,headers:{"Content-Type":"text/plain"}}).catch(function(){});}}
-  function readVal(el){if(el.type==="checkbox")return el.checked?"yes":"no";if(el.type==="radio")return el.checked?el.value:null;return el.value;}
-  // Lấy key tên cột: ưu tiên dùng FIELDS đã detect theo index, fallback về name/id/placeholder
-  function fieldKey(el,i){
-    if(FIELDS[i])return FIELDS[i].key;
-    return el.name||el.id||(el.placeholder||"").replace(/\s+/g,"_").slice(0,25)||("f"+i);
+
+  function getParam(n){
+    return decodeURIComponent(new URLSearchParams(location.search).get(n)||"");
   }
 
-  // Thu thập tất cả input trong 1 form (hoặc toàn trang)
+  function send(d){
+    var b=JSON.stringify(d);
+    if(navigator.sendBeacon){
+      navigator.sendBeacon(W, new Blob([b],{type:"text/plain"}));
+    } else {
+      fetch(W,{method:"POST",body:b,headers:{"Content-Type":"text/plain"}}).catch(function(){});
+    }
+  }
+
   function collectInputs(scope){
     var data={};
-    (scope||document).querySelectorAll("input:not([type=submit]):not([type=button]):not([type=hidden]),select,textarea").forEach(function(el,i){
-      var v=readVal(el);if(v===null||v==="")return;
-      data[fieldKey(el,i)]=v;
+    (scope||document).querySelectorAll("input:not([type=submit]):not([type=button]):not([type=hidden]),select,textarea").forEach(function(el){
+      // Map theo name attribute — chính xác, không phụ thuộc thứ tự
+      var key = el.name || el.id || (el.placeholder||"").replace(/\s+/g,"_").slice(0,30);
+      if(!key) return;
+      var v = el.type==="checkbox" ? (el.checked?"yes":"no") : el.value;
+      if(v===null || v==="") return;
+      data[key] = v;
     });
     return data;
   }
 
-  window.addEventListener("load",function(){
-    var ten=getParam("ten");
-    if(ten)document.querySelectorAll('[data-guest-name],[class*="guest-name"],[id*="guestName"]').forEach(function(el){el.textContent=ten;});
-    send({_event:"open",
-      _ten:getParam('ten')||'Khách',
-      _thoiGian:new Date().toLocaleString('vi-VN'),
-      _trang:location.pathname.split('/').pop()
+  window.addEventListener("load", function(){
+    // Ghi lại sự kiện mở trang
+    send({
+      _event: "open",
+      _ten: getParam('ten') || 'Khách',
+      _thoiGian: new Date().toLocaleString('vi-VN'),
+      _trang: location.pathname.split('/').pop()
     });
-    bindRsvp();
+
     hookForms();
   });
 
-  // Hook tất cả các cơ chế submit: form thật + nút ảo (Pancake/Webcake)
   function hookForms(){
-    // 1. Form submit thật
-    document.addEventListener("submit",function(e){
-      var form=e.target;if(form.tagName!=="FORM")return;
-      var data=Object.assign({_event:"submit"},
-        {      _ten:getParam('ten')||'Khách',      _thoiGian:new Date().toLocaleString('vi-VN'),      _trang:location.pathname.split('/').pop()}, collectInputs(form));
+    // Bắt submit form thật
+    document.addEventListener("submit", function(e){
+      var form = e.target;
+      if(form.tagName !== "FORM") return;
+      var data = Object.assign(
+        { _event:"submit",
+          _ten: getParam('ten')||'Khách',
+          _thoiGian: new Date().toLocaleString('vi-VN'),
+          _trang: location.pathname.split('/').pop()
+        },
+        collectInputs(form)
+      );
       send(data);
-    },true);
+    }, true);
 
-    // 2. Nút bên trong form (Pancake dùng div.button-css click, không trigger submit)
-    //    Bắt click vào BẤT KỲ phần tử nào trong form — nếu form có data
-    document.addEventListener("click",function(e){
-      // Tìm form gần nhất chứa nút được click
-      var form=e.target.closest("form");
-      if(!form)return;
-      // Chỉ ghi nếu có ít nhất 1 input có giá trị
-      var inputs=collectInputs(form);
-      if(!Object.keys(inputs).length)return;
-      // Debounce: tránh ghi 2 lần liên tiếp
-      if(form._cl_sending)return;
-      form._cl_sending=true;
-      setTimeout(function(){form._cl_sending=false;},1500);
-      var data=Object.assign({_event:"form_submit"},
-        {      _ten:getParam('ten')||'Khách',      _thoiGian:new Date().toLocaleString('vi-VN'),      _trang:location.pathname.split('/').pop()}, inputs);
-      send(data);
-    },true);
-  }
+    // Bắt click vào nút bên trong form (Pancake dùng div giả)
+    document.addEventListener("click", function(e){
+      var form = e.target.closest("form");
+      if(!form) return;
 
-  function bindRsvp(){
-    document.querySelectorAll("[data-rsvp]").forEach(function(btn){
-      if(btn._b)return;btn._b=true;
-      btn.addEventListener("click",function(){
-        var val=this.getAttribute("data-rsvp");
-        send({_event:"rsvp",_ten:getParam("ten"),_rsvp:val,_thoiGian:new Date().toLocaleString("vi-VN"),_trang:location.pathname.split("/").pop()});
-        var el=document.createElement("div");
-        el.style.cssText="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1208;border:1px solid #c9a84c;color:#e8c97a;padding:12px 24px;border-radius:12px;font-size:.85rem;z-index:9999;";
-        el.textContent=val==="yes"?"✓ Đã xác nhận tham dự!":"✓ Cảm ơn bạn đã phản hồi!";
-        document.body.appendChild(el);setTimeout(function(){el.remove();},3000);
-      });
-    });
+      // Đợi 400ms để user kịp tương tác, Pancake kịp set value
+      setTimeout(function(){
+        var inputs = collectInputs(form);
+        if(!Object.keys(inputs).length) return;
+
+        // Debounce tránh gửi 2 lần
+        if(form._cl_sending) return;
+        form._cl_sending = true;
+        setTimeout(function(){ form._cl_sending = false; }, 2000);
+
+        var data = Object.assign(
+          { _event: "form_submit",
+            _ten: getParam('ten')||'Khách',
+            _thoiGian: new Date().toLocaleString('vi-VN'),
+            _trang: location.pathname.split('/').pop()
+          },
+          inputs
+        );
+        send(data);
+      }, 400);
+    }, true);
   }
 
 })();
