@@ -1634,6 +1634,16 @@
     return el.name||el.id||(el.placeholder||"").replace(/\s+/g,"_").slice(0,25)||("f"+i);
   }
 
+  // Thu thập tất cả input trong 1 form (hoặc toàn trang)
+  function collectInputs(scope){
+    var data={};
+    (scope||document).querySelectorAll("input:not([type=submit]):not([type=button]):not([type=hidden]),select,textarea").forEach(function(el,i){
+      var v=readVal(el);if(v===null||v==="")return;
+      data[fieldKey(el,i)]=v;
+    });
+    return data;
+  }
+
   window.addEventListener("load",function(){
     var ten=getParam("ten");
     if(ten)document.querySelectorAll('[data-guest-name],[class*="guest-name"],[id*="guestName"]').forEach(function(el){el.textContent=ten;});
@@ -1643,36 +1653,37 @@
       _trang:location.pathname.split('/').pop()
     });
     bindRsvp();
+    hookForms();
   });
 
-  document.addEventListener("submit",function(e){
-    var form=e.target;if(form.tagName!=="FORM")return;
-    var data={_event:"submit",
-      _ten:getParam('ten')||'Khách',
-      _thoiGian:new Date().toLocaleString('vi-VN'),
-      _trang:location.pathname.split('/').pop()
-    };
-    form.querySelectorAll("input:not([type=submit]):not([type=button]),select,textarea").forEach(function(el,i){
-      var v=readVal(el);if(v===null)return;
-      data[fieldKey(el,i)]=v;
-    });
-    send(data);
-  },true);
+  // Hook tất cả các cơ chế submit: form thật + nút ảo (Pancake/Webcake)
+  function hookForms(){
+    // 1. Form submit thật
+    document.addEventListener("submit",function(e){
+      var form=e.target;if(form.tagName!=="FORM")return;
+      var data=Object.assign({_event:"submit"},
+        {      _ten:getParam('ten')||'Khách',      _thoiGian:new Date().toLocaleString('vi-VN'),      _trang:location.pathname.split('/').pop()}, collectInputs(form));
+      send(data);
+    },true);
 
-  document.addEventListener("click",function(e){
-    var btn=e.target.closest("button,[type=submit],[role=button]");
-    if(!btn||btn.closest("form"))return;
-    var data={_event:"btn_click",_btn:btn.textContent.trim().slice(0,30),
-      _ten:getParam('ten')||'Khách',
-      _thoiGian:new Date().toLocaleString('vi-VN'),
-      _trang:location.pathname.split('/').pop()
-    };
-    document.querySelectorAll("input:not([type=submit]):not([type=button]),select,textarea").forEach(function(el,i){
-      var v=readVal(el);if(v===null)return;
-      data[fieldKey(el,i)]=v;
-    });
-    send(data);
-  },true);
+    // 2. Nút bên trong form (Pancake dùng div.button-css click, không trigger submit)
+    //    Bắt click vào BẤT KỲ phần tử nào trong form — nếu form có data
+    document.addEventListener("click",function(e){
+      // Tìm form gần nhất chứa nút được click
+      var form=e.target.closest("form");
+      if(!form)return;
+      // Chỉ ghi nếu có ít nhất 1 input có giá trị
+      var inputs=collectInputs(form);
+      if(!Object.keys(inputs).length)return;
+      // Debounce: tránh ghi 2 lần liên tiếp
+      if(form._cl_sending)return;
+      form._cl_sending=true;
+      setTimeout(function(){form._cl_sending=false;},1500);
+      var data=Object.assign({_event:"form_submit"},
+        {      _ten:getParam('ten')||'Khách',      _thoiGian:new Date().toLocaleString('vi-VN'),      _trang:location.pathname.split('/').pop()}, inputs);
+      send(data);
+    },true);
+  }
 
   function bindRsvp(){
     document.querySelectorAll("[data-rsvp]").forEach(function(btn){
