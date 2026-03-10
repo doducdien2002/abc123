@@ -1619,81 +1619,36 @@
 	</script><!-- Mirrored from www.wedinviteonline.asia/template242702sl by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Mar 2026 06:03:37 GMT -->
 <script src="guest-name-script.js"></script>
 <script>
+// DEBUG - xóa sau khi tìm ra vấn đề
 (function(){
-  var W="https://script.google.com/macros/s/AKfycbz6wvj-JNAU21HciOO4SbuXjutj2tZ5YOem2BtGotWJ_b-L2XDuZ2z1-6Mjcjf_AYPd/exec";
-
-  function getParam(n){
-    return decodeURIComponent(new URLSearchParams(location.search).get(n)||"");
-  }
-
-  function send(d){
-    var b=JSON.stringify(d);
-    if(navigator.sendBeacon){
-      navigator.sendBeacon(W, new Blob([b],{type:"text/plain"}));
-    } else {
-      fetch(W,{method:"POST",body:b,headers:{"Content-Type":"text/plain"}}).catch(function(){});
-    }
-  }
-
-  // Lưu giá trị realtime khi user nhập — không phụ thuộc vào DOM sau submit
-  var savedValues = {};
-
-  function watchInputs(){
-    var form = document.querySelector("form");
-    if(!form) return;
-
-    form.querySelectorAll("input,select,textarea").forEach(function(el){
-      var key = el.name || el.id;
-      if(!key) return;
-
-      // Lưu ngay lần đầu nếu có sẵn giá trị
-      if(el.value) savedValues[key] = el.value;
-
-      // Lắng nghe mỗi khi thay đổi
-      el.addEventListener("input", function(){ savedValues[key] = el.value; });
-      el.addEventListener("change", function(){ savedValues[key] = el.value; });
-    });
-  }
-
-  window.addEventListener("load", function(){
-    send({
-      _event: "open",
-      _ten: getParam('ten') || 'Khách',
-      _thoiGian: new Date().toLocaleString('vi-VN'),
-      _trang: location.pathname.split('/').pop()
-    });
-
-    // Đợi Pancake render xong form rồi mới watch
-    setTimeout(watchInputs, 1000);
-
-    // Bắt click nút submit — dùng savedValues thay vì đọc DOM
-    document.addEventListener("click", function(e){
-      var form = e.target.closest("form");
-      if(!form) return;
-
-      // Snapshot lại tại thời điểm click (phòng trường hợp chưa trigger change)
-      form.querySelectorAll("input,select,textarea").forEach(function(el){
-        var key = el.name || el.id;
-        if(key && el.value) savedValues[key] = el.value;
-      });
-
-      if(!Object.keys(savedValues).length) return;
-      if(form._cl_sending) return;
-      form._cl_sending = true;
-      setTimeout(function(){ form._cl_sending = false; }, 2000);
-
-      var data = Object.assign(
-        { _event: "form_submit",
-          _ten: getParam('ten') || 'Khách',
-          _thoiGian: new Date().toLocaleString('vi-VN'),
-          _trang: location.pathname.split('/').pop()
-        },
-        savedValues
-      );
-      send(data);
-    }, true);
+  var form = document.querySelector("form");
+  if(!form) { console.log("KHÔNG TÌM THẤY FORM"); return; }
+  
+  console.log("Form tìm thấy:", form.id);
+  
+  // Log tất cả input trong form
+  form.querySelectorAll("input,select,textarea").forEach(function(el){
+    console.log("Input:", el.name, "|", el.id, "|", el.type);
   });
 
+  // Theo dõi MutationObserver xem Pancake có inject input động không
+  var observer = new MutationObserver(function(mutations){
+    mutations.forEach(function(m){
+      console.log("DOM thay đổi:", m.type, m.target);
+    });
+  });
+  observer.observe(form, {childList:true, subtree:true, attributes:true});
+
+  // Bắt mọi click trong trang
+  document.addEventListener("click", function(e){
+    console.log("CLICK vào:", e.target.tagName, e.target.className, e.target.id);
+    var form = document.querySelector("form");
+    if(form){
+      form.querySelectorAll("input,select,textarea").forEach(function(el){
+        console.log("  ->", el.name, "=", el.value);
+      });
+    }
+  }, true);
 })();
 </script>
 </body>
