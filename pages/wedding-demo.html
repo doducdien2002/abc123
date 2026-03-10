@@ -489,33 +489,52 @@ function buildScript(){
 '    return el.name||el.id||(el.placeholder||"").replace(/\\s+/g,"_").slice(0,25)||("f"+i);\n'+
 '  }\n'+
 '\n'+
+'  // Thu thập tất cả input trong 1 form (hoặc toàn trang)\n'+
+'  function collectInputs(scope){\n'+
+'    var data={};\n'+
+'    (scope||document).querySelectorAll("input:not([type=submit]):not([type=button]):not([type=hidden]),select,textarea").forEach(function(el,i){\n'+
+'      var v=readVal(el);if(v===null||v==="")return;\n'+
+'      data[fieldKey(el,i)]=v;\n'+
+'    });\n'+
+'    return data;\n'+
+'  }\n'+
+'\n'+
 '  window.addEventListener("load",function(){\n'+
 '    var ten=getParam("ten");\n'+
 '    if(ten)document.querySelectorAll(\'[data-guest-name],[class*="guest-name"],[id*="guestName"]\').forEach(function(el){el.textContent=ten;});\n'+
 '    send({_event:"open",\n'+meta.join(',\n')+'\n    });\n'+
 (r?'    bindRsvp();\n':'')+
+'    hookForms();\n'+
 '  });\n'+
 '\n'+
-'  document.addEventListener("submit",function(e){\n'+
-'    var form=e.target;if(form.tagName!=="FORM")return;\n'+
-'    var data={_event:"submit",\n'+meta.join(',\n')+'\n    };\n'+
-'    form.querySelectorAll("input:not([type=submit]):not([type=button]),select,textarea").forEach(function(el,i){\n'+
-'      var v=readVal(el);if(v===null)return;\n'+
-'      data[fieldKey(el,i)]=v;\n'+
-'    });\n'+
-'    send(data);\n'+
-'  },true);\n'+
+'  // Hook tất cả các cơ chế submit: form thật + nút ảo (Pancake/Webcake)\n'+
+'  function hookForms(){\n'+
+'    // 1. Form submit thật\n'+
+'    document.addEventListener("submit",function(e){\n'+
+'      var form=e.target;if(form.tagName!=="FORM")return;\n'+
+'      var data=Object.assign({_event:"submit"},\n'+
+'        {'+meta.join(',')+'}, collectInputs(form));\n'+
+'      send(data);\n'+
+'    },true);\n'+
 '\n'+
-'  document.addEventListener("click",function(e){\n'+
-'    var btn=e.target.closest("button,[type=submit],[role=button]");\n'+
-'    if(!btn||btn.closest("form"))return;\n'+
-'    var data={_event:"btn_click",_btn:btn.textContent.trim().slice(0,30),\n'+meta.join(',\n')+'\n    };\n'+
-'    document.querySelectorAll("input:not([type=submit]):not([type=button]),select,textarea").forEach(function(el,i){\n'+
-'      var v=readVal(el);if(v===null)return;\n'+
-'      data[fieldKey(el,i)]=v;\n'+
-'    });\n'+
-'    send(data);\n'+
-'  },true);\n'+
+'    // 2. Nút bên trong form (Pancake dùng div.button-css click, không trigger submit)\n'+
+'    //    Bắt click vào BẤT KỲ phần tử nào trong form — nếu form có data\n'+
+'    document.addEventListener("click",function(e){\n'+
+'      // Tìm form gần nhất chứa nút được click\n'+
+'      var form=e.target.closest("form");\n'+
+'      if(!form)return;\n'+
+'      // Chỉ ghi nếu có ít nhất 1 input có giá trị\n'+
+'      var inputs=collectInputs(form);\n'+
+'      if(!Object.keys(inputs).length)return;\n'+
+'      // Debounce: tránh ghi 2 lần liên tiếp\n'+
+'      if(form._cl_sending)return;\n'+
+'      form._cl_sending=true;\n'+
+'      setTimeout(function(){form._cl_sending=false;},1500);\n'+
+'      var data=Object.assign({_event:"form_submit"},\n'+
+'        {'+meta.join(',')+'}, inputs);\n'+
+'      send(data);\n'+
+'    },true);\n'+
+'  }\n'+
 (r?
 '\n  function bindRsvp(){\n'+
 '    document.querySelectorAll("[data-rsvp]").forEach(function(btn){\n'+
