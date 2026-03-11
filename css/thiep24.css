@@ -8,6 +8,34 @@
 	font: inherit;
 	border: 0
 }
+/* FIX FOOTER LAYOUT */
+#w-o3n6hbs3 .section-container{
+    display:grid !important;
+    grid-template-columns:auto 1fr auto !important;
+    align-items:center !important;
+    gap:20px !important;
+
+    max-width:1200px !important;
+    margin:auto !important;
+    padding:16px 40px !important;
+}
+
+/* divider */
+#w-o3n6hbs3 .section-container > div:nth-child(2){
+    width:100% !important;
+}
+
+/* brand text */
+#w-o3n6hbs3 .ft-brand{
+    white-space:nowrap;
+}
+
+/* icon group */
+#w-o3n6hbs3 .section-container > div:last-child{
+    display:flex !important;
+    align-items:center !important;
+    gap:10px !important;
+}
 html {
 	font-size: 12px;
 	line-height: 1.5;
@@ -2418,7 +2446,7 @@ z-index: undefined;
 	height: 287px;
 	top: 0px;
 	left: 0px;
-	background: center center/ cover no-repeat local content-box border-box url("../content.pancake.vn/1/s592x889/fwebp90/46/9b/d8/33/fa7e70138c3cbf779d064c1eee10e88b1af5c8ec143ac49ed4960ba7-w_1365-h_2048-l_315959-t_image/jpeg.jpg");
+	background: center center/ cover no-repeat local content-box border-box url("https://mimosawedding.vn/wp-content/uploads/2025/10/album-han-quoc-santorini-60.jpg");
 	--type: 0;
 }
 #w-tau33igw .image-background-compare {
@@ -2445,7 +2473,7 @@ z-index: undefined;
 	height: 298.7234042553191px;
 	top: 0px;
 	left: 0px;
-	background: center center/ cover no-repeat local content-box border-box url("../content.pancake.vn/1/s600x901/fwebp90/df/27/de/b4/3c2626cf835f8530ba6f94b4f93f638813be5d61f633d86e8617fe07-w_1365-h_2048-l_244255-t_image/jpeg.jpg");
+	background: center center/ cover no-repeat local content-box border-box url("https://mimosawedding.vn/wp-content/uploads/2025/10/album-han-quoc-santorini-56.jpg");
 	--type: 0;
 }
 #w-11vmadhl .image-background-compare {
@@ -2472,7 +2500,7 @@ z-index: undefined;
 	height: 286px;
 	top: 0px;
 	left: 0px;
-	background: center center/ cover no-repeat local content-box border-box url("../content.pancake.vn/1/s593x890/fwebp90/8a/af/31/36/b54c78297c0a99b942903ca4e792717c3380938306e0fc0836428ba1-w_1365-h_2048-l_298206-t_image/jpeg.jpg");
+	background: center center/ cover no-repeat local content-box border-box url("https://mimosawedding.vn/wp-content/uploads/2025/10/album-han-quoc-santorini-14.jpg");
 	--type: 0;
 }
 #w-e7cmiwrc .image-background-compare {
@@ -2499,7 +2527,7 @@ z-index: undefined;
 	height: 286px;
 	top: 0px;
 	left: 0px;
-	background: center center/ cover no-repeat local content-box border-box url("../content.pancake.vn/1/s592x889/fwebp90/b2/82/a2/fd/e2f4ca99b9e46f96c16190b137eb613a49174eaec819ce32d417a960-w_1365-h_2048-l_499935-t_image/jpeg.jpg");
+	background: center center/ cover no-repeat local content-box border-box url("https://mimosawedding.vn/wp-content/uploads/2025/10/album-han-quoc-santorini-13.jpg");
 	--type: 0;
 }
 #w-u1wd4qpi .image-background-compare {
@@ -2526,7 +2554,7 @@ z-index: undefined;
 	height: 287px;
 	top: 0px;
 	left: 0px;
-	background: center center/ cover no-repeat content-box border-box url("../content.pancake.vn/1/s592x889/fwebp90/0d/f6/1f/31/9e9168ed39f156385c0c04fd845037b700ad39243525275705dc3c05-w_1365-h_2048-l_438542-t_image/jpeg.jpg");
+	background: center center/ cover no-repeat content-box border-box url("https://mimosawedding.vn/wp-content/uploads/2025/10/album-han-quoc-santorini-65.jpg");
 	--type: 0;
 }
 #w-odgxj8ny .image-background-compare {
@@ -2571,7 +2599,7 @@ z-index: undefined;
 	height: 287px;
 	top: 0px;
 	left: 0px;
-	background: center center/ cover no-repeat content-box border-box url("../content.pancake.vn/1/s592x889/fwebp90/eb/ad/37/46/419e83215bd7a4c09c668c136050af0d1215204ae354e2b556bbb9f4-w_1365-h_2048-l_289672-t_image/jpeg.jpg");
+	background: center center/ cover no-repeat content-box border-box url("https://mimosawedding.vn/wp-content/uploads/2025/10/album-han-quoc-santorini-31.jpg");
 	--type: 0;
 }
 #w-x7esb3f2 .image-background-compare {
@@ -2593,7 +2621,7 @@ z-index: undefined;
 	margin-bottom: -1px;
 }
 #w-3n95ekwc .section-background {
-	background: center bottom/ cover no-repeat content-box border-box url("../content.pancake.vn/1/s840x1261/fwebp90/9c/14/d1/62/ff6de860e73adb85a05e09a219e0a0b2bf0959519c5eef0d35d15afd-w_1365-h_2048-l_615352-t_image/jpeg.jpg");
+	background: center bottom/ cover no-repeat content-box border-box url("hhttps://mimosawedding.vn/wp-content/uploads/2025/10/album-han-quoc-santorini-3.jpg");
 	--type: 0;
 }
 #w-70dhyt5u {
@@ -5119,7 +5147,7 @@ z-index: undefined;
 	height: 287px;
 	top: 0px;
 	left: 0px;
-	background: center center/ cover no-repeat local content-box border-box url("../content.pancake.vn/1/s592x889/fwebp90/46/9b/d8/33/fa7e70138c3cbf779d064c1eee10e88b1af5c8ec143ac49ed4960ba7-w_1365-h_2048-l_315959-t_image/jpeg.jpg");
+	background: center center/ cover no-repeat local content-box border-box url("https://mimosawedding.vn/wp-content/uploads/2025/10/album-han-quoc-santorini-60.jpg");
 	--type: 0;
 }
 #w-tau33igw .image-background-compare {
@@ -5146,7 +5174,7 @@ z-index: undefined;
 	height: 298.7234042553191px;
 	top: 0px;
 	left: 0px;
-	background: center center/ cover no-repeat local content-box border-box url("../content.pancake.vn/1/s600x901/fwebp90/df/27/de/b4/3c2626cf835f8530ba6f94b4f93f638813be5d61f633d86e8617fe07-w_1365-h_2048-l_244255-t_image/jpeg.jpg");
+	background: center center/ cover no-repeat local content-box border-box url("https://mimosawedding.vn/wp-content/uploads/2025/10/album-han-quoc-santorini-56.jpg");
 	--type: 0;
 }
 #w-11vmadhl .image-background-compare {
@@ -5173,7 +5201,7 @@ z-index: undefined;
 	height: 286px;
 	top: 0px;
 	left: 0px;
-	background: center center/ cover no-repeat local content-box border-box url("../content.pancake.vn/1/s593x890/fwebp90/8a/af/31/36/b54c78297c0a99b942903ca4e792717c3380938306e0fc0836428ba1-w_1365-h_2048-l_298206-t_image/jpeg.jpg");
+	background: center center/ cover no-repeat local content-box border-box url("https://mimosawedding.vn/wp-content/uploads/2025/10/album-han-quoc-santorini-14.jpg");
 	--type: 0;
 }
 #w-e7cmiwrc .image-background-compare {
@@ -5200,7 +5228,7 @@ z-index: undefined;
 	height: 286px;
 	top: 0px;
 	left: 0px;
-	background: center center/ cover no-repeat local content-box border-box url("../content.pancake.vn/1/s592x889/fwebp90/b2/82/a2/fd/e2f4ca99b9e46f96c16190b137eb613a49174eaec819ce32d417a960-w_1365-h_2048-l_499935-t_image/jpeg.jpg");
+	background: center center/ cover no-repeat local content-box border-box url("https://mimosawedding.vn/wp-content/uploads/2025/10/album-han-quoc-santorini-13.jpg");
 	--type: 0;
 }
 #w-u1wd4qpi .image-background-compare {
@@ -5227,7 +5255,7 @@ z-index: undefined;
 	height: 287px;
 	top: 0px;
 	left: 0px;
-	background: center center/ cover no-repeat content-box border-box url("../content.pancake.vn/1/s592x889/fwebp90/0d/f6/1f/31/9e9168ed39f156385c0c04fd845037b700ad39243525275705dc3c05-w_1365-h_2048-l_438542-t_image/jpeg.jpg");
+	background: center center/ cover no-repeat content-box border-box url("https://mimosawedding.vn/wp-content/uploads/2025/10/album-han-quoc-santorini-65.jpg");
 	--type: 0;
 }
 #w-odgxj8ny .image-background-compare {
@@ -5272,7 +5300,7 @@ z-index: undefined;
 	height: 287px;
 	top: 0px;
 	left: 0px;
-	background: center center/ cover no-repeat content-box border-box url("../content.pancake.vn/1/s592x889/fwebp90/eb/ad/37/46/419e83215bd7a4c09c668c136050af0d1215204ae354e2b556bbb9f4-w_1365-h_2048-l_289672-t_image/jpeg.jpg");
+	background: center center/ cover no-repeat content-box border-box url("https://mimosawedding.vn/wp-content/uploads/2025/10/album-han-quoc-santorini-39.jpg");
 	--type: 0;
 }
 #w-x7esb3f2 .image-background-compare {
@@ -5294,7 +5322,7 @@ z-index: undefined;
 	margin-bottom: -1px;
 }
 #w-3n95ekwc .section-background {
-	background: center bottom/ cover no-repeat content-box border-box url("../content.pancake.vn/1/s840x1261/fwebp90/9c/14/d1/62/ff6de860e73adb85a05e09a219e0a0b2bf0959519c5eef0d35d15afd-w_1365-h_2048-l_615352-t_image/jpeg.jpg");
+	background: center bottom/ cover no-repeat content-box border-box url("https://mimosawedding.vn/wp-content/uploads/2025/10/album-han-quoc-santorini-3.jpg");
 	--type: 0;
 }
 #w-70dhyt5u {
