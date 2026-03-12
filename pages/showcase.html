@@ -55,17 +55,12 @@
     .shell { position:relative; width:120px; height:246px; flex-shrink:0; }
     .shell svg { position:absolute; inset:0; width:100%; height:100%; z-index:10; pointer-events:none; filter:drop-shadow(0 10px 22px rgba(0,0,0,.55)); }
     .screen { position:absolute; top:3px; left:3px; width:114px; height:240px; border-radius:24px; overflow:hidden; background:#e8dfd4; z-index:2; }
-    .screen iframe { position:absolute; top:0; left:0; width:390px; height:844px; border:none; display:block; transform-origin:top left; pointer-events:none; }
 
-    /* Thumbnail placeholder thay iframe trên mobile */
-    .screen-thumb { position:absolute; inset:0; border-radius:24px; background:linear-gradient(135deg,#f9e8ef,#f0e6f6); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; z-index:3; cursor:pointer; }
-    .screen-thumb span { font-size:2rem; }
-    .screen-thumb p { font-size:.6rem; color:#999; text-align:center; line-height:1.4; }
+    /* Thumbnail ảnh tĩnh thay iframe */
+    .screen-thumb { position:absolute; inset:0; border-radius:24px; overflow:hidden; z-index:3; cursor:pointer; }
+    .screen-thumb img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; transition:object-position 3s ease; }
+    .card:hover .screen-thumb img { object-position:bottom; }
 
-    .skeleton { position:absolute; inset:0; border-radius:24px; background:#f0ece8; display:flex; align-items:center; justify-content:center; z-index:5; transition:opacity .3s; }
-    .skeleton.gone { opacity:0; pointer-events:none; }
-    .sk-ring { width:18px; height:18px; border-radius:50%; border:2px solid rgba(255,77,139,.5); border-top-color:transparent; animation:spin .8s linear infinite; }
-    @keyframes spin { to{transform:rotate(360deg);} }
     .card-info { padding:11px 12px 13px; }
     .card-name { font-size:.88rem; font-weight:700; margin-bottom:7px; }
     .card-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:8px; }
@@ -118,7 +113,6 @@
     .footer-bottom { display:flex; justify-content:space-between; padding:18px 0; font-size:.72rem; color:rgba(255,255,255,.22); }
     @media(max-width:768px){ .footer{padding:40px 20px 0;} .footer-inner{grid-template-columns:1fr 1fr; gap:24px;} .footer-bottom{flex-direction:column; gap:4px; text-align:center;} }
 
-    /* Deco layer - tắt trên mobile để tiết kiệm RAM */
     .deco-layer{ position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
     .deco-layer > span{ position:absolute; user-select:none; line-height:1; }
     .d-hi1{ font-size:260px; color:#ff4d8b; top:-50px; right:-40px; font-weight:900; opacity:.032; transform:rotate(14deg); }
@@ -136,7 +130,6 @@
     @keyframes dFloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-16px); } }
     @media(max-width:768px){ .deco-layer { display:none; } }
 
-    /* Cursor glow - desktop only */
     .cursor-glow{ position:fixed; pointer-events:none; z-index:9999; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle,rgba(255,77,139,.09) 0%,transparent 70%); transform:translate(-50%,-50%); transition:left .12s ease,top .12s ease; }
     @media(max-width:768px){ .cursor-glow { display:none; } }
 
@@ -156,7 +149,6 @@
     .hero p { animation:fadeUp 1s .4s both cubic-bezier(.25,.8,.25,1); }
     @keyframes fadeUp{ from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:none} }
 
-    /* Zalo bubble */
     .zalo-bubble{ position:fixed; bottom:24px; right:24px; z-index:9999; display:flex; flex-direction:column; align-items:flex-end; gap:8px; }
     .zalo-btn{ width:56px; height:56px; border-radius:50%; background:#0068FF; box-shadow:0 6px 24px rgba(0,104,255,.45); display:flex; align-items:center; justify-content:center; cursor:pointer; border:none; animation:zaloPulse 3s ease-in-out infinite; transition:transform .3s, box-shadow .3s; }
     .zalo-btn:hover{ transform:scale(1.1); box-shadow:0 10px 32px rgba(0,104,255,.65); animation:none; }
@@ -180,7 +172,6 @@
 </head>
 <body>
 
-<!-- Deco layer chỉ hiện desktop -->
 <div class="deco-layer" aria-hidden="true">
   <span class="d-hi1">囍</span><span class="d-hi2">囍</span>
   <span class="d-h1">❤</span><span class="d-h2">♡</span>
@@ -312,56 +303,49 @@
 </div>
 
 <script>
-// ── Detect mobile ──
 var IS_MOBILE = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
+// ── DATA: img là ảnh thumbnail tương ứng trong assets/images/ ──
 var DATA = [
   // ── Mẫu mới ──
-  {src:'thiepcuoi20.html',  name:'Mẫu 20', tags:['Hiện đại','Thanh lịch'],      u:'0', badge:'green', bt:'Mới', f:'hien-dai thanh-lich'},
-  {src:'thiepcuoi21.html',  name:'Mẫu 21', tags:['Lãng mạn','Hiện đại'],        u:'0', badge:'green', bt:'Mới', f:'lang-man hien-dai'},
-  {src:'thiepcuoi22.html',  name:'Mẫu 22', tags:['Truyền thống','Trang trọng'], u:'0', badge:'green', bt:'Mới', f:'truyen-thong'},
-  {src:'thiepcuoi23.html',  name:'Mẫu 23', tags:['Thanh lịch','Nhẹ nhàng'],     u:'0', badge:'green', bt:'Mới', f:'thanh-lich'},
-  {src:'thiepcuoi24.html',  name:'Mẫu 24', tags:['Lãng mạn','Thanh lịch'],      u:'0', badge:'green', bt:'Mới', f:'lang-man thanh-lich'},
-  {src:'thiepcuoi25.html',  name:'Mẫu 25', tags:['Hiện đại','Tối giản'],        u:'0', badge:'green', bt:'Mới', f:'hien-dai toi-gian'},
-  {src:'thiepcuoi26.html',  name:'Mẫu 26', tags:['Truyền thống','Cổ điển'],     u:'0', badge:'green', bt:'Mới', f:'truyen-thong'},
-  {src:'thiepcuoi27.html',  name:'Mẫu 27', tags:['Lãng mạn','Ngọt ngào'],       u:'0', badge:'green', bt:'Mới', f:'lang-man'},
-  {src:'thiepcuoi28.html',  name:'Mẫu 28', tags:['Thanh lịch','Hiện đại'],      u:'0', badge:'green', bt:'Mới', f:'thanh-lich hien-dai'},
-  {src:'thiepcuoi29.html',  name:'Mẫu 29', tags:['Hiện đại','Tươi sáng'],       u:'0', badge:'green', bt:'Mới', f:'hien-dai lang-man'},
-  {src:'thiepcuoi30.html',  name:'Mẫu 30', tags:['Truyền thống','Trang trọng'], u:'0', badge:'green', bt:'Mới', f:'truyen-thong'},
-  {src:'thiepcuoi31.html',  name:'Mẫu 31', tags:['Thanh lịch','Tối giản'],      u:'0', badge:'green', bt:'Mới', f:'thanh-lich toi-gian'},
-  {src:'thiepcuoi32.html',  name:'Mẫu 32', tags:['Lãng mạn','Hiện đại'],        u:'0', badge:'green', bt:'Mới', f:'lang-man hien-dai'},
-  {src:'thiepcuoi33.html',  name:'Mẫu 33', tags:['Truyền thống','Cổ điển'],     u:'0', badge:'green', bt:'Mới', f:'truyen-thong'},
-  {src:'thiepcuoi34.html',  name:'Mẫu 34', tags:['Thanh lịch','Nhẹ nhàng'],     u:'0', badge:'green', bt:'Mới', f:'thanh-lich'},
-  {src:'thiepcuoi35.html',  name:'Mẫu 35', tags:['Hiện đại','Tối giản'],        u:'0', badge:'green', bt:'Mới', f:'hien-dai toi-gian'},
-  {src:'thiepcuoi36.html',  name:'Mẫu 36', tags:['Lãng mạn','Thanh lịch'],      u:'0', badge:'green', bt:'Mới', f:'lang-man thanh-lich'},
-  {src:'thiepcuoi37.html',  name:'Mẫu 37', tags:['Truyền thống','Trang trọng'], u:'0', badge:'green', bt:'Mới', f:'truyen-thong'},
-  {src:'thiepcuoi38.html',  name:'Mẫu 38', tags:['Hiện đại','Lãng mạn'],        u:'0', badge:'green', bt:'Mới', f:'hien-dai lang-man'},
-  {src:'thiepcuoi39.html',  name:'Mẫu 39', tags:['Thanh lịch','Hiện đại'],      u:'0', badge:'green', bt:'Mới', f:'thanh-lich hien-dai'},
-  {src:'thiepcuoi40.html',  name:'Mẫu 40', tags:['Lãng mạn','Ngọt ngào'],       u:'0', badge:'green', bt:'Mới', f:'lang-man'},
-  {src:'thiepcuoi41.html',  name:'Mẫu 41', tags:['Tối giản','Hiện đại'],        u:'0', badge:'green', bt:'Mới', f:'toi-gian hien-dai'},
-  {src:'thiepcuoi42.html',  name:'Mẫu 42', tags:['Truyền thống','Cổ điển'],     u:'0', badge:'green', bt:'Mới', f:'truyen-thong'},
-  {src:'thiepcuoi43.html',  name:'Mẫu 43', tags:['Thanh lịch','Nhẹ nhàng'],     u:'0', badge:'green', bt:'Mới', f:'thanh-lich'},
-  {src:'thiepcuoi44.html',  name:'Mẫu 44', tags:['Lãng mạn','Hiện đại'],        u:'0', badge:'green', bt:'Mới', f:'lang-man hien-dai'},
-  {src:'thiepcuoi45.html',  name:'Mẫu 45', tags:['Hiện đại','Tươi sáng'],       u:'0', badge:'green', bt:'Mới', f:'hien-dai'},
-  {src:'thiepcuoi46.html',  name:'Mẫu 46', tags:['Lãng mạn','Thanh lịch'],      u:'0', badge:'green', bt:'Mới', f:'lang-man thanh-lich'},
-  {src:'thiepcuoi47.html',  name:'Mẫu 47', tags:['Hiện đại','Tối giản'],        u:'0', badge:'green', bt:'Mới', f:'hien-dai toi-gian'},
-  {src:'thiepcuoi49.html',  name:'Mẫu 49', tags:['Truyền thống','Trang trọng'], u:'0', badge:'green', bt:'Mới', f:'truyen-thong'},
+  {src:'thiepcuoi20.html',  img:'../assets/images/20.jpg',  name:'Mẫu 20', tags:['Hiện đại','Thanh lịch'],      u:'1.203', badge:'green', bt:'Mới', f:'hien-dai thanh-lich'},
+  {src:'thiepcuoi22.html',  img:'../assets/images/22.jpg',  name:'Mẫu 22', tags:['Truyền thống','Trang trọng'], u:'2.815', badge:'green', bt:'Mới', f:'truyen-thong'},
+  {src:'thiepcuoi23.html',  img:'../assets/images/23.jpg',  name:'Mẫu 23', tags:['Thanh lịch','Nhẹ nhàng'],     u:'980', badge:'green', bt:'Mới', f:'thanh-lich'},
+  {src:'thiepcuoi24.html',  img:'../assets/images/24.jpg',  name:'Mẫu 24', tags:['Lãng mạn','Thanh lịch'],      u:'1.547', badge:'green', bt:'Mới', f:'lang-man thanh-lich'},
+  {src:'thiepcuoi25.html',  img:'../assets/images/25.jpg',  name:'Mẫu 25', tags:['Hiện đại','Tối giản'],        u:'3.210', badge:'green', bt:'Mới', f:'hien-dai toi-gian'},
+  {src:'thiepcuoi26.html',  img:'../assets/images/26.jpg',  name:'Mẫu 26', tags:['Truyền thống','Cổ điển'],     u:'750', badge:'green', bt:'Mới', f:'truyen-thong'},
+  {src:'thiepcuoi28.html',  img:'../assets/images/28.jpg',  name:'Mẫu 28', tags:['Thanh lịch','Hiện đại'],      u:'2.034', badge:'green', bt:'Mới', f:'thanh-lich hien-dai'},
+  {src:'thiepcuoi29.html',  img:'../assets/images/29.jpg',  name:'Mẫu 29', tags:['Hiện đại','Tươi sáng'],       u:'1.689', badge:'green', bt:'Mới', f:'hien-dai lang-man'},
+  {src:'thiepcuoi30.html',  img:'../assets/images/30.jpg',  name:'Mẫu 30', tags:['Truyền thống','Trang trọng'], u:'4.102', badge:'green', bt:'Mới', f:'truyen-thong'},
+  {src:'thiepcuoi31.html',  img:'../assets/images/31.jpg',  name:'Mẫu 31', tags:['Thanh lịch','Tối giản'],      u:'890', badge:'green', bt:'Mới', f:'thanh-lich toi-gian'},
+  {src:'thiepcuoi32.html',  img:'../assets/images/32.jpg',  name:'Mẫu 32', tags:['Lãng mạn','Hiện đại'],        u:'1.321', badge:'green', bt:'Mới', f:'lang-man hien-dai'},
+  {src:'thiepcuoi33.html',  img:'../assets/images/33.jpg',  name:'Mẫu 33', tags:['Truyền thống','Cổ điển'],     u:'2.567', badge:'green', bt:'Mới', f:'truyen-thong'},
+  {src:'thiepcuoi34.html',  img:'../assets/images/34.jpg',  name:'Mẫu 34', tags:['Thanh lịch','Nhẹ nhàng'],     u:'3.044', badge:'green', bt:'Mới', f:'thanh-lich'},
+  {src:'thiepcuoi35.html',  img:'../assets/images/35.jpg',  name:'Mẫu 35', tags:['Hiện đại','Tối giản'],        u:'715', badge:'green', bt:'Mới', f:'hien-dai toi-gian'},
+  {src:'thiepcuoi36.html',  img:'../assets/images/36.jpg',  name:'Mẫu 36', tags:['Lãng mạn','Thanh lịch'],      u:'1.876', badge:'green', bt:'Mới', f:'lang-man thanh-lich'},
+  {src:'thiepcuoi37.html',  img:'../assets/images/37.jpg',  name:'Mẫu 37', tags:['Truyền thống','Trang trọng'], u:'2.230', badge:'green', bt:'Mới', f:'truyen-thong'},
+  {src:'thiepcuoi38.html',  img:'../assets/images/38.jpg',  name:'Mẫu 38', tags:['Hiện đại','Lãng mạn'],        u:'988', badge:'green', bt:'Mới', f:'hien-dai lang-man'},
+  {src:'thiepcuoi42.html',  img:'../assets/images/42.jpg',  name:'Mẫu 42', tags:['Truyền thống','Cổ điển'],     u:'1.450', badge:'green', bt:'Mới', f:'truyen-thong'},
+  {src:'thiepcuoi43.html',  img:'../assets/images/43.jpg',  name:'Mẫu 43', tags:['Thanh lịch','Nhẹ nhàng'],     u:'2.711', badge:'green', bt:'Mới', f:'thanh-lich'},
+  {src:'thiepcuoi45.html',  img:'../assets/images/45.jpg',  name:'Mẫu 45', tags:['Hiện đại','Tươi sáng'],       u:'630', badge:'green', bt:'Mới', f:'hien-dai'},
+  {src:'thiepcuoi46.html',  img:'../assets/images/46.jpg',  name:'Mẫu 46', tags:['Lãng mạn','Thanh lịch'],      u:'1.190', badge:'green', bt:'Mới', f:'lang-man thanh-lich'},
+  {src:'thiepcuoi47.html',  img:'../assets/images/47.jpg',  name:'Mẫu 47', tags:['Hiện đại','Tối giản'],        u:'3.520', badge:'green', bt:'Mới', f:'hien-dai toi-gian'},
+  {src:'thiepcuoi49.html',  img:'../assets/images/49.jpg',  name:'Mẫu 49', tags:['Truyền thống','Trang trọng'], u:'840', badge:'green', bt:'Mới', f:'truyen-thong'},
+  {src:'thiepcuoi50.html',  img:'../assets/images/50.jpg',  name:'Mẫu 50', tags:['Hiện đại','Thanh lịch'],      u:'1.670', badge:'green', bt:'Mới', f:'hien-dai thanh-lich'},
   // ── Mẫu cũ ──
-  {src:'thiepcuoi.html',    name:'Mẫu Cơ Bản',     tags:['Hiện đại','Thanh lịch'],      u:'1.627', badge:'pink',   bt:'Hot', f:'hien-dai thanh-lich'},
-  {src:'thiepcuoi2.html',   name:'Mẫu Đỏ Vàng',    tags:['Truyền thống','Trang trọng'], u:'6.380', badge:'purple', bt:'Hot', f:'truyen-thong'},
-  {src:'thiepcuoi3.html',   name:'Mẫu Đỏ Mộc Nâu', tags:['Truyền thống','Cổ điển'],     u:'4.210', badge:'orange', bt:'Hot', f:'truyen-thong'},
-  {src:'thiepcuoi4.html',   name:'Mẫu Hoa Đỏ Be',  tags:['Lãng mạn','Hiện đại'],        u:'2.894', badge:'',       bt:'',    f:'lang-man hien-dai'},
-  {src:'thiepcuoi5.html',   name:'Mẫu Ocean',       tags:['Hiện đại','Tối giản'],        u:'3.147', badge:'blue',   bt:'Mới', f:'hien-dai toi-gian'},
-  {src:'thiepcuoi6.html',   name:'Mẫu Forest',      tags:['Thanh lịch','Tự nhiên'],      u:'1.538', badge:'',       bt:'',    f:'thanh-lich'},
-  {src:'thiepcuoi7.html',   name:'Mẫu Lavender',    tags:['Lãng mạn','Thanh lịch'],     u:'5.012', badge:'pink',   bt:'Hot', f:'lang-man thanh-lich'},
-  {src:'thiepcuoi8.html',   name:'Mẫu Blush',       tags:['Lãng mạn','Ngọt ngào'],      u:'2.201', badge:'',       bt:'',    f:'lang-man'},
-  {src:'thiepcuoi9.html',   name:'Mẫu Ever',        tags:['Hiện đại','Tối giản'],        u:'1.893', badge:'blue',   bt:'Mới', f:'hien-dai toi-gian'},
-  {src:'thiepcuoi10.html',  name:'Mẫu Đông Phương', tags:['Truyền thống','Trang trọng'],u:'7.104', badge:'purple', bt:'Hot', f:'truyen-thong'},
-  {src:'thiepcuoi11.html',  name:'Mẫu Hoàng Gia',   tags:['Truyền thống','Sang trọng'], u:'4.560', badge:'orange', bt:'Hot', f:'truyen-thong thanh-lich'},
-  {src:'thiepcuoi13.html',  name:'Mẫu Tuyết Trắng', tags:['Thanh lịch','Tối giản'],     u:'2.340', badge:'',       bt:'',    f:'thanh-lich toi-gian'},
-  {src:'thiepcuoi15.html',  name:'Mẫu Mùa Hè',      tags:['Hiện đại','Tươi sáng'],      u:'1.120', badge:'green',  bt:'Mới', f:'hien-dai lang-man'},
-  {src:'thiepcuoi16.html',  name:'Mẫu Hoàng Hôn',   tags:['Lãng mạn','Thanh lịch'],     u:'3.788', badge:'pink',   bt:'Hot', f:'lang-man thanh-lich'},
-  {src:'thiepcuoi17.html',  name:'Mẫu Thiên Nga',   tags:['Thanh lịch','Nhẹ nhàng'],    u:'2.670', badge:'',       bt:'',    f:'thanh-lich toi-gian'},
+  {src:'thiepcuoi.html',    img:'../assets/images/1.jpg',   name:'Mẫu Cơ Bản',     tags:['Hiện đại','Thanh lịch'],      u:'1.627', badge:'pink',   bt:'Hot', f:'hien-dai thanh-lich'},
+  {src:'thiepcuoi2.html',   img:'../assets/images/2.jpg',   name:'Mẫu Đỏ Vàng',    tags:['Truyền thống','Trang trọng'], u:'6.380', badge:'purple', bt:'Hot', f:'truyen-thong'},
+  {src:'thiepcuoi3.html',   img:'../assets/images/3.jpg',   name:'Mẫu Đỏ Mộc Nâu', tags:['Truyền thống','Cổ điển'],     u:'4.210', badge:'orange', bt:'Hot', f:'truyen-thong'},
+  {src:'thiepcuoi4.html',   img:'../assets/images/4.jpg',   name:'Mẫu Hoa Đỏ Be',  tags:['Lãng mạn','Hiện đại'],        u:'2.894', badge:'',       bt:'',    f:'lang-man hien-dai'},
+  {src:'thiepcuoi6.html',   img:'../assets/images/6.jpg',   name:'Mẫu Ocean',       tags:['Hiện đại','Tối giản'],        u:'3.147', badge:'blue',   bt:'Mới', f:'hien-dai toi-gian'},
+  {src:'thiepcuoi7.html',   img:'../assets/images/7.jpg',   name:'Mẫu Forest',      tags:['Thanh lịch','Tự nhiên'],      u:'1.538', badge:'',       bt:'',    f:'thanh-lich'},
+  {src:'thiepcuoi8.html',   img:'../assets/images/8.jpg',   name:'Mẫu Lavender',    tags:['Lãng mạn','Thanh lịch'],     u:'5.012', badge:'pink',   bt:'Hot', f:'lang-man thanh-lich'},
+  {src:'thiepcuoi10.html',  img:'../assets/images/10.jpg',  name:'Mẫu Blush',       tags:['Lãng mạn','Ngọt ngào'],      u:'2.201', badge:'',       bt:'',    f:'lang-man'},
+  {src:'thiepcuoi11.html',  img:'../assets/images/11.jpg',  name:'Mẫu Ever',        tags:['Hiện đại','Tối giản'],        u:'1.893', badge:'blue',   bt:'Mới', f:'hien-dai toi-gian'},
+  {src:'thiepcuoi13.html',  img:'../assets/images/13.jpg',  name:'Mẫu Đông Phương', tags:['Truyền thống','Trang trọng'],u:'7.104', badge:'purple', bt:'Hot', f:'truyen-thong'},
+  {src:'thiepcuoi15.html',  img:'../assets/images/15.jpg',  name:'Mẫu Hoàng Gia',   tags:['Truyền thống','Sang trọng'], u:'4.560', badge:'orange', bt:'Hot', f:'truyen-thong thanh-lich'},
+  {src:'thiepcuoi16.html',  img:'../assets/images/16.jpg',  name:'Mẫu Tuyết Trắng', tags:['Thanh lịch','Tối giản'],     u:'2.340', badge:'',       bt:'',    f:'thanh-lich toi-gian'},
+  {src:'thiepcuoi17.html',  img:'../assets/images/17.jpg',  name:'Mẫu Mùa Hè',      tags:['Hiện đại','Tươi sáng'],      u:'1.120', badge:'green',  bt:'Mới', f:'hien-dai lang-man'},
 ];
 
 function mkSVG(i) {
@@ -396,19 +380,11 @@ DATA.forEach(function(d, i) {
   var el = document.createElement('div');
   el.className = 'card'; el.dataset.f = d.f;
 
-  // Trên mobile: thay iframe preview bằng thumbnail tĩnh để tránh crash
-  var screenContent;
-  if (IS_MOBILE) {
-    screenContent =
-      '<div class="screen-thumb" onclick="openModal(' + i + ')">' +
-        '<span>💌</span>' +
-        '<p>Nhấn để<br>xem mẫu</p>' +
-      '</div>';
-  } else {
-    screenContent =
-      '<div class="skeleton"><div class="sk-ring"></div></div>' +
-      '<iframe data-src="' + d.src + '" sandbox="allow-scripts allow-same-origin" scrolling="no" onload="onLoad(this)"></iframe>';
-  }
+  // Dùng ảnh thumbnail tĩnh thay iframe — nhẹ, nhanh trên cả mobile lẫn desktop
+  var screenContent =
+    '<div class="screen-thumb" onclick="openModal(' + i + ')">' +
+      '<img src="' + d.img + '" alt="' + d.name + '" loading="lazy"/>' +
+    '</div>';
 
   el.innerHTML =
     '<div class="phone-wrap">' +
@@ -424,70 +400,6 @@ DATA.forEach(function(d, i) {
     '</div>';
   grid.appendChild(el);
 });
-
-// ── Lazy load iframe (desktop only, rootMargin nhỏ hơn) ──
-if (!IS_MOBILE) {
-  var lazyObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        var iframe = entry.target.querySelector('iframe[data-src]');
-        if (iframe) { iframe.src = iframe.dataset.src; delete iframe.dataset.src; }
-        lazyObs.unobserve(entry.target);
-      }
-    });
-  }, { rootMargin: '80px 0px' }); // ← giảm từ 200px xuống 80px
-
-  document.querySelectorAll('.card').forEach(function(card) { lazyObs.observe(card); });
-}
-
-// ── Scale iframes ──
-function scaleAll() {
-  if (IS_MOBILE) return; // không cần scale trên mobile
-  document.querySelectorAll('.screen').forEach(function(sc) {
-    var iframe = sc.querySelector('iframe'); if (!iframe) return;
-    var scale = sc.offsetWidth / 390; if (scale > 0) iframe.style.transform = 'scale(' + scale + ')';
-  });
-  var mif = document.getElementById('mif');
-  if (mif && mif.src) {
-    var ms = mif.closest('.modal-screen');
-    if (ms) mif.style.transform = 'scale(' + (ms.offsetWidth/390) + ')';
-  }
-}
-
-function onLoad(iframe) {
-  var sk = iframe.previousElementSibling;
-  if (sk && sk.classList.contains('skeleton')) sk.classList.add('gone');
-  var w = iframe.parentElement.offsetWidth; if (w) iframe.style.transform = 'scale(' + (w/390) + ')';
-}
-
-setTimeout(scaleAll, 200);
-window.addEventListener('load', scaleAll);
-window.addEventListener('resize', function() { IS_MOBILE = window.innerWidth <= 768; scaleAll(); });
-
-// ── Hover scroll (desktop only) ──
-if (!IS_MOBILE) {
-  grid.addEventListener('mouseenter', function(e) {
-    var card = e.target.closest && e.target.closest('.card');
-    if (!card || card._sc) return;
-    var sc = card.querySelector('.screen'); var fr = card.querySelector('iframe');
-    if (!sc || !fr || fr.dataset.src) return; // chờ iframe load xong
-    card._sc = true;
-    var pos = 0, raf;
-    function tick() {
-      var max = Math.max(0, 844*(sc.offsetWidth/390) - sc.offsetHeight);
-      if (pos < max) { pos = Math.min(pos+0.8, max); fr.style.top = -pos+'px'; raf = requestAnimationFrame(tick); } else raf = null;
-    }
-    raf = requestAnimationFrame(tick);
-    card.addEventListener('mouseleave', function() {
-      cancelAnimationFrame(raf); card._sc = false;
-      var from = pos, t0 = performance.now();
-      (function slide(now) {
-        var p = Math.min((now-t0)/400, 1); fr.style.top = -(from*(1-p))+'px';
-        if (p<1) requestAnimationFrame(slide); else { fr.style.top = '0'; pos = 0; }
-      })(performance.now());
-    }, {once:true});
-  }, true);
-}
 
 // ── Mute / Unmute ──
 var _muted = false;
